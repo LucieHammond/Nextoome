@@ -22,23 +22,23 @@ export class MyApp {
 
 	rootPage: any = HomePage;
 
-	pages: Array<{title: string, component: any}>;
+	pages: Array<Array<{title: string, component: any, icon: string}>>;
 
 	constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
 		this.initializeApp();
 
 		// used for an example of ngFor and navigation
 		this.pages = [
-			{ title: 'Home', component: HomePage },
-			{ title: 'Vente flash', component: FlashSalePage },
-			{ title: 'Mon compte', component: UserProfilePage },
-			{ title: "Mes listes d'envies", component: WishlistPage },
-			{ title: 'Mon panier', component: BasketPage },
-			{ title: 'Mes commandes', component: OrdersPage },
-			{ title: 'Mes nextoos', component: NextoosPage },
-			{ title: 'Service client', component: CustomerServicePage },
-			{ title: 'Aide', component: HelpPage },
-			{ title: 'Pamètres', component: ParamsPage },
+			[{ title: 'Home', component: HomePage, icon: "home" },
+			{ title: 'Vente flash', component: FlashSalePage, icon: "flash" }],
+			[{ title: 'Mon compte', component: UserProfilePage, icon: "person" },
+			{ title: "Mes listes d'envies", component: WishlistPage, icon: "star" },
+			{ title: 'Mon panier', component: BasketPage, icon: "cart" },
+			{ title: 'Mes commandes', component: OrdersPage, icon: "clipboard" },
+			{ title: 'Mes nextoos', component: NextoosPage, icon: "pricetags" }],
+			[{ title: 'Service client', component: CustomerServicePage, icon: "mail" },
+			{ title: 'Aide', component: HelpPage, icon: "help-circle" },
+			{ title: 'Pamètres', component: ParamsPage, icon: "settings" }],
 		];
 
 	}

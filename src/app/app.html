@@ -1,17 +1,42 @@
-<ion-menu [content]="content">
-  <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<!-- Replace avatar, name and email with user data -->
 
-  <ion-content>
-    <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
-    </ion-list>
-  </ion-content>
+<ion-menu [content]="content">
+	<ion-header>
+		<ion-item class="menu-toolbar">
+		<ion-avatar item-left>
+			<img src='http://www.web-soluces.net/webmaster/avatar/FaceCo-Femme.png'>
+		</ion-avatar>
+		<div class="subtitle">
+			<h3>Lucie Hammond</h3>
+			<span>lucie.hammond@student.ecp.fr</span>
+		</div>
+		</ion-item>
+	</ion-header>
+
+	<ion-content>
+		<ion-list>
+			<button class="menu-item" menuClose ion-item *ngFor="let p of pages[0]" (click)="openPage(p)" no-lines>
+				<ion-icon [name]="p.icon"></ion-icon>
+				<span>{{p.title}}</span>
+			</button>
+			<ion-item class="separator"></ion-item>
+			<button class="menu-item" menuClose ion-item *ngFor="let p of pages[1]" (click)="openPage(p)" no-lines>
+				<ion-icon [name]="p.icon"></ion-icon>
+				<span>{{p.title}}</span>
+			</button>
+			<ion-item class="separator"></ion-item>
+			<button class="menu-item" menuClose ion-item *ngFor="let p of pages[2]" (click)="openPage(p)" no-lines>
+				<ion-icon [name]="p.icon"></ion-icon>
+				<span>{{p.title}}</span>
+			</button>
+			<ion-item class="separator"></ion-item>
+			<button class="menu-item" menuClose ion-item>
+				<ion-icon name="close-circle"></ion-icon>
+				<span>Déconnexion</span>
+			</button>
+
+		</ion-list>
+	</ion-content>
 
 </ion-menu>
 
