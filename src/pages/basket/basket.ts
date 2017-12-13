@@ -8,6 +8,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class BasketPage {
 
+  //contenuPanier: product[];
+  contenuPanier: string[];
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

@@ -17,6 +17,7 @@ import {ProductPage} from '../pages/product/product'
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { SharedBasket } from '../services/shared-basket';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    SharedBasket,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
