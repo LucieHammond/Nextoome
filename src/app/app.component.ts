@@ -13,6 +13,7 @@ import { NextoosPage } from '../pages/nextoos/nextoos';
 import { CustomerServicePage } from '../pages/customer-service/customer-service';
 import { HelpPage } from '../pages/help/help';
 import { ParamsPage } from '../pages/params/params';
+import {ProductPage} from '../pages/product/product';
 
 @Component({
 	templateUrl: 'app.html'
@@ -39,6 +40,7 @@ export class MyApp {
 			[{ title: 'Service client', component: CustomerServicePage, icon: "mail" },
 			{ title: 'Aide', component: HelpPage, icon: "help-circle" },
 			{ title: 'Pamètres', component: ParamsPage, icon: "settings" }],
+			[{ title: 'Produit', component: ProductPage, icon: "home" }],
 		];
 
 	}
