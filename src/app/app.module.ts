@@ -14,10 +14,12 @@ import { NextoosPage } from '../pages/nextoos/nextoos';
 import { CustomerServicePage } from '../pages/customer-service/customer-service';
 import { HelpPage } from '../pages/help/help';
 import { ParamsPage } from '../pages/params/params';
+import {ProductPage} from '../pages/product/product';
 import { ApiConnectorService } from '../services/api-connector';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { SharedBasket } from '../services/shared-basket';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     NextoosPage,
     HelpPage,
     CustomerServicePage,
-    ParamsPage
+    ParamsPage,
+    ProductPage
   ],
   imports: [
     BrowserModule,
@@ -50,13 +53,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     NextoosPage,
     HelpPage,
     CustomerServicePage,
-    ParamsPage
+    ParamsPage,
+    ProductPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ApiConnectorService
+    ApiConnectorService,
+    SharedBasket
   ]
 })
 export class AppModule {}

@@ -9,10 +9,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class BasketPage {
 
-	constructor(public navCtrl: NavController, public navParams: NavParams) {
-	}
+  //contenuPanier: product[];
+  contenuPanier: string[];
 
-	ionViewDidLoad() {
-		console.log('ionViewDidLoad BasketPage');
-	}
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad BasketPage');
+  }
 }

@@ -8,5 +8,9 @@
 </ion-header>
 
 <ion-content padding>
-	<h3>Basket Page</h3>
+  <ion-list>
+    <button ion-item *ngFor="let p of contenuPanier" (click)="SelectionProduit($event,p)">
+      {{p.name}}
+    </button>
+</ion-list>
 </ion-content>
