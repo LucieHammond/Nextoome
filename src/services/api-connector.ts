@@ -284,7 +284,7 @@ export class ApiConnectorService {
 		console.log('Hello Api Connector Service');
 	}
 
-	getIndex(): Observable<any> {
+getIndex(): Observable<any> {
 		return this.http.get(`${this.apiUrl}`).map(res => res.json());
 	}
 

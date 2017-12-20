@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -20,6 +21,7 @@ import { ApiConnectorService } from '../services/api-connector';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SharedBasket } from '../services/shared-basket';
+import { ProductList } from '../services/product-list'
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { SharedBasket } from '../services/shared-basket';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -61,7 +64,8 @@ import { SharedBasket } from '../services/shared-basket';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ApiConnectorService,
-    SharedBasket
+    SharedBasket,
+    ProductList
   ]
 })
 export class AppModule {}
