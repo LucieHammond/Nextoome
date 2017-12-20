@@ -22,8 +22,7 @@ export interface Order {
 	payment_details: {
 		method_id: string,
 		method_title: string,
-		paid: boolean,
-		transaction_id: string
+		paid: boolean
 	},
 	billing_address: {
 		first_name: string,
