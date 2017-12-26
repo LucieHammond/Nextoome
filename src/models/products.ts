@@ -20,7 +20,7 @@ export interface Product {
 	tax_class: string,
 	managing_stock: boolean,
 	stock_quantity: number,
-	in_stock: number,
+	in_stock: boolean,
 	backorders_allowed: boolean,
 	backordered: boolean,
 	sold_individually: boolean,
@@ -107,9 +107,8 @@ interface Variation{
 	tax_class: string,
 	managing_stock: boolean,
 	stock_quantity: number,
-	in_stock: number,
+	in_stock: boolean,
 	backordered: boolean,
-	sold_individually: boolean,
 	purchaseable: boolean,
 	visible: boolean,
 	on_sale: boolean,
@@ -122,7 +121,7 @@ interface Variation{
 	},
 	shipping_class: string,
 	shipping_class_id: number,
-	images: Image[],
+	image: Image[],
 	attributes: DefaultAttribute[],
 	downloads: Download[],
 	download_limit: number,
@@ -179,7 +178,7 @@ export interface ProductShippingClass{
 export interface ProductTag{
 	id: number,
 	name: string,
-	parent: number,
+	parent: string,
 	description: string,
 	count: number
 }

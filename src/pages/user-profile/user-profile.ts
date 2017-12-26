@@ -1,18 +1,22 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { User } from '../../models/users';
+import { SessionInfos } from "../../services/session-infos";
 
 @IonicPage()
 @Component({
-  selector: 'page-user-profile',
-  templateUrl: 'user-profile.html',
+	selector: 'page-user-profile',
+	templateUrl: 'user-profile.html',
 })
 export class UserProfilePage {
+	user : User;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+	constructor(public navCtrl: NavController, public navParams: NavParams, private session: SessionInfos) {
+		this.user = session.getCurrentUser();
+	}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad UserProfilePage');
-  }
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad UserProfilePage');
+	}
 
 }

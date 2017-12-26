@@ -6,8 +6,7 @@ import 'rxjs/add/operator/map';
 import { Coupon } from '../models/coupons';
 import { User } from '../models/users';
 import { Order, OrderNote, OrderRefund } from '../models/orders';
-import { Product, ProductAttribute, ProductAttributeTerm, ProductCategory, ProductShippingClass, ProductTag }
-	from '../models/products'
+import { Product, ProductAttribute, ProductAttributeTerm } from '../models/products'
 import { Example } from '../models/examples'
 
 
@@ -21,9 +20,9 @@ export class ApiConnectorService {
 		console.log('Hello Api Connector Service');
 	}
 
-	getIndex(): Observable<any> {
+	/*getIndex(): Observable<any> {
 		return this.http.get(`${this.apiUrl}`).map(res => res.json());
-	}
+	}*/
 
 	getIndexWithOauth(): Observable<any> {
 		return

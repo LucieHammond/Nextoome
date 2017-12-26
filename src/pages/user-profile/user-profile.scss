@@ -1,3 +1,25 @@
 page-user-profile {
 
 }
+
+.item-profile {
+	height: 100px;
+	.avatar > img:first-child {
+		width: 80px;
+		height: 80px;
+		border: 2px solid #009000;
+	}
+}
+
+.item-data {
+	font-size: 14px;
+}
+
+.md ion-list > .item:first-child,
+.md ion-list > .item-wrapper:first-child .item,
+.wp ion-list > .item:first-child,
+.wp ion-list > .item-wrapper:first-child .item,
+.ios ion-list > .item:first-child,
+.ios ion-list > .item-wrapper:first-child .item {
+    border-top: none;
+}

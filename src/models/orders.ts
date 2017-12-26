@@ -86,7 +86,7 @@ interface ShippingLine{
 interface TaxLine{
 	id: number,
 	code: string,
-	rate_id: number,
+	rate_id: string,
 	title: string,
 	compound: boolean,
 	total: string
@@ -108,7 +108,7 @@ interface CouponLine{
 }
 
 interface MetaData{
-	id: number,
+	key: string,
 	label: string,
 	value: string
 }
