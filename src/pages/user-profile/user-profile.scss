@@ -7,19 +7,45 @@ page-user-profile {
 	.avatar > img:first-child {
 		width: 80px;
 		height: 80px;
-		border: 2px solid #009000;
+		border: 2px solid;
+	}
+	.edit-buttons {
+		height: 100%;
+		width: 135px;
+		display: block;
+		vertical-align: top;
+		margin-top: 30px;
+		text-align: center;
+		button {
+			width: 100%;
+		}
 	}
 }
 
 .item-data {
 	font-size: 14px;
+	ion-label {
+		color: black !important;
+	}
 }
 
-.md ion-list > .item:first-child,
-.md ion-list > .item-wrapper:first-child .item,
-.wp ion-list > .item:first-child,
-.wp ion-list > .item-wrapper:first-child .item,
-.ios ion-list > .item:first-child,
-.ios ion-list > .item-wrapper:first-child .item {
+.ios ion-list > .item:first-child {
     border-top: none;
 }
+
+.ios ion-list > .item:last-child {
+    border-bottom: none;
+}
+
+// Remove strange green lines that appear on Android with ngModel
+.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner {
+	border-bottom-color: transparent !important;
+	box-shadow: inset 0 -1px 0 0 #dedede !important;
+}
+
+.list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):last-child,
+.list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):last-child .item-inner{
+	border-bottom-color: transparent !important;
+	box-shadow: none !important;
+}
+

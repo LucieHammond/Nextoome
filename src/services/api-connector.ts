@@ -56,7 +56,8 @@ export class ApiConnectorService {
 		return 3;
 	}
 
-	createUser(data): User {
+	createUser(userData): User {
+		let data = {"customer": userData};
 		return <User> this.example.users[0];
 	}
 
@@ -68,7 +69,8 @@ export class ApiConnectorService {
 		return <User[]> this.example.users;
 	}
 
-	updateUser(id, data): User {
+	updateUser(id, userData): User {
+		let data = {"customer": userData};
 		return <User> this.example.users[0];
 	}
 

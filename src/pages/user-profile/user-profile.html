@@ -12,23 +12,33 @@
 		<ion-avatar class="avatar">
 			<img src="{{user.avatar_url}}">
 		</ion-avatar>
+		<div item-end class="edit-buttons">
+			<button *ngIf="!edit" ion-button round outline (click)="editProfile()">Modifier le profil</button>
+			<button *ngIf="edit" ion-button round outline (click)="saveProfile()">Sauvegarder</button><br/>
+			<button *ngIf="edit" ion-button round outline (click)="cancelChange()">Annuler</button>
+		</div>
 	</ion-list-header>
-	<ion-list class>
+
+	<ion-list>
 		<ion-item class="item-data">
 			<ion-label fixed><b>Utilisateur :</b></ion-label>
-			<div item-content>{{user.username}}</div>
+			<div *ngIf="!edit" item-content>{{user.username}}</div>
+			<ion-input *ngIf="edit" placeholder="nom d'utilisateur" [(ngModel)]="user.username" trim></ion-input>
 		</ion-item>
 		<ion-item class="item-data">
 			<ion-label fixed><b>Prénom :</b></ion-label>
-			<div item-content>{{user.first_name}}</div>
+			<div *ngIf="!edit" item-content>{{user.first_name}}</div>
+			<ion-input *ngIf="edit" placeholder="prénom" [(ngModel)]="user.first_name"></ion-input>
 		</ion-item>
 		<ion-item class="item-data">
 			<ion-label fixed><b>Nom :</b></ion-label>
-			<div item-content>{{user.last_name}}</div>
+			<div *ngIf="!edit" item-content>{{user.last_name}}</div>
+			<ion-input *ngIf="edit" placeholder="nom de famille" [(ngModel)]="user.last_name"></ion-input>
 		</ion-item>
 		<ion-item class="item-data">
 			<ion-label fixed><b>E-mail :</b></ion-label>
-			<div item-content>{{user.email}}</div>
+			<div *ngIf="!edit" item-content>{{user.email}}</div>
+			<ion-input *ngIf="edit" placeholder="adresse email" [(ngModel)]="user.email"></ion-input>
 		</ion-item>
 	</ion-list>
 </ion-content>
