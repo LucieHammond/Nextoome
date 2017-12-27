@@ -132,4 +132,9 @@
 			</ion-item>
 		</ion-list>
 	</ion-card>
+
+	<ion-item *ngIf="!edit" class="item-data" no-lines>
+		<b>Commandes passées :</b> {{user.orders_count}}
+	</ion-item>
+	<button *ngIf="!edit" ion-button class="orders-button" (click)="seeOrders()">Voir l'historique des commandes</button>
 </ion-content>

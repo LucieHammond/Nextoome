@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { User } from '../../models/users';
 import { SessionInfos } from "../../services/session-infos";
 import { PicturePage } from "../picture/picture";
+import { OrdersPage } from '../orders/orders';
 
 @IonicPage()
 @Component({
@@ -36,6 +37,10 @@ export class UserProfilePage {
 	}
 
 	displayPicture(url: string){
-		this.navCtrl.push(PicturePage,{imgUrl: url, editable: true})
+		this.navCtrl.push(PicturePage,{imgUrl: url, editable: true}, {animation: "md-transition"});
+	}
+
+	seeOrders(){
+		this.navCtrl.setRoot(OrdersPage, {}, {animate: true, direction: "forward"});
 	}
 }

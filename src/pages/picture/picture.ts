@@ -20,6 +20,10 @@ export class PicturePage {
 		console.log('ionViewDidLoad PicturePage');
 	}
 
+	close(): void{
+		this.navCtrl.pop({animation: "md-transition"});
+	}
+
 	openGallery (): void {
 		const options: CameraOptions = {
 			quality: 100,
