@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/users';
 import {ApiConnectorService} from "./api-connector";
+import * as $ from 'jquery';
 
 @Injectable()
 export class SessionInfos {
@@ -12,7 +13,7 @@ export class SessionInfos {
     }
 
     getCurrentUser(): User {
-    	return Object.assign({}, this.currentUser);
+    	return $.extend(true, {}, this.currentUser);
 	}
 
 	updateCurrentUser(user: User): User {

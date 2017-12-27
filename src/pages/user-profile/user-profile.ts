@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { User } from '../../models/users';
 import { SessionInfos } from "../../services/session-infos";
+import { PicturePage } from "../picture/picture";
 
 @IonicPage()
 @Component({
@@ -34,4 +35,7 @@ export class UserProfilePage {
 		this.edit = !this.edit;
 	}
 
+	displayPicture(url: string){
+		this.navCtrl.push(PicturePage,{imgUrl: url, editable: true})
+	}
 }

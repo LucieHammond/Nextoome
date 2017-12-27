@@ -1,47 +1,49 @@
 page-user-profile {
-
-}
-
-.item-profile {
-	height: 100px;
-	.avatar > img:first-child {
-		width: 80px;
-		height: 80px;
-		border: 2px solid;
-	}
-	.edit-buttons {
-		height: 100%;
-		width: 135px;
-		display: block;
-		vertical-align: top;
-		margin-top: 30px;
-		text-align: center;
-		button {
-			width: 100%;
+	.item-profile {
+		height: 100px;
+		.avatar > img:first-child {
+			width: 80px;
+			height: 80px;
+			border: 2px solid;
+		}
+		.edit-buttons {
+			height: 100%;
+			width: 135px;
+			display: block;
+			vertical-align: top;
+			margin-top: 30px;
+			text-align: center;
+			button {
+				width: 100%;
+			}
 		}
 	}
-}
 
-.item-data {
-	font-size: 14px;
-	ion-label {
-		color: black !important;
+	.item-data {
+		font-size: 14px;
+		ion-label {
+			color: black !important;
+		}
 	}
-}
 
-.address-card {
-	background-color: #f4f4f4;
-}
+	.address-card {
+		background-color: #f4f4f4;
+	}
 
-.item-address-data {
-	font-size: 14px;
-	max-height: 32px;
-	min-height: 32px;
+	.item-address-data {
+		font-size: 14px;
+		max-height: 32px;
+		min-height: 32px;
+		ion-label {
+			color: black !important;
+		}
+	}
+
 }
 
 // Remove start border in ios
 .ios ion-list > .item:first-child {
-    border-top: none;
+	border-top: none;
 }
 
 // Remove strange green lines that appear on Android with ngModel
@@ -49,9 +51,10 @@ page-user-profile {
 	border-bottom-color: transparent !important;
 	box-shadow: inset 0 -1px 0 0 #dedede !important;
 }
-
 .list-md .item-input.ng-valid:not(.input-has-focus):last-child,
 .list-md .item-input.ng-valid:not(.input-has-focus):last-child .item-inner{
 	border-bottom-color: transparent !important;
 	box-shadow: none !important;
 }
+
+

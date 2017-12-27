@@ -9,9 +9,11 @@
 
 <ion-content padding>
 	<ion-list-header class="item-profile" no-lines>
-		<ion-avatar class="avatar">
-			<img src="{{user.avatar_url}}">
-		</ion-avatar>
+		<button (click)="displayPicture(user.avatar_url)">
+			<ion-avatar class="avatar">
+				<img src="{{user.avatar_url}}">
+			</ion-avatar>
+		</button>
 		<div item-end class="edit-buttons">
 			<button *ngIf="!edit" ion-button round outline (click)="editProfile()">Modifier le profil</button>
 			<button *ngIf="edit" ion-button round outline (click)="saveProfile()">Sauvegarder</button><br/>
