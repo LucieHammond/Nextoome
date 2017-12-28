@@ -1,3 +1,16 @@
 page-help {
-
+	ion-slide p {
+		font: italic 15px Arial, sans-serif;
+		line-height: 30px;
+		margin-left: 20px;
+		margin-right: 20px;
+		margin-top: 11px;
+		margin-bottom: 11px;
+	}
+	ion-slide img {
+		margin:0;
+	}
+	ion-slide h4 {
+		margin-bottom: 0;
+	}
 }

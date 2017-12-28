@@ -8,5 +8,34 @@
 </ion-header>
 
 <ion-content padding>
-	<h3>Help Page</h3>
+	<ion-slides pager>
+		<ion-slide>
+			<h1>Nextoome c'est quoi ?</h1>
+			<img src="../../assets/imgs/confetti.png"/>
+			<p><b>Nextoome</b> est une plateforme qui facilite les échanges avec les <b>commerçants de proximité</b>
+				pour des achats de <b>produits alimentaires</b> pouvant être retirés ou livrés en dehors des heures
+				d’ouverture !</p>
+			<img src="../../assets/imgs/bubbles.png"/>
+			<h4>Comment ça marche ?</h4>
+			<button ion-button clear icon-end color="secondary" (click)="nextSlide()">
+				Découvrir
+				<ion-icon name="arrow-forward"></ion-icon>
+			</button>
+		</ion-slide>
+		<ion-slide>
+			<h1>Slide 2</h1>
+		</ion-slide>
+		<ion-slide>
+			<h1>Slide 3</h1>
+		</ion-slide>
+		<ion-slide>
+			<h1>Slide 4</h1>
+		</ion-slide>
+		<ion-slide>
+			<h1>Slide 5</h1>
+		</ion-slide>
+		<ion-slide>
+			<h1>Slide 6</h1>
+		</ion-slide>
+	</ion-slides>
 </ion-content>
