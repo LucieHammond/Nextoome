@@ -8,5 +8,49 @@
 </ion-header>
 
 <ion-content padding>
-	<h3>Params Page</h3>
+	<ion-list>
+		<ion-list-header>
+			Notifications
+		</ion-list-header>
+		<ion-item>
+			<ion-label>Suivis de livraison</ion-label>
+			<ion-toggle checked color="secondary"></ion-toggle>
+		</ion-item>
+		<ion-item>
+			<ion-label>Alertes promotions</ion-label>
+			<ion-toggle checked color="secondary"></ion-toggle>
+		</ion-item>
+		<ion-item>
+			<ion-label>Nouveaux commerçants</ion-label>
+			<ion-toggle checked color="secondary"></ion-toggle>
+		</ion-item>
+		<ion-item>
+			<ion-label>Newsletter, actualités</ion-label>
+			<ion-toggle checked color="secondary"></ion-toggle>
+		</ion-item>
+	</ion-list>
+	<br/>
+	<ion-list>
+		<ion-list-header>
+			Confidentialité
+		</ion-list-header>
+		<ion-item>
+			<ion-label>Accès à la localisation</ion-label>
+			<ion-toggle checked color="secondary"></ion-toggle>
+		</ion-item>
+		<ion-item>
+			<ion-label>Accès à la caméra</ion-label>
+			<ion-toggle checked color="secondary"></ion-toggle>
+		</ion-item>
+	</ion-list>
+	<br/>
+	<ion-list radio-group>
+		<ion-list-header>
+			Langage
+		</ion-list-header>
+		<ion-item>
+			<ion-label>Français</ion-label>
+			<ion-radio checked="true" value="french"></ion-radio>
+		</ion-item>
+	</ion-list>
 </ion-content>
