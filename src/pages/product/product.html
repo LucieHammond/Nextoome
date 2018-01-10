@@ -8,7 +8,10 @@
 </ion-header>
 
 <ion-content padding>
-	<h1>{{titre}}</h1>
-	<h3>{{prix}}</h3>
-	<button ion-button full (click)="AjoutPanier($event)">Ajouter au panier</button>
+	<h1>{{produit_vu.title}}</h1>
+	<h3>{{produit_vu.price}}</h3>
+	<button ion-button icon-start full (click)="AjoutPanier($event)">
+		<ion-icon name="cart"></ion-icon>
+			Ajouter au panier
+		</button>
 </ion-content>

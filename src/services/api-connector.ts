@@ -21,7 +21,7 @@ export class ApiConnectorService {
 	}
 
 	/*getIndex(): Observable<any> {
-		return this.http.get(`${this.apiUrl}`).map(res => res.json());
+		return this.http.get(`${this.apiUrl}`).map(res => res.json( ));
 	}*/
 
 	getIndexWithOauth(): Observable<any> {

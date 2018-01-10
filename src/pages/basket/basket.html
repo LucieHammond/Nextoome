@@ -9,8 +9,12 @@
 
 <ion-content padding>
   <ion-list>
-    <button ion-item *ngFor="let p of contenuPanier" (click)="SelectionProduit($event,p)">
-      {{p.name}}
-    </button>
+    <ion-item *ngFor="let p of contenuPanier" (click)="SelectionProduit($event,p)">
+      {{p.title}}
+			{{p.price}}
+				<button ion-button icon-only (click)="RetirerPanier($event,p)">
+					<ion-icon name="close"></ion-icon>
+							</button>
+    </ion-item>
 </ion-list>
 </ion-content>

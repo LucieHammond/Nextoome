@@ -10,10 +10,10 @@ import { ActivityHours } from '../../config';
 })
 export class HelpPage {
 	@ViewChild(Slides) slides: Slides;
-	ordersTimeEnd: DateTime;
-	withdrawalTimeStart: DateTime;
-	withdrawalTimeEnd: DateTime;
-	lateOrdersTimeEnd: DateTime;
+	ordersTimeEnd: Date;
+	withdrawalTimeStart: Date;
+	withdrawalTimeEnd: Date;
+	lateOrdersTimeEnd: Date;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams) {
 		this.ordersTimeEnd = ActivityHours.ORDERS_END;

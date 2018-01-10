@@ -1,16 +1,32 @@
 import { Injectable } from '@angular/core';
+import { Product } from '../models/products';
+
+
 
 @Injectable()
 export class SharedBasket {
 
-contenuPanier: string[];
+produit: Product;
+contenuPanier: Product[] ;
 
-    constructor() {
+  constructor() {
+
+this.contenuPanier = [];
+
     }
 
-    addToBasket(produit) {
-             this.contenuPanier.push();
+    addToBasket(produitSelectionne) {
+             this.contenuPanier.push(produitSelectionne);
     }
+
+    removeFromBasket(produitASupprimer){
+      let index = this.contenuPanier.indexOf(produitASupprimer);
+
+    if(index > -1){
+      this.contenuPanier.splice(index, 1);
+    }
+    }
+
 
     getBasket() {
         return this.contenuPanier;
