@@ -7,6 +7,80 @@
 	</ion-navbar>
 </ion-header>
 
-<ion-content padding>
-	<h3>Help Page</h3>
+<ion-content>
+	<ion-slides pager padding-bottom>
+		<ion-slide class="slide1" padding>
+			<h1>Nextoome c'est quoi ?</h1>
+			<img src="../../assets/imgs/confetti.png"/>
+			<p><b>Nextoome</b> est une plateforme qui facilite les échanges avec les <b>commerçants de proximité</b>
+				pour des achats de <b>produits alimentaires</b> pouvant être retirés ou livrés en dehors des heures
+				d’ouverture !</p>
+			<img src="../../assets/imgs/bubbles.png"/>
+			<h4>Comment ça marche ?</h4>
+			<button ion-button clear icon-end color="secondary" (click)="nextSlide()">
+				Découvrir
+				<ion-icon name="arrow-forward"></ion-icon>
+			</button>
+		</ion-slide>
+		<ion-slide>
+			<div class="bar top-left-corner">1</div>
+			<div class="card bottom green">
+				<h2 class="title">Je fais mon marché chez mes <b>commerçants préférés</b> en consultant les produits
+					sur l'appli</h2>
+				<br/>
+				<h4 class="left"><b>Quand ?</b></h4>
+				<p class="medium justify">Avant
+					{{ ordersTimeEnd | date:'HH' }}h{{ ordersTimeEnd.getMinutes() ? (ordersTimeEnd | date:'mm') : "" }}
+					du lundi au samedi pour récupérer les achats le soir même*</p>
+				<p class="small justify"><i>* Nous acceptons encore les commandes passées entre
+					{{ ordersTimeEnd | date:'HH' }}h{{ ordersTimeEnd.getMinutes() ? (ordersTimeEnd | date:'mm') : "" }}
+					et {{ lateOrdersTimeEnd | date:'HH' }}h{{ lateOrdersTimeEnd.getMinutes() ? (lateOrdersTimeEnd | date:'mm') : "" }}
+					mais pour une quantité limitée</i></p>
+			</div>
+		</ion-slide>
+		<ion-slide>
+			<div class="bar top-right-corner">2</div>
+			<div class="card bottom yellow">
+				<h2 class="title">Je choisis mon <b>mode de livraison</b> :</h2>
+				<br/>
+				<p class="medium">Retrait à la gare SNCF <br/>de Lagny-Thorigny*</p>
+				<h4><b>OU</b></h4>
+				<p class="medium">Livraison à domicile</p>
+				<p class="small justify"><i>* 2 rue de la Gare, 77400 Thorigny Sur Marne</i></p>
+			</div>
+		</ion-slide>
+		<ion-slide>
+			<div class="bar bottom-left-corner">3</div>
+			<div class="card top orange">
+				<h2 class="title">Je paye en une seule fois via un <b>service bancaire sécurisé</b> en ligne</h2>
+				<br/>
+				<h4 class="left"><b>Quels avantages ?</b></h4>
+				<p class="medium justify">Paiement facile, rapide et sécurisé par le protocole 3D-Secure</p>
+			</div>
+		</ion-slide>
+		<ion-slide>
+			<div class="bar bottom-right-corner">4</div>
+			<div class="card top red">
+				<h2 class="title">Je récupère <b>rapidement</b> mes produits frais ou préparés</h2>
+				<br/>
+				<h4 class="left"><b>Comment ?</b></h4>
+				<p class="medium justify">- Soit je suis livré directement chez moi</p>
+				<p class="medium justify">- Soit je retire mes produits entre
+					{{ withdrawalTimeStart | date:'HH' }}h{{ withdrawalTimeStart.getMinutes() ? (withdrawalTimeStart | date:'mm') : "" }} et
+					{{ withdrawalTimeEnd | date:'HH' }}h{{ withdrawalTimeEnd.getMinutes() ? (withdrawalTimeEnd | date:'mm') : "" }}
+					à la gare SNCF</p>
+			</div>
+		</ion-slide>
+		<ion-slide>
+			<div class="bar top-left-corner">5</div>
+			<div class="card bottom brown">
+				<h2 class="title">Et je recommence quand je veux...</h2>
+				<br/>
+				<p class="medium justify">Chaque commande Nextoome me fait gagner des points <b>Nextoos</b></p>
+				<p class="medium justify">Les nextoos pourront être convertis en réductions ou en commandes offertes</p>
+				<br/>
+				<button ion-button (click)="backToStart()">J'ai compris</button>
+			</div>
+		</ion-slide>
+	</ion-slides>
 </ion-content>
