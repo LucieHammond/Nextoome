@@ -2,15 +2,16 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Product } from '../models/products'
+import { ApiConnectorService } from '../services/api-connector'
 
 @Injectable()
 export class ProductList {
 
     tousProduits: Product[];
 
-    constructor(public http: Http) {
+    constructor(public http: Http, private apiConnector: ApiConnectorService) {
 
-        this.tousProduits = [];
+        this.tousProduits = apiConnector.getProductsList();
 
     }
 

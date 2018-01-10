@@ -5,6 +5,7 @@ import { Product } from '../../models/products'
 import { ProductList } from '../../services/product-list'
 import 'rxjs/add/operator/debounceTime';
 import { FormControl } from '@angular/forms';
+import { ApiConnectorService } from '../../services/api-connector'
 
 @IonicPage()
 @Component({
@@ -19,10 +20,11 @@ export class HomePage {
   resultatsRecherche: any;
   searching: any = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public rechercheData: ProductList)
+  constructor(public navCtrl: NavController, public navParams: NavParams, public rechercheData: ProductList, private apiConnector: ApiConnectorService)
   {
         this.searching = false;
         this.searchControl = new FormControl();
+        this.offres_du_jour = apiConnector.getProductsList();
 
   }
 

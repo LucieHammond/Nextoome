@@ -285,7 +285,7 @@ export class Example {
 				"first_name": "",
 				"last_name": "",
 				"username": "john.doe",
-				"last_order_id": "645",
+				"last_order_id": 645,
 				"last_order_date": "2015-01-26T20:00:21Z",
 				"orders_count": 2,
 				"total_spent": "19.00",
@@ -432,7 +432,7 @@ export class Example {
 				"first_name": "",
 				"last_name": "",
 				"username": "john.doe",
-				"last_order_id": "645",
+				"last_order_id": 645,
 				"last_order_date": "2015-01-26T20:00:21Z",
 				"orders_count": 2,
 				"total_spent": "19.00",
@@ -467,25 +467,25 @@ export class Example {
 
 	orderNotes: OrderNote[] = [
 		{
-			"id": "416",
+			"id": 416,
 			"created_at": "2015-01-26T20:56:44Z",
 			"note": "Order ok!!!",
 			"customer_note": false
 		},
 		{
-			"id": "415",
+			"id": 415,
 			"created_at": "2015-01-26T20:16:14Z",
 			"note": "Order status changed from Processing to Completed.",
 			"customer_note": false
 		},
 		{
-			"id": "412",
+			"id": 412,
 			"created_at": "2015-01-26T20:00:21Z",
 			"note": "Order item stock reduced successfully.",
 			"customer_note": false
 		},
 		{
-			"id": "411",
+			"id": 411,
 			"created_at": "2015-01-26T20:00:09Z",
 			"note": "Order status changed from Pending Payment to Processing.",
 			"customer_note": false
@@ -1022,14 +1022,14 @@ export class Example {
 		{
 			"id": 37,
 			"name": "Leather Shoes",
-			"slug": "leather-shoes",
+			"parent": "leather-shoes",
 			"description": "",
 			"count": 0
 		},
 		{
 			"id": 38,
 			"name": "Oxford Shoes",
-			"slug": "oxford-shoes",
+			"parent": "oxford-shoes",
 			"description": "",
 			"count": 0
 		}

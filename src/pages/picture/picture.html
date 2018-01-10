@@ -1,0 +1,11 @@
+
+<ion-content padding class="picture-page">
+	<button ion-button clear class="close-button" icon-only (click)="close()">
+		<ion-icon name="close"></ion-icon>
+	</button>
+	<img [src]="imgUrl" class="picture-zoom">
+	<button ion-button clear *ngIf="editable" class="picture-edit" (click)="openGallery()" icon-end>
+		<b>Modifier</b>
+		<ion-icon name="images"></ion-icon>
+	</button>
+</ion-content>
