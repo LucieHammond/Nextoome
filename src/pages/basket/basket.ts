@@ -5,6 +5,7 @@ import { SharedBasket } from '../../services/shared-basket'
 import { ProductPage } from '../product/product';
 
 
+
 @IonicPage()
 @Component({
 	selector: 'page-basket',
@@ -12,23 +13,28 @@ import { ProductPage } from '../product/product';
 })
 
 
+
 export class BasketPage {
 
+	  contenuPanier: Product[] ;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public sharedBasket: SharedBasket) {
+
+		this.contenuPanier = this.sharedBasket.getBasket();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BasketPage');
   }
 
-  contenuPanier: Product[] = this.sharedBasket.getBasket();
+
 
 	SelectionProduit(event, produit){
     this.navCtrl.push(ProductPage,{name: produit});
    }
 
 	 RetirerPanier(event, produit){
-	    this.sharedBasket.addToBasket(produit);
+	    this.sharedBasket.removeFromBasket(produit);
 	 }
 
 }
