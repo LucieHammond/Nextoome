@@ -1,0 +1,25 @@
+page-picture {
+
+	.picture-page {
+		background: #222a42;
+		height:100vh;
+		.close-button{
+			color: white;
+		}
+		.picture-zoom{
+			width: 92%;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			margin-top: 25%;
+		}
+		.picture-edit {
+			color: white;
+			position: fixed;
+			bottom: 10px;
+			left: 15px;
+		}
+	}
+
+}
+

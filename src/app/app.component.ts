@@ -13,7 +13,7 @@ import { NextoosPage } from '../pages/nextoos/nextoos';
 import { CustomerServicePage } from '../pages/customer-service/customer-service';
 import { HelpPage } from '../pages/help/help';
 import { ParamsPage } from '../pages/params/params';
-import {ProductPage} from '../pages/product/product';
+import { ProductPage } from '../pages/product/product';
 
 @Component({
 	templateUrl: 'app.html'
