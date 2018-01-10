@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {ApiConnectorService} from "../../services/api-connector";
+
 
 @IonicPage()
 @Component({
@@ -7,8 +9,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'nextoos.html',
 })
 export class NextoosPage {
+	model;
+	keys: string[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+	// Test for API service
+  constructor(public navCtrl: NavController, public navParams: NavParams, private apiConnector: ApiConnectorService) {
+  	this.model = this.apiConnector.getProduct(23);
+  	this.keys = Object.keys(this.model)
   }
 
   ionViewDidLoad() {

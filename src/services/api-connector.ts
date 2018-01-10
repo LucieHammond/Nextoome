@@ -5,278 +5,15 @@ import 'rxjs/add/operator/map';
 
 import { Coupon } from '../models/coupons';
 import { User } from '../models/users';
-import { Order } from '../models/orders';
+import { Order, OrderNote, OrderRefund } from '../models/orders';
+import { Product, ProductAttribute, ProductAttributeTerm, ProductCategory, ProductShippingClass, ProductTag }
+	from '../models/products'
+import { Example } from '../models/examples'
+
 
 @Injectable()
 export class ApiConnectorService {
-	coupons = [
-		{
-			"id": 529,
-			"code": "new-coupon",
-			"type": "percent",
-			"created_at": "2015-01-20T19:05:27Z",
-			"updated_at": "2015-01-20T19:05:27Z",
-			"amount": "10.00",
-			"individual_use": true,
-			"product_ids": [],
-			"exclude_product_ids": [],
-			"usage_limit": null,
-			"usage_limit_per_user": null,
-			"limit_usage_to_x_items": 0,
-			"usage_count": 0,
-			"expiry_date": null,
-			"enable_free_shipping": false,
-			"product_category_ids": [],
-			"exclude_product_category_ids": [],
-			"exclude_sale_items": true,
-			"minimum_amount": "100.00",
-			"maximum_amount": "0.00",
-			"customer_emails": [],
-			"description": ""
-		},
-		{
-			"id": 527,
-			"code": "free-shipping",
-			"type": "fixed_cart",
-			"created_at": "2015-01-20T18:35:59Z",
-			"updated_at": "2015-01-20T18:35:59Z",
-			"amount": "0.00",
-			"individual_use": true,
-			"product_ids": [],
-			"exclude_product_ids": [],
-			"usage_limit": null,
-			"usage_limit_per_user": null,
-			"limit_usage_to_x_items": 0,
-			"usage_count": 0,
-			"expiry_date": null,
-			"enable_free_shipping": true,
-			"product_category_ids": [],
-			"exclude_product_category_ids": [],
-			"exclude_sale_items": true,
-			"minimum_amount": "50.00",
-			"maximum_amount": "0.00",
-			"customer_emails": [],
-			"description": ""
-		},
-		{
-			"id": 526,
-			"code": "christmas-promo",
-			"type": "percent",
-			"created_at": "2015-01-20T18:10:58Z",
-			"updated_at": "2015-01-20T18:10:58Z",
-			"amount": "10.00",
-			"individual_use": true,
-			"product_ids": [],
-			"exclude_product_ids": [],
-			"usage_limit": null,
-			"usage_limit_per_user": 1,
-			"limit_usage_to_x_items": 0,
-			"usage_count": 0,
-			"expiry_date": "2014-12-25T00:00:00Z",
-			"enable_free_shipping": false,
-			"product_category_ids": [],
-			"exclude_product_category_ids": [],
-			"exclude_sale_items": true,
-			"minimum_amount": "200.00",
-			"maximum_amount": "0.00",
-			"customer_emails": [],
-			"description": "Discount for Christmas for orders over $ 200"
-		}
-	];
-	users = [
-		{
-			"id": 2,
-			"created_at": "2015-01-05T18:34:19Z",
-			"email": "john.doe@example.com",
-			"first_name": "John",
-			"last_name": "Doe",
-			"username": "john.doe",
-			"last_order_id": 123,
-			"last_order_date": "2015-01-14T16:47:30Z",
-			"orders_count": 10,
-			"total_spent": "1034.58",
-			"avatar_url": "https://secure.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=96",
-			"billing_address": {
-				"first_name": "John",
-				"last_name": "Doe",
-				"company": "",
-				"address_1": "969 Market",
-				"address_2": "",
-				"city": "San Francisco",
-				"state": "CA",
-				"postcode": "94103",
-				"country": "US",
-				"email": "john.doe@example.com",
-				"phone": "(555) 555-5555"
-			},
-			"shipping_address": {
-				"first_name": "John",
-				"last_name": "Doe",
-				"company": "",
-				"address_1": "969 Market",
-				"address_2": "",
-				"city": "San Francisco",
-				"state": "CA",
-				"postcode": "94103",
-				"country": "US"
-			}
-		},
-		{
-			"id": 3,
-			"created_at": "2015-01-10T14:25:39Z",
-			"email": "joao.silva@example.com",
-			"first_name": "João",
-			"last_name": "Silva",
-			"username": "joao.silva",
-			"last_order_id": 120,
-			"last_order_date": "2015-01-10T14:26:30Z",
-			"orders_count": 1,
-			"total_spent": "429.00",
-			"avatar_url": "https://secure.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=96",
-			"billing_address": {
-				"first_name": "João",
-				"last_name": "Silva",
-				"company": "",
-				"address_1": "Av. Brasil, 432",
-				"address_2": "",
-				"city": "Rio de Janeiro",
-				"state": "RJ",
-				"postcode": "12345-000",
-				"country": "BR",
-				"email": "joao.silva@example.com",
-				"phone": "(55) 5555-5555"
-			},
-			"shipping_address": {
-				"first_name": "João",
-				"last_name": "Silva",
-				"company": "",
-				"address_1": "Av. Brasil, 432",
-				"address_2": "",
-				"city": "Rio de Janeiro",
-				"state": "RJ",
-				"postcode": "12345-000",
-				"country": "BR"
-			}
-		}
-	];
-	orders = [
-		{
-			"id": 531,
-			"order_number": 531,
-			"created_at": "2015-01-21T12:02:13Z",
-			"updated_at": "2015-01-21T12:02:13Z",
-			"completed_at": "2015-01-21T12:02:13Z",
-			"status": "on-hold",
-			"currency": "USD",
-			"total": "30.00",
-			"subtotal": "20.00",
-			"total_line_items_quantity": 1,
-			"total_tax": "0.00",
-			"total_shipping": "10.00",
-			"cart_tax": "0.00",
-			"shipping_tax": "0.00",
-			"total_discount": "0.00",
-			"shipping_methods": "Flat Rate",
-			"payment_details": {
-				"method_id": "bacs",
-				"method_title": "Direct Bank Transfer",
-				"paid": false
-			},
-			"billing_address": {
-				"first_name": "John",
-				"last_name": "Doe",
-				"company": "",
-				"address_1": "969 Market",
-				"address_2": "",
-				"city": "San Francisco",
-				"state": "CA",
-				"postcode": "94103",
-				"country": "US",
-				"email": "john.doe@example.com",
-				"phone": "(555) 555-5555"
-			},
-			"shipping_address": {
-				"first_name": "John",
-				"last_name": "Doe",
-				"company": "",
-				"address_1": "969 Market",
-				"address_2": "",
-				"city": "San Francisco",
-				"state": "CA",
-				"postcode": "94103",
-				"country": "US"
-			},
-			"note": "",
-			"customer_ip": "127.0.0.1",
-			"customer_user_agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:35.0) Gecko/20100101 Firefox/35.0",
-			"customer_id": 2,
-			"view_order_url": "https://example.com/my-account/view-order/531",
-			"line_items": [
-				{
-					"id": 417,
-					"subtotal": "20.00",
-					"subtotal_tax": "0.00",
-					"total": "20.00",
-					"total_tax": "0.00",
-					"price": "20.00",
-					"quantity": 1,
-					"tax_class": null,
-					"name": "Premium Quality",
-					"product_id": 19,
-					"sku": "",
-					"meta": []
-				}
-			],
-			"shipping_lines": [
-				{
-					"id": 418,
-					"method_id": "flat_rate",
-					"method_title": "Flat Rate",
-					"total": "10.00"
-				}
-			],
-			"tax_lines": [],
-			"fee_lines": [],
-			"coupon_lines": [],
-			"customer": {
-				"id": 2,
-				"created_at": "2014-11-19T18:34:19Z",
-				"email": "john.doe@example.com",
-				"first_name": "",
-				"last_name": "",
-				"username": "john.doe",
-				"last_order_id": "531",
-				"last_order_date": "2015-01-21T12:02:13Z",
-				"orders_count": 1,
-				"total_spent": "0.00",
-				"avatar_url": "https://secure.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=96",
-				"billing_address": {
-					"first_name": "John",
-					"last_name": "Doe",
-					"company": "",
-					"address_1": "969 Market",
-					"address_2": "",
-					"city": "San Francisco",
-					"state": "CA",
-					"postcode": "94103",
-					"country": "US",
-					"email": "john.doe@example.com",
-					"phone": "(555) 555-5555"
-				},
-				"shipping_address": {
-					"first_name": "John",
-					"last_name": "Doe",
-					"company": "",
-					"address_1": "969 Market",
-					"address_2": "",
-					"city": "San Francisco",
-					"state": "CA",
-					"postcode": "94103",
-					"country": "US"
-				}
-			}
-		}
-	];
+	example: Example = new Example();
 
 	apiUrl: string = 'http://lagny.nextoome.fr/wc-api/v3/';
 
@@ -289,65 +26,210 @@ getIndex(): Observable<any> {
 	}
 
 	getIndexWithOauth(): Observable<any> {
-
+		return
 	}
 
 	createCoupon(data): Coupon {
-		return <Coupon> this.coupons[0];
+		return <Coupon> this.example.coupons[0];
 	}
 
-	getCoupon(id): Coupon {
-		return <Coupon> this.coupons[0];
+	getCoupon(id, code=null): Coupon {
+		return <Coupon> this.example.coupons[0];
 	}
 
 	getCouponsList(): Coupon[] {
-		return <Coupon[]> this.coupons;
+		return <Coupon[]> this.example.coupons;
 	}
 
 	updateCoupon(id, data): Coupon {
-		return <Coupon> this.coupons[0];
+		return <Coupon> this.example.coupons[0];
 	}
 
 	updateMultipleCoupons(data): Coupon[] {
-		return <Coupon[]> this.coupons;
+		return <Coupon[]> this.example.coupons;
 	}
 
-	deleteCoupon(id): void {
+	deleteCoupon(id): boolean {
+		return true;
 	}
 
 	getCouponsCount(): number {
 		return 3;
 	}
 
-	createUser(): User {
-		return this.users[0];
+	createUser(data): User {
+		return <User> this.example.users[0];
 	}
 
 	getUser(id, email=null): User {
-		return <User> this.users[0];
+		return <User> this.example.users[0];
 	}
 
 	getUsersList(): User[] {
-		return <User[]> this.users;
+		return <User[]> this.example.users;
 	}
 
 	updateUser(id, data): User {
-		return <User> this.users[0];
+		return <User> this.example.users[0];
 	}
 
 	updateMultipleUsers(data): User[] {
-		return <User[]> this.users;
+		return <User[]> this.example.users;
 	}
 
-	deleteUser(id): void {
+	deleteUser(id): boolean {
+		return true;
 	}
 
 	getUserOrders(id): Order[] {
-		return this.orders;
+		return <Order[]> this.example.orders;
 	}
 
 	getUsersCount(): number {
 		return 10;
 	}
 
+	createOrder(data): Order {
+		return <Order> this.example.orders[0];
+	}
+
+	getOrder(id): Order {
+		return <Order> this.example.orders[0];
+	}
+
+	getOrdersList(): Order[] {
+		return <Order[]> this.example.orders;
+	}
+
+	updateOrder(id, data): Order {
+		return <Order> this.example.orders[0];
+	}
+
+	updateMultipleOrders(data): Order[] {
+		return <Order[]> this.example.orders;
+	}
+
+	deleteOrder(id): boolean {
+		return true;
+	}
+
+	getOrdersCount(): number {
+		return 2;
+	}
+
+	getOrderStatuses(): string[] {
+		return ["Pending Payment", "Processing", "On Hold", "Completed", "Cancelled", "Refunded", "Failed"];
+	}
+
+	createNoteForOrder(order_id, data): OrderNote {
+		return <OrderNote> this.example.orderNotes[0];
+	}
+
+	getOrderNote(order_id, note_id): OrderNote {
+		return <OrderNote> this.example.orderNotes[0];
+	}
+
+	getNotesListFromOrder(order_id): OrderNote[] {
+		return <OrderNote[]> this.example.orderNotes;
+	}
+
+	updateOrderNote(order_id, note_id, data): OrderNote {
+		return <OrderNote> this.example.orderNotes[0];
+	}
+
+	deleteOrderNote(order_id, note_id): boolean {
+		return true;
+	}
+
+	createRefundForOrder(order_id, data): OrderRefund {
+		return <OrderRefund> this.example.orderRefunds[0];
+	}
+
+	getOrderRefund(order_id, refund_id): OrderRefund {
+		return <OrderRefund> this.example.orderRefunds[0];
+	}
+
+	getRefundsListFromOrder(order_id): OrderRefund[] {
+		return <OrderRefund[]> this.example.orderRefunds;
+	}
+
+	updateOrderRefund(order_id, refund_id, data): OrderRefund {
+		return <OrderRefund> this.example.orderRefunds[0];
+	}
+
+	deleteOrderRefund(order_id, refund_id): boolean {
+		return true;
+	}
+
+	createProduct(data): Product {
+		return <Product> this.example.products[0];
+	}
+
+	getProduct(id): Product {
+		return <Product> this.example.products[0];
+	}
+
+	getProductsList(): Product[] {
+		return <Product[]> this.example.products;
+	}
+
+	updateProduct(id, data): Product {
+		return <Product> this.example.products[0];
+	}
+
+	updateMultipleProducts(data): Product[] {
+		return <Product[]> this.example.products;
+	}
+
+	deleteProduct(id): boolean {
+		return true;
+	}
+
+	getProductsCount(): number {
+		return 2;
+	}
+
+	getProductOrders(id): Order[] {
+		return <Order[]> this.example.orders;
+	}
+
+	createProductAttribute(data): ProductAttribute {
+		return this.example.productAttributes[0];
+	}
+
+	getProductAttribute(id): ProductAttribute {
+		return this.example.productAttributes[0];
+	}
+
+	getProductAttributesList(): ProductAttribute[] {
+		return this.example.productAttributes;
+	}
+
+	updateProductAttribute(id): ProductAttribute {
+		return this.example.productAttributes[0];
+	}
+
+	deleteProductAttribute(id): boolean {
+		return true;
+	}
+
+	createProductAttributeTerm(data): ProductAttributeTerm {
+		return this.example.productAttributeTerms[0];
+	}
+
+	getProductAttributeTerm(id): ProductAttributeTerm {
+		return this.example.productAttributeTerms[0];
+	}
+
+	getProductAttributeTermsList(): ProductAttributeTerm[] {
+		return this.example.productAttributeTerms;
+	}
+
+	updateProductAttributeTerm(id): ProductAttributeTerm {
+		return this.example.productAttributeTerms[0];
+	}
+
+	deleteProductAttributeTerm(id): boolean {
+		return true;
+	}
 }
