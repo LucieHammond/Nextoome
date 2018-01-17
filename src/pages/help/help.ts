@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import {IonicPage, NavController, NavParams, DateTime} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Date } from 'ionic-angular';
 import { Slides } from 'ionic-angular';
 import { ActivityHours } from '../../config';
 
@@ -10,10 +10,10 @@ import { ActivityHours } from '../../config';
 })
 export class HelpPage {
 	@ViewChild(Slides) slides: Slides;
-	ordersTimeEnd: DateTime;
-	withdrawalTimeStart: DateTime;
-	withdrawalTimeEnd: DateTime;
-	lateOrdersTimeEnd: DateTime;
+	ordersTimeEnd: Date;
+	withdrawalTimeStart: Date;
+	withdrawalTimeEnd: Date;
+	lateOrdersTimeEnd: Date;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams) {
 		this.ordersTimeEnd = ActivityHours.ORDERS_END;

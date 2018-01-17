@@ -7,6 +7,35 @@
 	</ion-navbar>
 </ion-header>
 
-<ion-content padding>
-	<h3>Customer Service Page</h3>
+<ion-content>
+	<p class="intro">Votre avis nous intéresse...</p>
+	<ion-card>
+		<ion-card-header class="card-title">
+			Qui sommes nous ?
+		</ion-card-header>
+		<ion-card-content>
+			<p>L'expérience digitale Nextoome de Lagny-sur-Marne a été lancée par deux associés: Alice Owieczka et Stéphane Paris</p>
+			<div><a href="#" onclick="window.open('http://nextoome.fr/qui-sommes-nous/', '_system', 'location=yes'); return false;">
+				En savoir plus
+			</a></div>
+		</ion-card-content>
+	</ion-card>
+
+	<ion-card>
+		<ion-card-header class="card-title">
+			Comment nous contacter ?
+		</ion-card-header>
+		<ion-card-content>
+			<p>
+				Vous rencontrez un problème avec votre commande ?
+				Vous souhaitez signaler un bug ?
+				Vous cherchez à transmettre une demande ?
+			</p>
+			<button ion-button icon-left class="button1"><ion-icon name="mail"></ion-icon>Formulaire de contact</button>
+			<p>Vous pouvez aussi nous envoyer un mail à l'adresse <a href="#" onclick="window.open('mailto:support@nextoome.fr', '_system', 'location=yes'); return false;">
+				support@nextoome.fr
+			</a></p>
+		</ion-card-content>
+	</ion-card>
+
 </ion-content>

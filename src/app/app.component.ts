@@ -39,7 +39,7 @@ export class MyApp {
 			{ title: 'Mes nextoos', component: NextoosPage, icon: "pricetags" }],
 			[{ title: 'Service client', component: CustomerServicePage, icon: "mail" },
 			{ title: 'Aide', component: HelpPage, icon: "help-circle" },
-			{ title: 'Pamètres', component: ParamsPage, icon: "settings" }],
+			{ title: 'Paramètres', component: ParamsPage, icon: "settings" }],
 			[{ title: 'Produit', component: ProductPage, icon: "home" }],
 		];
 
