@@ -8,6 +8,7 @@ export class SharedBasket {
 
 produit: Product;
 contenuPanier: Product[] ;
+totalPrice : number ;
 
   constructor() {
 
@@ -37,4 +38,13 @@ this.contenuPanier = [];
     getBasket() {
         return this.contenuPanier;
     }
-}
+
+    getTotalPrice(){
+      this.totalPrice = 0;
+      for(let produitDuPanier of this.contenuPanier)
+      {
+        this.totalPrice = (+produitDuPanier.price*produitDuPanier.menu_order)+this.totalPrice;
+      }
+        return this.totalPrice;
+      }
+    }

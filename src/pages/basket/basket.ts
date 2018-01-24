@@ -17,10 +17,12 @@ import { ProductPage } from '../product/product';
 export class BasketPage {
 
 	  contenuPanier: Product[] ;
+		prixDuPanier: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public sharedBasket: SharedBasket, private alertCtrl: AlertController) {
 
 		this.contenuPanier = this.sharedBasket.getBasket();
+		this.prixDuPanier = this.sharedBasket.getTotalPrice();
   }
 
   ionViewDidLoad() {
@@ -50,16 +52,17 @@ export class BasketPage {
 	         text: 'Confirmer',
 	         handler: () => {
 	           this.sharedBasket.removeFromBasket(produit);
+						 this.prixDuPanier = this.sharedBasket.getTotalPrice();
 	         }
 	       }
 	     ]
 	   });
 	   alert.present();
 	 }
-	 //{
-	 //   this.sharedBasket.removeFromBasket(produit);
-	 //}
 
-	 
+	 PasserCommande(){
+
+	 }
+
 
 }

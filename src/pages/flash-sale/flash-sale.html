@@ -8,5 +8,11 @@
 </ion-header>
 
 <ion-content padding>
-	<h3>Flash Sale Page</h3>
+	<h3>Occasions à saisir ! </h3>
+
+  <ion-list>
+    <button ion-item *ngFor="let p of flash_sales" (click)="SelectionProduit($event,p)">
+      {{p.title}}
+    </button>
+</ion-list>
 </ion-content>

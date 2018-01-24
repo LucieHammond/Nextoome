@@ -10,16 +10,16 @@
 <ion-content padding>
   <ion-list>
 		<ion-item *ngFor="let p of contenuPanier" >
-			<ion-row>
-				<ion-col>
+			<ion-row align-items-center justify-content-start>
+				<ion-col col-stretch>
 					<ion-item (click)="SelectionProduit($event,p)">
 						{{p.title}}
 					</ion-item>
 				</ion-col>
-				<ion-col>
+				<ion-col col-3>
 					 {{p.price}}€ x {{p.menu_order}}
 					 </ion-col>
-					 <ion-col>
+					 <ion-col col-2>
 				<button ion-button icon-only (click)="RetirerPanier($event,p)">
 					<ion-icon name="close"></ion-icon>
 				</button>
@@ -27,6 +27,8 @@
 			</ion-row>
     </ion-item>
 </ion-list>
+
+<div>Prix total :  {{prixDuPanier}} € </div>
 <button ion-button icon-start full (click)="PasserCommande($event)">
 	<ion-icon name="checkmark"></ion-icon>
 		Commander
