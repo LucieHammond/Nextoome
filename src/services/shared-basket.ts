@@ -16,7 +16,12 @@ this.contenuPanier = [];
     }
 
     addToBasket(produitSelectionne) {
-             this.contenuPanier.push(produitSelectionne);
+            if(produitSelectionne.menu_order!=0)
+              {produitSelectionne.menu_order = produitSelectionne.menu_order + 1}
+            else{
+              this.contenuPanier.push(produitSelectionne)
+              produitSelectionne.menu_order = produitSelectionne.menu_order + 1}
+
     }
 
     removeFromBasket(produitASupprimer){
@@ -24,6 +29,7 @@ this.contenuPanier = [];
 
     if(index > -1){
       this.contenuPanier.splice(index, 1);
+      produitASupprimer.menu_order = 0;
     }
     }
 

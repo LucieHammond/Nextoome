@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Product } from '../../models/products'
 import { SharedBasket } from '../../services/shared-basket'
 import { ProductPage } from '../product/product';
@@ -18,7 +18,7 @@ export class BasketPage {
 
 	  contenuPanier: Product[] ;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public sharedBasket: SharedBasket) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public sharedBasket: SharedBasket, private alertCtrl: AlertController) {
 
 		this.contenuPanier = this.sharedBasket.getBasket();
   }
@@ -33,8 +33,33 @@ export class BasketPage {
     this.navCtrl.push(ProductPage,{name: produit});
    }
 
-	 RetirerPanier(event, produit){
-	    this.sharedBasket.removeFromBasket(produit);
+	 RetirerPanier(event, produit)
+	 {
+	   let alert = this.alertCtrl.create({
+	     title: 'Confirmation',
+	     message: 'Voulez-vous retirer ce produit du panier ?',
+	     buttons: [
+	       {
+	         text: 'Annuler',
+	         role: 'cancel',
+	         handler: () => {
+
+	         }
+	       },
+	       {
+	         text: 'Confirmer',
+	         handler: () => {
+	           this.sharedBasket.removeFromBasket(produit);
+	         }
+	       }
+	     ]
+	   });
+	   alert.present();
 	 }
+	 //{
+	 //   this.sharedBasket.removeFromBasket(produit);
+	 //}
+
+	 
 
 }
