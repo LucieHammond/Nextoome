@@ -27,8 +27,9 @@
 			</ion-row>
     </ion-item>
 </ion-list>
-
-<div>Prix total :  {{prixDuPanier}} € </div>
+<ion-row align-items-center justify-content-center>
+<div><h2> Prix total :  {{prixDuPanier}} € </h2></div>
+</ion-row>
 <button ion-button icon-start full (click)="PasserCommande($event)">
 	<ion-icon name="checkmark"></ion-icon>
 		Commander
