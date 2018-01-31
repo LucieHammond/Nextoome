@@ -2,7 +2,7 @@ page-customer-service {
 	ion-content{
 		background-color: #f4f4f4 !important;
 		.intro{
-			font-size: 16px;
+			font-size: 18px;
 			text-align: left;
 			font-family: "Avenir Next", sans-serif;
 			margin-left: 16px;
@@ -26,12 +26,18 @@ page-customer-service {
 			div {
 				text-align: center;
 			}
-			a{
-				 color: #007aff;
-				 text-decoration: none;
-				 font-family: "Avenir Next", sans-serif;
+			.buttonLink {
+				color: #007aff;
+				height: 18px;
+				font-family: "Avenir Next", sans-serif;
+
 			}
-			button{
+			a {
+				color: #007aff;
+				text-decoration: none;
+				font-family: "Avenir Next", sans-serif;
+			}
+			.buttonForm{
 				background-color: #64320a !important;
 			}
 		}

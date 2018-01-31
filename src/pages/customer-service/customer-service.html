@@ -15,9 +15,9 @@
 		</ion-card-header>
 		<ion-card-content>
 			<p>L'expérience digitale Nextoome de Lagny-sur-Marne a été lancée par deux associés: Alice Owieczka et Stéphane Paris</p>
-			<div><a href="#" onclick="window.open('http://nextoome.fr/qui-sommes-nous/', '_system', 'location=yes'); return false;">
+			<button ion-button class="buttonLink" (click)="openWithBrowser('http://nextoome.fr/qui-sommes-nous/');" clear>
 				En savoir plus
-			</a></div>
+			</button>
 		</ion-card-content>
 	</ion-card>
 
@@ -31,10 +31,14 @@
 				Vous souhaitez signaler un bug ?
 				Vous cherchez à transmettre une demande ?
 			</p>
-			<button ion-button icon-left class="button1"><ion-icon name="mail"></ion-icon>Formulaire de contact</button>
-			<p>Vous pouvez aussi nous envoyer un mail à l'adresse <a href="#" onclick="window.open('mailto:support@nextoome.fr', '_system', 'location=yes'); return false;">
-				support@nextoome.fr
-			</a></p>
+			<button ion-button icon-left class="buttonForm" (click)="displayForm()">
+				<ion-icon name="mail"></ion-icon>
+				Formulaire de contact
+			</button>
+			<p>Vous pouvez aussi nous envoyer un mail à l'adresse
+				<a href="#" onclick="window.open('mailto:support@nextoome.fr', '_system', 'location=yes');">
+				support@nextoome.fr</a>
+			</p>
 		</ion-card-content>
 	</ion-card>
 
