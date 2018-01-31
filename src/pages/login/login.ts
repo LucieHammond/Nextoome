@@ -17,7 +17,7 @@ import {HomePage} from '../../pages/home/home';
 })
 export class LoginPage {
   authForm: FormGroup;
- 
+
   constructor(public nav: NavController, public navParams: NavParams, public formBuilder: FormBuilder) {
 
       this.nav = nav;
@@ -28,12 +28,12 @@ export class LoginPage {
       });
   }
 
-  onSubmit(value: any): void { 
+  onSubmit(value: any): void {
       if(this.authForm.valid) {
           window.localStorage.setItem('username', value.username);
           window.localStorage.setItem('password', value.password);
 
-          this.nav.push(HomePage);
+          this.nav.setRoot(HomePage);
       }
-  }  
+  }
 }
