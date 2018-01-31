@@ -16,12 +16,12 @@ this.contenuPanier = [];
 
     }
 
-    addToBasket(produitSelectionne) {
+    addToBasket(produitSelectionne,quantite) {
             if(produitSelectionne.menu_order!=0)
-              {produitSelectionne.menu_order = produitSelectionne.menu_order + 1}
+              {produitSelectionne.menu_order = produitSelectionne.menu_order + quantite}
             else{
               this.contenuPanier.push(produitSelectionne)
-              produitSelectionne.menu_order = produitSelectionne.menu_order + 1}
+              produitSelectionne.menu_order = produitSelectionne.menu_order + quantite}
 
     }
 
