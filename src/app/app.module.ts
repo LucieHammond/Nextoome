@@ -2,7 +2,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {ErrorHandler, NgModule} from '@angular/core';
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {HttpClientModule} from '@angular/common/http';
-import {Camera} from '@ionic-native/camera';
+import {HttpModule} from '@angular/http';
+// import {Camera} from '@ionic-native/camera';
 import {InAppBrowser} from '@ionic-native/in-app-browser';
 import {EmailComposer} from '@ionic-native/email-composer';
 
@@ -27,6 +28,7 @@ import {SharedBasket} from '../services/shared-basket';
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
+import { ProductList } from '../services/product-list'
 
 
 @NgModule({
@@ -49,7 +51,8 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 	imports: [
 		BrowserModule,
 		IonicModule.forRoot(MyApp),
-		HttpClientModule
+		HttpClientModule,
+		HttpModule
 	],
 	bootstrap: [IonicApp],
 	entryComponents: [
@@ -72,10 +75,11 @@ import {SplashScreen} from '@ionic-native/splash-screen';
 		StatusBar,
 		SplashScreen,
 		{provide: ErrorHandler, useClass: IonicErrorHandler},
-		Camera,
+		//Camera,
 		ApiConnectorService,
 		SharedBasket,
 		SessionInfos,
+		ProductList,
 		InAppBrowser,
 	  	EmailComposer
 	]

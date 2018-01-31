@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Camera, CameraOptions } from '@ionic-native/camera';
+//import { Camera, CameraOptions } from '@ionic-native/camera';
 
 @IonicPage()
 @Component({
@@ -11,9 +11,9 @@ export class PicturePage {
 	imgUrl: string;
 	editable: boolean = false;
 
-	constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera) {
+	constructor(public navCtrl: NavController, public navParams: NavParams) {
 		this.imgUrl = navParams.get("imgUrl");
-		this.editable = navParams.get("editable");
+		this.editable = navParams.get("editable" );
 	}
 
 	ionViewDidLoad() {
@@ -24,7 +24,7 @@ export class PicturePage {
 		this.navCtrl.pop({animation: "md-transition"});
 	}
 
-	openGallery (): void {
+	/*openGallery (): void {
 		const options: CameraOptions = {
 			quality: 100,
 			sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
@@ -40,6 +40,6 @@ export class PicturePage {
 		}, (err) => {
 			console.log(err);
 		});
-	}
+	}*/
 
 }
