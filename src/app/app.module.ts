@@ -25,6 +25,9 @@ import { SharedBasket } from '../services/shared-basket';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ProductList } from '../services/product-list'
+import { UserProvider } from '../providers/user/user';
+import { ApiProvider } from '../providers/api/api';
+import { WelcomePage } from '../pages/welcome/welcome';
 
 
 @NgModule({
@@ -41,7 +44,8 @@ import { ProductList } from '../services/product-list'
     CustomerServicePage,
     ParamsPage,
     ProductPage,
-	PicturePage
+    PicturePage,
+    WelcomePage
   ],
   imports: [
     BrowserModule,
@@ -63,7 +67,8 @@ import { ProductList } from '../services/product-list'
     CustomerServicePage,
     ParamsPage,
     ProductPage,
-	PicturePage
+    PicturePage,
+    WelcomePage
   ],
   providers: [
     StatusBar,
@@ -73,7 +78,9 @@ import { ProductList } from '../services/product-list'
     ApiConnectorService,
     SharedBasket,
     ProductList,
-	SessionInfos
+	SessionInfos,
+    UserProvider,
+    ApiProvider
 
   ]
 })
