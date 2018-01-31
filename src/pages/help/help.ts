@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import {IonicPage, NavController, NavParams, DateTime} from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Slides } from 'ionic-angular';
 import { ActivityHours } from '../../config';
 

@@ -10,8 +10,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class PicturePage {
 	imgUrl: string;
 	editable: boolean = false;
-/*
-	constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera) {
+
+	constructor(public navCtrl: NavController, public navParams: NavParams) {
 		this.imgUrl = navParams.get("imgUrl");
 		this.editable = navParams.get("editable" );
 	}
@@ -24,7 +24,7 @@ export class PicturePage {
 		this.navCtrl.pop({animation: "md-transition"});
 	}
 
-	openGallery (): void {
+	/*openGallery (): void {
 		const options: CameraOptions = {
 			quality: 100,
 			sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,

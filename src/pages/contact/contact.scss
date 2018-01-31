@@ -1,0 +1,15 @@
+page-contact {
+	ion-content{
+		text-align: center;
+		.message {
+			margin-top: 25px;
+			margin-bottom: 20px;
+			ion-textarea{
+				height: auto;
+			}
+		}
+		.send {
+			background-color: #64320a !important;
+		}
+	}
+}

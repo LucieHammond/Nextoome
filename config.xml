@@ -86,4 +86,6 @@
     <allow-navigation href="http://192.168.1.19:8101" />
     <engine name="browser" spec="~5.0.2" />
     <allow-navigation href="http://192.168.1.19:8100" />
+    <allow-navigation href="http://160.228.58.47:8100" />
+    <allow-navigation href="http://172.20.10.3:8100" />
 </widget>
