@@ -8,6 +8,7 @@ export class SharedBasket {
 
 produit: Product;
 contenuPanier: Product[] ;
+totalPrice : number ;
 
   constructor() {
 
@@ -16,7 +17,12 @@ this.contenuPanier = [];
     }
 
     addToBasket(produitSelectionne) {
-             this.contenuPanier.push(produitSelectionne);
+            if(produitSelectionne.menu_order!=0)
+              {produitSelectionne.menu_order = produitSelectionne.menu_order + 1}
+            else{
+              this.contenuPanier.push(produitSelectionne)
+              produitSelectionne.menu_order = produitSelectionne.menu_order + 1}
+
     }
 
     removeFromBasket(produitASupprimer){
@@ -24,6 +30,7 @@ this.contenuPanier = [];
 
     if(index > -1){
       this.contenuPanier.splice(index, 1);
+      produitASupprimer.menu_order = 0;
     }
     }
 
@@ -31,4 +38,13 @@ this.contenuPanier = [];
     getBasket() {
         return this.contenuPanier;
     }
-}
+
+    getTotalPrice(){
+      this.totalPrice = 0;
+      for(let produitDuPanier of this.contenuPanier)
+      {
+        this.totalPrice = (+produitDuPanier.price*produitDuPanier.menu_order)+this.totalPrice;
+      }
+        return this.totalPrice;
+      }
+    }

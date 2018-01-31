@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ProductPage } from '../product/product';
+import { Product } from '../../models/products'
+import { ProductList } from '../../services/product-list'
+import { ApiConnectorService } from '../../services/api-connector'
 
 @IonicPage()
 @Component({
@@ -8,11 +12,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class FlashSalePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  flash_sales: Product[] ;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private apiConnector: ApiConnectorService) {
+    this.flash_sales = apiConnector.getProductsList();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FlashSalePage');
   }
+
+  SelectionProduit(event, produit){
+    this.navCtrl.push(ProductPage,{name: produit});
+  }
+
 
 }

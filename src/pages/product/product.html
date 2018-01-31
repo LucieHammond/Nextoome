@@ -8,8 +8,11 @@
 </ion-header>
 
 <ion-content padding>
-	<h1>{{produit_vu.title}}</h1>
-	<h3>{{produit_vu.price}}</h3>
+<ion-row>
+	<ion-col col-auto ><h2>{{produit_vu.title}}</h2></ion-col> <ion-col text-right>{{produit_vu.price}}€</ion-col>
+</ion-row>
+<div [innerHTML]="produit_vu.description"></div>
+	
 	<button ion-button icon-start full (click)="AjoutPanier($event)">
 		<ion-icon name="cart"></ion-icon>
 			Ajouter au panier
