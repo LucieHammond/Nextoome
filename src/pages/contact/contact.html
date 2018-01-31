@@ -1,0 +1,33 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Contact</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-list>
+		<ion-item>
+			<ion-label floating><b>Objet</b></ion-label>
+			<ion-select [(ngModel)]="subject">
+				<ion-option value="delivery">Problème de livraison</ion-option>
+				<ion-option value="order">Erreur sur une commande</ion-option>
+				<ion-option value="payment">Difficulté de paiement</ion-option>
+				<ion-option value="question">Demande de renseignements</ion-option>
+				<ion-option value="bug">Signalement d'un bug</ion-option>
+				<ion-option value="suggestion">Suggestion d'améliorations</ion-option>
+				<ion-option value="others">Autres</ion-option>
+			</ion-select>
+		</ion-item>
+		<ion-item class="message">
+			<ion-label stacked><b>Message</b></ion-label>
+			<ion-textarea placeholder="Tapez votre message ici" rows='10' [(ngModel)]="message">
+			</ion-textarea>
+		</ion-item>
+	</ion-list>
+	<button ion-button icon-left class="send" (click)="sendEmail()">
+		<ion-icon name="send"></ion-icon>Envoyer
+	</button>
+</ion-content>

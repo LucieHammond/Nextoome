@@ -1,3 +1,45 @@
 page-customer-service {
+	ion-content{
+		background-color: #f4f4f4 !important;
+		.intro{
+			font-size: 18px;
+			text-align: left;
+			font-family: "Avenir Next", sans-serif;
+			margin-left: 16px;
+			color: saddlebrown;
+		}
+		ion-card{
+			display: inline-block;
+			text-align: center;
+			.card-title{
+				background-image: linear-gradient(rgba(130, 52, 15, 0.3), rgba(100, 50, 10, 1));
+				color : white;
+				font-family: "Avenir Next Condensed", sans-serif;
+				font-size: 20px;
+				text-align: left;
+			}
+			p{
+				padding-top: 10px;
+				padding-bottom: 10px;
+				text-align: justify;
+			}
+			div {
+				text-align: center;
+			}
+			.buttonLink {
+				color: #007aff;
+				height: 18px;
+				font-family: "Avenir Next", sans-serif;
 
+			}
+			a {
+				color: #007aff;
+				text-decoration: none;
+				font-family: "Avenir Next", sans-serif;
+			}
+			.buttonForm{
+				background-color: #64320a !important;
+			}
+		}
+	}
 }
