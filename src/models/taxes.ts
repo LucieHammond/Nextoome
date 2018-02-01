@@ -15,6 +15,7 @@ export interface Tax {
 	class: string
 }
 
+
 // TaxClass model based on the structure returned by woocommerce API for tax classes
 export interface TaxClass {
 	slug: string,

@@ -1,50 +1,52 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ProductPage } from '../product/product';
-import { Product } from '../../models/products'
-import { ProductList } from '../../services/product-list'
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {ProductPage} from '../product/product';
+import {Product} from '../../models/products'
+import {ProductList} from '../../services/product-list'
 import 'rxjs/add/operator/debounceTime';
-import { FormControl } from '@angular/forms';
-import { ApiConnectorService } from '../../services/api-connector'
+import {FormControl} from '@angular/forms';
+import {ApiConnectorService} from '../../services/api-connector'
+import {SessionInfos} from "../../services/session-infos";
 
 @IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+	selector: 'page-home',
+	templateUrl: 'home.html'
 })
 export class HomePage {
 
-  offres_du_jour: Product[] ;
-  searchTerm: string = '';
-  searchControl: FormControl;
-  resultatsRecherche: any;
-  searching: any = false;
+	offres_du_jour: Product[];
+	searchTerm: string = '';
+	searchControl: FormControl;
+	resultatsRecherche: any;
+	searching: any = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public rechercheData: ProductList, private apiConnector: ApiConnectorService)
-  {
-        this.searching = false;
-        this.searchControl = new FormControl();
-        this.offres_du_jour = apiConnector.getProductsList();
+	constructor(public navCtrl: NavController, public navParams: NavParams, public rechercheData: ProductList, private apiConnector: ApiConnectorService) {
+		this.searching = false;
+		this.searchControl = new FormControl();
+		this.apiConnector.getProductsList().subscribe(products => {
+			this.offres_du_jour = products;
+		});
+	}
 
-  }
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad HomePage');
+	}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
-    this.RechercheProduits;
-  }
+	SelectionProduit(event, produit) {
+		this.navCtrl.push(ProductPage, {name: produit});
+	}
 
-  SelectionProduit(event, produit){
-    this.navCtrl.push(ProductPage,{name: produit});
-  }
+	onSearchInput() {
+		this.searching = true;
+	}
 
-  onSearchInput(){
-      this.searching = true;
-  }
+	RechercheProduits() {
 
-  RechercheProduits() {
+		this.resultatsRecherche = this.rechercheData.filterItems(this.searchTerm);
 
-    this.resultatsRecherche = this.rechercheData.filterItems(this.searchTerm);
-
-    this.searchControl.valueChanges.debounceTime(700).subscribe(search => {this.RechercheProduits();});
-}
+		this.searchControl.valueChanges.debounceTime(700).subscribe(search => {
+			this.RechercheProduits();
+		});
+	}
 }

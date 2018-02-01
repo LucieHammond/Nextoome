@@ -2,17 +2,16 @@
 // User model based on the structure returned by woocommerce API for customers
 export interface User {
 	id: number,
-	created_at: string,
+	date_created: string,
+	date_created_gmt: string,
+	date_modified: string,
+	date_modified_gmt: string,
 	email: string,
-	first_name: string,
+	fisrt_name: string,
 	last_name: string,
+	role: string,
 	username: string,
-	last_order_id: number,
-    last_order_date: string,
-    orders_count: number,
-    total_spent: string,
-    avatar_url: string,
-	billing_address: {
+	billing: {
 		first_name: string,
 		last_name: string,
 		company: string,
@@ -25,7 +24,7 @@ export interface User {
 		email: string,
 		phone: string
 	},
-	shipping_address: {
+	shipping: {
 		first_name: string,
 		last_name: string,
 		company: string,
@@ -36,5 +35,17 @@ export interface User {
 		postcode: string,
 		country: string
 	}
+	is_paying_customer: boolean,
+	orders_count: number,
+	total_spent: string,
+	avatar_url: string,
+	meta_data: MetaData[]
 }
+
+interface MetaData{
+	id: string,
+	key: string,
+	value: string
+}
+
 

@@ -3,6 +3,7 @@ import {ErrorHandler, NgModule} from '@angular/core';
 import {IonicApp, IonicErrorHandler, IonicModule} from 'ionic-angular';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpModule} from '@angular/http';
+import {HTTP} from '@ionic-native/http';
 // import {Camera} from '@ionic-native/camera';
 import {InAppBrowser} from '@ionic-native/in-app-browser';
 import {EmailComposer} from '@ionic-native/email-composer';
@@ -81,7 +82,8 @@ import { ProductList } from '../services/product-list'
 		SessionInfos,
 		ProductList,
 		InAppBrowser,
-	  	EmailComposer
+	  	EmailComposer,
+		HTTP
 	]
 })
 export class AppModule {

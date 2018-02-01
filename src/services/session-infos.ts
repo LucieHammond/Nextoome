@@ -1,29 +1,29 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/users';
 import {ApiConnectorService} from "./api-connector";
-import * as $ from 'jquery';
+import {Observable} from "rxjs";
 
 @Injectable()
 export class SessionInfos {
 
-	currentUser: User;
+	currentUser: Observable<User>;
 
     constructor(private apiConnector: ApiConnectorService) {
-    	this.currentUser = apiConnector.getUser(1);
+    	this.currentUser = apiConnector.getUser(8);
     }
 
-    getCurrentUser(): User {
-    	return $.extend(true, {}, this.currentUser);
+    getCurrentUser(): Observable<User> {
+		return this.currentUser;
 	}
 
-	updateCurrentUser(user: User): User {
-    	let id = this.currentUser.id;
-    	let filteredKeys = ["email", "first_name", "last_name", "username", "billing_address", "shipping_address"];
+	updateCurrentUser(user: User): Observable<User> {
+    	let id = user.id;
+    	let filteredKeys = ["email", "first_name", "last_name", "billing", "shipping"];
     	let userData = {};
     	filteredKeys.forEach(function(key){ userData[key] = user[key]; });
-    	console.log(userData);
+    	console.log(id, userData);
 
     	this.currentUser = this.apiConnector.updateUser(id, userData);
-		return user;
+		return this.currentUser;
 	}
 }

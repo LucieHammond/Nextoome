@@ -14,6 +14,8 @@ import { CustomerServicePage } from '../pages/customer-service/customer-service'
 import { HelpPage } from '../pages/help/help';
 import { ParamsPage } from '../pages/params/params';
 import { ProductPage } from '../pages/product/product';
+import {SessionInfos} from "../services/session-infos";
+import * as $ from 'jquery';
 
 @Component({
 	templateUrl: 'app.html'

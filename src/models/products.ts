@@ -1,47 +1,58 @@
 
 // Product model based on the structure returned by woocommerce API for products
 export interface Product {
-	title: string,
 	id: number,
-	created_at: string,
-	updated_at: string,
+	name: string,
+	slug: string,
+	permalink: string,
+	date_created: string,
+	date_created_gmt: string,
+	date_modified: string,
+	date_modified_gmt: string,
 	type: string,
 	status: string,
-	downloadable: boolean,
-	virtual: boolean,
-	permalink: string,
+	featured: boolean,
+	catalog_visibility: string,
+	description: string,
+	short_description: string,
 	sku: string,
 	price: string,
 	regular_price: string,
 	sale_price: string,
+	date_on_sale_from: string,
+	date_on_sale_from_gmt: string,
+	date_on_sale_to: string,
+	date_on_sale_to_gmt: string,
 	price_html: string,
-	taxable: boolean,
+	on_sale: boolean,
+	purchasable: boolean,
+	total_sales: number,
+	virtual: boolean,
+	downloadable: boolean,
+	downloads: Download[],
+	download_limit: number,
+	download_expiry: number,
+	external_url: string,
+	button_text: string,
 	tax_status: string,
 	tax_class: string,
-	managing_stock: boolean,
+	manage_stock: boolean,
 	stock_quantity: number,
 	in_stock: boolean,
+	backorders: string,
 	backorders_allowed: boolean,
 	backordered: boolean,
 	sold_individually: boolean,
-	purchaseable: boolean,
-	featured: boolean,
-	visible: boolean,
-	catalog_visibility: string,
-	on_sale: boolean,
 	weight: string,
 	dimensions: {
 		length: string,
 		width: string,
-		height: string,
-		unit: string
+		height: string
 	},
 	shipping_required: boolean,
 	shipping_taxable: boolean,
 	shipping_class: string,
 	shipping_class_id: number,
-	description: string,
-	short_description: string,
 	reviews_allowed: boolean,
 	average_rating: string,
 	rating_count: number,
@@ -49,31 +60,16 @@ export interface Product {
 	upsell_ids: number[],
 	cross_sell_ids: number[],
 	parent_id: number,
-	categories: string[],
-	tags: string[],
-	images: Image[],
-	featured_src: string,
-	attributes: Attribute[],
-	downloads: Download[],
-	download_limit: number,
-	download_expiry: number,
-	download_type: string,
 	purchase_note: string,
-	total_sales: number,
-	variations: Variation[],
-	parent: any[],
-	grouped_products: any[],
-	menu_order: 0
-}
-
-interface Image{
-	id: number,
-	created_at: string,
-	updated_at: string,
-	src: string,
-	title: string,
-	alt: string,
-	position: number
+	categories: Category[],
+	tags: Category[],
+	images: Image[],
+	attributes: Attribute[],
+	default_attributes: DefaultAttribute[],
+	variations: number[],
+	grouped_products: number[],
+	menu_order: 0,
+	meta_data: MetaData[]
 }
 
 interface Download{
@@ -82,57 +78,45 @@ interface Download{
 	file: string
 }
 
-interface Attribute{
+interface Category{
+	id: number,
 	name: string,
-	slug: string,
+	slug: string
+}
+
+interface Image{
+	id: number,
+	date_created: string,
+	date_created_gmt: string,
+	date_modified: string,
+	date_modified_gmt: string,
+	src: string,
+	name: string,
+	alt: string,
+	position: number
+}
+
+interface Attribute{
+	id: number,
+	name: string,
 	position: number,
 	visible: boolean,
 	variation: boolean,
 	options: string[]
 }
 
-interface Variation{
-	id: number,
-	created_at: string,
-	updated_at: string,
-	downloadable: boolean,
-	virtual: boolean,
-	permalink: string,
-	sku: string,
-	price: string,
-	regular_price: string,
-	sale_price: string,
-	taxable: boolean,
-	tax_status: string,
-	tax_class: string,
-	managing_stock: boolean,
-	stock_quantity: number,
-	in_stock: boolean,
-	backordered: boolean,
-	purchaseable: boolean,
-	visible: boolean,
-	on_sale: boolean,
-	weight: string,
-	dimensions: {
-		length: string,
-		width: string,
-		height: string,
-		unit: string
-	},
-	shipping_class: string,
-	shipping_class_id: number,
-	image: Image[],
-	attributes: DefaultAttribute[],
-	downloads: Download[],
-	download_limit: number,
-	download_expiry: number
-}
-
 interface DefaultAttribute{
+	id: number,
 	name: string,
-	slug: string,
 	option: string
 }
+
+interface MetaData {
+	id: number,
+	key: string,
+	value: string
+}
+
 
 // ProductAttribute model based on the structure returned by woocommerce API for product attributes
 export interface ProductAttribute{
@@ -144,13 +128,17 @@ export interface ProductAttribute{
 	has_archives: boolean
 }
 
+
 // ProductAttributeTerm model based on the structure returned by woocommerce API for product attribute terms
 export interface ProductAttributeTerm{
 	id: number,
 	name: string,
 	slug: string,
+	description: string,
+	menu_order: number,
 	count: number,
 }
+
 
 // ProductCategory model based on the structure returned by woocommerce API for product categories
 export interface ProductCategory{
@@ -160,25 +148,36 @@ export interface ProductCategory{
 	parent: number,
 	description: string,
 	display: string,
-	image: string,
+	image: {
+		id: number,
+		date_created: string,
+		date_created_gmt: string,
+		date_modified: string,
+		date_modified_gmt: string,
+		src: string,
+		title: string,
+		alt: string
+	},
+	menu_order: number,
 	count: number
 }
+
 
 // ProductShippingClass model based on the structure returned by woocommerce API for product shipping classes
 export interface ProductShippingClass{
 	id: number,
 	name: string,
 	slug: string,
-	parent: number,
 	description: string,
 	count: number
 }
+
 
 // ProductTag model based on the structure returned by woocommerce API for product tags
 export interface ProductTag{
 	id: number,
 	name: string,
-	parent: string,
+	slug: string,
 	description: string,
 	count: number
 }

@@ -4,27 +4,28 @@ import { User } from './users'
 // Order model based on the structure returned by woocommerce API for orders
 export interface Order {
 	id: number,
-	order_number: number,
-	created_at: string,
-	updated_at: string,
-	completed_at: string,
+	parent_id: number,
+	number: string,
+	order_key: string,
+	created_via: string,
+	version: number,
 	status: string,
 	currency: string,
-	total: string,
-	subtotal: string,
-	total_line_items_quantity: number,
-	total_tax: string,
-	total_shipping: string,
+	date_created: string,
+	date_created_gmt: string,
+	date_modified: string,
+	date_modified_gmt: string,
+	discount_total: string,
+	discount_tax: string,
 	cart_tax: string,
-	shipping_tax: string,
-	total_discount: string,
-	shipping_methods: string,
-	payment_details: {
-		method_id: string,
-		method_title: string,
-		paid: boolean
-	},
-	billing_address: {
+	total: string,
+	total_tax: string,
+	prices_include_tax: boolean,
+	customer_id: number,
+	customer_ip_address: string,
+	customer_user_agent: string,
+	customer_note: string,
+	billing: {
 		first_name: string,
 		last_name: string,
 		company: string,
@@ -36,8 +37,8 @@ export interface Order {
 		country: string,
 		email: string,
 		phone: string
-	},
-	shipping_address: {
+	}
+	shipping: {
 		first_name: string,
 		last_name: string,
 		company: string,
@@ -47,33 +48,57 @@ export interface Order {
 		state: string,
 		postcode: string,
 		country: string
-	},
-	note: string,
-    customer_ip: string,
-    customer_user_agent: string,
-    customer_id: number,
-    view_order_url: string,
+	}
+	payment_method: string,
+	payment_method_title: string,
+	transaction_id: string,
+	date_paid: string,
+	date_paid_gmt: string,
+	date_completed: string,
+	date_completed_gmt: string,
+	cart_hash: string,
+	meta_data: MetaData[],
 	line_items: LineItem[],
-	shipping_lines: ShippingLine[],
 	tax_lines: TaxLine[],
+	shipping_lines: ShippingLine[],
 	fee_lines: FeeLine[],
 	coupon_lines: CouponLine[],
-	customer: User
+	refunds: Refund[],
+	set_paid: boolean
 }
 
-interface LineItem{
+interface MetaData{
+	id: string,
+	key: string,
+	value: string
+}
+
+interface LineItem {
 	id: number,
+	name: string,
+	product_id: number,
+	variation_id: number,
+	quantity: number,
+	tax_class: number,
 	subtotal: string,
 	subtotal_tax: string,
 	total: string,
 	total_tax: string,
-	price: string,
-	quantity: number,
-	tax_class: string,
-	name: string,
-	product_id: number,
+	taxes: any[],
+	meta_data: MetaData[],
 	sku: string,
-	meta: MetaData[]
+	price: string
+}
+
+interface TaxLine{
+	id: number,
+	rate_code: string,
+	rate_id: string,
+	label, string,
+	compound: boolean,
+	tax_total: string,
+	shipping_tax_total: string,
+	meta_data: MetaData[]
 }
 
 interface ShippingLine{
@@ -81,30 +106,34 @@ interface ShippingLine{
 	method_title: string,
 	method_id: string,
 	total: string,
-}
-
-interface TaxLine{
-	id: number,
-	code: string,
-	rate_id: string,
-	title: string,
-	compound: boolean,
-	total: string
+	total_tax: string,
+	taxes: any[],
+	meta_data: MetaData[]
 }
 
 interface FeeLine{
 	id: number,
 	title: string,
-	taxable: boolean,
 	tax_class: string,
+	tax_status: string,
 	total: string,
-	total_tax: string
+	total_tax: string,
+	taxes: any[],
+	meta_data: MetaData[]
 }
 
 interface CouponLine{
 	id: number,
 	code: string,
-	amount: string
+	discount: string,
+	discount_tax: string,
+	meta_data: MetaData[]
+}
+
+interface Refund {
+	id: number,
+	reason: string,
+	total: string
 }
 
 interface MetaData{
@@ -113,19 +142,26 @@ interface MetaData{
 	value: string
 }
 
+
 // OrderNotes model based on the structure returned by woocommerce API for order notes
 export interface OrderNote{
 	id: number,
-	created_at: string,
+	date_created: string,
+	date_created_gmt: string,
 	note: string,
 	customer_note: boolean
 }
 
+
 // OrderRefund model based on the structure returned by woocommerce API for order refunds
 export interface OrderRefund{
 	id: number,
-	created_at: string,
+	date_created: string,
+	date_created_gmt: string,
 	amount: string,
 	reason: string,
-	line_items: LineItem[]
+	refund_by: number,
+	meta_data: MetaData[],
+	line_items: LineItem[],
+	api_refund: boolean
 }
