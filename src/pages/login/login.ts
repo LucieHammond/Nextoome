@@ -23,8 +23,8 @@ export class LoginPage {
       this.nav = nav;
 
       this.authForm = formBuilder.group({
-          username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*'), Validators.minLength(8), Validators.maxLength(30)])],
-          password: ['', Validators.compose([Validators.required, Validators.minLength(8)])]
+          username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*'), Validators.minLength(6), Validators.maxLength(30)])],
+          password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
       });
   }
 
