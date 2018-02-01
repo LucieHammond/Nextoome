@@ -14,8 +14,8 @@ import { CustomerServicePage } from '../pages/customer-service/customer-service'
 import { HelpPage } from '../pages/help/help';
 import { ParamsPage } from '../pages/params/params';
 import { ProductPage } from '../pages/product/product';
-import {SessionInfos} from "../services/session-infos";
-import * as $ from 'jquery';
+import { WelcomePage } from '../pages/welcome/welcome';
+
 
 @Component({
 	templateUrl: 'app.html'
@@ -23,7 +23,7 @@ import * as $ from 'jquery';
 export class MyApp {
 	@ViewChild(Nav) nav: Nav;
 
-	rootPage: any = HomePage;
+	rootPage: any = WelcomePage;
 
 	pages: Array<Array<{title: string, component: any, icon: string}>>;
 

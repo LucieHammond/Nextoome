@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { SharedBasket } from '../../services/shared-basket'
 import { Product } from '../../models/products'
+import { PopoverController } from 'ionic-angular';
 
 
 @IonicPage()
@@ -14,8 +15,9 @@ import { Product } from '../../models/products'
 export class ProductPage {
 
   produit_vu:  Product = this.navParams.get('name');
+  quantity: number = 0 ;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public sharedBasket: SharedBasket, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public sharedBasket: SharedBasket, private alertCtrl: AlertController, public popoverCtrl: PopoverController) {
   }
 
   ionViewDidLoad() {
@@ -24,28 +26,22 @@ export class ProductPage {
 
 
 AjoutPanier(event) {
+if(this.quantity!=0){
+  this.sharedBasket.addToBasket(this.produit_vu,this.quantity);
+  this.ConfirmationAchat();
+
+}}
+
+ConfirmationAchat(){
   let alert = this.alertCtrl.create({
     title: 'Confirmation',
-    message: 'Voulez-vous ajouter cet article à votre panier ?',
+    message: this.quantity+" ".concat(this.produit_vu.title.concat(' ajouté au panier !')),
     buttons: [
-      {
-        text: 'Annuler',
-        role: 'cancel',
-        handler: () => {
-
-        }
-      },
-      {
-        text: 'Confirmer',
-        handler: () => {
-          this.sharedBasket.addToBasket(this.produit_vu);
-          this.navCtrl.pop();
-        }
-      }
-    ]
-  });
-  alert.present();
+      {text:'OK',
+        handler: () => {this.navCtrl.pop();}
+      }]
+});
+alert.present();
 }
-
 
 }

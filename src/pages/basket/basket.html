@@ -9,8 +9,8 @@
 
 <ion-content padding>
   <ion-list>
-		<ion-item *ngFor="let p of contenuPanier" >
-			<ion-row align-items-center justify-content-start>
+
+			<ion-row *ngFor="let p of contenuPanier" align-items-center justify-content-start>
 				<ion-col col-stretch>
 					<ion-item (click)="SelectionProduit($event,p)">
 						{{p.name}}
@@ -25,7 +25,7 @@
 				</button>
 				</ion-col>
 			</ion-row>
-    </ion-item>
+
 </ion-list>
 <ion-row align-items-center justify-content-center>
 <div><h2> Prix total :  {{prixDuPanier}} € </h2></div>
