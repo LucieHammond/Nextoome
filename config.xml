@@ -88,6 +88,6 @@
     <allow-navigation href="http://192.168.1.19:8100" />
     <allow-navigation href="http://160.228.58.47:8100" />
     <allow-navigation href="http://172.20.10.3:8100" />
-    <plugin name="cordova-plugin-email-composer" spec="^0.8.13" />
     <plugin name="cordova-plugin-inappbrowser" spec="^2.0.2" />
+    <plugin name="cordova-plugin-email-composer" spec="^0.8.13" />
 </widget>
