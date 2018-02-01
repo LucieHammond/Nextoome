@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content padding>
-	<ion-list-header class="item-profile" no-lines>
+	<ion-list-header class="item-profile" no-lines *ngIf="user!=null">
 		<button (click)="displayPicture(user.avatar_url)">
 			<ion-avatar class="avatar">
 				<img src="{{user.avatar_url}}">
@@ -21,11 +21,10 @@
 		</div>
 	</ion-list-header>
 
-	<ion-list>
+	<ion-list *ngIf="user!=null">
 		<ion-item class="item-data">
 			<ion-label fixed><b>Utilisateur :</b></ion-label>
-			<div *ngIf="!edit" item-content>{{user.username}}</div>
-			<ion-input *ngIf="edit" placeholder="nom d'utilisateur" [(ngModel)]="user.username"></ion-input>
+			<div item-content>{{user.username}}</div>
 		</ion-item>
 		<ion-item class="item-data">
 			<ion-label fixed><b>Prénom :</b></ion-label>
@@ -44,97 +43,97 @@
 		</ion-item>
 	</ion-list>
 
-	<ion-card class="address-card">
+	<ion-card class="address-card" *ngIf="user!=null">
 		<ion-card-header>Adresse de livraison</ion-card-header>
 
 		<ion-list>
 			<ion-item class="item-address-data">
 				<ion-label fixed><i>Prénom :</i></ion-label>
-				<div *ngIf="!edit" item-content>{{user.shipping_address.first_name}}</div>
-				<ion-input *ngIf="edit" placeholder="prénom" [(ngModel)]="user.shipping_address.first_name"></ion-input>
+				<div *ngIf="!edit" item-content>{{user.shipping.first_name}}</div>
+				<ion-input *ngIf="edit" placeholder="prénom" [(ngModel)]="user.shipping.first_name"></ion-input>
 			</ion-item>
 			<ion-item class="item-address-data">
 				<ion-label fixed><i>Nom :</i></ion-label>
-				<div *ngIf="!edit" item-content>{{user.shipping_address.last_name}}</div>
-				<ion-input *ngIf="edit" placeholder="nom" [(ngModel)]="user.shipping_address.last_name"></ion-input>
+				<div *ngIf="!edit" item-content>{{user.shipping.last_name}}</div>
+				<ion-input *ngIf="edit" placeholder="nom" [(ngModel)]="user.shipping.last_name"></ion-input>
 			</ion-item>
 			<ion-item class="item-address-data">
 				<ion-label fixed><i>Entreprise :</i></ion-label>
-				<div *ngIf="!edit" item-content>{{user.shipping_address.company}}</div>
-				<ion-input *ngIf="edit" placeholder="entreprise" [(ngModel)]="user.shipping_address.company"></ion-input>
+				<div *ngIf="!edit" item-content>{{user.shipping.company}}</div>
+				<ion-input *ngIf="edit" placeholder="entreprise" [(ngModel)]="user.shipping.company"></ion-input>
 			</ion-item>
 			<ion-item class="item-address-data">
 				<ion-label fixed><i>Rue :</i></ion-label>
-				<div *ngIf="!edit" item-content>{{user.shipping_address.address_1}}</div>
-				<ion-input *ngIf="edit" placeholder="rue" [(ngModel)]="user.shipping_address.address_1"></ion-input>
+				<div *ngIf="!edit" item-content>{{user.shipping.address_1}}</div>
+				<ion-input *ngIf="edit" placeholder="rue" [(ngModel)]="user.shipping.address_1"></ion-input>
 			</ion-item>
 			<ion-item class="item-address-data">
 				<ion-label fixed><i>Ville :</i></ion-label>
-				<div *ngIf="!edit" item-content>{{user.shipping_address.city}}</div>
-				<ion-input *ngIf="edit" placeholder="ville" [(ngModel)]="user.shipping_address.city"></ion-input>
+				<div *ngIf="!edit" item-content>{{user.shipping.city}}</div>
+				<ion-input *ngIf="edit" placeholder="ville" [(ngModel)]="user.shipping.city"></ion-input>
 			</ion-item>
 			<ion-item class="item-address-data">
 				<ion-label fixed><i>Code postal :</i></ion-label>
-				<div *ngIf="!edit" item-content>{{user.shipping_address.postcode}}</div>
-				<ion-input *ngIf="edit" type="number" placeholder="code postal" [(ngModel)]="user.shipping_address.postcode"></ion-input>
+				<div *ngIf="!edit" item-content>{{user.shipping.postcode}}</div>
+				<ion-input *ngIf="edit" type="number" placeholder="code postal" [(ngModel)]="user.shipping.postcode"></ion-input>
 			</ion-item>
 			<ion-item class="item-address-data">
 				<ion-label fixed><i>Pays :</i></ion-label>
-				<div *ngIf="!edit" item-content>{{user.shipping_address.country}}</div>
-				<ion-input *ngIf="edit" placeholder="pays" [(ngModel)]="user.shipping_address.country"></ion-input>
+				<div *ngIf="!edit" item-content>{{user.shipping.country}}</div>
+				<ion-input *ngIf="edit" placeholder="pays" [(ngModel)]="user.shipping.country"></ion-input>
 			</ion-item>
 		</ion-list>
 	</ion-card>
 
-	<ion-card class="address-card">
+	<ion-card class="address-card" *ngIf="user!=null">
 		<ion-card-header>Adresse de facturation</ion-card-header>
 
 		<ion-list>
 			<ion-item class="item-address-data">
 				<ion-label fixed><i>Prénom :</i></ion-label>
-				<div *ngIf="!edit" item-content>{{user.shipping_address.first_name}}</div>
-				<ion-input *ngIf="edit" placeholder="prénom" [(ngModel)]="user.shipping_address.first_name"></ion-input>
+				<div *ngIf="!edit" item-content>{{user.shipping.first_name}}</div>
+				<ion-input *ngIf="edit" placeholder="prénom" [(ngModel)]="user.billing.first_name"></ion-input>
 			</ion-item>
 			<ion-item class="item-address-data">
 				<ion-label fixed><i>Nom :</i></ion-label>
-				<div *ngIf="!edit" item-content>{{user.shipping_address.last_name}}</div>
-				<ion-input *ngIf="edit" placeholder="nom" [(ngModel)]="user.shipping_address.last_name"></ion-input>
+				<div *ngIf="!edit" item-content>{{user.shipping.last_name}}</div>
+				<ion-input *ngIf="edit" placeholder="nom" [(ngModel)]="user.billing.last_name"></ion-input>
 			</ion-item>
 			<ion-item class="item-address-data">
 				<ion-label fixed><i>Entreprise :</i></ion-label>
-				<div *ngIf="!edit" item-content>{{user.billing_address.company}}</div>
-				<ion-input *ngIf="edit" placeholder="entreprise" [(ngModel)]="user.billing_address.company"></ion-input>
+				<div *ngIf="!edit" item-content>{{user.billing.company}}</div>
+				<ion-input *ngIf="edit" placeholder="entreprise" [(ngModel)]="user.billing.company"></ion-input>
 			</ion-item>
 			<ion-item class="item-address-data">
 				<ion-label fixed><i>Rue :</i></ion-label>
-				<div *ngIf="!edit" item-content>{{user.billing_address.address_1}}</div>
-				<ion-input *ngIf="edit" placeholder="rue" [(ngModel)]="user.billing_address.address_1"></ion-input>
+				<div *ngIf="!edit" item-content>{{user.billing.address_1}}</div>
+				<ion-input *ngIf="edit" placeholder="rue" [(ngModel)]="user.billing.address_1"></ion-input>
 			</ion-item>
 			<ion-item class="item-address-data">
 				<ion-label fixed><i>Ville :</i></ion-label>
-				<div *ngIf="!edit" item-content>{{user.billing_address.city}}</div>
-				<ion-input *ngIf="edit" placeholder="ville" [(ngModel)]="user.billing_address.city"></ion-input>
+				<div *ngIf="!edit" item-content>{{user.billing.city}}</div>
+				<ion-input *ngIf="edit" placeholder="ville" [(ngModel)]="user.billing.city"></ion-input>
 			</ion-item>
 			<ion-item class="item-address-data">
 				<ion-label fixed><i>Code postal :</i></ion-label>
-				<div *ngIf="!edit" item-content>{{user.billing_address.postcode}}</div>
-				<ion-input *ngIf="edit" type="number" placeholder="code postal" [(ngModel)]="user.billing_address.postcode"></ion-input>
+				<div *ngIf="!edit" item-content>{{user.billing.postcode}}</div>
+				<ion-input *ngIf="edit" type="number" placeholder="code postal" [(ngModel)]="user.billing.postcode"></ion-input>
 			</ion-item>
 			<ion-item class="item-address-data">
 				<ion-label fixed><i>Pays :</i></ion-label>
-				<div *ngIf="!edit" item-content>{{user.billing_address.country}}</div>
-				<ion-input *ngIf="edit" placeholder="pays" [(ngModel)]="user.billing_address.country"></ion-input>
+				<div *ngIf="!edit" item-content>{{user.billing.country}}</div>
+				<ion-input *ngIf="edit" placeholder="pays" [(ngModel)]="user.billing.country"></ion-input>
 			</ion-item>
 			<ion-item class="item-address-data">
 				<ion-label fixed><i>Téléphone :</i></ion-label>
-				<div *ngIf="!edit" item-content>{{user.billing_address.phone}}</div>
-				<ion-input *ngIf="edit" type="tel" placeholder="téléphone" [(ngModel)]="user.billing_address.phone"></ion-input>
+				<div *ngIf="!edit" item-content>{{user.billing.phone}}</div>
+				<ion-input *ngIf="edit" type="tel" placeholder="téléphone" [(ngModel)]="user.billing.phone"></ion-input>
 			</ion-item>
 		</ion-list>
 	</ion-card>
 
-	<ion-item *ngIf="!edit" class="item-data" no-lines>
+	<ion-item *ngIf="!edit && user!=null" class="item-data" no-lines>
 		<b>Commandes passées :</b> {{user.orders_count}}
 	</ion-item>
-	<button *ngIf="!edit" ion-button class="orders-button" (click)="seeOrders()">Voir l'historique des commandes</button>
+	<button *ngIf="!edit && user!=null" ion-button class="orders-button" (click)="seeOrders()">Voir l'historique des commandes</button>
 </ion-content>

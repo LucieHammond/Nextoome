@@ -19,7 +19,7 @@ export class CustomerServicePage {
 	}
 
 	openWithBrowser(url: string) {
-		this.iab.create(url, '_system', 'location=yes');
+		this.iab.create(url, '_blank', 'location=yes');
 	}
 
 	displayForm(){

@@ -4,6 +4,8 @@ import { User } from '../../models/users';
 import { SessionInfos } from "../../services/session-infos";
 import { PicturePage } from "../picture/picture";
 import { OrdersPage } from '../orders/orders';
+import * as $ from 'jquery';
+
 
 @IonicPage()
 @Component({
@@ -15,7 +17,9 @@ export class UserProfilePage {
 	edit: boolean = false;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, private session: SessionInfos) {
-		this.user = session.getCurrentUser();
+		session.getCurrentUser().subscribe(user => {
+			this.user = $.extend(true, {}, user);
+		});
 	}
 
 	ionViewDidLoad() {
@@ -27,12 +31,16 @@ export class UserProfilePage {
 	}
 
 	saveProfile() {
-		this.user = this.session.updateCurrentUser(this.user);
+		this.session.updateCurrentUser(this.user).subscribe(user => {
+			this.user = $.extend(true, {}, user);
+		});
 		this.edit = !this.edit;
 	}
 
 	cancelChange() {
-		this.user = this.session.getCurrentUser();
+		this.session.getCurrentUser().subscribe(user => {
+			this.user = $.extend(true, {}, user);
+		});
 		this.edit = !this.edit;
 	}
 

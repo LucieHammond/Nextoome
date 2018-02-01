@@ -16,6 +16,7 @@ import { ParamsPage } from '../pages/params/params';
 import { ProductPage } from '../pages/product/product';
 import { WelcomePage } from '../pages/welcome/welcome';
 
+
 @Component({
 	templateUrl: 'app.html'
 })

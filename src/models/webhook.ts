@@ -9,22 +9,26 @@ export interface Webhook {
 	event: string,
 	hooks: string[],
 	delivery_url: string,
-	created_at: string,
-	updated_at: string
+	secret: string,
+	date_created: string,
+	date_created_gmt: string,
+	date_modified: string,
+	date_modified_gmt: string
 }
+
 
 // WebhookDelivery model based on the structure returned by woocommerce API for webhook deliveries
 export interface WebhookDelivery{
 	id: number,
 	duration: string,
 	summary: string,
-	request_method: string,
 	request_url: string,
-	request_headers: any,
+	request_headers: any[],
 	request_body: string,
 	response_code: string,
 	response_message: string,
-	response_headers: any,
+	response_headers: any[],
 	response_body: string,
-	created_at: string
+	date_created: string,
+	date_created_gmt: string
 }
