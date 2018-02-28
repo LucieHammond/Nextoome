@@ -51,8 +51,5 @@ export class HomePage {
 				this.RechercheProduits();
 			});
 		});
-
-		/*this.resultatsRecherche = this.rechercheData.filterItems(this.searchTerm);
-		console.log("hey", typeof this.resultatsRecherche);*/
 	}
 }

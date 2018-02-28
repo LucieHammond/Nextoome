@@ -16,13 +16,5 @@ export class ProductList {
 
 	getProducts() {
 		return this.tousProduits;
-		/*return this.tousProduits.subscribe(produits => {
-			console.log(typeof produits);
-			return produits.filter((produit) => {
-				console.log(produit.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
-				return produit.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
-			});
-		});*/
 	}
-
 }
