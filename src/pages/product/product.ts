@@ -35,7 +35,7 @@ if(this.quantity!=0){
 ConfirmationAchat(){
   let alert = this.alertCtrl.create({
     title: 'Confirmation',
-    message: this.quantity+" ".concat(this.produit_vu.title.concat(' ajouté au panier !')),
+    message: this.quantity+" ".concat(this.produit_vu.name.concat(' ajouté au panier !')),
     buttons: [
       {text:'OK',
         handler: () => {this.navCtrl.pop();}

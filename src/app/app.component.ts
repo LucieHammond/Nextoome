@@ -1,20 +1,20 @@
-import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+import {Component, ViewChild} from '@angular/core';
+import {Nav, Platform} from 'ionic-angular';
+import {StatusBar} from '@ionic-native/status-bar';
+import {SplashScreen} from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
-import { FlashSalePage } from '../pages/flash-sale/flash-sale';
-import { UserProfilePage } from '../pages/user-profile/user-profile';
-import { WishlistPage } from '../pages/wishlist/wishlist';
-import { BasketPage } from '../pages/basket/basket';
-import { OrdersPage } from '../pages/orders/orders';
-import { NextoosPage } from '../pages/nextoos/nextoos';
-import { CustomerServicePage } from '../pages/customer-service/customer-service';
-import { HelpPage } from '../pages/help/help';
-import { ParamsPage } from '../pages/params/params';
-import { ProductPage } from '../pages/product/product';
-import { WelcomePage } from '../pages/welcome/welcome';
+import {HomePage} from '../pages/home/home';
+import {FlashSalePage} from '../pages/flash-sale/flash-sale';
+import {UserProfilePage} from '../pages/user-profile/user-profile';
+import {WishlistPage} from '../pages/wishlist/wishlist';
+import {BasketPage} from '../pages/basket/basket';
+import {OrdersPage} from '../pages/orders/orders';
+import {NextoosPage} from '../pages/nextoos/nextoos';
+import {CustomerServicePage} from '../pages/customer-service/customer-service';
+import {HelpPage} from '../pages/help/help';
+import {ParamsPage} from '../pages/params/params';
+import {ProductPage} from '../pages/product/product';
+import {WelcomePage} from '../pages/welcome/welcome';
 
 
 @Component({
@@ -32,17 +32,17 @@ export class MyApp {
 
 		// used for an example of ngFor and navigation
 		this.pages = [
-			[{ title: 'Home', component: HomePage, icon: "home" },
-			{ title: 'Vente flash', component: FlashSalePage, icon: "flash" }],
-			[{ title: 'Mon compte', component: UserProfilePage, icon: "person" },
-			{ title: "Mes listes d'envies", component: WishlistPage, icon: "star" },
-			{ title: 'Mon panier', component: BasketPage, icon: "cart" },
-			{ title: 'Mes commandes', component: OrdersPage, icon: "clipboard" },
-			{ title: 'Mes nextoos', component: NextoosPage, icon: "pricetags" }],
-			[{ title: 'Service client', component: CustomerServicePage, icon: "mail" },
-			{ title: 'Aide', component: HelpPage, icon: "help-circle" },
-			{ title: 'Paramètres', component: ParamsPage, icon: "settings" }],
-			[{ title: 'Produit', component: ProductPage, icon: "home" }],
+			[{title: 'Home', component: HomePage, icon: "home"},
+				{title: 'Vente flash', component: FlashSalePage, icon: "flash"}],
+			[{title: 'Mon compte', component: UserProfilePage, icon: "person"},
+				{title: "Mes listes d'envies", component: WishlistPage, icon: "star"},
+				{title: 'Mon panier', component: BasketPage, icon: "cart"},
+				{title: 'Mes commandes', component: OrdersPage, icon: "clipboard"},
+				{title: 'Mes nextoos', component: NextoosPage, icon: "pricetags"}],
+			[{title: 'Service client', component: CustomerServicePage, icon: "mail"},
+				{title: 'Aide', component: HelpPage, icon: "help-circle"},
+				{title: 'Paramètres', component: ParamsPage, icon: "settings"}],
+			[{title: 'Produit', component: ProductPage, icon: "home"}],
 		];
 
 	}
