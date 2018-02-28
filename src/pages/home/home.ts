@@ -24,7 +24,7 @@ export class HomePage {
 	constructor(public navCtrl: NavController, public navParams: NavParams, public rechercheData: ProductList, private apiConnector: ApiConnectorService) {
 		this.searching = false;
 		this.searchControl = new FormControl();
-		this.apiConnector.getProductsList().subscribe(products => {
+		this.rechercheData.getProducts().subscribe(products => {
 			this.offres_du_jour = products;
 		});
 	}
@@ -43,10 +43,13 @@ export class HomePage {
 
 	RechercheProduits() {
 
-		this.resultatsRecherche = this.rechercheData.filterItems(this.searchTerm);
-
-		this.searchControl.valueChanges.debounceTime(700).subscribe(search => {
-			this.RechercheProduits();
+		this.rechercheData.getProducts().subscribe(produits => {
+			this.resultatsRecherche = produits.filter((produit) => {
+				return produit.name.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1;
+			});
+			this.searchControl.valueChanges.debounceTime(700).subscribe(search => {
+				this.RechercheProduits();
+			});
 		});
 	}
 }

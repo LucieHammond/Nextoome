@@ -1,7 +1,11 @@
 page-home {
-  .spinner-container {
-      width: 100%;
-      text-align: center;
-      padding: 10px;
-  }
+	ion-content{
+		background-color: #fafafa !important;
+	}
+
+	.spinner-container {
+		width: 100%;
+		text-align: center;
+		padding: 10px;
+	}
 }
