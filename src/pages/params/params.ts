@@ -14,5 +14,4 @@ export class ParamsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ParamsPage');
   }
-
 }

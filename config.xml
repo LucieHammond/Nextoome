@@ -94,4 +94,5 @@
     <plugin name="cordova-plugin-inappbrowser" spec="^2.0.2" />
     <plugin name="cordova-plugin-email-composer" spec="^0.8.13" />
     <plugin name="cordova-plugin-advanced-http" spec="^1.9.1" />
+    <allow-navigation href="http://192.168.232.2:8100" />
 </widget>
