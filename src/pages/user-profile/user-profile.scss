@@ -14,6 +14,7 @@ page-user-profile {
 			vertical-align: top;
 			margin-top: 30px;
 			text-align: center;
+			font-family: "Arciform";
 			button {
 				width: 103%;
 			}
@@ -24,7 +25,7 @@ page-user-profile {
 		font-size: 14px !important;
 
 		ion-label {
-			color: color($colors, dark) !important;
+			color: color($colors, myrtille) !important;
 		}
 
 		div {
@@ -42,6 +43,8 @@ page-user-profile {
 
 		ion-card-header {
 			color: white !important;
+			font-size: 20px !important;
+			font-family: "Arciform";
 		}
 	}
 
@@ -53,6 +56,7 @@ page-user-profile {
 	.orders-button{
 		display:block;
 		background: color($colors, carotte);
+		font-family: "Arciform";
 		margin-left: auto;
 		margin-right: auto;
 		margin-top: 15px;
