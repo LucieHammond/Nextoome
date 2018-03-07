@@ -16,7 +16,7 @@
 		left: 16px;
 		top:120px;
 		font-size: 14px;
-		color: #EEEEEE;
+		color: color($colors,caillou);
 
 		h3{
 			font-weight: 700;
@@ -24,7 +24,7 @@
 	}
 }
 
-h1 h2 button {
+h1 h2 h3 button{
 font-family: "Arciform" !important;
 }
 
