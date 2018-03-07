@@ -23,7 +23,7 @@ export class HomePage {
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public rechercheData: ProductList, private apiConnector: ApiConnectorService) {
 		this.searching = false;
-		this.searchControl = new FormControl();
+		this.searchControl = new FormControl(); 
 		this.rechercheData.getProducts().subscribe(products => {
 			this.offres_du_jour = products;
 		});
