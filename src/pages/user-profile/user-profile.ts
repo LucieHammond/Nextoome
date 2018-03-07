@@ -19,6 +19,41 @@ export class UserProfilePage {
 	constructor(public navCtrl: NavController, public navParams: NavParams, private session: SessionInfos) {
 		session.getCurrentUser().subscribe(user => {
 			this.user = $.extend(true, {}, user);
+			// ToRemove
+			this.user = <User> {
+				id: 2,
+				email: "john.doe@example.com",
+				first_name: "John",
+				last_name: "Doe",
+				username: "john.doe",
+				orders_count: 0,
+				total_spent: "0.00",
+				avatar_url: "https://secure.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=96",
+				billing: {
+				  first_name: "John",
+				  last_name: "Doe",
+				  company: "",
+				  address_1: "969 Market",
+				  address_2: "",
+				  city: "San Francisco",
+				  state: "CA",
+				  postcode: "94103",
+				  country: "US",
+				  email: "john.doe@example.com",
+				  phone: "(555) 555-5555"
+				},
+				shipping: {
+				  first_name: "John",
+				  last_name: "Doe",
+				  company: "",
+				  address_1: "969 Market",
+				  address_2: "",
+				  city: "San Francisco",
+				  state: "CA",
+				  postcode: "94103",
+				  country: "US"
+				}
+			  }
 		});
 	}
 
@@ -31,16 +66,16 @@ export class UserProfilePage {
 	}
 
 	saveProfile() {
-		this.session.updateCurrentUser(this.user).subscribe(user => {
+		/*this.session.updateCurrentUser(this.user).subscribe(user => {
 			this.user = $.extend(true, {}, user);
-		});
+		});*/
 		this.edit = !this.edit;
 	}
 
 	cancelChange() {
-		this.session.getCurrentUser().subscribe(user => {
+		/*this.session.getCurrentUser().subscribe(user => {
 			this.user = $.extend(true, {}, user);
-		});
+		});*/
 		this.edit = !this.edit;
 	}
 
