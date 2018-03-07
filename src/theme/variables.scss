@@ -35,13 +35,14 @@ $app-direction: ltr;
 
 $colors: (
   primary:    #060644,
-  secondary:  #eb5a7d,
+  dark:       #060644,
+
   carotte:    #f17f57,
   tomate:     #eb5a7d,
   prune:      #331077,
-  dark:       #060644,
-  secjaune:   #ffde46,
-  secgris:    #c6c6c6
+  myrtille:   #060644,
+  citron:     #ffde46,
+  caillou:    #c6c6c6
 );
 
 
@@ -90,3 +91,24 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+@font-face {
+font-family: Montserrat;
+src: url("../assets/fonts/Montserrat-Medium.otf");
+}
+
+@font-face {
+font-family: MontserratLight;
+src: url("../assets/fonts/Montserrat-Light.otf");
+}
+
+@font-face {
+font-family: Arciform ;
+src: url("../assets/fonts/Arciform.otf");
+}
+
+
+$font-family-base: "Montserrat";
+$font-family-ios-base: $font-family-base;
+$font-family-md-base: $font-family-base;
+$font-family-wp-base: $font-family-base;

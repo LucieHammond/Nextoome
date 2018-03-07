@@ -15,28 +15,28 @@
 			</ion-avatar>
 		</button>
 		<div item-end class="edit-buttons">
-			<button *ngIf="!edit" ion-button round outline (click)="editProfile()">Modifier le profil</button>
-			<button *ngIf="edit" ion-button round outline (click)="saveProfile()">Sauvegarder</button><br/>
-			<button *ngIf="edit" ion-button round outline (click)="cancelChange()">Annuler</button>
+			<button *ngIf="!edit" ion-button round color=prune (click)="editProfile()">Modifier le profil</button>
+			<button *ngIf="edit" ion-button round color=prune (click)="saveProfile()">Sauvegarder</button><br/>
+			<button *ngIf="edit" ion-button round color=tomate (click)="cancelChange()">Annuler</button>
 		</div>
 	</ion-list-header>
 
 	<ion-list *ngIf="user!=null">
-		<ion-item class="item-data">
+		<ion-item>
 			<ion-label fixed><b>Utilisateur :</b></ion-label>
 			<div item-content>{{user.username}}</div>
 		</ion-item>
-		<ion-item class="item-data">
+		<ion-item>
 			<ion-label fixed><b>Prénom :</b></ion-label>
 			<div *ngIf="!edit" item-content>{{user.first_name}}</div>
 			<ion-input *ngIf="edit" placeholder="prénom" [(ngModel)]="user.first_name"></ion-input>
 		</ion-item>
-		<ion-item class="item-data">
+		<ion-item>
 			<ion-label fixed><b>Nom :</b></ion-label>
 			<div *ngIf="!edit" item-content>{{user.last_name}}</div>
 			<ion-input *ngIf="edit" placeholder="nom de famille" [(ngModel)]="user.last_name"></ion-input>
 		</ion-item>
-		<ion-item class="item-data">
+		<ion-item>
 			<ion-label fixed><b>E-mail :</b></ion-label>
 			<div *ngIf="!edit" item-content>{{user.email}}</div>
 			<ion-input *ngIf="edit" type="email" placeholder="adresse email" [(ngModel)]="user.email"></ion-input>
@@ -132,8 +132,8 @@
 		</ion-list>
 	</ion-card>
 
-	<ion-item *ngIf="!edit && user!=null" class="item-data" no-lines>
-		<b>Commandes passées :</b> {{user.orders_count}}
+	<ion-item *ngIf="!edit && user!=null" no-lines>
+		<ion-label><b>Commandes passées :</b> {{user.orders_count}}</ion-label>
 	</ion-item>
 	<button *ngIf="!edit && user!=null" ion-button class="orders-button" (click)="seeOrders()">Voir l'historique des commandes</button>
 </ion-content>
