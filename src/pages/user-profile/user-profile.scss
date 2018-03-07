@@ -1,10 +1,11 @@
 page-user-profile {
+
 	.item-profile {
 		height: 100px;
 		.avatar > img:first-child {
 			width: 80px;
 			height: 80px;
-			border: 2px solid;
+			border: 2px solid color($colors, prune);
 		}
 		.edit-buttons {
 			height: 100%;
@@ -14,34 +15,44 @@ page-user-profile {
 			margin-top: 30px;
 			text-align: center;
 			button {
-				width: 100%;
+				width: 103%;
 			}
 		}
 	}
 
-	.item-data {
-		font-size: 14px;
+	ion-item {
+		font-size: 14px !important;
+
 		ion-label {
-			color: black !important;
+			color: color($colors, dark) !important;
 		}
+
+		div {
+			color: color($colors, prune) !important;
+		}
+
+		ion-input {
+			margin: -0.8em !important;
+		}
+
 	}
 
 	.address-card {
-		background-color: #f4f4f4;
+		background-color: color($colors, prune);
+
+		ion-card-header {
+			color: white !important;
+		}
 	}
 
 	.item-address-data {
-		font-size: 14px;
 		max-height: 32px;
 		min-height: 32px;
-		ion-label {
-			color: black !important;
-		}
 	}
 
 	.orders-button{
 		display:block;
-		background: darkorange;
+		background: color($colors, carotte);
 		margin-left: auto;
 		margin-right: auto;
 		margin-top: 15px;

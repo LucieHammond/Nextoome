@@ -7,7 +7,7 @@ export interface User {
 	date_modified: string,
 	date_modified_gmt: string,
 	email: string,
-	fisrt_name: string,
+	first_name: string,
 	last_name: string,
 	role: string,
 	username: string,
