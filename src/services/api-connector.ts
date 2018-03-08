@@ -211,7 +211,7 @@ export class ApiConnectorService {
 
 	getProductsList(params={}): Observable<Product[]> {
 		return Observable.fromPromise(
-			this.http.get(`${this.apiUrl}/products`, this.auth, {})
+			this.http.get(`${this.apiUrl}/products`, Object.assign(this.auth, params), {})
 				.then(data => JSON.parse(data.data))
 				.catch(error => { console.log(error.error); }));
 	}

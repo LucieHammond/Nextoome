@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="io.ionic.starter" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>MyApp</name>
-    <description>An awesome Ionic/Cordova app.</description>
-    <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content src="index.html" />
+    <name>Nextoome</name>
+    <description>Une application pour le commerce de proximité de Lagny-sur-Marne</description>
+    <author>Lucie, Bastian and Romain</author>
+    <content original-src="index.html" src="http://138.195.241.56:8101" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -82,6 +82,7 @@
     <allow-navigation href="http://172.20.10.3:8100" />
     <allow-navigation href="http://192.168.1.136:8100" />
     <allow-navigation href="http://138.195.246.165:8100" />
+    <allow-navigation href="http://138.195.241.56:8101" />
     <engine name="ios" spec="~4.5.4" />
     <engine name="browser" spec="~5.0.2" />
     <engine name="android" spec="~6.3.0" />
