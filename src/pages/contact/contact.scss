@@ -9,7 +9,8 @@ page-contact {
 			}
 		}
 		.send {
-			background-color: #64320a !important;
+			background-color: color($colors,citron) !important;
+			color: color($colors,myrtille) !important;
 		}
 	}
 }
