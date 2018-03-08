@@ -69,7 +69,8 @@ export interface Product {
 	variations: number[],
 	grouped_products: number[],
 	menu_order: 0,
-	meta_data: MetaData[]
+	meta_data: MetaData[],
+	quantite_panier: number;
 }
 
 interface Download{
