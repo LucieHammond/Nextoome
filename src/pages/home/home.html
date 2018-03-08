@@ -9,7 +9,7 @@
 
 <ion-content padding>
 
-	<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="RechercheProduits()">
+	<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="RechercheProduits()" class="searchbar" placeholder="Rechercher un produit">
 		<div *ngIf="searching" class="spinner-container">
 			<ion-spinner></ion-spinner>
 		</div>
