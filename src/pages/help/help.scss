@@ -1,7 +1,10 @@
 page-help {
 	.slide1 {
+		h1 {
+			font-family: Arciform;
+		}
 		p {
-			font: italic 15px Arial, sans-serif;
+			font: italic 13px Montserrat, sans-serif;
 			line-height: 30px;
 			margin-left: 20px;
 			margin-right: 20px;
@@ -12,6 +15,7 @@ page-help {
 			margin: 0;
 		}
 		h4 {
+			font-family: Arciform;
 			margin-bottom: 0;
 		}
 	}
@@ -21,7 +25,7 @@ page-help {
 			left:15px;
 			right:15px;
 			height: 50px;
-			background-color: #380a7d;
+			background-color: color($colors, prune);
 			font: bold 40px "Helvetica Neue", sans-serif;
 			color: white;
 			box-shadow: 0 0 6px black;
@@ -94,7 +98,7 @@ page-help {
 				line-height: 30px;
 			}
 			.small {
-				font-size: 11px;
+				font-size: 10px;
 				position: absolute;
 				padding-right: 15px;
 				bottom: 0;
@@ -109,7 +113,7 @@ page-help {
 				text-align: left;
 			}
 			button {
-				background-color: brown;
+				background-color: color($colors, carotte);
 			}
 		}
 

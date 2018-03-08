@@ -11,8 +11,9 @@ import { Product, ProductAttribute, ProductAttributeTerm, ProductCategory, Produ
 @Injectable()
 export class ApiConnectorService {
 	apiUrl: string = 'https://lagny.nextoome.fr/wp-json/wc/v2';
-	username: string = 'ck_aa511834287fc30a1d9630ba6ebe8b66a34d6e83';
-	password: string = 'cs_39ca3cde5a50b7a5aa36100ba6edfbd08721ed5a';
+	username: string = 'ck_9c116cc353369069c9fdcaf3eedac6564721dba9';
+	password: string = 'cs_5c445837f5381f4b8eacfae69408582c10b58efe';
+	auth = {consumer_key: this.username, consumer_secret: this.password};
 
 	constructor(public http: HTTP) {
 		console.log('Hello Api Connector Service');
@@ -203,16 +204,16 @@ export class ApiConnectorService {
 
 	getProduct(id): Observable<Product> {
 		return Observable.fromPromise(
-			this.http.get(`${this.apiUrl}/products/${id}`, {}, this.http.getBasicAuthHeader(this.username, this.password))
+			this.http.get(`${this.apiUrl}/products/${id}`, this.auth, {})
 				.then(data => JSON.parse(data.data))
 				.catch(error => { console.log(error.error); }));
 	}
 
 	getProductsList(params={}): Observable<Product[]> {
 		return Observable.fromPromise(
-			this.http.get(`${this.apiUrl}/products`, params, this.http.getBasicAuthHeader(this.username, this.password))
+			this.http.get(`${this.apiUrl}/products`, this.auth, {})
 				.then(data => JSON.parse(data.data))
-				.catch(error => { console.log(error.status); console.log('bite'); console.log(error.error); }));
+				.catch(error => { console.log(error.error); }));
 	}
 
 	updateProduct(id, productData): Observable<Product> {

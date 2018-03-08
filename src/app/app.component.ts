@@ -23,7 +23,7 @@ import {WelcomePage} from '../pages/welcome/welcome';
 export class MyApp {
 	@ViewChild(Nav) nav: Nav;
 
-	rootPage: any = UserProfilePage; //WelcomePage;
+	rootPage: any = WelcomePage;
 
 	pages: Array<Array<{title: string, component: any, icon: string}>>;
 
