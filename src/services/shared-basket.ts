@@ -17,11 +17,11 @@ this.contenuPanier = [];
     }
 
     addToBasket(produitSelectionne,quantite) {
-            if(produitSelectionne.menu_order!=0)
-              {produitSelectionne.menu_order = produitSelectionne.menu_order + quantite}
+            if(produitSelectionne.quantite_panier>0)
+              {produitSelectionne.quantite_panier = produitSelectionne.quantite_panier + Number.parseInt(quantite)}
             else{
               this.contenuPanier.push(produitSelectionne)
-              produitSelectionne.menu_order = produitSelectionne.menu_order + quantite}
+              produitSelectionne.quantite_panier = quantite}
 
     }
 
@@ -30,7 +30,7 @@ this.contenuPanier = [];
 
     if(index > -1){
       this.contenuPanier.splice(index, 1);
-      produitASupprimer.menu_order = 0;
+      produitASupprimer.quantite_panier = 0;
     }
     }
 
@@ -43,7 +43,7 @@ this.contenuPanier = [];
       this.totalPrice = 0;
       for(let produitDuPanier of this.contenuPanier)
       {
-        this.totalPrice = (+produitDuPanier.price*produitDuPanier.menu_order)+this.totalPrice;
+        this.totalPrice = (+produitDuPanier.price*produitDuPanier.quantite_panier)+this.totalPrice;
       }
         return this.totalPrice;
       }
