@@ -3,6 +3,11 @@ page-home {
 
 	}
 
+	.searchbar{
+		background-color: transparent;
+		border-color: color($colors,prune);
+	}
+
 	.spinner-container {
 		width: 100%;
 		text-align: center;
