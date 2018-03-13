@@ -22,52 +22,52 @@ export class ApiConnectorService {
 
 	_get(url, parameters) {
 		// Version avec Basic Auth
-		/*return this.http.get(url, parameters, this.http.getBasicAuthHeader(this.username, this.password))
-			.then(data => JSON.parse(data.data))
-			.catch(error => { console.log(error.error); });*/
-
-		// Version avec paramètres dans l'URL
-		return this.http.get(url, Object.assign(parameters, this.auth), {})
+		return this.http.get(url, parameters, this.http.getBasicAuthHeader(this.username, this.password))
 			.then(data => JSON.parse(data.data))
 			.catch(error => { console.log(error.error); });
+
+		// Version avec paramètres dans l'URL
+		/*return this.http.get(url, Object.assign(parameters, this.auth), {})
+			.then(data => JSON.parse(data.data))
+			.catch(error => { console.log(error.error); });*/
 	}
 
 	_post(url, parameters) {
 		// Version avec Basic Auth
-		/*return this.http.post(url, parameters, this.http.getBasicAuthHeader(this.username, this.password))
-			.then(data => JSON.parse(data.data))
-			.catch(error => { console.log(error.error); });*/
-
-		// Version avec paramètres dans l'URL
-		let auth_url = `${url}?consumer_key=${this.username}&consumer_secret=${this.password}`;
-		return this.http.post(auth_url, parameters, {})
+		return this.http.post(url, parameters, this.http.getBasicAuthHeader(this.username, this.password))
 			.then(data => JSON.parse(data.data))
 			.catch(error => { console.log(error.error); });
+
+		// Version avec paramètres dans l'URL
+		/*let auth_url = `${url}?consumer_key=${this.username}&consumer_secret=${this.password}`;
+		return this.http.post(auth_url, parameters, {})
+			.then(data => JSON.parse(data.data))
+			.catch(error => { console.log(error.error); });*/
 	}
 
 	_put(url, parameters) {
 		// Version avec Basic Auth
-		/*return this.http.put(url, parameters, this.http.getBasicAuthHeader(this.username, this.password))
-			.then(data => JSON.parse(data.data))
-			.catch(error => { console.log(error.error); });*/
-
-		// Version avec paramètres dans l'URL
-		let auth_url = `${url}?consumer_key=${this.username}&consumer_secret=${this.password}`;
-		return this.http.put(auth_url, parameters, {})
+		return this.http.put(url, parameters, this.http.getBasicAuthHeader(this.username, this.password))
 			.then(data => JSON.parse(data.data))
 			.catch(error => { console.log(error.error); });
+
+		// Version avec paramètres dans l'URL
+		/*let auth_url = `${url}?consumer_key=${this.username}&consumer_secret=${this.password}`;
+		return this.http.put(auth_url, parameters, {})
+			.then(data => JSON.parse(data.data))
+			.catch(error => { console.log(error.error); });*/
 	}
 
 	_delete(url, parameters) {
 		// Version avec Basic Auth
-		/*return this.http.delete(url, parameters, this.http.getBasicAuthHeader(this.username, this.password))
-			.then(data => JSON.parse(data.data))
-			.catch(error => { console.log(error.error); });*/
-
-		// Version avec paramètres dans l'URL
-		return this.http.delete(url, Object.assign(parameters, this.auth), {})
+		return this.http.delete(url, parameters, this.http.getBasicAuthHeader(this.username, this.password))
 			.then(data => JSON.parse(data.data))
 			.catch(error => { console.log(error.error); });
+
+		// Version avec paramètres dans l'URL
+		/*return this.http.delete(url, Object.assign(parameters, this.auth), {})
+			.then(data => JSON.parse(data.data))
+			.catch(error => { console.log(error.error); });*/
 	}
 
 	getIndex(): Observable<any> {

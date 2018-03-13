@@ -25,4 +25,7 @@ export class CustomerServicePage {
 	displayForm(){
 		this.navCtrl.push(ContactPage);
 	}
+
+	openEmail(){
+	}
 }
