@@ -23,13 +23,11 @@ import {WelcomePage} from '../pages/welcome/welcome';
 export class MyApp {
 	@ViewChild(Nav) nav: Nav;
 
-	rootPage: any = WelcomePage;
+	rootPage: any;
 
 	pages: Array<Array<{title: string, component: any, icon: string}>>;
 
 	constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
-
-		// used for an example of ngFor and navigation
 		this.pages = [
 			[{title: 'Home', component: HomePage, icon: "home"},
 				{title: 'Vente flash', component: FlashSalePage, icon: "flash"}],
@@ -43,20 +41,22 @@ export class MyApp {
 				{title: 'Paramètres', component: ParamsPage, icon: "settings"}],
 			[{title: 'Produit', component: ProductPage, icon: "home"}],
 		];
-
-		let userid = window.localStorage.getItem('user');
-		if (userid != 'null') {
-			this.rootPage = HomePage;
-		}
-
 		this.initializeApp();
-
 	}
 
 	initializeApp() {
 		this.platform.ready().then(() => {
 			// Okay, so the platform is ready and our plugins are available.
 			// Here you can do any higher level native things you might need.
+			// used for an example of ngFor and navigation
+
+			let userid = window.localStorage.getItem('user');
+			if (userid != 'null') {
+				this.rootPage = HomePage;
+			} else {
+				this.rootPage = WelcomePage;
+			}
+
 			this.statusBar.styleDefault();
 			this.splashScreen.hide();
 		});

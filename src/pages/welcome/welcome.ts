@@ -17,7 +17,7 @@ import {ApiConnectorService} from "../../services/api-connector";
 export class WelcomePage {
 
   constructor(public navCtrl: NavController, private apiConnector: ApiConnectorService) {
-	apiConnector.testConnection().subscribe(headers => console.log(headers))
+	apiConnector.testConnection().subscribe(headers => console.log("headers", headers))
   }
 
   login() {
