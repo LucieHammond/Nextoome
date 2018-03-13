@@ -1,11 +1,14 @@
 page-help {
+	h1 {
+		font: 32px Arciform;
+	}
+	h4 {
+		font: 28px Arciform;
+	}
 	.slide1 {
-		h1 {
-			font-family: Arciform;
-		}
 		p {
-			font: italic 13px Montserrat, sans-serif;
-			line-height: 30px;
+			font: italic 15px Montserrat, sans-serif;
+			line-height: 35px;
 			margin-left: 20px;
 			margin-right: 20px;
 			margin-top: 11px;
@@ -14,10 +17,13 @@ page-help {
 		img {
 			margin: 0;
 		}
-		h4 {
-			font-family: Arciform;
+		h4{
 			margin-bottom: 0;
 		}
+		button {
+			font-size: 20px;
+		}
+
 	}
 	ion-slide {
 		.bar {
@@ -93,18 +99,18 @@ page-help {
 			}
 
 			.title {
-				font-size: 22px;
+				font-size: 24px;
 				font-weight: 400;
 				line-height: 30px;
 			}
 			.small {
-				font-size: 10px;
+				font-size: 12px;
 				position: absolute;
 				padding-right: 15px;
 				bottom: 0;
 			}
 			.medium {
-				font-size: 16px;
+				font-size: 19px;
 			}
 			.justify {
 				text-align: justify;

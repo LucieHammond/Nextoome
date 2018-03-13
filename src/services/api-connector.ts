@@ -70,8 +70,11 @@ export class ApiConnectorService {
 			.catch(error => { console.log(error.error); });*/
 	}
 
-	getIndex(): Observable<any> {
-		return Observable.fromPromise(this._get(this.apiUrl, {}));
+	testConnection(): Observable<any> {
+		return Observable.fromPromise(this.http.get(this.apiUrl, {}, {})
+			.then(data => data.headers)
+			.catch(error => { console.log(error.error); })
+		);
 	}
 
 	createCoupon(couponData): Observable<Coupon> {

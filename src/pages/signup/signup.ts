@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
 
-import { UserProvider } from '../../providers/providers';
+//import { UserProvider } from '../../providers/providers';
 
 /**
  * Generated class for the SignupPage page.
@@ -28,14 +28,12 @@ export class SignupPage {
   // Our translated text strings
   private signupErrorString: string;
 
-  constructor(public navCtrl: NavController,
-    public user: UserProvider,
-    public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
   }
 
   doSignup() {
     // Attempt to login in through our User service
-    this.user.signup(this.account).subscribe((resp) => {
+    /*this.user.signup(this.account).subscribe((resp) => {
       //this.navCtrl.push(MainPage);
     }, (err) => {
 
@@ -48,6 +46,6 @@ export class SignupPage {
         position: 'top'
       });
       toast.present();
-    });
+    });*/
   }
 }

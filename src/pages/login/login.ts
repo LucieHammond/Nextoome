@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import { UserProvider } from '../../providers/providers';
-import {HomePage} from '../../pages/home/home';
+//import { UserProvider } from '../../providers/providers';
+import {HomePage} from '../home/home';
 /**
  * Generated class for the LoginPage page.
  *
@@ -30,8 +30,7 @@ export class LoginPage {
 
   onSubmit(value: any): void {
       if(this.authForm.valid) {
-          window.localStorage.setItem('username', value.username);
-          window.localStorage.setItem('password', value.password);
+          window.localStorage.setItem('user', "8");
 
           this.nav.setRoot(HomePage);
       }
