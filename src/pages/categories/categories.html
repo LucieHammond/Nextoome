@@ -1,0 +1,28 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Parcourir les produits</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+	<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="RechercheProduits()" class="searchbar" placeholder="Rechercher un produit">
+		<div *ngIf="searching" class="spinner-container">
+			<ion-spinner></ion-spinner>
+		</div>
+	</ion-searchbar>
+
+	<ion-list>
+		<ion-item *ngFor="let item of resultatsRecherche" (click)="SelectionProduit($event,item)">
+			{{item.name}}
+		</ion-item>
+	</ion-list>
+
+	<div>
+		<ion-item *ngFor="let c of categories" (click)="SelectionCategories($event,c)">
+							{{c.name}}
+		</ion-item>
+	</div>

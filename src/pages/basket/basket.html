@@ -9,24 +9,29 @@
 
 <ion-content padding>
   <ion-list>
+		 <ion-item>
+			<ion-row *ngFor="let p of contenuPanier" >
+				<ion-item-sliding #item>
+					<ion-item>
+						<ion-col>
+							<ion-item (click)="SelectionProduit($event,p)">
+								{{p.name}}
+							</ion-item>
+							</ion-col>
+							<ion-col>
+					 			{{p.price}}€ x {{p.quantite_panier}}
+				 			</ion-col>
+						</ion-item>
+						<ion-item-options side="right">
+							<button ion-button (click)="RetirerPanier($event,p)" color="tomate">Supprimer
+								<ion-icon name="trash"></ion-icon>
+							</button>
+								</ion-item-options>
+						</ion-item-sliding>
+			 	</ion-row>
+			</ion-item>
+		</ion-list>
 
-			<ion-row *ngFor="let p of contenuPanier" align-items-center justify-content-start>
-				<ion-col col-stretch>
-					<ion-item (click)="SelectionProduit($event,p)">
-						{{p.name}}
-					</ion-item>
-				</ion-col>
-				<ion-col col-3>
-					 {{p.price}}€ x {{p.quantite_panier}}
-					 </ion-col>
-					 <ion-col col-2>
-				<button ion-button icon-only (click)="RetirerPanier($event,p)">
-					<ion-icon name="close"></ion-icon>
-				</button>
-				</ion-col>
-			</ion-row>
-
-</ion-list>
 <ion-row align-items-center justify-content-center>
 <div><h2> Prix total :  {{prixDuPanier}} € </h2></div>
 </ion-row>
