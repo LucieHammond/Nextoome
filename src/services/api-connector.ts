@@ -72,7 +72,7 @@ export class ApiConnectorService {
 
 	testConnection(): Observable<any> {
 		return Observable.fromPromise(this.http.get(this.apiUrl, {}, {})
-			.then(data => data.headers)
+			.then(data => data.headers['content-type'])
 			.catch(error => { console.log(error.error); })
 		);
 	}

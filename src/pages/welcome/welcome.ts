@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
-import {ApiConnectorService} from "../../services/api-connector";
 
 /**
  * Generated class for the WelcomePage page.
@@ -16,17 +15,11 @@ import {ApiConnectorService} from "../../services/api-connector";
 })
 export class WelcomePage {
 
-	constructor(public navCtrl: NavController, private apiConnector: ApiConnectorService) {
+	constructor(public navCtrl: NavController) {
 	}
 
 	ionViewDidLoad(){
 		console.log('ionViewDidLoad WelcomePage');
-		this.apiConnector.testConnection().subscribe(headers => {
-			console.log("headers");
-			for (let he in headers){
-				console.log(he, headers[he]);
-			}
-		})
 	}
 
 	login() {

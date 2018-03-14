@@ -19,7 +19,9 @@ import {HelpPage} from '../pages/help/help';
 import {ParamsPage} from '../pages/params/params';
 import {ProductPage} from '../pages/product/product';
 import {PicturePage} from '../pages/picture/picture';
-import {ContactPage} from '../pages/contact/contact'
+import {ContactPage} from '../pages/contact/contact';
+import {WelcomePage} from '../pages/welcome/welcome';
+import {MaintenancePage} from '../pages/maintenance/maintenance';
 
 import {ApiConnectorService} from '../services/api-connector';
 import {SessionInfos} from '../services/session-infos';
@@ -27,8 +29,7 @@ import {SharedBasket} from '../services/shared-basket';
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
-import { ProductList } from '../services/product-list'
-import { WelcomePage } from '../pages/welcome/welcome';
+import { ProductList } from '../services/product-list';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { WelcomePage } from '../pages/welcome/welcome';
 		ProductPage,
 		PicturePage,
 		ContactPage,
-		WelcomePage
+		WelcomePage,
+		MaintenancePage
 	],
 	imports: [
 		BrowserModule,
@@ -71,7 +73,8 @@ import { WelcomePage } from '../pages/welcome/welcome';
 		ProductPage,
 		PicturePage,
 		ContactPage,
-		WelcomePage
+		WelcomePage,
+		MaintenancePage
 	],
 	providers: [
 		StatusBar,

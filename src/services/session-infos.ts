@@ -14,7 +14,7 @@ export class SessionInfos {
 
     getCurrentUser(): Observable<User> {
     	if (this.currentUser === null){
-			this.currentUser = apiConnector.getUser(8);
+			this.currentUser = this.apiConnector.getUser(8);
 		}
 		return this.currentUser;
 	}
