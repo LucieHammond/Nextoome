@@ -10,16 +10,12 @@ import { ActivityHours } from '../../config';
 })
 export class HelpPage {
 	@ViewChild(Slides) slides: Slides;
-	ordersTimeEnd: Date;
-	withdrawalTimeStart: Date;
-	withdrawalTimeEnd: Date;
-	lateOrdersTimeEnd: Date;
+	ordersTimeEnd: Date = ActivityHours.ORDERS_END;
+	withdrawalTimeStart: Date = ActivityHours.WITHDRAWAL_START;
+	withdrawalTimeEnd: Date = ActivityHours.WITHDRAWAL_END;
+	lateOrdersTimeEnd: Date = ActivityHours.LATE_ORDERS_END;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams) {
-		this.ordersTimeEnd = ActivityHours.ORDERS_END;
-		this.withdrawalTimeStart = ActivityHours.WITHDRAWAL_START;
-		this.withdrawalTimeEnd = ActivityHours.WITHDRAWAL_END;
-		this.lateOrdersTimeEnd = ActivityHours.LATE_ORDERS_END;
 	}
 
 	ionViewDidLoad() {

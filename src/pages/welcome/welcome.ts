@@ -11,21 +11,30 @@ import {ApiConnectorService} from "../../services/api-connector";
 
 @IonicPage()
 @Component({
-  selector: 'page-welcome',
-  templateUrl: 'welcome.html',
+	selector: 'page-welcome',
+	templateUrl: 'welcome.html',
 })
 export class WelcomePage {
 
-  constructor(public navCtrl: NavController, private apiConnector: ApiConnectorService) {
-	apiConnector.testConnection().subscribe(headers => console.log("headers", headers))
-  }
+	constructor(public navCtrl: NavController, private apiConnector: ApiConnectorService) {
+	}
 
-  login() {
-    this.navCtrl.push('LoginPage');
-  }
+	ionViewDidLoad(){
+		console.log('ionViewDidLoad WelcomePage');
+		this.apiConnector.testConnection().subscribe(headers => {
+			console.log("headers");
+			for (let he in headers){
+				console.log(he, headers[he]);
+			}
+		})
+	}
 
-  signup() {
-    this.navCtrl.push('SignupPage');
-  }
+	login() {
+		this.navCtrl.push('LoginPage');
+	}
+
+	signup() {
+		this.navCtrl.push('SignupPage');
+	}
 
 }

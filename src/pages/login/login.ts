@@ -12,27 +12,27 @@ import {HomePage} from '../home/home';
 
 @IonicPage()
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html',
+	selector: 'page-login',
+	templateUrl: 'login.html',
 })
 export class LoginPage {
-  authForm: FormGroup;
+	authForm: FormGroup = null;
 
-  constructor(public nav: NavController, public navParams: NavParams, public formBuilder: FormBuilder) {
+	constructor(public nav: NavController, public navParams: NavParams, public formBuilder: FormBuilder) {
+		this.authForm = this.formBuilder.group({
+			username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*'), Validators.minLength(6), Validators.maxLength(30)])],
+			password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
+		});
+	}
 
-      this.nav = nav;
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad LoginPage');
+	}
 
-      this.authForm = formBuilder.group({
-          username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*'), Validators.minLength(6), Validators.maxLength(30)])],
-          password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
-      });
-  }
-
-  onSubmit(value: any): void {
-      if(this.authForm.valid) {
-          window.localStorage.setItem('user', "8");
-
-          this.nav.setRoot(HomePage);
-      }
-  }
+	onSubmit(value: any): void {
+	  if(this.authForm.valid) {
+		  window.localStorage.setItem('user', "8");
+		  this.nav.setRoot(HomePage);
+	  }
+	}
 }

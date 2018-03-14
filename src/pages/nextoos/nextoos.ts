@@ -10,17 +10,18 @@ import {ApiConnectorService} from "../../services/api-connector";
 })
 export class NextoosPage {
 	model;
-	keys: string[];
+	keys: string[] = [];
 
 	// Test for API service
 	constructor(public navCtrl: NavController, public navParams: NavParams, private apiConnector: ApiConnectorService) {
-		//this.model = this.apiConnector.getProduct(23);
-		//this.keys = Object.keys(this.model);
-		//console.log(this.apiConnector.getTestProducts())
 	}
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad NextoosPage');
+		this.apiConnector.getProduct(379).subscribe(product => {
+			this.model = product;
+			this.keys = Object.keys(this.model);
+		});
 	}
 
 }

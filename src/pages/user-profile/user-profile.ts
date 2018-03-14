@@ -17,13 +17,13 @@ export class UserProfilePage {
 	edit: boolean = false;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, private session: SessionInfos) {
-		session.getCurrentUser().subscribe(user => {
-			this.user = $.extend(true, {}, user);
-		});
 	}
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad UserProfilePage');
+		this.session.getCurrentUser().subscribe(user => {
+			this.user = $.extend(true, {}, user);
+		});
 	}
 
 	editProfile() {

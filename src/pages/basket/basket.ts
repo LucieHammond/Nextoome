@@ -11,58 +11,47 @@ import { ProductPage } from '../product/product';
 	selector: 'page-basket',
 	templateUrl: 'basket.html',
 })
-
-
-
 export class BasketPage {
 
-	  contenuPanier: Product[] ;
-		prixDuPanier: number;
+	contenuPanier: Product[] ;
+	prixDuPanier: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public sharedBasket: SharedBasket, private alertCtrl: AlertController) {
+	constructor(public navCtrl: NavController, public navParams: NavParams, public sharedBasket: SharedBasket, private alertCtrl: AlertController) {
+	}
 
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad BasketPage');
 		this.contenuPanier = this.sharedBasket.getBasket();
-		this.prixDuPanier = this.sharedBasket.getTotalPrice();
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad BasketPage');
-  }
-
-
+			this.prixDuPanier = this.sharedBasket.getTotalPrice();
+		}
 
 	SelectionProduit(event, produit){
-    this.navCtrl.push(ProductPage,{name: produit});
-   }
+		this.navCtrl.push(ProductPage,{name: produit});
+	}
 
-	 RetirerPanier(event, produit)
-	 {
-	   let alert = this.alertCtrl.create({
-	     title: 'Confirmation',
-	     message: 'Voulez-vous retirer ce produit du panier ?',
-	     buttons: [
-	       {
-	         text: 'Annuler',
-	         role: 'cancel',
-	         handler: () => {
+	RetirerPanier(event, produit)
+	{
+		let alert = this.alertCtrl.create({
+	 		title: 'Confirmation',
+	 		message: 'Voulez-vous retirer ce produit du panier ?',
+	 		buttons: [{
+				text: 'Annuler',
+				role: 'cancel',
+				handler: () => {}
+			},
+			{
+				text: 'Confirmer',
+				handler: () => {
+					this.sharedBasket.removeFromBasket(produit);
+					this.prixDuPanier = this.sharedBasket.getTotalPrice();
+				}
+			}]
+		});
+		alert.present();
+	}
 
-	         }
-	       },
-	       {
-	         text: 'Confirmer',
-	         handler: () => {
-	           this.sharedBasket.removeFromBasket(produit);
-						 this.prixDuPanier = this.sharedBasket.getTotalPrice();
-	         }
-	       }
-	     ]
-	   });
-	   alert.present();
-	 }
+	PasserCommande(){
 
-	 PasserCommande(){
-
-	 }
-
+	}
 
 }

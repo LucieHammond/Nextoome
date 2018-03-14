@@ -15,20 +15,18 @@ export class HomePage {
 
 	offres_du_jour: Product[];
 	searchTerm: string = '';
-	searchControl: FormControl;
+	searchControl: FormControl = new FormControl();
 	resultatsRecherche: any;
-	searching: any = false;
+	searching: boolean = false;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public rechercheData: ProductList) {
-		this.searching = false;
-		this.searchControl = new FormControl();
-		this.rechercheData.getProducts().subscribe(products => {
-			this.offres_du_jour = products;
-		});
 	}
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad HomePage');
+		this.rechercheData.getProducts().subscribe(products => {
+			this.offres_du_jour = products;
+		});
 	}
 
 	SelectionProduit(event, produit) {

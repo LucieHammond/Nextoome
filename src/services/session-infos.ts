@@ -3,16 +3,19 @@ import { User } from '../models/users';
 import {ApiConnectorService} from "./api-connector";
 import {Observable} from "rxjs";
 
+
 @Injectable()
 export class SessionInfos {
 
-	currentUser: Observable<User>;
+	currentUser: Observable<User> = null;
 
     constructor(private apiConnector: ApiConnectorService) {
-    	this.currentUser = apiConnector.getUser(8);
     }
 
     getCurrentUser(): Observable<User> {
+    	if (this.currentUser === null){
+			this.currentUser = apiConnector.getUser(8);
+		}
 		return this.currentUser;
 	}
 

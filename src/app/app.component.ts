@@ -25,10 +25,7 @@ export class MyApp {
 
 	rootPage: any;
 
-	pages: Array<Array<{title: string, component: any, icon: string}>>;
-
-	constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
-		this.pages = [
+	pages: Array<Array<{title: string, component: any, icon: string}>> = [
 			[{title: 'Home', component: HomePage, icon: "home"},
 				{title: 'Vente flash', component: FlashSalePage, icon: "flash"}],
 			[{title: 'Mon compte', component: UserProfilePage, icon: "person"},
@@ -41,6 +38,8 @@ export class MyApp {
 				{title: 'Paramètres', component: ParamsPage, icon: "settings"}],
 			[{title: 'Produit', component: ProductPage, icon: "home"}],
 		];
+
+	constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
 		this.initializeApp();
 	}
 
