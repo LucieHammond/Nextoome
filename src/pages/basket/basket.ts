@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { Product } from '../../models/products'
 import { SharedBasket } from '../../services/shared-basket'
 import { ProductPage } from '../product/product';
+import { LivraisonPage } from '../livraison/livraison';
 
 
 
@@ -50,8 +51,8 @@ export class BasketPage {
 		alert.present();
 	}
 
-	PasserCommande(){
-
+	PasserCommande(event){
+		this.navCtrl.push(LivraisonPage);
 	}
 
 }

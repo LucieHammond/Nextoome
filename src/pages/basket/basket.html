@@ -10,18 +10,15 @@
 <ion-content padding>
   <ion-list>
 		 <ion-item>
-			<ion-row *ngFor="let p of contenuPanier" >
+			<ion-row *ngFor="let p of contenuPanier" nowrap>
 				<ion-item-sliding #item>
-					<ion-item>
-						<ion-col>
+
+
 							<ion-item (click)="SelectionProduit($event,p)">
-								{{p.name}}
+								{{p.name}} :
+								{{p.quantite_panier}} x {{p.price}}€
 							</ion-item>
-							</ion-col>
-							<ion-col>
-					 			{{p.price}}€ x {{p.quantite_panier}}
-				 			</ion-col>
-						</ion-item>
+
 						<ion-item-options side="right">
 							<button ion-button (click)="RetirerPanier($event,p)" color="tomate">Supprimer
 								<ion-icon name="trash"></ion-icon>
@@ -35,7 +32,7 @@
 <ion-row align-items-center justify-content-center>
 <div><h2> Prix total :  {{prixDuPanier}} € </h2></div>
 </ion-row>
-<button ion-button icon-start full (click)="PasserCommande($event)" color="myrtille">
+<button ion-button icon-start  block full (click)="PasserCommande($event)" color="myrtille" >
 	<ion-icon name="checkmark"></ion-icon>
 		Commander
 	</button>

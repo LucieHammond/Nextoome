@@ -1,0 +1,40 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Livraison</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+		<ion-list radio-group>
+			<ion-list-header>
+				<b>Méthode de livraison</b>
+			</ion-list-header>
+			<ion-item>
+				<ion-label>Retrait en gare</ion-label>
+				<ion-radio checked="false" value="gare"></ion-radio>
+			</ion-item>
+			<ion-item>
+				<ion-label>Livraison à domicile</ion-label>
+				<ion-radio checked="false" value="domicile"></ion-radio>
+			</ion-item>
+		</ion-list>
+
+
+	<ion-list padding-top=20>
+			<ion-list-header><b>Informations complémentaires</b></ion-list-header>
+					<ion-item >
+			<ion-textarea placeholder="Commentaires pour la livraison" rows='5' [(ngModel)]="commentaires">
+			</ion-textarea>
+		</ion-item>
+	</ion-list>
+
+	<button ion-button icon-start  block full (click)="PasserCommande($event)" color="myrtille" >
+			Continuer et payer {{prixDuPanier}} €
+		</button>
+
+
+</ion-content>
