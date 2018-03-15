@@ -30,7 +30,7 @@ export class CategoriesPage {
 	}
 
 	ionViewDidLoad() {
-		console.log('ionViewDidLoad HomePage');
+		console.log('ionViewDidLoad CategoriesPage');
 		this.rechercheData.getProducts().subscribe(products => {
 			this.tousProduits = products;
 		});

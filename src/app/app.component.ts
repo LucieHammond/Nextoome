@@ -7,6 +7,7 @@ import {ApiConnectorService} from "../services/api-connector";
 import {HomePage} from '../pages/home/home';
 import {FlashSalePage} from '../pages/flash-sale/flash-sale';
 import {UserProfilePage} from '../pages/user-profile/user-profile';
+import {CategoriesPage} from '../pages/categories/categories'
 import {WishlistPage} from '../pages/wishlist/wishlist';
 import {BasketPage} from '../pages/basket/basket';
 import {OrdersPage} from '../pages/orders/orders';
@@ -33,6 +34,7 @@ export class MyApp {
 				{title: 'Vente flash', component: FlashSalePage, icon: "flash"}],
 			[{title: 'Mon compte', component: UserProfilePage, icon: "person"},
 				{title: "Mes listes d'envies", component: WishlistPage, icon: "star"},
+				{title: 'Tous les produits', component: CategoriesPage, icon: "nutrition"},
 				{title: 'Mon panier', component: BasketPage, icon: "cart"},
 				{title: 'Mes commandes', component: OrdersPage, icon: "clipboard"},
 				{title: 'Mes nextoos', component: NextoosPage, icon: "pricetags"}],

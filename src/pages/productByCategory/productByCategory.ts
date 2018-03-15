@@ -24,8 +24,9 @@ export class ProductByCategoryPage {
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad ProductByCategoriePage');
-		this.apiConnector.getProductsList({"category": this.categorie_vue.name}).subscribe(products => {
+		this.apiConnector.getProductsList({"category": this.categorie_vue.id}).subscribe(products => {
 			this.produitsCategorises = products;
+			console.log(this.produitsCategorises.length);
 		});
 	}
 

@@ -3,7 +3,7 @@
     <name>Nextoome</name>
     <description>Une application pour le commerce de proximité de Lagny-sur-Marne</description>
     <author>Lucie, Bastian and Romain</author>
-    <content original-src="index.html" src="http://138.195.241.56:8100" />
+    <content original-src="index.html" src="http://192.168.137.1:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -85,8 +85,8 @@
     <allow-navigation href="http://138.195.241.56:8101" />
     <allow-navigation href="http://192.168.232.2:8100" />
     <allow-navigation href="http://192.168.1.136:8101" />
-    <allow-navigation href="http://192.168.137.123:8100" />
-    <allow-navigation href="http://138.195.241.56:8100" />
+    <allow-navigation href="http://138.195.198.44:8100" />
+    <allow-navigation href="http://192.168.137.1:8100" />
     <engine name="browser" spec="~5.0.2" />
     <engine name="ios" spec="~4.5.0" />
     <plugin name="cordova-plugin-camera" spec="^3.0.0" />
@@ -98,6 +98,4 @@
     <plugin name="cordova-plugin-inappbrowser" spec="^2.0.2" />
     <plugin name="cordova-plugin-advanced-http" spec="^1.11.0" />
     <plugin name="cordova-sqlite-storage" spec="^2.2.1" />
-    <allow-navigation href="http://138.195.198.44:8100" />
-    <allow-navigation href="http://192.168.137.1:8100" />
 </widget>
