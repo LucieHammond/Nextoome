@@ -22,7 +22,6 @@ export class ProductPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductPage');
-    console.log(this.produit_vu.images[0].src);
   }
 
 
