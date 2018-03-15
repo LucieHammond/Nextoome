@@ -1,14 +1,12 @@
-<!-- Replace avatar, name and email with user data -->
-
 <ion-menu [content]="content">
 	<ion-header>
 		<ion-item class="menu-toolbar">
-		<ion-avatar item-left>
-			<img src='https://secure.gravatar.com/avatar/8eb1b522f60d11fa897de1dc6351b7e8?s=96&d=mm&r=g'>
+		<ion-avatar item-left *ngIf="user != null">
+			<img [src]='user.avatar_url'>
 		</ion-avatar>
-		<div class="subtitle">
-			<h3>John Doe</h3>
-			<span>john.doe@example.com</span>
+		<div class="subtitle" *ngIf="user != null">
+			<h3>{{user.first_name}} {{user.last_name}}</h3>
+			<span>{{user.email}}</span>
 		</div>
 		</ion-item>
 	</ion-header>
@@ -40,5 +38,4 @@
 
 </ion-menu>
 
-<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

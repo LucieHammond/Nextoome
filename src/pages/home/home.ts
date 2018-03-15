@@ -5,6 +5,7 @@ import {Product} from '../../models/products'
 import {ProductList} from '../../services/product-list'
 import 'rxjs/add/operator/debounceTime';
 import {FormControl} from '@angular/forms';
+import {MyApp} from "../../app/app.component";
 
 @IonicPage()
 @Component({

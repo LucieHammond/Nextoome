@@ -70,11 +70,17 @@ export class ApiConnectorService {
 			.catch(error => { console.log(error.error); throw error.error});*/
 	}
 
-	testConnection(): Observable<any> {
+	testConnection(): Observable<string> {
 		return Observable.fromPromise(this.http.get(this.apiUrl, {}, {})
 			.then(data => data.headers['content-type'])
 			.catch(error => { console.log(error.error); })
 		);
+	}
+
+	login(): Observable<any> {
+		let data = {username:"romain.bosq",password: "password"};
+		return Observable.fromPromise(
+			this._post(`https://lagny.nextoome.fr/wp-json/jwt-auth/v3/token`, data));
 	}
 
 	createCoupon(couponData): Observable<Coupon> {

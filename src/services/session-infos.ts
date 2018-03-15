@@ -14,7 +14,8 @@ export class SessionInfos {
 
     getCurrentUser(): Observable<User> {
     	if (this.currentUser === null){
-			this.currentUser = this.apiConnector.getUser(8);
+    		let userid = Number.parseInt(window.localStorage.getItem('user'));
+			this.currentUser = this.apiConnector.getUser(userid);
 		}
 		return this.currentUser;
 	}
@@ -28,5 +29,9 @@ export class SessionInfos {
 
     	this.currentUser = this.apiConnector.updateUser(id, userData);
 		return this.currentUser;
+	}
+
+	closeSession() {
+    	this.currentUser = null;
 	}
 }

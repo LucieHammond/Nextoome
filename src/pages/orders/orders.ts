@@ -10,25 +10,24 @@ import * as $ from 'jquery';
 
 @IonicPage()
 @Component({
-  selector: 'page-orders',
-  templateUrl: 'orders.html',
+	selector: 'page-orders',
+	templateUrl: 'orders.html',
 })
 export class OrdersPage {
 
-	toutesCommandes: Observable<Order[]>
-  user: User;
+	toutesCommandes: Observable<Order[]>;
+  	user: User;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private apiConnector: ApiConnectorService, private session: SessionInfos) {
-    this.session.getCurrentUser().subscribe(user => {
+	constructor(public navCtrl: NavController, public navParams: NavParams, private apiConnector: ApiConnectorService,
+				private session: SessionInfos) {
+	}
+
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad OrdersPage');
+		this.session.getCurrentUser().subscribe(user => {
 			this.user = $.extend(true, {}, user);
+			this.toutesCommandes = this.apiConnector.getUserOrders(this.user.id);
 		});
-    this.toutesCommandes = this.apiConnector.getUserOrders(this.user.id);
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad OrdersPage');
-  }
-
-
+	}
 
 }

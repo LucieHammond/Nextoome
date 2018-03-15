@@ -3,6 +3,7 @@ import {Nav, Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 import {ApiConnectorService} from "../services/api-connector";
+import { Events } from 'ionic-angular';
 
 import {HomePage} from '../pages/home/home';
 import {FlashSalePage} from '../pages/flash-sale/flash-sale';
@@ -18,6 +19,8 @@ import {ParamsPage} from '../pages/params/params';
 import {ProductPage} from '../pages/product/product';
 import {WelcomePage} from '../pages/welcome/welcome';
 import {MaintenancePage} from '../pages/maintenance/maintenance';
+import {SessionInfos} from "../services/session-infos";
+import {User} from "../models/users";
 
 
 @Component({
@@ -28,6 +31,7 @@ export class MyApp {
 
 	rootPage: any;
 	availability: boolean = true;
+	user: User = null;
 
 	pages: Array<Array<{title: string, component: any, icon: string}>> = [
 			[{title: 'Home', component: HomePage, icon: "home"},
@@ -47,7 +51,9 @@ export class MyApp {
 	constructor(public platform: Platform,
 				public statusBar: StatusBar,
 				public splashScreen: SplashScreen,
-				private apiConnector: ApiConnectorService)
+				public events: Events,
+				private apiConnector: ApiConnectorService,
+				private session: SessionInfos)
 	{
 		this.initializeApp();
 	}
@@ -66,15 +72,23 @@ export class MyApp {
 			let userid = window.localStorage.getItem('user');
 			if (!this.availability){
 				this.rootPage = MaintenancePage;
-			} else if (userid == 'null') {
+			} else if (userid == 'null' || userid === null) {
 				this.rootPage = WelcomePage;
 			} else {
+				this.updateUser();
 				this.rootPage = HomePage;
 			}
 
 			this.statusBar.styleDefault();
 			this.splashScreen.hide();
+
+			// Update user data when changed
+			this.events.subscribe('user:defined', () => { this.updateUser(); });
 		});
+	}
+
+	updateUser() {
+		this.session.getCurrentUser().subscribe(user => { this.user = user; });
 	}
 
 	openPage(page) {
@@ -84,6 +98,7 @@ export class MyApp {
 	}
 
 	deconnect() {
+		this.session.closeSession();
 		window.localStorage.setItem('user', null);
 		this.nav.setRoot(WelcomePage);
 	}

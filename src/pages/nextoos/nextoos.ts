@@ -54,9 +54,9 @@ export class NextoosPage {
 			}
 		};
 
-		/*this.apiConnector.createUser(userdata).subscribe(data => {
+		this.apiConnector.deleteUser(18).subscribe(data => {
 			console.log('data', data);
-		});*/
+		});
 	}
 
 }

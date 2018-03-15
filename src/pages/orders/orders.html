@@ -10,15 +10,15 @@
 <ion-content padding>
 	<h3>Récapitulatif des commandes</h3>
 
-	  <ion-list>
-				<ion-row *ngFor="let p of toutesCommandes" align-items-center justify-content-start>
-					<ion-col col-stretch>
-							{{p.date_paid}}
-					</ion-col>
-					<ion-col col-3>
-						 {{p.total}}
-						 </ion-col>
-				</ion-row>
+	<ion-list>
+		<ion-row *ngFor="let p of toutesCommandes" align-items-center justify-content-start>
+			<ion-col col-stretch>
+					{{p.date_paid}}
+			</ion-col>
+			<ion-col col-3>
+				 {{p.total}}
+			</ion-col>
+		</ion-row>
 	</ion-list>
 
 </ion-content>

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ToastController, LoadingController} from 'ionic-angular';
 import {ApiConnectorService} from "../../services/api-connector";
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Cities } from '../../config';
 import * as $ from 'jquery';
 import {HomePage} from '../home/home';
+import { Events } from 'ionic-angular';
 
 
 @IonicPage()
@@ -21,7 +22,8 @@ export class Signup2Page {
 	cities: {name: string, code: string, id: string}[] = Cities;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController,
-				public formBuilder: FormBuilder, private apiConnector: ApiConnectorService)
+				public formBuilder: FormBuilder, private apiConnector: ApiConnectorService, public events: Events,
+				public loadingCtrl: LoadingController)
 	{
 		this.account = $.extend(this.account, navParams.get('account'));
 		this.authForm = this.formBuilder.group({
@@ -74,8 +76,9 @@ export class Signup2Page {
 
 		this.apiConnector.createUser(userData).subscribe((user) => {
 
-			console.log(JSON.stringify(user));
-			this.navCtrl.setRoot(HomePage, {'user': user});
+			window.localStorage.setItem('user', user.id.toString());
+			this.events.publish('user:defined', user);
+			this.navCtrl.setRoot(HomePage);
 
 		}, (error) => {
 
@@ -88,6 +91,17 @@ export class Signup2Page {
 				position: 'top'
 			});
 			toast.present();
+		});
+	}
+
+	launchConnection() {
+		let loading = this.loadingCtrl.create({
+			spinner: 'bubbles'
+		});
+
+		loading.present().then(() => {
+			this.signUp();
+			loading.dismiss();
 		});
 	}
 
