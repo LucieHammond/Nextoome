@@ -1,66 +1,33 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>INSCRIPTION</ion-title>
+    <ion-title>INSCRIPTION (1)</ion-title>
   </ion-navbar>
 
 </ion-header>
 
+<ion-content padding>
+	<form [formGroup]="authForm" (ngSubmit)="next(authForm.value)">
+		<ion-item [ngClass]="{'error':!authForm.controls.first_name.valid && authForm.controls.first_name.touched}">
+			<ion-label floating>Prénom*</ion-label>
+			<ion-input formControlName="first_name" type="text"></ion-input>
+		</ion-item>
 
-<ion-content>
-  <form (submit)="doSignup()">
-    <ion-list>
+		<ion-item [ngClass]="{'error':!authForm.controls.last_name.valid && authForm.controls.last_name.touched}">
+			<ion-label floating>Nom*</ion-label>
+			<ion-input formControlName="last_name" type="text"></ion-input>
+		</ion-item>
 
-      <ion-item>
-        <ion-label fixed>Prénom</ion-label>
-        <ion-input type="text" [(ngModel)]="account.prenom" name="prenom"></ion-input>
-      </ion-item>
+		<ion-item [ngClass]="{'error':!authForm.controls.email.valid && authForm.controls.email.touched}">
+			<ion-label floating>E-mail*</ion-label>
+			<ion-input formControlName="email" type="email"></ion-input>
+		</ion-item>
 
-      <ion-item>
-        <ion-label fixed>Nom</ion-label>
-        <ion-input type="text" [(ngModel)]="account.nom" name="nom"></ion-input>
-      </ion-item>
+		<ion-item [ngClass]="{'error':!authForm.controls.phone.valid && authForm.controls.phone.touched}">
+			<ion-label floating>Téléphone</ion-label>
+			<ion-input formControlName="phone" type="number"></ion-input>
+		</ion-item>
 
-      <ion-item>
-        <ion-label fixed>Email</ion-label>
-        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label fixed>Téléphone</ion-label>
-        <ion-input type="text" [(ngModel)]="account.tel" name="tel"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label fixed>Adresse</ion-label>
-        <ion-input type="text" [(ngModel)]="account.Adresse" name="adresse"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label fixed>Code Postal</ion-label>
-        <ion-input type="text" [(ngModel)]="account.cp" name="cp"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label fixed>Mot de passe</ion-label>
-        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
-      </ion-item>
-
-      <li class="item item-checkbox">
-        <span  class="checkbox">
-          <input type="checkbox">
-        </span>
-        J'accepte
-        <a href="https://www.google.fr" stop-event ng-click="update()">les conditions d'utilisation de Nextoome</a>
-      </li>
-
-
-
-
-      <div padding>
-        <button ion-button [disabled]="!isenabled" color="primary" block>S'inscrire</button>
-      </div>
-
-    </ion-list>
-  </form>
+		<button ion-button class="button" [disabled]="!authForm.valid" type="submit">Suite >></button>
+	</form>
 </ion-content>

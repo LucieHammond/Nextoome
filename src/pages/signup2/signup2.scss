@@ -1,4 +1,4 @@
-page-signup
+page-signup2
 {
 	.error {
 		ion-label{
@@ -10,6 +10,12 @@ page-signup
 		background: color($colors, tomate) !important;
 		width: 80%;
 		margin-left: 10%;
-		margin-top: 20px;
+		margin-top: 25px;
+	}
+	.conditions {
+		padding-top: 15px;
+	}
+	.link {
+		margin-left: 17%;
 	}
 }

@@ -1,51 +1,29 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
-import { IonicPage, NavController, ToastController } from 'ionic-angular';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {IonicPage, NavController, ToastController} from 'ionic-angular';
 
-//import { UserProvider } from '../../providers/providers';
-
-/**
- * Generated class for the SignupPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
-  selector: 'page-signup',
-  templateUrl: 'signup.html',
+	selector: 'page-signup',
+	templateUrl: 'signup.html',
 })
-
 export class SignupPage {
-  // The account fields for the login form.
-  // If you're using the username field with or without email, make
-  // sure to add it to the type
-  account: { prenom: string, nom: string, email: string, tel: string, adresse: string, cp: string, password: string }=
-  { prenom:"",nom:"",email:"",tel:"+33",adresse:"",cp:"",password:""};
 
-  isenabled:boolean=false;
-  // Our translated text strings
-  private signupErrorString: string;
+	authForm: FormGroup;
 
-  constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
-  }
+	constructor(public navCtrl: NavController, public toastCtrl: ToastController, public formBuilder: FormBuilder)
+	{
 
-  doSignup() {
-    // Attempt to login in through our User service
-    /*this.user.signup(this.account).subscribe((resp) => {
-      //this.navCtrl.push(MainPage);
-    }, (err) => {
+		this.authForm = this.formBuilder.group({
+			first_name: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Záàâäçéèêëíìîïóòôöúùûü\\-]+'), Validators.maxLength(30)])],
+			last_name: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Záàâäçéèêëíìîïóòôöúùûü\\-\\s]+'), Validators.maxLength(150)])],
+			email: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z0-9._\\-]+@([a-zA-Z0-9_\\-]+\\.)+[a-z]{2,5}')])],
+			phone: ['', Validators.pattern('(([0-9]{2} ?){5}|\\+33[0-9]{9})?')]
+		});
+  	}
 
-      //this.navCtrl.push(MainPage);
-
-      // Unable to sign up
-      let toast = this.toastCtrl.create({
-        message: this.signupErrorString,
-        duration: 3000,
-        position: 'top'
-      });
-      toast.present();
-    });*/
-  }
+  	next(){
+		this.navCtrl.push('Signup2Page', {'account': this.authForm.value});
+	}
 }

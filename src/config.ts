@@ -5,3 +5,7 @@ export const ActivityHours = {
 	WITHDRAWAL_END: new Date(0,0,2,0,0),
 	LATE_ORDERS_END: new Date(0,0,1,19,0)
 };
+
+export const Cities = [
+	{ name: "Lagny-sur-Marne", code: "77400", id: "lagny"}
+];
