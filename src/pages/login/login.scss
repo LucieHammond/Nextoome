@@ -2,4 +2,9 @@ page-login {
 	ion-content{
 		background-color: #fafafa !important;
 	}
+	.error {
+		ion-label{
+			color: color($colors, tomate);
+		}
+	}
 }

@@ -8,8 +8,8 @@
 
 
 <ion-content padding>
-  <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">
-      <ion-item [ngClass]="{'error-border':!authForm.controls.username.valid && authForm.controls.username.touched}">
+  <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+      <ion-item [ngClass]="{'error':!authForm.controls.username.valid && authForm.controls.username.touched}">
           <ion-label floating>Nom d'utilisateur</ion-label>
           <ion-input formControlName="username" type="text"></ion-input>
       </ion-item>
@@ -27,7 +27,7 @@
           <p>Nom d'utilisateur trop long</p>
       </ion-item>
 
-      <ion-item [ngClass]="{'error-border':!authForm.controls.password.valid && authForm.controls.password.touched}">
+      <ion-item [ngClass]="{'error':!authForm.controls.password.valid && authForm.controls.password.touched}">
           <ion-label floating>Mot de passe</ion-label>
           <ion-input formControlName="password" type="password"></ion-input>
       </ion-item>

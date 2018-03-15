@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
-//import { UserProvider } from '../../providers/providers';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {HomePage} from '../home/home';
 /**
  * Generated class for the LoginPage page.
@@ -16,11 +15,11 @@ import {HomePage} from '../home/home';
 	templateUrl: 'login.html',
 })
 export class LoginPage {
-	authForm: FormGroup = null;
+	authForm: FormGroup;
 
 	constructor(public nav: NavController, public navParams: NavParams, public formBuilder: FormBuilder) {
 		this.authForm = this.formBuilder.group({
-			username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z]*'), Validators.minLength(6), Validators.maxLength(30)])],
+			username: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Z0-9_.]*'), Validators.minLength(6), Validators.maxLength(30)])],
 			password: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
 		});
 	}
@@ -29,7 +28,7 @@ export class LoginPage {
 		console.log('ionViewDidLoad LoginPage');
 	}
 
-	onSubmit(value: any): void {
+	onSubmit(): void {
 	  if(this.authForm.valid) {
 		  window.localStorage.setItem('user', "8");
 		  this.nav.setRoot(HomePage);

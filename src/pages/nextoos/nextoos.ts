@@ -22,6 +22,41 @@ export class NextoosPage {
 			this.model = product;
 			this.keys = Object.keys(this.model);
 		});
+		let userdata = {
+			email: 'john.doe@example.com',
+			first_name: 'Romain',
+			last_name: 'Bosq',
+			username: 'romain.bosq',
+			password: 'password',
+			billing: {
+				first_name: 'Romain',
+				last_name: 'bosq',
+				company: '',
+				address_1: '969 Market',
+				address_2: '',
+				city: 'San Francisco',
+				state: 'CA',
+				postcode: '94103',
+				country: 'US',
+				email: 'romain.bosq@example.com',
+				phone: '(555) 555-5555'
+			},
+			shipping: {
+				first_name: 'Romain',
+				last_name: 'Bosq',
+				company: '',
+				address_1: '969 Market',
+				address_2: '',
+				city: 'San Francisco',
+				state: 'CA',
+				postcode: '94103',
+				country: 'US'
+			}
+		};
+
+		/*this.apiConnector.createUser(userdata).subscribe(data => {
+			console.log('data', data);
+		});*/
 	}
 
 }
