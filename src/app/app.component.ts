@@ -18,6 +18,7 @@ import {ParamsPage} from '../pages/params/params';
 import {ProductPage} from '../pages/product/product';
 import {WelcomePage} from '../pages/welcome/welcome';
 import {MaintenancePage} from '../pages/maintenance/maintenance';
+import {LivraisonPage} from '../pages/livraison/livraison'
 
 
 @Component({
