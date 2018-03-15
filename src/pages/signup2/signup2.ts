@@ -18,8 +18,6 @@ export class Signup2Page {
 		city: {name: string, code: string, id: string}} =
 		{first_name: "", last_name:"", email:"", phone:"", username: "", password: "", city: {name: '', code: '', id: ''}};
 	authForm: FormGroup;
-	// Our translated text strings
-	private signupErrorString: string = "Une erreur est survenue.";
 	cities: {name: string, code: string, id: string}[] = Cities;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController,
@@ -75,18 +73,22 @@ export class Signup2Page {
 		};
 
 		this.apiConnector.createUser(userData).subscribe((user) => {
+
+			console.log(JSON.stringify(user));
 			this.navCtrl.setRoot(HomePage, {'user': user});
-		}, (err) => {
+
+		}, (error) => {
+
+			let message = JSON.parse(error).message;
 
 			// Unable to sign up
 			let toast = this.toastCtrl.create({
-				message: this.signupErrorString,
+				message: $('<div>').html(message).text(),
 				duration: 3000,
 				position: 'top'
 			});
 			toast.present();
 		});
-
 	}
 
 }
