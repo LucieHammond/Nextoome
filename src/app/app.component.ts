@@ -37,7 +37,7 @@ export class MyApp {
 				{title: 'Vente flash', component: FlashSalePage, icon: "flash"}],
 			[{title: 'Mon compte', component: UserProfilePage, icon: "person"},
 				{title: "Mes listes d'envies", component: WishlistPage, icon: "star"},
-				{title: 'Tous les produits', component: CategoriesPage, icon: "cart"},
+				{title: 'Tous les produits', component: CategoriesPage, icon: "nutrition"},
 				{title: 'Mon panier', component: BasketPage, icon: "cart"},
 				{title: 'Mes commandes', component: OrdersPage, icon: "clipboard"},
 				{title: 'Mes nextoos', component: NextoosPage, icon: "pricetags"}],
