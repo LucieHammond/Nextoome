@@ -6,7 +6,6 @@ import {User} from '../../models/users'
 import {Observable} from "rxjs";
 import {Order} from '../../models/orders';
 import {SessionInfos} from '../../services/session-infos';
-import * as $ from 'jquery';
 
 @IonicPage()
 @Component({
@@ -25,8 +24,10 @@ export class OrdersPage {
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad OrdersPage');
 		this.session.getCurrentUser().subscribe(user => {
-			this.user = $.extend(true, {}, user);
-			this.toutesCommandes = this.apiConnector.getUserOrders(this.user.id);
+			this.user = user;
+			/*this.apiConnector.getUserOrders(this.user.id).subscribe(commandes => {
+				this.toutesCommandes = commandes;
+			});*/
 		});
 	}
 
