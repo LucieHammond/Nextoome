@@ -22,6 +22,8 @@ import {PicturePage} from '../pages/picture/picture';
 import {ContactPage} from '../pages/contact/contact';
 import {WelcomePage} from '../pages/welcome/welcome';
 import {MaintenancePage} from '../pages/maintenance/maintenance';
+import {CategoriesPage} from '../pages/categories/categories'
+import {ProductByCategoryPage} from '../pages/productByCategory/productByCategory'
 
 import {ApiConnectorService} from '../services/api-connector';
 import {SessionInfos} from '../services/session-infos';
@@ -49,7 +51,9 @@ import { ProductList } from '../services/product-list';
 		PicturePage,
 		ContactPage,
 		WelcomePage,
-		MaintenancePage
+		MaintenancePage,
+		CategoriesPage,
+		ProductByCategoryPage
 	],
 	imports: [
 		BrowserModule,
@@ -74,7 +78,9 @@ import { ProductList } from '../services/product-list';
 		PicturePage,
 		ContactPage,
 		WelcomePage,
-		MaintenancePage
+		MaintenancePage,
+		CategoriesPage,
+		ProductByCategoryPage
 	],
 	providers: [
 		StatusBar,
