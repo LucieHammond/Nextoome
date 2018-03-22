@@ -5,6 +5,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {HttpModule} from '@angular/http';
 import {HTTP} from '@ionic-native/http';
 import {InAppBrowser} from '@ionic-native/in-app-browser';
+import {PayPal} from '@ionic-native/paypal';
 
 import {MyApp} from './app.component';
 import {HomePage} from '../pages/home/home';
@@ -94,7 +95,8 @@ import { ProductList } from '../services/product-list';
 		SessionInfos,
 		ProductList,
 		InAppBrowser,
-		HTTP
+		HTTP,
+		PayPal
 	]
 })
 export class AppModule {
