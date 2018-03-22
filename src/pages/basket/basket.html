@@ -7,16 +7,21 @@
 	</ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
   <ion-list>
-		 <ion-item>
-			<ion-row *ngFor="let p of contenuPanier" nowrap>
+		 <ion-item  *ngFor="let p of contenuPanier">
 				<ion-item-sliding #item>
-
-
 							<ion-item (click)="SelectionProduit($event,p)">
+								<ion-avatar item-start>
+									<img [src] ="this.p.images[0].src">
+								</ion-avatar>
+								<h2>
 								{{p.name}} :
+							</h2>
+							<h4 text-right>
 								{{p.quantite_panier}} x {{p.price}}€
+							</h4>
+
 							</ion-item>
 
 						<ion-item-options side="right">
@@ -25,14 +30,13 @@
 							</button>
 								</ion-item-options>
 						</ion-item-sliding>
-			 	</ion-row>
 			</ion-item>
 		</ion-list>
 
 <ion-row align-items-center justify-content-center>
-<div><h2> Prix total :  {{prixDuPanier}} € </h2></div>
+<div><h2> Prix total :  {{prixPanierAffiche}} € </h2></div>
 </ion-row>
-<button ion-button icon-start  block full (click)="PasserCommande($event)" color="myrtille" >
+<button ion-button class="boutonCommande" icon-start  block full (click)="PasserCommande($event)" >
 	<ion-icon name="checkmark"></ion-icon>
 		Commander
 	</button>
