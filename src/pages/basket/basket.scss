@@ -1,7 +1,13 @@
 page-basket {
 	ion-content{
-		button{
+		.button{
 		font-family: "Arciform" !important;
+		}
+		.boutonCommande{
+			background: color($colors, prune) !important;
+			width: 90%;
+			margin-left: 5%;
+			margin-top: 25px;
 		}
 		ion-item{
 			font-size: small !important;

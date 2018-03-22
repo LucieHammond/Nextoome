@@ -16,6 +16,7 @@ export class LivraisonPage {
 	contenuPanier: Product[] ;
 	prixDuPanier: number;
 	commentaires: string;
+	prixPanierAffiche: string;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public sharedbasket: SharedBasket) {
 	}
@@ -24,6 +25,8 @@ export class LivraisonPage {
 		console.log('ionViewDidLoad livraisonPage');
 		this.contenuPanier = this.sharedbasket.getBasket();
 			this.prixDuPanier = this.sharedbasket.getTotalPrice();
+			this.prixPanierAffiche = this.prixDuPanier.toFixed(2);
+
 		}
 
 		PasserCommande(event){
