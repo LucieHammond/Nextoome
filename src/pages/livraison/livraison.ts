@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams} from 'ionic-angular';
 import { Product } from '../../models/products'
 import { SharedBasket } from '../../services/shared-basket'
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
+import {ApiConnectorService} from "../../services/api-connector";
 
 
 @IonicPage()
@@ -17,9 +18,10 @@ export class LivraisonPage {
 	commentaires: string;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public sharedbasket: SharedBasket,
-				private payPal: PayPal) {
+				private payPal: PayPal, private apiConnector: ApiConnectorService) {
 	}
 
+	// TODO: check validity of the order
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad livraisonPage');
 		this.contenuPanier = this.sharedbasket.getBasket();
@@ -27,18 +29,20 @@ export class LivraisonPage {
 		}
 
 		PasserCommande(event){
+			console.log('coucou');
 			this.payPal.init({
-				PayPalEnvironmentProduction: 'YOUR_PRODUCTION_CLIENT_ID',
-				PayPalEnvironmentSandbox: 'YOUR_SANDBOX_CLIENT_ID'
+				PayPalEnvironmentProduction: 'stephane@nextoome.fr',
+				PayPalEnvironmentSandbox: 'AfkBTBO0h70ZfZX7Ou2YftIra7Rbvl7F18MT2gSaT7yTZfrXyjxBkH-OTxUeUeEumMlkDqsIzoFvEIL4'
 			}).then(() => {
+
 				// Environments: PayPalEnvironmentNoNetwork, PayPalEnvironmentSandbox, PayPalEnvironmentProduction
-				this.payPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({
-					// Only needed if you get an "Internal Service Error" after PayPal login!
-					//payPalShippingAddressOption: 2 // PayPalShippingAddressOptionPayPal
-				})).then(() => {
+				this.payPal.prepareToRender('PayPalEnvironmentSandbox', new PayPalConfiguration({})
+				).then(() => {
+
 					let price = this.sharedbasket.getTotalPrice().toString();
 					let payment = new PayPalPayment(price, 'EUR', 'Description', 'sale');
 					this.payPal.renderSinglePaymentUI(payment).then(() => {
+
 						// Successfully paid
 						this.navCtrl.push("ConfirmationPage");
 

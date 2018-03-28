@@ -6,12 +6,14 @@ import { Coupon } from '../models/coupons';
 import { User } from '../models/users';
 import { Order, OrderNote, OrderRefund } from '../models/orders';
 import { Product, ProductAttribute, ProductAttributeTerm, ProductCategory, ProductShippingClass, ProductTag } from '../models/products';
+import { Storekeeper } from '../models/storekeeper';
 
 
 @Injectable()
 export class ApiConnectorService {
 	// TODO: personnaliser le nom de la ville
 	apiUrl: string = 'https://lagny.nextoome.fr/wp-json/wc/v2';
+	adminUrl: string = 'https://lagny.nextoome.fr/wp-json/wp/v2';
 	username: string = 'ck_9c116cc353369069c9fdcaf3eedac6564721dba9';
 	password: string = 'cs_5c445837f5381f4b8eacfae69408582c10b58efe';
 	auth = {consumer_key: this.username, consumer_secret: this.password};
@@ -80,7 +82,7 @@ export class ApiConnectorService {
 	login(): Observable<any> {
 		let data = {username:"romain.bosq",password: "password"};
 		return Observable.fromPromise(
-			this._post(`https://lagny.nextoome.fr/wp-json/jwt-auth/v3/token`, data));
+			this._post(`https://lagny.nextoome.fr/wp-json/jwt-auth/v1/token`, data));
 	}
 
 	createCoupon(couponData): Observable<Coupon> {
@@ -106,6 +108,16 @@ export class ApiConnectorService {
 	deleteCoupon(id, force=false): Observable<Coupon> {
 		return Observable.fromPromise(
 			this._delete(`${this.apiUrl}/coupons/${id}`,{force: force}));
+	}
+
+	getStoresList(params={}): Observable<Storekeeper[]> {
+		return Observable.fromPromise(
+			this._get(`${this.adminUrl}/users`, params));
+	}
+
+	getStore(id): Observable<Storekeeper> {
+		return Observable.fromPromise(
+			this._get(`${this.adminUrl}/users/${id}`, {}));
 	}
 
 	createUser(userData): Observable<User> {
