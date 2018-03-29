@@ -21,6 +21,7 @@ import {WelcomePage} from '../pages/welcome/welcome';
 import {MaintenancePage} from '../pages/maintenance/maintenance';
 import {SessionInfos} from "../services/session-infos";
 import {User} from "../models/users";
+import {LivraisonPage} from "../pages/livraison/livraison";
 
 
 @Component({
@@ -76,7 +77,7 @@ export class MyApp {
 				this.rootPage = WelcomePage;
 			} else {
 				this.updateUser();
-				this.rootPage = HomePage;
+				this.rootPage = LivraisonPage;
 			}
 
 			this.statusBar.styleDefault();

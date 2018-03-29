@@ -15,7 +15,7 @@ import { LivraisonPage } from '../livraison/livraison';
 export class BasketPage {
 
 	contenuPanier: Product[] ;
-	prixDuPanier: number;
+	prixDuPanier: string;
 	emptyBasket: boolean = true;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public sharedBasket: SharedBasket, private alertCtrl: AlertController) {

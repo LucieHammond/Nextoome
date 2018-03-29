@@ -91,12 +91,12 @@
 		<ion-list>
 			<ion-item class="item-address-data">
 				<ion-label fixed><i>Prénom :</i></ion-label>
-				<div *ngIf="!edit" item-content>{{user.shipping.first_name}}</div>
+				<div *ngIf="!edit" item-content>{{user.billing.first_name}}</div>
 				<ion-input *ngIf="edit" placeholder="prénom" [(ngModel)]="user.billing.first_name"></ion-input>
 			</ion-item>
 			<ion-item class="item-address-data">
 				<ion-label fixed><i>Nom :</i></ion-label>
-				<div *ngIf="!edit" item-content>{{user.shipping.last_name}}</div>
+				<div *ngIf="!edit" item-content>{{user.billing.last_name}}</div>
 				<ion-input *ngIf="edit" placeholder="nom" [(ngModel)]="user.billing.last_name"></ion-input>
 			</ion-item>
 			<ion-item class="item-address-data">

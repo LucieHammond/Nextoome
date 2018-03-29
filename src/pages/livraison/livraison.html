@@ -9,24 +9,78 @@
 
 <ion-content padding>
 
-		<ion-list radio-group [(ngModel)]="deliveryMode">
-			<ion-list-header>
-				<b>Méthode de livraison</b>
-			</ion-list-header>
-			<ion-item>
-				<ion-label>Retrait en gare</ion-label>
-				<ion-radio checked="false" value="gare"></ion-radio>
-			</ion-item>
-			<ion-item>
-				<ion-label>Livraison à domicile</ion-label>
-				<ion-radio checked="false" value="domicile"></ion-radio>
-			</ion-item>
-		</ion-list>
+	<ion-list radio-group [(ngModel)]="deliveryMode">
+		<ion-list-header>
+			<b>Méthode de livraison</b>
+		</ion-list-header>
+		<ion-item>
+			<ion-label>Retrait en gare</ion-label>
+			<ion-radio checked="false" value="gare"></ion-radio>
+		</ion-item>
+		<ion-item>
+			<ion-label>Livraison à domicile</ion-label>
+			<ion-radio checked="false" value="domicile"></ion-radio>
+		</ion-item>
+	</ion-list>
 
+	<ion-list class="address" *ngIf="user" no-lines>
+		<ion-list-header><b>Adresse de facturation</b></ion-list-header>
+
+		<ion-item>
+			{{user.billing.first_name}} {{user.shipping.last_name | uppercase }}<br/>
+		</ion-item>
+		<ion-item *ngIf="user.company">
+			{{user.billing.company}}
+		</ion-item>
+		<ion-item *ngIf="user.billing.address_1">
+			{{user.billing.address_1}}
+		</ion-item>
+		<ion-item  *ngIf="user.billing.address_1 && user.billing.postcode && user.billing.city">
+			{{user.billing.postcode}} {{user.billing.city}}
+		</ion-item>
+		<ion-item *ngIf="!user.billing.address_1">
+			Aucune adresse communiquée
+		</ion-item>
+		<ion-item  *ngIf="user.billing.address_1 && (!user.billing.postcode || !user.billing.city)">
+			Adresse incomplète (ville et/ou code postal manquants)
+		</ion-item>
+		<ion-item *ngIf="user.billing.phone">
+			Tel: {{user.billing.phone}} <br/>
+		</ion-item>
+		<ion-item>
+			<button ion-button clear color="carotte" item-right (click)="changeAddress()">Modifier</button>
+		</ion-item>
+	</ion-list>
+
+	<ion-list class="address" *ngIf="deliveryMode == 'domicile' && user" no-lines>
+		<ion-list-header><b>Adresse de livraison</b></ion-list-header>
+
+		<ion-item>
+			{{user.shipping.first_name}} {{user.shipping.last_name | uppercase }}<br/>
+		</ion-item>
+		<ion-item *ngIf="user.company">
+			{{user.shipping.company}}
+		</ion-item>
+		<ion-item *ngIf="user.shipping.address_1">
+			{{user.shipping.address_1}}
+		</ion-item>
+		<ion-item  *ngIf="user.shipping.address_1 && user.shipping.postcode && user.shipping.city">
+			{{user.shipping.postcode}} {{user.shipping.city}}
+		</ion-item>
+		<ion-item *ngIf="!user.shipping.address_1">
+			Aucune adresse communiquée
+		</ion-item>
+		<ion-item  *ngIf="user.shipping.address_1 && (!user.shipping.postcode || !user.shipping.city)">
+			Adresse incomplète (ville et/ou code postal manquants)
+		</ion-item>
+		<ion-item>
+			<button ion-button clear color="carotte" item-right (click)="changeAddress()">Modifier</button>
+		</ion-item>
+	</ion-list>
 
 	<ion-list padding-top=20>
-			<ion-list-header><b>Informations complémentaires</b></ion-list-header>
-					<ion-item >
+		<ion-list-header><b>Informations complémentaires</b></ion-list-header>
+		<ion-item >
 			<ion-textarea placeholder="Commentaires pour la livraison" rows='5' [(ngModel)]="commentaires">
 			</ion-textarea>
 		</ion-item>
