@@ -9,6 +9,7 @@ import {Observable} from "rxjs";
 export class ProductList {
 
 	tousProduits: Observable<Product[]> = null;
+	produitsDisponibles: Product[];
 	lastRefresh: Date = null;
 	refreshStep = 1000 * 60 * 15; // 15 minutes
 
@@ -22,6 +23,15 @@ export class ProductList {
 		}
 		return this.tousProduits;
 	}
+
+	getAvailableProducts(){
+	this.getProducts().subscribe(produits =>{
+		this.produitsDisponibles = produits.filter((produit) => {
+			return produit.in_stock;
+		});
+	});
+	return this.produitsDisponibles;
+}
 
 	// Méthode de cache un peu sale.
 	// TODO: implémenter un vrai cache global
