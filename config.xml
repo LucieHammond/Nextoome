@@ -3,7 +3,7 @@
     <name>Nextoome</name>
     <description>Une application pour le commerce de proximité de Lagny-sur-Marne</description>
     <author>Lucie, Bastian and Romain</author>
-    <content original-src="index.html" src="http://192.168.137.240:8100" />
+    <content original-src="index.html" src="http://192.168.137.1:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

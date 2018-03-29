@@ -13,7 +13,7 @@ export class SharedBasket {
 
     addToBasket(produitSelectionne,quantite) {
 		if(produitSelectionne.quantite_panier>0)
-		  	{produitSelectionne.quantite_panier = produitSelectionne.quantite_panier + Number.parseInt(quantite)}
+		  	{produitSelectionne.quantite_panier = produitSelectionne.quantite_panier*1 + 1*Number.parseInt(quantite)}
 		else{
 		  	this.contenuPanier.push(produitSelectionne)
 		  	produitSelectionne.quantite_panier = quantite}

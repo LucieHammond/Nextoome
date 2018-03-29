@@ -23,7 +23,7 @@
 
 	<h3>Offres du jour</h3>
 	<ion-list>
-		<button ion-item *ngFor="let p of offres_du_jour" (click)="SelectionProduit($event,p)">
+		<button ion-item *ngFor="let p of produitsAccueil" (click)="SelectionProduit($event,p)">
 			<ion-avatar item-start>
 				<img [src] ="this.p.images[0].src">
 			</ion-avatar>

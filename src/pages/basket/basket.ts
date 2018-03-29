@@ -27,6 +27,7 @@ export class BasketPage {
 			this.prixDuPanier = this.sharedBasket.getTotalPrice();
 			this.prixPanierAffiche = this.prixDuPanier.toFixed(2);
 			console.log(this.prixPanierAffiche);
+			console.log(this.contenuPanier);
 		}
 
 	SelectionProduit(event, produit){
