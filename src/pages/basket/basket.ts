@@ -16,6 +16,7 @@ export class BasketPage {
 
 	contenuPanier: Product[] ;
 	prixDuPanier: number;
+	emptyBasket: boolean = true;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public sharedBasket: SharedBasket, private alertCtrl: AlertController) {
 	}
@@ -23,8 +24,9 @@ export class BasketPage {
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad BasketPage');
 		this.contenuPanier = this.sharedBasket.getBasket();
-			this.prixDuPanier = this.sharedBasket.getTotalPrice();
-		}
+		this.prixDuPanier = this.sharedBasket.getTotalPrice();
+		this.emptyBasket = this.sharedBasket.isEmpty();
+	}
 
 	SelectionProduit(event, produit){
 		this.navCtrl.push(ProductPage,{name: produit});
@@ -45,6 +47,7 @@ export class BasketPage {
 				handler: () => {
 					this.sharedBasket.removeFromBasket(produit);
 					this.prixDuPanier = this.sharedBasket.getTotalPrice();
+					this.emptyBasket = this.sharedBasket.isEmpty();
 				}
 			}]
 		});

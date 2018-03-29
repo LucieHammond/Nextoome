@@ -16,6 +16,7 @@ export class LivraisonPage {
 	contenuPanier: Product[] ;
 	prixDuPanier: number;
 	commentaires: string;
+	deliveryMode: string = null;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public sharedbasket: SharedBasket,
 				private payPal: PayPal, private apiConnector: ApiConnectorService) {
@@ -29,7 +30,6 @@ export class LivraisonPage {
 		}
 
 		PasserCommande(event){
-			console.log('coucou');
 			this.payPal.init({
 				PayPalEnvironmentProduction: 'stephane@nextoome.fr',
 				PayPalEnvironmentSandbox: 'AfkBTBO0h70ZfZX7Ou2YftIra7Rbvl7F18MT2gSaT7yTZfrXyjxBkH-OTxUeUeEumMlkDqsIzoFvEIL4'

@@ -89,6 +89,7 @@
     <allow-navigation href="http://138.195.241.56:8100" />
     <allow-navigation href="http://192.168.137.240:8100" />
     <allow-navigation href="http://138.195.243.62:8100" />
+    <allow-navigation href="http://169.254.1.30:8100" />
     <engine name="browser" spec="~5.0.2" />
     <engine name="ios" spec="~4.5.0" />
     <plugin name="cordova-plugin-camera" spec="^3.0.0" />

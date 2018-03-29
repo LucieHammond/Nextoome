@@ -15,7 +15,7 @@ export class SharedBasket {
 		if(produitSelectionne.quantite_panier>0)
 		  	{produitSelectionne.quantite_panier = produitSelectionne.quantite_panier + Number.parseInt(quantite)}
 		else{
-		  	this.contenuPanier.push(produitSelectionne)
+		  	this.contenuPanier.push(produitSelectionne);
 		  	produitSelectionne.quantite_panier = quantite}
     }
 
@@ -41,4 +41,8 @@ export class SharedBasket {
       	}
         return this.totalPrice;
     }
+
+    isEmpty(): boolean {
+    	return this.contenuPanier.length == 0;
+	}
 }
