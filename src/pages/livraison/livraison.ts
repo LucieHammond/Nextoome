@@ -26,7 +26,7 @@ export class LivraisonPage {
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad livraisonPage');
 		this.contenuPanier = this.sharedbasket.getBasket();
-			this.prixDuPanier = this.sharedbasket.getTotalPrice();
+			this.prixDuPanier = this.sharedbasket.getTotalPrice().toFixed(2);
 		}
 
 		PasserCommande(event){

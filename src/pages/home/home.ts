@@ -14,21 +14,19 @@ import {MyApp} from "../../app/app.component";
 })
 export class HomePage {
 
-	offres_du_jour: Product[];
+	produitsAccueil: Product[];
 	searchTerm: string = '';
 	searchControl: FormControl = new FormControl();
 	resultatsRecherche: any;
 	searching: boolean = false;
 
-	constructor(public navCtrl: NavController, public navParams: NavParams, public rechercheData: ProductList) {
+	constructor(public navCtrl: NavController, public navParams: NavParams, public rechercheData: ProductList, public listProduits: ProductList) {
 	}
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad HomePage');
-		this.rechercheData.getProducts().subscribe(products => {
-			this.offres_du_jour = products;
-		});
-	}
+		this.produitsAccueil = this.listProduits.getAvailableProducts();
+}
 
 	SelectionProduit(event, produit) {
 		this.navCtrl.push(ProductPage, {name: produit});
@@ -39,7 +37,6 @@ export class HomePage {
 	}
 
 	RechercheProduits() {
-
 		this.rechercheData.getProducts().subscribe(produits => {
 			this.resultatsRecherche = produits.filter((produit) => {
 				return produit.name.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1;

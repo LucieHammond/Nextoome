@@ -24,7 +24,7 @@ export class BasketPage {
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad BasketPage');
 		this.contenuPanier = this.sharedBasket.getBasket();
-		this.prixDuPanier = this.sharedBasket.getTotalPrice();
+		this.prixDuPanier = this.sharedBasket.getTotalPrice().toFixed(2);
 		this.emptyBasket = this.sharedBasket.isEmpty();
 	}
 
@@ -46,7 +46,7 @@ export class BasketPage {
 				text: 'Confirmer',
 				handler: () => {
 					this.sharedBasket.removeFromBasket(produit);
-					this.prixDuPanier = this.sharedBasket.getTotalPrice();
+					this.prixDuPanier = this.sharedBasket.getTotalPrice().toFixed(2);
 					this.emptyBasket = this.sharedBasket.isEmpty();
 				}
 			}]
