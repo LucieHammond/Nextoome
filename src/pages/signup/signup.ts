@@ -14,7 +14,6 @@ export class SignupPage {
 
 	constructor(public navCtrl: NavController, public toastCtrl: ToastController, public formBuilder: FormBuilder)
 	{
-
 		this.authForm = this.formBuilder.group({
 			first_name: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Záàâäçéèêëíìîïóòôöúùûü\\-]+'), Validators.maxLength(30)])],
 			last_name: ['', Validators.compose([Validators.required, Validators.pattern('[a-zA-Záàâäçéèêëíìîïóòôöúùûü\\-\\s]+'), Validators.maxLength(150)])],
@@ -22,6 +21,10 @@ export class SignupPage {
 			phone: ['', Validators.pattern('(([0-9]{2} ?){5}|\\+33[0-9]{9})?')]
 		});
   	}
+
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad Signup1Page');
+	}
 
   	next(){
 		this.navCtrl.push('Signup2Page', {'account': this.authForm.value});

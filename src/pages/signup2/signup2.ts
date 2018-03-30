@@ -40,8 +40,11 @@ export class Signup2Page {
 
 	signUp() {
 
-		this.account = $.extend(this.account, this.authForm.value);
+		let loading = this.loadingCtrl.create({
+			spinner: 'bubbles'
+		});
 
+		this.account = $.extend(this.account, this.authForm.value);
 		let userData = {
 			email: this.account.email,
 			first_name: this.account.first_name,
@@ -74,35 +77,39 @@ export class Signup2Page {
 			}
 		};
 
-		this.apiConnector.createUser(userData).subscribe((user) => {
+		loading.present().then(() => {
 
-			window.localStorage.setItem('user', user.id.toString());
-			this.events.publish('user:defined', user);
-			this.navCtrl.setRoot(HomePage);
+			this.apiConnector.createUser(userData).subscribe((user) => {
 
-		}, (error) => {
+				window.localStorage.setItem('user', user.id.toString());
+				this.apiConnector.login(this.account.username, this.account.password).subscribe((data) => {
 
-			let message = JSON.parse(error).message;
+					window.localStorage.setItem('token', data.token);
+					this.events.publish('user:defined');
+					loading.dismiss();
+					this.navCtrl.setRoot(HomePage);
 
-			// Unable to sign up
-			let toast = this.toastCtrl.create({
-				message: $('<div>').html(message).text(),
-				duration: 3000,
-				position: 'top'
+				}, (error) => {
+					loading.dismiss();
+					this.displayMessage(error);
+				});
+			}, (error) => {
+				loading.dismiss();
+				this.displayMessage(error);
 			});
-			toast.present();
 		});
 	}
 
-	launchConnection() {
-		let loading = this.loadingCtrl.create({
-			spinner: 'bubbles'
-		});
+	displayMessage(error): void {
+		let message = JSON.parse(error).message;
 
-		loading.present().then(() => {
-			this.signUp();
-			loading.dismiss();
+		// Unable to sign up
+		let toast = this.toastCtrl.create({
+			message: $('<div>').html(message).text(),
+			duration: 3000,
+			position: 'top'
 		});
+		toast.present();
 	}
 
 }

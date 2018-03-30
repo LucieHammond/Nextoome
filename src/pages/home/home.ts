@@ -26,7 +26,7 @@ export class HomePage {
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad HomePage');
 		this.produitsAccueil = this.listProduits.getAvailableProducts();
-}
+	}
 
 	SelectionProduit(event, produit) {
 		this.navCtrl.push(ProductPage, {name: produit});

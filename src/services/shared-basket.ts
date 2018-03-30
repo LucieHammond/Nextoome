@@ -29,7 +29,7 @@ export class SharedBasket {
     }
 
 
-    getBasket() {
+    getBasket(): Product[] {
         return this.contenuPanier;
     }
 

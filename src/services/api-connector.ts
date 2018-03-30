@@ -11,20 +11,17 @@ import { Storekeeper } from '../models/storekeeper';
 
 @Injectable()
 export class ApiConnectorService {
-	// TODO: personnaliser le nom de la ville
 	apiUrl: string = 'https://lagny.nextoome.fr/wp-json/wc/v2';
 	adminUrl: string = 'https://lagny.nextoome.fr/wp-json/wp/v2';
-	username: string = 'ck_9c116cc353369069c9fdcaf3eedac6564721dba9';
-	password: string = 'cs_5c445837f5381f4b8eacfae69408582c10b58efe';
-	auth = {consumer_key: this.username, consumer_secret: this.password};
 
 	constructor(public http: HTTP) {
 		console.log('Hello Api Connector Service');
 	}
 
 	_get(url, parameters) {
-		// Version avec Basic Auth
-		return this.http.get(url, parameters, this.http.getBasicAuthHeader(this.username, this.password))
+		// Version avec Bearer Auth
+		console.log("coucou", window.localStorage.getItem('token'));
+		return this.http.get(url, parameters, {'Authorization': 'Bearer ' + window.localStorage.getItem('token')})
 			.then(data => JSON.parse(data.data))
 			.catch(error => { console.log(error.error); throw error.error});
 
@@ -34,9 +31,10 @@ export class ApiConnectorService {
 			.catch(error => { console.log(error.error); throw error.error});*/
 	}
 
-	_post(url, parameters) {
-		// Version avec Basic Auth
-		return this.http.post(url, parameters, this.http.getBasicAuthHeader(this.username, this.password))
+	_post(url, parameters, auth: boolean = true) {
+		// Version avec Bearer Auth
+		let header = auth ? {'Authorization': 'Bearer ' + window.localStorage.getItem('token')} : {};
+		return this.http.post(url, parameters, header)
 			.then(data => JSON.parse(data.data))
 			.catch(error => { console.log(error.error); throw error.error});
 
@@ -48,8 +46,8 @@ export class ApiConnectorService {
 	}
 
 	_put(url, parameters) {
-		// Version avec Basic Auth
-		return this.http.put(url, parameters, this.http.getBasicAuthHeader(this.username, this.password))
+		// Version avec Bearer Auth
+		return this.http.put(url, parameters, {'Authorization': 'Bearer ' + window.localStorage.getItem('token')})
 			.then(data => JSON.parse(data.data))
 			.catch(error => { console.log(error.error); throw error.error});
 
@@ -61,8 +59,8 @@ export class ApiConnectorService {
 	}
 
 	_delete(url, parameters) {
-		// Version avec Basic Auth
-		return this.http.delete(url, parameters, this.http.getBasicAuthHeader(this.username, this.password))
+		// Version avec Bearer Auth
+		return this.http.delete(url, parameters, {'Authorization': 'Bearer ' + window.localStorage.getItem('token')})
 			.then(data => JSON.parse(data.data))
 			.catch(error => { console.log(error.error); throw error.error});
 
@@ -79,10 +77,20 @@ export class ApiConnectorService {
 		);
 	}
 
-	login(): Observable<any> {
-		let data = {username:"romain.bosq",password: "password"};
+	login(username, password): Observable<any> {
+		let auth_data = {username: username, password: password};
 		return Observable.fromPromise(
-			this._post(`https://lagny.nextoome.fr/wp-json/jwt-auth/v1/token`, data));
+			this._post(`https://lagny.nextoome.fr/wp-json/jwt-auth/v1/token`, auth_data, false));
+	}
+
+	validateToken(): Observable<{code: string, data: {status: number}}> {
+		return Observable.fromPromise(
+			this._post(`https://lagny.nextoome.fr/wp-json/jwt-auth/v1/token/validate`, {}));
+	}
+
+	getAccountInfo(): Observable<Storekeeper> {
+		return Observable.fromPromise(
+			this._get(`${this.adminUrl}/users/me`, {}));
 	}
 
 	createCoupon(couponData): Observable<Coupon> {
@@ -122,7 +130,7 @@ export class ApiConnectorService {
 
 	createUser(userData): Observable<User> {
 		return Observable.fromPromise(
-			this._post(`${this.apiUrl}/customers`, userData,));
+			this._post(`${this.apiUrl}/customers`, userData, false));
 	}
 
 	getUser(id): Observable<User> {

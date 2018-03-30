@@ -6,7 +6,6 @@ import { ApiConnectorService } from "../../services/api-connector";
 import { SessionInfos } from "../../services/session-infos";
 import { User } from "../../models/users";
 import { Product } from '../../models/products'
-import { Order, LineItem } from '../../models/orders'
 import { UserProfilePage } from "../user-profile/user-profile";
 
 
@@ -93,16 +92,17 @@ export class LivraisonPage {
 		});
 	}
 
-	currentOrder(): Order{
-		let items: LineItem[] = [];
-		for (let product: Product in this.sharedbasket.getBasket()){
+	currentOrder() {
+		let items = [];
+		let basket: Product[] = this.sharedbasket.getBasket();
+		for (let i = 0; i++; i < basket.length){
 			items.push({
-				name: product.name,
-				product_id: product.id,
-				quantity: product.quantite_panier,
-				meta_data: product.meta_data,
-				sku: product.sku,
-				price: product.price
+				name: basket[i].name,
+				product_id: basket[i].id,
+				quantity: basket[i].quantite_panier,
+				meta_data: basket[i].meta_data,
+				sku: basket[i].sku,
+				price: basket[i].price
 			})
 		}
 		let shipping = this.deliveryMode == 'domicile' ? this.user.shipping : {

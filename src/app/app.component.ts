@@ -21,7 +21,6 @@ import {WelcomePage} from '../pages/welcome/welcome';
 import {MaintenancePage} from '../pages/maintenance/maintenance';
 import {SessionInfos} from "../services/session-infos";
 import {User} from "../models/users";
-import {LivraisonPage} from "../pages/livraison/livraison";
 
 
 @Component({
@@ -31,7 +30,6 @@ export class MyApp {
 	@ViewChild(Nav) nav: Nav;
 
 	rootPage: any;
-	availability: boolean = true;
 	user: User = null;
 
 	pages: Array<Array<{title: string, component: any, icon: string}>> = [
@@ -61,30 +59,38 @@ export class MyApp {
 
 	initializeApp() {
 		this.platform.ready().then(() => {
-
-			// Vérifier que le site n'est pas en maintenance
-			this.apiConnector.testConnection().subscribe(contentType => {
-				if (contentType.indexOf('application/json') == -1){
-					this.availability = false;
-				}
-			});
-
-			// Rediriger vers la bonne page
+			let token = window.localStorage.getItem('token');
 			let userid = window.localStorage.getItem('user');
-			if (!this.availability){
-				this.rootPage = MaintenancePage;
-			} else if (userid == 'null' || userid === null) {
-				this.rootPage = WelcomePage;
-			} else {
-				this.updateUser();
-				this.rootPage = LivraisonPage;
-			}
 
-			this.statusBar.styleDefault();
-			this.splashScreen.hide();
+			// Vérifier que le site n'est pas en maintenance, puis rediriger vers la bonne page
+			this.apiConnector.testConnection().subscribe(contentType => {
+				// 1. On vérifie que l'API est disponible
+				if (contentType.indexOf('application/json') == -1){
+					this.rootPage = MaintenancePage;
+				}
+				// 2. On vérifie qu'on a bien un token
+				else if (token == 'null' || token == null || userid == 'null' || userid == null) {
+					this.rootPage = WelcomePage;
+				}
+				// 3. On vérifie que le token est bien valide
+				else {
+					this.apiConnector.validateToken().subscribe(response => {
+						if (response.data.status != 200) {
+							this.rootPage = WelcomePage;
+						} else {
+							this.updateUser();
+							this.rootPage = HomePage;
+						}
+					});
+				}
 
-			// Update user data when changed
-			this.events.subscribe('user:defined', () => { this.updateUser(); });
+				this.statusBar.styleDefault();
+				this.splashScreen.hide();
+
+				// Update user data when changed
+				this.events.subscribe('user:defined', () => { this.updateUser(); });
+
+			});
 		});
 	}
 
@@ -101,6 +107,7 @@ export class MyApp {
 	deconnect() {
 		this.session.closeSession();
 		window.localStorage.setItem('user', null);
+		window.localStorage.setItem('token', null);
 		this.nav.setRoot(WelcomePage);
 	}
 }
