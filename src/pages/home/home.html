@@ -21,6 +21,12 @@
 		</ion-item>
 	</ion-list>
 
+
+	<button ion-button block full (click)="AccesCommercant($event)" color="carotte" > <!-->*ngIf="isShop"<-->
+		Acceder à mon espace commerçant
+	</button>
+
+
 	<h3>Offres du jour</h3>
 	<ion-list>
 		<button ion-item *ngFor="let p of produitsAccueil" (click)="SelectionProduit($event,p)">

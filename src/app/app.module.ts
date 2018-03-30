@@ -26,6 +26,8 @@ import {MaintenancePage} from '../pages/maintenance/maintenance';
 import {CategoriesPage} from '../pages/categories/categories'
 import {ProductByCategoryPage} from '../pages/productByCategory/productByCategory'
 import {LivraisonPage} from '../pages/livraison/livraison'
+import {EspaceCommercantPage} from '../pages/espaceCommercant/espaceCommercant'
+import {CreateProductPage} from '../pages/createProduct/createProduct'
 
 import {ApiConnectorService} from '../services/api-connector';
 import {SessionInfos} from '../services/session-infos';
@@ -56,7 +58,9 @@ import { ProductList } from '../services/product-list';
 		MaintenancePage,
 		CategoriesPage,
 		ProductByCategoryPage,
-		LivraisonPage
+		LivraisonPage,
+		EspaceCommercantPage,
+		CreateProductPage
 	],
 	imports: [
 		BrowserModule,
@@ -84,7 +88,9 @@ import { ProductList } from '../services/product-list';
 		MaintenancePage,
 		CategoriesPage,
 		ProductByCategoryPage,
-		LivraisonPage
+		LivraisonPage,
+		EspaceCommercantPage,
+		CreateProductPage
 	],
 	providers: [
 		StatusBar,
