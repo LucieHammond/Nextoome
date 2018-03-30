@@ -1,14 +1,7 @@
-page-espaceCommercant
-{
-	.error {
-		ion-label{
-			color: color($colors, tomate);
-		}
-		border-bottom: 1px solid color($colors, tomate);
-	}
+page-espaceCommercant {
 	.button{
-		background: color($colors, tomate) !important;
 		width: 80%;
+		height: 200%;
 		margin-left: 10%;
 		margin-top: 20px;
 	}

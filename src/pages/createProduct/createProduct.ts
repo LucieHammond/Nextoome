@@ -20,25 +20,15 @@ export class CreateProductPage {
 	price: string;
 	categorie: string;
 
-	/*produit: {name: string, type: string, status: string, description: string, price: string, in_stock: boolean,
-		categories: {id: number, name: string, slug: string	}
-	};*/
 
 	constructor(public navCtrl: NavController, public toastCtrl: ToastController, public formBuilder: FormBuilder, public apiConnector: ApiConnectorService)
 	{
-
-/*		this.authForm = this.formBuilder.group({
-			name: ['', Validators.compose([Validators.required, Validators.maxLength(30)])],
-			description: ['', Validators.compose([Validators.required, Validators.maxLength(500)])],
-		});*/
 		this.apiConnector.getProductCategoriesList().subscribe(categories => {
 			this.toutesCategories = categories;
 		});
   }
 
 	createProduct(event) {
-
-//		this.produit = $.extend(this.produit, this.authForm.value);
 
 		let productData = {
 			name: this.name,

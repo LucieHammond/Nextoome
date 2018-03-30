@@ -22,6 +22,8 @@ import {MaintenancePage} from '../pages/maintenance/maintenance';
 import {SessionInfos} from "../services/session-infos";
 import {User} from "../models/users";
 import {LivraisonPage} from "../pages/livraison/livraison";
+import {EspaceCommercantPage} from '../pages/espaceCommercant/espaceCommercant';
+import {CreateProductPage} from '../pages/createProduct/createProduct';
 
 
 @Component({
