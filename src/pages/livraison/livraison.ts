@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams, AlertController} from 'ionic-angular';
-import { Product } from '../../models/products'
 import { SharedBasket } from '../../services/shared-basket'
 import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
 import { ApiConnectorService } from "../../services/api-connector";
 import { SessionInfos } from "../../services/session-infos";
 import { User } from "../../models/users";
+import { Product } from '../../models/products'
+import { Order, LineItem } from '../../models/orders'
 import { UserProfilePage } from "../user-profile/user-profile";
 
 
@@ -79,24 +80,8 @@ export class LivraisonPage {
 
 					// Successfully paid
 					this.navCtrl.push("ConfirmationPage");
+					this.apiConnector.createOrder(this.currentOrder());
 
-					// Example sandbox response
-					//
-					// {
-					//   "client": {
-					//     "environment": "sandbox",
-					//     "product_name": "PayPal iOS SDK",
-					//     "paypal_sdk_version": "2.16.0",
-					//     "platform": "iOS"
-					//   },
-					//   "response_type": "payment",
-					//   "response": {
-					//     "id": "PAY-1AB23456CD789012EF34GHIJ",
-					//     "state": "approved",
-					//     "create_time": "2016-10-03T13:33:33Z",
-					//     "intent": "sale"
-					//   }
-					// }
 				}, () => {
 					// Error or render dialog closed without being successful
 				});
@@ -106,6 +91,38 @@ export class LivraisonPage {
 		}, () => {
 			// Error in initialization, maybe PayPal isn't supported or something else
 		});
+	}
+
+	currentOrder(): Order{
+		let items: LineItem[] = [];
+		for (let product: Product in this.sharedbasket.getBasket()){
+			items.push({
+				name: product.name,
+				product_id: product.id,
+				quantity: product.quantite_panier,
+				meta_data: product.meta_data,
+				sku: product.sku,
+				price: product.price
+			})
+		}
+		let shipping = this.deliveryMode == 'domicile' ? this.user.shipping : {
+			address_1: '2, rue de la Gare',
+			city: 'Thorigny-sur-Marne',
+			postcode: '77400',
+			country: 'FR'
+		};
+
+		return {
+			payment_method: 'paypal',
+			billing: this.user.billing,
+			shipping: shipping,
+			customer_id: this.user.id,
+			line_items: items,
+			status: 'processing',
+			customer_note: this.commentaires,
+			currency: 'EUR',
+			set_paid: true
+		};
 	}
 
 }

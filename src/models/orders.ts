@@ -1,6 +1,4 @@
 
-import { User } from './users'
-
 // Order model based on the structure returned by woocommerce API for orders
 export interface Order {
 	id: number,
