@@ -2,10 +2,14 @@ import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {ProductPage} from '../product/product';
 import {Product} from '../../models/products'
+import {User} from '../../models/users'
 import {ProductList} from '../../services/product-list'
+import {SessionInfos} from '../../services/session-infos'
 import 'rxjs/add/operator/debounceTime';
 import {FormControl} from '@angular/forms';
 import {MyApp} from "../../app/app.component";
+import {EspaceCommercantPage} from '../espaceCommercant/espaceCommercant'
+import * as $ from 'jquery';
 
 @IonicPage()
 @Component({
@@ -19,13 +23,24 @@ export class HomePage {
 	searchControl: FormControl = new FormControl();
 	resultatsRecherche: any;
 	searching: boolean = false;
+	user: User;
+	isShop: boolean = false;
 
-	constructor(public navCtrl: NavController, public navParams: NavParams, public rechercheData: ProductList, public listProduits: ProductList) {
+	constructor(public navCtrl: NavController, public navParams: NavParams, public rechercheData: ProductList, public listProduits: ProductList, private session: SessionInfos) {
 	}
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad HomePage');
-		this.produitsAccueil = this.listProduits.getAvailableProducts();
+
+		this.session.getCurrentUser().subscribe(user => {
+			this.user = $.extend(true, {}, user);
+			this.isShop =!(this.user.role=="vendor"); //enlever la négation !!
+		});
+		this.listProduits.getProducts().subscribe(produits =>{
+			this.produitsAccueil = produits.filter((produit) => {
+				return produit.in_stock;
+			});
+		});
 }
 
 	SelectionProduit(event, produit) {
@@ -35,6 +50,10 @@ export class HomePage {
 	onSearchInput() {
 		this.searching = true;
 	}
+
+AccesCommercant(event){
+	this.navCtrl.push(EspaceCommercantPage);
+}
 
 	RechercheProduits() {
 		this.rechercheData.getProducts().subscribe(produits => {

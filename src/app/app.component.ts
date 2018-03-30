@@ -77,7 +77,7 @@ export class MyApp {
 				this.rootPage = WelcomePage;
 			} else {
 				this.updateUser();
-				this.rootPage = LivraisonPage;
+				this.rootPage = HomePage;
 			}
 
 			this.statusBar.styleDefault();
