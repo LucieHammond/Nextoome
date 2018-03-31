@@ -1,3 +1,39 @@
 page-wishlist {
+	ion-card {
+		height: 40vw;
+		img {
+			object-fit: cover;
+			width: 100%;
+			height: 100%;
 
+		}
+		.default-img{
+			background: color($colors, caillou);
+			color: white;
+			font-size: 35vw ;
+			width: 100%;
+			height: 100%;
+		}
+		.dark-gradient{
+			position: absolute;
+			height: 40px;
+			width: 80%;
+			bottom: 17px;
+			background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.7)) !important;
+		}
+		.name {
+			position: absolute;
+			padding: 15px;
+			font-size: 13px !important;
+			bottom: 5px;
+			right: 10px;
+			color: white;
+		}
+	}
+	.add {
+		color: color($colors, caillou);
+		font-size: 60px !important;
+		width: 100%;
+		opacity: 0.8;
+	}
 }

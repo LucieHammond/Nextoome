@@ -69,7 +69,7 @@ export class MyApp {
 					this.rootPage = MaintenancePage;
 				}
 				// 2. On vérifie qu'on a bien un token
-				else if (token == 'null' || token == null || userid == 'null' || userid == null) {
+				else if (token === null || userid === null) {
 					this.rootPage = WelcomePage;
 				}
 				// 3. On vérifie que le token est bien valide
@@ -79,7 +79,7 @@ export class MyApp {
 							this.rootPage = WelcomePage;
 						} else {
 							this.updateUser();
-							this.rootPage = OrdersPage;
+							this.rootPage = HomePage;
 						}
 					});
 				}

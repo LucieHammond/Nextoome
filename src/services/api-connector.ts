@@ -20,7 +20,6 @@ export class ApiConnectorService {
 
 	_get(url, parameters) {
 		// Version avec Bearer Auth
-		console.log("coucou", window.localStorage.getItem('token'));
 		return this.http.get(url, parameters, {'Authorization': 'Bearer ' + window.localStorage.getItem('token')})
 			.then(data => JSON.parse(data.data))
 			.catch(error => { console.log(error.error); throw error.error});
