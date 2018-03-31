@@ -1,3 +1,46 @@
 page-orders {
+	.subtitle {
+		margin-left: 15px;
+		padding-top: 20px !important;
+		padding-bottom: 5px;
+	}
+	ion-card{
+		box-shadow: 1px 2px 6px 3px color($colors, caillou) !important;
+		.nb-products{
+			margin-bottom: 10px;
+			size: 20px !important;
+		}
+		.product{
+			size: 9px !important;
+			color: #b0b0b0 !important;
+			font-family: "Arciform";
+			span {
+				size: 20px !important;
+				color: dimgrey !important;
+			}
+		}
+		.price{
+			font-size: 20px !important;
+			margin-bottom: 10px;
+		}
+		ion-datetime{
+			display: inline-block;
+			padding: 1px !important;
+			opacity: 1 !important;
+		}
 
+		// Colors
+		.processing, .completed{
+			color: color($colors, prune) !important;
+		}
+		.on-hold, .cancelled{
+			color: color($colors, myrtille) !important;
+		}
+		.pending, .refunded{
+			color: color($colors, carotte) !important;
+		}
+		.failed {
+			color: color($colors, tomate) !important;
+		}
+	}
 }

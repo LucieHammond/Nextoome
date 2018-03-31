@@ -8,17 +8,48 @@
 </ion-header>
 
 <ion-content padding>
-	<h3>Récapitulatif des commandes</h3>
+	<h4 class="subtitle">Commandes en cours...</h4>
 
-	<ion-list>
-		<ion-row *ngFor="let p of toutesCommandes" align-items-center justify-content-start>
-			<ion-col col-stretch>
-				{{p.date_paid}}
+	<ion-card *ngFor="let order of currentOrders" padding>
+		<ion-row>
+			<ion-col col-7>
+				<h2 class="nb-products">{{order.line_items.length}} produit(s)</h2>
+				<p class='product' *ngFor="let product of order.line_items.slice(0, 2)">{{product.name}}
+					<span *ngIf="order.line_items.indexOf(product) == 1 && order.line_items.length > 2">. . .</span>
+				</p>
+				<p>- - -</p>
 			</ion-col>
-			<ion-col col-3>
-				{{p.total}}
+			<ion-col text-center>
+				<h2 class="price">{{order.total}} €</h2>
+				<p [class]="order.status">{{tradStatus[order.status]}}</p>
 			</ion-col>
 		</ion-row>
-	</ion-list>
+		<ion-row>
+			<p>passée le <ion-datetime displayFormat="DD/MM/YYYY à HH:mm" [ngModel]="order.date_created" disabled></ion-datetime></p>
+			<p>modifiée le <ion-datetime displayFormat="DD/MM/YYYY à HH:mm" [ngModel]="order.date_modified" disabled></ion-datetime></p>
+		</ion-row>
+	</ion-card>
+
+	<h4 class="subtitle">Commandes passées...</h4>
+
+	<ion-card *ngFor="let order of passedOrders" padding>
+		<ion-row>
+			<ion-col col-7>
+				<h2 class="nb-products">{{order.line_items.length}} produit(s)</h2>
+				<p class='product' *ngFor="let product of order.line_items.slice(0, 2)">{{product.name}}
+					<span *ngIf="order.line_items.indexOf(product) == 1 && order.line_items.length > 2">. . .</span>
+				</p>
+				<p>- - -</p>
+			</ion-col>
+			<ion-col text-center>
+				<h2 class="price">{{order.total}} €</h2>
+				<p [class]="order.status">{{tradStatus[order.status]}}</p>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<p>passée le <ion-datetime displayFormat="DD/MM/YYYY à HH:mm" [ngModel]="order.date_created" disabled></ion-datetime></p>
+			<p>modifiée le <ion-datetime displayFormat="DD/MM/YYYY à HH:mm" [ngModel]="order.date_modified" disabled></ion-datetime></p>
+		</ion-row>
+	</ion-card>
 
 </ion-content>

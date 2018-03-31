@@ -36,7 +36,7 @@ export class MyApp {
 			[{title: 'Home', component: HomePage, icon: "home"},
 				{title: 'Vente flash', component: FlashSalePage, icon: "flash"}],
 			[{title: 'Mon compte', component: UserProfilePage, icon: "person"},
-				{title: "Mes listes d'envies", component: WishlistPage, icon: "star"},
+				{title: "Mes listes de course", component: WishlistPage, icon: "star"},
 				{title: 'Tous les produits', component: CategoriesPage, icon: "nutrition"},
 				{title: 'Mon panier', component: BasketPage, icon: "cart"},
 				{title: 'Mes commandes', component: OrdersPage, icon: "clipboard"},
@@ -79,7 +79,7 @@ export class MyApp {
 							this.rootPage = WelcomePage;
 						} else {
 							this.updateUser();
-							this.rootPage = HomePage;
+							this.rootPage = OrdersPage;
 						}
 					});
 				}

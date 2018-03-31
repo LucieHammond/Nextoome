@@ -9,3 +9,13 @@ export const ActivityHours = {
 export const Cities = [
 	{ name: "Lagny-sur-Marne", code: "77400", id: "lagny"}
 ];
+
+export const Status = {
+	"on-hold": "De côté",
+	"pending": "En attente",
+	"processing": "En préparation",
+	"completed": "Délivré",
+	"cancelled": "Annulé",
+	"failed": "Echec",
+	"refunded": "Remboursé"
+};
