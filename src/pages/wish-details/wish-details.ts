@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, NavController, NavParams, AlertController} from 'ionic-angular';
 import {WishlistItem, Product} from "../../models/products";
 import {ProductList} from "../../services/product-list";
 import {SessionInfos} from "../../services/session-infos";
@@ -18,7 +18,7 @@ export class WishDetailsPage {
 	linkedProducts: Product[] = [];
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, private productProvider: ProductList,
-				private session: SessionInfos) {
+				private session: SessionInfos, private alertCtrl: AlertController) {
 	}
 
 	ionViewDidLoad() {
@@ -52,5 +52,19 @@ export class WishDetailsPage {
 		if (item.quantity === 0) {
 			this.removeItem(item);
 		}
+	}
+
+	deleteList() {
+		let alert = this.alertCtrl.create({
+			title: 'Suppression des données',
+			message: 'Voulez-vous vraiment supprimer cette liste de courses ?',
+			buttons: [
+				{text: 'Annuler'},
+				{text:'OK', handler: () => {
+					this.navCtrl.pop();
+					this.session.getWishLists().splice(this.index, 1);
+				}}]
+		});
+		alert.present();
 	}
 }
