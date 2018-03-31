@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {Product} from "../../models/products";
+import {IonicPage, NavController, NavParams, AlertController} from 'ionic-angular';
+import {WishlistItem} from "../../models/products";
 import {SessionInfos} from "../../services/session-infos";
+import {WishDetailsPage} from "../wish-details/wish-details";
 
 @IonicPage()
 @Component({
@@ -10,16 +11,46 @@ import {SessionInfos} from "../../services/session-infos";
 })
 export class WishlistPage {
 
-	wishLists: {name: string, products: any[]}[];
+	wishLists: {name: string, products: WishlistItem[]}[];
 
-	constructor(public navCtrl: NavController, public navParams: NavParams, private session: SessionInfos) {
+	constructor(public navCtrl: NavController, public navParams: NavParams, private session: SessionInfos,
+				public alertCtrl: AlertController) {
 	}
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad WishlistPage');
-		//this.wishLists = this.session.getWishLists();
-		this.wishLists = [{name: 'Courses week-end', products: []},
-			{name: 'Fêtes Noêl', products: [{images: {src: "https://lagny.nextoome.fr/wp-content/uploads/2017/10/painaufruits.jpg"}}]},
-			{name: "Diner d'amis", products: [{images: {src: "https://lagny.nextoome.fr/wp-content/uploads/2017/10/baguette.png"}}]}]
+		this.wishLists = this.session.getWishLists();
+	}
+
+	addList() {
+		let alert = this.alertCtrl.create({
+			title: 'Nouvelle liste',
+			message: "Entrez le nom de la liste de courses",
+			inputs: [
+				{
+					name: 'name',
+					placeholder: 'Mes envies'
+				},
+			],
+			buttons: [
+				{
+					text: 'Annuler',
+					handler: data => {}
+				},
+				{
+					text: 'Créer',
+					handler: data => {
+						if (data.name === ''){ data.name = 'Mes envies'; }
+						this.wishLists.push({name: data.name, products: []});
+					}
+				}
+			]
+		});
+		alert.present();
+	}
+
+	seeDetails(list: {name: string, products: WishlistItem[]}) {
+		let index = this.wishLists.indexOf(list);
+		this.navCtrl.push(WishDetailsPage, {name: list.name, products: list.products, index: index});
 	}
 }

@@ -23,11 +23,12 @@ import {PicturePage} from '../pages/picture/picture';
 import {ContactPage} from '../pages/contact/contact';
 import {WelcomePage} from '../pages/welcome/welcome';
 import {MaintenancePage} from '../pages/maintenance/maintenance';
-import {CategoriesPage} from '../pages/categories/categories'
-import {ProductByCategoryPage} from '../pages/productByCategory/productByCategory'
-import {LivraisonPage} from '../pages/livraison/livraison'
-import {EspaceCommercantPage} from '../pages/espaceCommercant/espaceCommercant'
-import {CreateProductPage} from '../pages/createProduct/createProduct'
+import {CategoriesPage} from '../pages/categories/categories';
+import {ProductByCategoryPage} from '../pages/productByCategory/productByCategory';
+import {LivraisonPage} from '../pages/livraison/livraison';
+import {EspaceCommercantPage} from '../pages/espaceCommercant/espaceCommercant';
+import {CreateProductPage} from '../pages/createProduct/createProduct';
+import {WishDetailsPage} from "../pages/wish-details/wish-details";
 
 import {ApiConnectorService} from '../services/api-connector';
 import {SessionInfos} from '../services/session-infos';
@@ -60,7 +61,8 @@ import { ProductList } from '../services/product-list';
 		ProductByCategoryPage,
 		LivraisonPage,
 		EspaceCommercantPage,
-		CreateProductPage
+		CreateProductPage,
+		WishDetailsPage
 	],
 	imports: [
 		BrowserModule,
@@ -90,7 +92,8 @@ import { ProductList } from '../services/product-list';
 		ProductByCategoryPage,
 		LivraisonPage,
 		EspaceCommercantPage,
-		CreateProductPage
+		CreateProductPage,
+		WishDetailsPage
 	],
 	providers: [
 		StatusBar,

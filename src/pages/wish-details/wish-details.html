@@ -1,0 +1,36 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<p class="info">Pour ajouter de nouveaux produits, parcourez le catalogue et cliquez sur
+		<b>"Ajouter à une liste de courses"</b> lorsque vous êtes sur une page produit.</p>
+	<ion-list>
+		<ion-item-sliding *ngFor="let item of items">
+			<ion-item>
+				<ion-avatar item-start>
+					<img [src] ="item.image">
+				</ion-avatar>
+				<h2><b>{{item.quantity}} x</b> {{item.name}}</h2>
+			</ion-item>
+
+			<ion-item-options side="right">
+				<button ion-button (click)="increase(item)" color="carotte" icon-only>
+					<ion-icon name="add"></ion-icon>
+				</button>
+				<button ion-button (click)="decrease(item)" color="carotte" icon-only>
+					<ion-icon name="remove"></ion-icon>
+				</button>
+				<button ion-button (click)="removeItem(item)" color="tomate" icon-only>
+					<ion-icon name="trash"></ion-icon>
+				</button>
+			</ion-item-options>
+		</ion-item-sliding>
+	</ion-list>
+</ion-content>

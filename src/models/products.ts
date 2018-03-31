@@ -182,3 +182,11 @@ export interface ProductTag{
 	description: string,
 	count: number
 }
+
+// Product recap (what is stored in wishlists for example)
+export interface WishlistItem{
+	id: number,
+	name: string,
+	quantity: number,
+	image: string
+}

@@ -10,15 +10,15 @@
 <ion-content padding>
 	<ion-row>
 		<ion-col col-6 *ngFor="let list of wishLists">
-			<ion-card>
+			<ion-card (click)="seeDetails(list)">
 				<ion-icon class="default-img" *ngIf="list.products.length == 0" name="nutrition" text-center></ion-icon>
-				<img *ngIf="list.products.length > 0" [src]="list.products[0].images.src"/>
+				<img *ngIf="list.products.length > 0" [src]="list.products[0].image"/>
 				<div class="dark-gradient"></div>
 				<p class="name">{{list.name}}</p>
 			</ion-card>
 		</ion-col>
 		<ion-col col-6>
-			<button class="add" ion-button icon-only clear>
+			<button class="add" ion-button icon-only (click)="addList()" clear>
 				<ion-icon name="add-circle"></ion-icon>
 			</button>
 		</ion-col>

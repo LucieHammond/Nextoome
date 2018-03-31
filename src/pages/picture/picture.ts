@@ -36,9 +36,7 @@ export class PicturePage {
 
 		this.camera.getPicture(options).then((imageUri) => {
 			this.imgUrl = imageUri;
-			console.log(imageUri);
 		}, (err) => {
-			console.log(err);
 		});
 	}*/
 

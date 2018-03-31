@@ -4,7 +4,7 @@ import { WishlistPage } from './wishlist';
 
 @NgModule({
   declarations: [
-    WishlistPage,
+    WishlistPage
   ],
   imports: [
     IonicPageModule.forChild(WishlistPage),
