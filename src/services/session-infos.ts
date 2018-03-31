@@ -47,4 +47,22 @@ export class SessionInfos {
 		}
 		return this.wishLists;
 	}
+
+	addProductToList(listIndex: number, product: Product, quantity: number) {
+    	let sameProduct: WishlistItem = this.wishLists[listIndex].products.find((prod) => {
+    		return prod.id == product.id;
+		});
+		if (sameProduct) {
+    		sameProduct.quantity += quantity;
+		}
+		else {
+			let newProduct: WishlistItem = {
+				id: product.id,
+				name: product.name,
+				image: product.images[0].src,
+				quantity: quantity
+			};
+			this.wishLists[listIndex].products.push(newProduct);
+		}
+	}
 }

@@ -95,7 +95,7 @@ export class LivraisonPage {
 	currentOrder() {
 		let items = [];
 		let basket: Product[] = this.sharedbasket.getBasket();
-		for (let i = 0; i++; i < basket.length){
+		for (let i = 0; i < basket.length; i++){
 			items.push({
 				name: basket[i].name,
 				product_id: basket[i].id,

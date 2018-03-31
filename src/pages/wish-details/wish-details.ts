@@ -15,7 +15,7 @@ export class WishDetailsPage {
 	index: number;
 	name: string;
 	items: WishlistItem[];
-	linkedProducts: Product[];
+	linkedProducts: Product[] = [];
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, private productProvider: ProductList,
 				private session: SessionInfos) {
@@ -27,7 +27,7 @@ export class WishDetailsPage {
 		this.name = this.navParams.get('name');
 		this.items = this.navParams.get('products');
 		this.productProvider.getProducts().subscribe(products => {
-			for (let i=0; i++; i < this.items.length){
+			for (let i=0; i < this.items.length; i++){
 				let product = products.find((prod) => {return prod.id == this.items[i].id;});
 				if (!product){ product = null; }
 				this.linkedProducts.push(product);
