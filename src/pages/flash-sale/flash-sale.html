@@ -12,7 +12,10 @@
 
   <ion-list>
     <button ion-item *ngFor="let p of flash_sales" (click)="SelectionProduit($event,p)">
-      {{p.name}}
+		<ion-avatar item-start>
+			<img [src] ="this.p.images[0].src">
+		</ion-avatar>
+        {{p.name}}
     </button>
 </ion-list>
 </ion-content>

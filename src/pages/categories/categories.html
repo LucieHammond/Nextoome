@@ -23,9 +23,6 @@
 
 	<div>
 		<ion-item *ngFor="let c of categories" (click)="SelectionCategories($event,c)">
-			<ion-avatar item-start>
-				<img [src] ="this.c.images[0].src">
-			</ion-avatar>
-							{{c.name}}
+			{{c.name}}
 		</ion-item>
 	</div>

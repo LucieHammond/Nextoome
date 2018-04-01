@@ -24,7 +24,7 @@ export class SessionInfos {
 
 	updateCurrentUser(user: User): Observable<User> {
     	let id = user.id;
-    	let filteredKeys = ["email", "first_name", "last_name", "billing", "shipping"];
+    	let filteredKeys = ["email", "first_name", "last_name", "billing", "shipping", "avatar_url"];
     	let userData = {};
     	filteredKeys.forEach(function(key){ userData[key] = user[key]; });
 
@@ -60,6 +60,6 @@ export class SessionInfos {
 			};
 			this.wishLists[listIndex].products.push(newProduct);
 		}
-		window.localStorage.setItem('wishlists', JSON.stringify(this.session.getWishLists()));
+		window.localStorage.setItem('wishlists', JSON.stringify(this.wishLists));
 	}
 }

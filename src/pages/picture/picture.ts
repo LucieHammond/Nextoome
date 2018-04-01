@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-//import { Camera, CameraOptions } from '@ionic-native/camera';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
+
 
 @IonicPage()
 @Component({
@@ -24,20 +24,9 @@ export class PicturePage {
 		this.navCtrl.pop({animation: "md-transition"});
 	}
 
-	/*openGallery (): void {
-		const options: CameraOptions = {
-			quality: 100,
-			sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-			destinationType: this.camera.DestinationType.FILE_URI,
-			encodingType: this.camera.EncodingType.JPEG,
-			mediaType: this.camera.MediaType.PICTURE,
-			correctOrientation: true
-		};
-
-		this.camera.getPicture(options).then((imageUri) => {
-			this.imgUrl = imageUri;
-		}, (err) => {
-		});
-	}*/
-
+	changeAvatar(): void {
+		// Implémenter ici une façon de changer la photo de profil
+		// Pour le moment ce type de changement n'est pas accepté par l'API
+		// Le changement a été désactivé par défault
+	}
 }

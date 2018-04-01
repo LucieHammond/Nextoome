@@ -4,7 +4,7 @@
 		<ion-icon name="close"></ion-icon>
 	</button>
 	<img [src]="imgUrl" class="picture-zoom">
-	<button ion-button clear *ngIf="editable" class="picture-edit" icon-end>
+	<button ion-button clear *ngIf="editable" class="picture-edit" (click)="changeAvatar()" icon-end>
 		<b>Modifier</b>
 		<ion-icon name="images"></ion-icon>
 	</button>

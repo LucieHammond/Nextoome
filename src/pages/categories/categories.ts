@@ -24,13 +24,13 @@ export class CategoriesPage {
 	searching: boolean = false;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public rechercheData: ProductList, public apiConnector: ApiConnectorService) {
-		this.apiConnector.getProductCategoriesList().subscribe(categories => {
-			this.categories = categories;
-		});
 	}
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad CategoriesPage');
+		this.apiConnector.getProductCategoriesList().subscribe(categories => {
+			this.categories = categories;
+		});
 		this.rechercheData.getProducts().subscribe(products => {
 			this.tousProduits = products;
 		});
