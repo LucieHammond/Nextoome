@@ -3,15 +3,20 @@ page-wish-details {
 		text-align: justify;
 		padding-right: 23px;
 		padding-left: 23px;
-		line-height: 21px;
+		line-height: 22px;
 		font-size: 14px;
 		opacity: 0.8;
 	}
 	ion-item {
 		padding-left: 23px !important;
+		padding-right: 5px !important;
+		.removed {
+			color: color($colors, tomate);
+			padding-bottom: 5px;
+		}
 	}
 	.delete-all {
-		margin-top: 45px;
+		margin-top: 40px;
 		width: 80%;
 		left: 10%;
 	}

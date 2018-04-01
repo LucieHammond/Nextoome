@@ -13,11 +13,13 @@
 		<b>"Ajouter à une liste de courses"</b> lorsque vous êtes sur une page produit.</p>
 	<ion-list>
 		<ion-item-sliding *ngFor="let item of items">
-			<ion-item>
+			<ion-item (click)="seeProduct(items.indexOf(item))">
 				<ion-avatar item-start>
 					<img [src] ="item.image">
 				</ion-avatar>
 				<h2><b>{{item.quantity}} x</b> {{item.name}}</h2>
+				<ion-icon *ngIf="linkedProducts[items.indexOf(item)]" name="arrow-forward" item-end></ion-icon>
+				<p *ngIf="!linkedProducts[items.indexOf(item)]" class="removed" item-end>Retiré</p>
 			</ion-item>
 
 			<ion-item-options side="right">

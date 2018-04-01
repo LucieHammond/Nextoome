@@ -90,6 +90,9 @@ export class MyApp {
 				// Update user data when changed
 				this.events.subscribe('user:defined', () => { this.updateUser(); });
 
+				// Save local data when app is set to background
+				this.platform.pause.subscribe(() => {
+				});
 			});
 		});
 	}

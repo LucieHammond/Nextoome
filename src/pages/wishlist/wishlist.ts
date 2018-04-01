@@ -42,6 +42,7 @@ export class WishlistPage {
 					handler: data => {
 						if (data.name === ''){ data.name = 'Mes envies'; }
 						this.wishLists.push({name: data.name, products: []});
+						window.localStorage.setItem('wishlists', JSON.stringify(this.session.getWishLists()));
 					}
 				}
 			]

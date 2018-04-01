@@ -39,11 +39,7 @@ export class SessionInfos {
 	getWishLists(): {name: string, products: WishlistItem[]}[] {
     	if (this.wishLists === null){
 			let wishLists = window.localStorage.getItem('wishlists');
-			//this.wishLists = (wishLists === null) ? [] : JSON.parse(wishLists);
-			this.wishLists = [{name: "Mes envies", products: [
-				{id: 382, name: 'Pain aux fruits', quantity: 2, image: "https://lagny.nextoome.fr/wp-content/uploads/2017/10/painaufruits.jpg"},
-				{id: 379, name: 'Baguette Parisse', quantity: 1, image: "https://lagny.nextoome.fr/wp-content/uploads/2017/10/baguette.png"},
-				{id: 239, name: 'Carottes rapées', quantity: 3, image: "https://lagny.nextoome.fr/wp-content/uploads/2017/04/baguette-boulangerie-nextoome.jpeg"}]}];
+			this.wishLists = (wishLists === null) ? [] : JSON.parse(wishLists);
 		}
 		return this.wishLists;
 	}
@@ -64,5 +60,6 @@ export class SessionInfos {
 			};
 			this.wishLists[listIndex].products.push(newProduct);
 		}
+		window.localStorage.setItem('wishlists', JSON.stringify(this.session.getWishLists()));
 	}
 }
