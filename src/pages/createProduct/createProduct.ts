@@ -28,6 +28,10 @@ export class CreateProductPage {
 		});
   }
 
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad CreateProductPage');
+	}
+
 	createProduct(event) {
 
 		let productData = {

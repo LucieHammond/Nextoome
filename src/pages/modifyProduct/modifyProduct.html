@@ -1,0 +1,31 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Modifier un produit</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<ion-list padding-top=20>
+			<ion-item >
+				<ion-textarea placeholder="Nom du produit" rows='1' [(ngModel)]="name">
+				</ion-textarea>
+			</ion-item>
+
+	    <ion-item >
+	      <ion-textarea placeholder="Prix" rows='1' [(ngModel)]="price">
+	      </ion-textarea>
+	    </ion-item>
+
+	    <ion-item >
+	      <ion-textarea placeholder="Description" rows='10' [(ngModel)]="description">
+	      </ion-textarea>
+	    </ion-item>
+		</ion-list>
+
+	<button ion-button block full (click)="createProduct($event)" color="carotte">
+		Créer ce produit
+	</button>
+</ion-content>
