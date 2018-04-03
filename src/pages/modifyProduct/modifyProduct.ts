@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, NavController, NavParams, AlertController} from 'ionic-angular';
 import {ApiConnectorService} from '../../services/api-connector'
 import {Product} from '../../models/products'
 import {ProductCategory} from '../../models/products'
@@ -20,7 +20,7 @@ export class ModifyProductPage {
 	id: number= this.produitVu.id;
 
 
-	constructor(public navCtrl: NavController, public navParams: NavParams, public apiConnector: ApiConnectorService)
+	constructor(public navCtrl: NavController, public navParams: NavParams, public apiConnector: ApiConnectorService, private alertCtrl: AlertController)
 	{
   }
 
@@ -33,14 +33,26 @@ export class ModifyProductPage {
 		let productData = {
 			name: this.name,
 			description: this.description,
-			price: this.price,
+			regular_price: this.price,
 			in_stock: true,
-			categories: {
+		/*	categories: {
 				name: this.categorie,
-			},
+			},*/
 		};
 
 		this.apiConnector.updateProduct(this.id,productData);
+		this.ConfirmationModification();
+}
 
+ConfirmationModification(){
+let alert = this.alertCtrl.create({
+	title: 'Confirmation',
+	message: this.name+" mis à jour !",
+	buttons: [
+			{text:'OK',
+		handler: () => {this.navCtrl.pop();}
+		}]
+});
+alert.present();
 }
 }

@@ -34,7 +34,7 @@ export class SelectProductPage {
 		if(this.actionChoisie=="modify"){
 			this.navCtrl.push(ModifyProductPage, {name: produit});
 		}
-		if(this.actionChoisie=="unavalaible"){
+		if(this.actionChoisie=="unavailable"){
 			this.navCtrl.push(UnavailableProductPage, {name: produit});
 		}
 		if(this.actionChoisie=="delete"){

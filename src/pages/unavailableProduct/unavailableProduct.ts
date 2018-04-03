@@ -17,19 +17,26 @@ import {SessionInfos} from "../../services/session-infos";
 export class UnavailableProductPage {
 
 	produit_vu: Product = this.navParams.get('name');
+	enlever: boolean = this.produit_vu.in_stock;
+	remettre: boolean = !this.produit_vu.in_stock;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams,
 				private alertCtrl: AlertController, public popoverCtrl: PopoverController, private session: SessionInfos, private apiConnector: ApiConnectorService) {
 	}
 
 	ionViewDidLoad() {
-		console.log('ionViewDidLoad DeleteProductPage');
+		console.log('ionViewDidLoad UnavailableProductPage');
 	}
 
 
 	RendreIndisponibleProduit(event) {
 	  		this.apiConnector.updateProduct(this.produit_vu.id,{in_stock: false});
 	  		this.ConfirmationIndispo();
+	}
+
+	RendreDisponibleProduit(event) {
+				this.apiConnector.updateProduct(this.produit_vu.id,{in_stock: true});
+				this.ConfirmationDispo();
 	}
 
 	ConfirmationIndispo(){
@@ -40,6 +47,18 @@ export class UnavailableProductPage {
 		  		{text:'OK',
 				handler: () => {this.navCtrl.pop();}
 		  	}]
+		});
+		alert.present();
+	}
+
+	ConfirmationDispo(){
+		let alert = this.alertCtrl.create({
+			title: 'Confirmation',
+			message: this.produit_vu.name+" remis en vente !",
+			buttons: [
+					{text:'OK',
+				handler: () => {this.navCtrl.pop();}
+				}]
 		});
 		alert.present();
 	}

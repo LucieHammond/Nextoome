@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {IonicPage, NavController, ToastController} from 'ionic-angular';
+import {IonicPage, NavController, PopoverController, AlertController} from 'ionic-angular';
 import {ApiConnectorService} from '../../services/api-connector'
 import {Product} from '../../models/products'
 import {ProductCategory} from '../../models/products'
@@ -18,10 +18,11 @@ export class CreateProductPage {
 	name: string;
 	description: string;
 	price: string;
-	categorie: string;
+	categorie: ProductCategory[];
 
 
-	constructor(public navCtrl: NavController, public toastCtrl: ToastController, public formBuilder: FormBuilder, public apiConnector: ApiConnectorService)
+
+	constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public apiConnector: ApiConnectorService, 	private alertCtrl: AlertController)
 	{
 		this.apiConnector.getProductCategoriesList().subscribe(categories => {
 			this.toutesCategories = categories;
@@ -37,16 +38,25 @@ export class CreateProductPage {
 		let productData = {
 			name: this.name,
 			description: this.description,
-			price: this.price,
+			regular_price: this.price,
 			in_stock: true,
-			categories: {
-				id: '',
-				name: this.categorie,
-				slug: ''
-			},
+	//		categories: this.categorie,
 		};
 
 		this.apiConnector.createProduct(productData);
+		console.log(this.price);
+		this.ConfirmationCreation();
+	}
 
-}
+	ConfirmationCreation(){
+	let alert = this.alertCtrl.create({
+	title: 'Confirmation',
+	message: this.name+" ajouté au catalogue !",
+	buttons: [
+			{text:'OK',
+		handler: () => {this.navCtrl.pop();}
+		}]
+	});
+	alert.present();
+	}
 }

@@ -15,8 +15,8 @@
 			</ion-item>
 
 	    <ion-item >
-	      <ion-textarea placeholder="Prix" rows='1' [(ngModel)]="price">
-	      </ion-textarea>
+	      <ion-input type="number"a placeholder="Prix" [(ngModel)]="price">
+	      </ion-input>
 	    </ion-item>
 
 	    <ion-item >
@@ -25,7 +25,7 @@
 	    </ion-item>
 		</ion-list>
 
-	<button ion-button block full (click)="createProduct($event)" color="carotte">
-		Créer ce produit
+	<button ion-button block full (click)="updateProduct($event)" color="carotte">
+		Mettre à jour ce produit
 	</button>
 </ion-content>

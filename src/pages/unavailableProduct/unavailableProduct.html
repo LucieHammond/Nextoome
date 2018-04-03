@@ -17,9 +17,14 @@
 	<div [innerHTML]="produit_vu.description"></div>
 
 
-	<button ion-button icon-start full (click)="RendreIndisponibleProduit($event)">
-		<ion-icon name="delete"></ion-icon>
+	<button ion-button icon-start full (click)="RendreIndisponibleProduit($event)" *ngIf="enlever" color="tomate">
+		<ion-icon name="close"></ion-icon>
 		Retirer de la vente
+	</button>
+
+	<button ion-button icon-start full (click)="RendreDisponibleProduit($event)" *ngIf="remettre">
+		<ion-icon name="check"></ion-icon>
+		Remettre en vente
 	</button>
 
 </ion-content>
