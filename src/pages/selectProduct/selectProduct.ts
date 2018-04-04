@@ -45,6 +45,7 @@ export class SelectProductPage {
 doRefresh(event){
 	this.apiConnector.getProductsList().subscribe(products => {
 		this.TousProduits = products;
+							event.complete();
 	});
 }
 
