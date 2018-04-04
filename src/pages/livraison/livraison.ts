@@ -49,7 +49,7 @@ export class LivraisonPage {
 	PasserCommande(event){
 		if (!this.user.billing.address_1 || !this.user.billing.city || !this.user.billing.postcode
 			|| (this.deliveryMode == 'domicile' &&
-			(!this.user.billing.address_1 || !this.user.billing.city || !this.user.billing.postcode))){
+			(!this.user.shipping.address_1 || !this.user.shipping.city || !this.user.shipping.postcode))){
 
 			// An address is missing
 			let alert = this.alertCtrl.create({
@@ -62,6 +62,7 @@ export class LivraisonPage {
 				}]
 			});
 			alert.present();
+			return
 		}
 
 		this.payPal.init({
