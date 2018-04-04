@@ -29,6 +29,7 @@ export class SessionInfos {
     	filteredKeys.forEach(function(key){ userData[key] = user[key]; });
 
     	this.currentUser = this.apiConnector.updateUser(id, userData);
+		this.events.publish('user:defined');
 		return this.currentUser;
 	}
 
