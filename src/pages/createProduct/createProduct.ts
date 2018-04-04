@@ -37,13 +37,14 @@ export class CreateProductPage {
 	}
 
 	createProduct(event) {
-		console.log(this.categorieChoisie.id)
+		console.log(this.categorieChoisie.name);
+		console.log(this.categorieChoisie.id);
 		let productData = {
 			name: this.name,
 			description: this.description,
 			regular_price: this.price,
 			in_stock: true,
-		//	categories: this.categorieChoisie.id,
+		//	categories: [{id: this.categorieChoisie.id }],
 		};
 
 		this.apiConnector.createProduct(productData);

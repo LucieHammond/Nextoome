@@ -14,9 +14,11 @@ export class FlashSalePage {
 
 	flash_sales: Product[];
 
-	constructor(public navCtrl: NavController, public navParams: NavParams, private apiConnector: ApiConnectorService) {
-		this.apiConnector.getProductsList().subscribe(products => {
-			this.flash_sales = products;
+	constructor(public navCtrl: NavController, public navParams: NavParams, private apiConnector: ApiConnectorService, public listProduits: ProductList,) {
+		this.listProduits.getProducts().subscribe(produits =>{
+			this.flash_sales = produits.filter((produit) => {
+				return produit.on_sale;
+			});
 		});
 	}
 

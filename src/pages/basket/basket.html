@@ -9,18 +9,17 @@
 
 <ion-content>
 	<ion-list>
-		<ion-item  *ngFor="let p of contenuPanier">
-			<ion-item-sliding #item>
-				<ion-item (click)="SelectionProduit($event,p)">
-					<ion-avatar item-start>
-						<img [src] ="this.p.images[0].src">
-					</ion-avatar>
-					<h2>{{p.name}} :</h2>
-					<h4 text-right>
-						{{p.quantite_panier}} x {{p.price}}€
-					</h4>
+		<ion-item-sliding #item *ngFor="let p of contenuPanier">
+			<ion-item (click)="SelectionProduit($event,p)">
+				<ion-avatar item-start>
+					<img [src] ="this.p.images[0].src">
+				</ion-avatar>
+				<h2>{{p.name}} :</h2>
+				<h4 text-right>
+					{{p.quantite_panier}} x {{p.price}}€
+				</h4>
 
-				</ion-item>
+			</ion-item>
 
 				<ion-item-options side="right">
 					<button ion-button (click)="increase($event,p)" color="myrtille" icon-only>
@@ -34,13 +33,14 @@
 					</button>
 				</ion-item-options>
 			</ion-item-sliding>
-		</ion-item>
+
 	</ion-list>
 
 <ion-row align-items-center justify-content-center>
 <div><h2> Prix total :  {{prixDuPanier}} € </h2></div>
+<ion-note *ngIf="!emptyBasket && prixDuPanier < 5">Vous ne pouvez pas commander pour moins de 5€</ion-note>
 </ion-row>
-<button ion-button class="boutonCommande" icon-start block full [disabled]="emptyBasket" (click)="PasserCommande($event)" >
+<button ion-button class="boutonCommande" icon-start block full [disabled]="emptyBasket || prixDuPanier < 5" (click)="PasserCommande($event)">
 	<ion-icon name="checkmark"></ion-icon>
 		Commander
 	</button>

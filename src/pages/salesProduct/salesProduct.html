@@ -1,0 +1,42 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Détails produit</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding >
+
+	<ion-row>
+		<ion-col col-auto><h2>{{produit_vu.name}}</h2></ion-col>
+		<ion-col text-right>{{produit_vu.price}}€</ion-col>
+	</ion-row>
+	<img [src] ="this.produit_vu.images[0].src"/>
+	<div [innerHTML]="produit_vu.description"></div>
+
+
+	<ion-item >
+		<ion-input type="number" placeholder="Prix en promotion" [(ngModel)]="price">
+		</ion-input>
+	</ion-item>
+
+	<ion-item>
+		<ion-label>Date de début</ion-label>
+		<ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="dateDebut"></ion-datetime>
+	</ion-item>
+
+	<ion-item>
+		<ion-label>Date de fin</ion-label>
+		<ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="dateFin"></ion-datetime>
+	</ion-item>
+
+
+
+	<button ion-button icon-start full (click)="MettreEnPromotion($event)">
+		<ion-icon name="coin"></ion-icon>
+		Mettre en promotion
+	</button>
+
+</ion-content>

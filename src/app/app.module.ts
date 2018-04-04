@@ -33,6 +33,7 @@ import {ModifyProductPage} from '../pages/modifyProduct/modifyProduct'
 import {SelectProductPage} from '../pages/selectProduct/selectProduct'
 import {DeleteProductPage} from '../pages/deleteProduct/deleteProduct'
 import {UnavailableProductPage} from '../pages/unavailableProduct/unavailableProduct'
+import {SalesProductPage} from '../pages/salesProduct/salesProduct'
 
 import {ApiConnectorService} from '../services/api-connector';
 import {SessionInfos} from '../services/session-infos';
@@ -70,7 +71,8 @@ import { ProductList } from '../services/product-list';
 		ModifyProductPage,
 		SelectProductPage,
 		DeleteProductPage,
-		UnavailableProductPage
+		UnavailableProductPage,
+		SalesProductPage
 	],
 	imports: [
 		BrowserModule,
@@ -105,7 +107,8 @@ import { ProductList } from '../services/product-list';
 		ModifyProductPage,
 		SelectProductPage,
 		DeleteProductPage,
-		UnavailableProductPage
+		UnavailableProductPage,
+		SalesProductPage
 	],
 	providers: [
 		StatusBar,

@@ -27,6 +27,10 @@ export class EspaceCommercantPage {
 		this.navCtrl.push(SelectProductPage,{action:"modify"});
 	}
 
+	salesProduct(event) {
+		this.navCtrl.push(SelectProductPage,{action:"sales"});
+	}
+
 	unavailableProduct(event){
 		this.navCtrl.push(SelectProductPage,{action:"unavailable"})
 	}

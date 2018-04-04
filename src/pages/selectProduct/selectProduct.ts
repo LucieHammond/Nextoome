@@ -7,6 +7,7 @@ import {ApiConnectorService} from '../../services/api-connector'
 import{ModifyProductPage} from '../modifyProduct/modifyProduct'
 import {DeleteProductPage} from '../deleteProduct/deleteProduct'
 import {UnavailableProductPage} from '../unavailableProduct/unavailableProduct'
+import {SalesProductPage} from '../salesProduct/salesProduct'
 
 
 @IonicPage()
@@ -39,6 +40,9 @@ export class SelectProductPage {
 		}
 		if(this.actionChoisie=="delete"){
 			this.navCtrl.push(DeleteProductPage, {name: produit});
+		}
+		if(this.actionChoisie=="sales"){
+			this.navCtrl.push(SalesProductPage, {name: produit});
 		}
 	}
 
