@@ -40,12 +40,12 @@ export class ParamsPage {
 		if (setting) {
 			setting.value = value.toString();
 		} else {
-			this.settings.push({key: key, value: value.toString()})
+			//this.settings.push({id: 1, key: key, value: value.toString()})
 		}
 
-		this.session.updateUserSettings(this.settings).subscribe((user) => {
+		/*this.session.updateUserSettings(this.settings).subscribe((user) => {
 			// Ne marche pas pour le moment (metadata n'est pas modifiable de cette façon)
 			console.log(JSON.stringify(user));
-		});
+		});*/
 	}
 }

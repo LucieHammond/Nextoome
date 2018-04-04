@@ -31,8 +31,9 @@
 
 <ion-row align-items-center justify-content-center>
 <div><h2> Prix total :  {{prixDuPanier}} € </h2></div>
+<ion-note *ngIf="!emptyBasket && prixDuPanier < 5">Vous ne pouvez pas commander pour moins de 5€</ion-note>
 </ion-row>
-<button ion-button class="boutonCommande" icon-start block full [disabled]="emptyBasket" (click)="PasserCommande($event)" >
+<button ion-button class="boutonCommande" icon-start block full [disabled]="emptyBasket || prixDuPanier < 5" (click)="PasserCommande($event)" >
 	<ion-icon name="checkmark"></ion-icon>
 		Commander
 	</button>
