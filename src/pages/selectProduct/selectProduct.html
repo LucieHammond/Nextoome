@@ -1,0 +1,19 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Selection du produit</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <button ion-item *ngFor="let p of TousProduits" (click)="SelectionProduit($event,p)">
+		<ion-avatar item-start>
+			<img [src] ="this.p.images[0].src">
+		</ion-avatar>
+        {{p.name}}
+    </button>
+</ion-list>
+</ion-content>

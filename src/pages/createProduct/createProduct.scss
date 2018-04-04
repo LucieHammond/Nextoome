@@ -1,15 +1,10 @@
-page-createProduct
-{
-	.error {
-		ion-label{
-			color: color($colors, tomate);
-		}
-		border-bottom: 1px solid color($colors, tomate);
-	}
+page-createProduct {
+	ion-content{
 	.button{
-		background: color($colors, tomate) !important;
 		width: 80%;
+		height: 10%;
 		margin-left: 10%;
 		margin-top: 20px;
+		}
 	}
 }

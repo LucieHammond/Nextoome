@@ -1,0 +1,25 @@
+<ion-header>
+	<ion-navbar>
+		<button ion-button menuToggle>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>Détails produit</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding >
+
+	<ion-row>
+		<ion-col col-auto><h2>{{produit_vu.name}}</h2></ion-col>
+		<ion-col text-right>{{produit_vu.price}}€</ion-col>
+	</ion-row>
+	<img [src] ="this.produit_vu.images[0].src"/>
+	<div [innerHTML]="produit_vu.description"></div>
+
+
+	<button ion-button icon-start full (click)="SupprimerProduit($event)">
+		<ion-icon name="close"></ion-icon>
+		Supprimer définitivement
+	</button>
+
+</ion-content>
