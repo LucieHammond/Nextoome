@@ -8,6 +8,9 @@
 </ion-header>
 
 <ion-content padding>
+	<ion-refresher (ionRefresh)="doRefresh($event)">
+	    <ion-refresher-content></ion-refresher-content>
+	  </ion-refresher>
 
 	<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="RechercheProduits()" class="searchbar" placeholder="Rechercher un produit">
 		<div *ngIf="searching" class="spinner-container">

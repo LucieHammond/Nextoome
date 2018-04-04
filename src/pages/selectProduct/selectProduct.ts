@@ -41,4 +41,11 @@ export class SelectProductPage {
 			this.navCtrl.push(DeleteProductPage, {name: produit});
 		}
 	}
+
+doRefresh(event){
+	this.apiConnector.getProductsList().subscribe(products => {
+		this.TousProduits = products;
+	});
+}
+
 }

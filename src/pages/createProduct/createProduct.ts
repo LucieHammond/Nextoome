@@ -18,7 +18,10 @@ export class CreateProductPage {
 	name: string;
 	description: string;
 	price: string;
-	categorie: ProductCategory[];
+	categorie: {
+		id: number
+	};
+	categorieChoisie: ProductCategory;
 
 
 
@@ -34,17 +37,16 @@ export class CreateProductPage {
 	}
 
 	createProduct(event) {
-
+		console.log(this.categorieChoisie.id)
 		let productData = {
 			name: this.name,
 			description: this.description,
 			regular_price: this.price,
 			in_stock: true,
-	//		categories: this.categorie,
+		//	categories: this.categorieChoisie.id,
 		};
 
 		this.apiConnector.createProduct(productData);
-		console.log(this.price);
 		this.ConfirmationCreation();
 	}
 

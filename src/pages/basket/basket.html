@@ -23,6 +23,12 @@
 				</ion-item>
 
 				<ion-item-options side="right">
+					<button ion-button (click)="increase($event,p)" color="myrtille" icon-only>
+						<ion-icon name="add"></ion-icon>
+					</button>
+					<button ion-button (click)="decrease($event,p)" color="citron" icon-only>
+						<ion-icon name="remove"></ion-icon>
+					</button>
 					<button ion-button (click)="RetirerPanier($event,p)" color="tomate">Supprimer
 						<ion-icon name="trash"></ion-icon>
 					</button>

@@ -7,17 +7,36 @@ export class SharedBasket {
 
 	produit: Product;
 	contenuPanier: Product[] = [];
+	listeNoms: string[] = [];
 	totalPrice : number ;
+	i: number;
 
 	constructor() {}
 
     addToBasket(produitSelectionne,quantite) {
-		if(produitSelectionne.quantite_panier>0)
-		  	{produitSelectionne.quantite_panier = produitSelectionne.quantite_panier*1 + 1*Number.parseInt(quantite)}
+			this.listeNoms = [];
+			for(let produitDuPanier of this.contenuPanier)
+			{
+				this.listeNoms.push(produitDuPanier.name);
+			}
+			this.i = this.listeNoms.indexOf(produitSelectionne.name);
+		if(this.i>-1)
+		  	{this.contenuPanier[this.i].quantite_panier = this.contenuPanier[this.i].quantite_panier*1 + 1*Number.parseInt(quantite)}
 		else{
 		  	this.contenuPanier.push(produitSelectionne);
 		  	produitSelectionne.quantite_panier = quantite}
     }
+
+increase(produitSelectionne){
+	produitSelectionne.quantite_panier = produitSelectionne.quantite_panier*1 + 1*1;
+}
+
+decrease(produitSelectionne){
+	if(produitSelectionne.quantite_panier>1){
+	produitSelectionne.quantite_panier -=1;
+}
+else(this.removeFromBasket(produitSelectionne))
+}
 
     removeFromBasket(produitASupprimer){
       	let index = this.contenuPanier.indexOf(produitASupprimer);

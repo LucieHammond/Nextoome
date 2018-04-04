@@ -70,7 +70,7 @@ export interface Product {
 	grouped_products: number[],
 	menu_order: 0,
 	meta_data: MetaData[],
-	quantite_panier: 0;
+	quantite_panier: number ;
 }
 
 interface Download{

@@ -32,6 +32,16 @@ export class BasketPage {
 		this.navCtrl.push(ProductPage,{name: produit});
 	}
 
+increase(event,produit){
+	this.sharedBasket.increase(produit);
+	this.prixDuPanier = this.sharedBasket.getTotalPrice().toFixed(2);
+}
+
+decrease(event,produit){
+	this.sharedBasket.decrease(produit);
+	this.prixDuPanier = this.sharedBasket.getTotalPrice().toFixed(2);
+}
+
 	RetirerPanier(event, produit)
 	{
 		let alert = this.alertCtrl.create({

@@ -33,7 +33,7 @@ export class HomePage {
 
 		this.session.getCurrentUser().subscribe(user => {
 			this.user = $.extend(true, {}, user);
-			this.isShop =!(this.user.role=="vendor"); //enlever la négation !!
+			this.isShop = !(this.user.role=="vendor"); //enlever la négation !! 
 		});
 		this.listProduits.getProducts().subscribe(produits =>{
 			this.produitsAccueil = produits.filter((produit) => {
@@ -62,6 +62,17 @@ AccesCommercant(event){
 			this.searchControl.valueChanges.debounceTime(700).subscribe(search => {
 				this.RechercheProduits();
 			});
+		});
+	}
+
+	doRefresh(event){
+		this.listProduits.getProducts().subscribe(produits =>{
+			this.produitsAccueil = produits.filter((produit) => {
+				return produit.in_stock;
+			});
+					this.searchTerm ='';
+					this.resultatsRecherche = null;
+					event.complete();
 		});
 	}
 }
