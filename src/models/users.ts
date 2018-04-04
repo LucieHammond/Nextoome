@@ -43,7 +43,7 @@ export interface User {
 }
 
 interface MetaData{
-	id: string,
+	id: number,
 	key: string,
 	value: string
 }
