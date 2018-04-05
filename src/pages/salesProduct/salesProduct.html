@@ -24,12 +24,12 @@
 
 	<ion-item>
 		<ion-label>Date de début</ion-label>
-		<ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="dateDebut"></ion-datetime>
+		<ion-datetime displayFormat="DD/MM/YYYY" min="2017" max="2050-10-31" [(ngModel)]="dateDebut"></ion-datetime>
 	</ion-item>
 
 	<ion-item>
 		<ion-label>Date de fin</ion-label>
-		<ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="dateFin"></ion-datetime>
+		<ion-datetime displayFormat="DD/MM/YYYY" min="2017" max="2050-10-31" [(ngModel)]="dateFin"></ion-datetime>
 	</ion-item>
 
 
