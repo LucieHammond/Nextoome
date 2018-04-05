@@ -17,6 +17,7 @@ export class ProductPage {
 
 	produit_vu: Product = this.navParams.get('name');
 	quantity: string = '0' ;
+	isOnSale: boolean = this.produit_vu.on_sale;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public sharedBasket: SharedBasket,
 				private alertCtrl: AlertController, public popoverCtrl: PopoverController, private session: SessionInfos) {
