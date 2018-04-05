@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/users';
 import {ApiConnectorService} from "./api-connector";
 import {Observable} from "rxjs";
+import { Events } from 'ionic-angular';
 import {Product, WishlistItem} from "../models/products";
 
 
@@ -11,7 +12,7 @@ export class SessionInfos {
 	currentUser: Observable<User> = null;
 	wishLists: {name: string, products: WishlistItem[]}[] = null;
 
-    constructor(private apiConnector: ApiConnectorService) {
+    constructor(private apiConnector: ApiConnectorService, public events: Events) {
     }
 
     getCurrentUser(): Observable<User> {
@@ -29,7 +30,7 @@ export class SessionInfos {
     	filteredKeys.forEach(function(key){ userData[key] = user[key]; });
 
     	this.currentUser = this.apiConnector.updateUser(id, userData);
-	//	this.events.publish('user:defined');
+		this.events.publish('user:defined');
 		return this.currentUser;
 	}
 
