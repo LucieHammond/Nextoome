@@ -27,19 +27,22 @@ export class DeleteProductPage {
 	}
 
 
-	SupprimerProduit(event) {
-	  		this.apiConnector.deleteProduct(this.produit_vu.id);
-	  		this.ConfirmationSuppression();
-	}
 
-	ConfirmationSuppression(){
+		SupprimerProduit(event){
 		let alert = this.alertCtrl.create({
 			title: 'Confirmation',
-			message: this.produit_vu.name+" supprimé du catalogue !",
+			message: "Voulez-vous vraiment supprimer définitivement "+this.produit_vu.name+" du catalogue !",
 			buttons: [
-		  		{text:'OK',
-				handler: () => {this.navCtrl.pop();}
-		  	}]
+				{
+					text: "Annuler",
+					role: 'cancel',
+					handler: () => {}
+				},
+		  		{text:'Valider',
+				handler: () => {
+					this.apiConnector.deleteProduct(this.produit_vu.id);
+					this.navCtrl.pop();}
+			}]
 		});
 		alert.present();
 	}
