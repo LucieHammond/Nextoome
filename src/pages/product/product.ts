@@ -1,8 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { SharedBasket } from '../../services/shared-basket'
-import { Product } from '../../models/products'
-import { PopoverController } from 'ionic-angular';
+import {Component} from "@angular/core";
+import {IonicPage, NavController, NavParams, AlertController, PopoverController} from "ionic-angular";
+import {SharedBasket} from "../../services/shared-basket";
+import {Product} from "../../models/products";
 import {SessionInfos} from "../../services/session-infos";
 
 
@@ -16,7 +15,7 @@ import {SessionInfos} from "../../services/session-infos";
 export class ProductPage {
 
 	produit_vu: Product = this.navParams.get('name');
-	quantity: string = '0' ;
+	quantity: string = '0';
 	isOnSale: boolean = this.produit_vu.on_sale;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public sharedBasket: SharedBasket,
@@ -29,38 +28,43 @@ export class ProductPage {
 
 
 	AjoutPanier(event) {
-		if(this.quantity != '0'){
-	  		this.sharedBasket.addToBasket(this.produit_vu,this.quantity);
-	  		this.ConfirmationAchat();
+		if (this.quantity != '0') {
+			this.sharedBasket.addToBasket(this.produit_vu, this.quantity);
+			this.ConfirmationAchat();
 		}
 	}
 
-	ConfirmationAchat(){
+	ConfirmationAchat() {
 		let alert = this.alertCtrl.create({
 			title: 'Confirmation',
-			message: this.quantity+" ".concat(this.produit_vu.name.concat(' ajouté au panier !')),
+			message: this.quantity + " ".concat(this.produit_vu.name.concat(' ajouté au panier !')),
 			buttons: [
-		  		{text:'OK',
-				handler: () => {this.navCtrl.pop();}
-		  	}]
+				{
+					text: 'OK',
+					handler: () => {
+						this.navCtrl.pop();
+					}
+				}]
 		});
 		alert.present();
 	}
 
 	addToWishlist() {
-		if(this.quantity == '0'){ return; }
+		if (this.quantity == '0') {
+			return;
+		}
 
 		let alert = this.alertCtrl.create();
 		alert.setTitle('Choix de la liste');
 
 		let wishlists = this.session.getWishLists();
-		if (wishlists.length == 0){
+		if (wishlists.length == 0) {
 			alert.setSubTitle("Désolé, vous n'avez aucune liste de courses pour le moment. Pour en créer une," +
 				"allez dans l'onglet correspondant depuis le menu principal.");
 			alert.addButton("J'ai compris");
 		}
 		else {
-			for (let i=0; i < wishlists.length; i++){
+			for (let i = 0; i < wishlists.length; i++) {
 				alert.addInput({
 					type: 'radio',
 					label: wishlists[i].name,
@@ -72,7 +76,7 @@ export class ProductPage {
 			alert.addButton({
 				text: 'Ajouter',
 				handler: data => {
-					if (data != null){
+					if (data != null) {
 						this.session.addProductToList(parseInt(data), this.produit_vu, parseInt(this.quantity));
 					}
 				}

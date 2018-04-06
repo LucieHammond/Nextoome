@@ -1,16 +1,16 @@
 page-contact {
-	ion-content{
+	ion-content {
 		text-align: center;
 		.message {
 			margin-top: 25px;
 			margin-bottom: 20px;
-			ion-textarea{
+			ion-textarea {
 				height: auto;
 			}
 		}
 		.send {
-			background-color: color($colors,citron) !important;
-			color: color($colors,myrtille) !important;
+			background-color: color($colors, citron) !important;
+			color: color($colors, myrtille) !important;
 		}
 	}
 }

@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HomePage } from '../home/home';
-import { Events } from 'ionic-angular';
-import * as $ from 'jquery';
-import { ApiConnectorService } from "../../services/api-connector";
+import {Component} from "@angular/core";
+import {IonicPage, NavController, NavParams, LoadingController, ToastController, Events} from "ionic-angular";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {HomePage} from "../home/home";
+import * as $ from "jquery";
+import {ApiConnectorService} from "../../services/api-connector";
 
 
 @IonicPage()

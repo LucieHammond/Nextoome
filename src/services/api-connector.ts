@@ -1,12 +1,18 @@
-import { Injectable } from '@angular/core';
-import { HTTP } from '@ionic-native/http';
-import { Observable } from 'rxjs/Rx';
-
-import { Coupon } from '../models/coupons';
-import { User } from '../models/users';
-import { Order, OrderNote, OrderRefund } from '../models/orders';
-import { Product, ProductAttribute, ProductAttributeTerm, ProductCategory, ProductShippingClass, ProductTag } from '../models/products';
-import { Storekeeper } from '../models/storekeeper';
+import {Injectable} from "@angular/core";
+import {HTTP} from "@ionic-native/http";
+import {Observable} from "rxjs/Rx";
+import {Coupon} from "../models/coupons";
+import {User} from "../models/users";
+import {Order, OrderNote, OrderRefund} from "../models/orders";
+import {
+	Product,
+	ProductAttribute,
+	ProductAttributeTerm,
+	ProductCategory,
+	ProductShippingClass,
+	ProductTag
+} from "../models/products";
+import {Storekeeper} from "../models/storekeeper";
 
 
 @Injectable()
@@ -19,60 +25,52 @@ export class ApiConnectorService {
 	}
 
 	_get(url, parameters) {
-		// Version avec Bearer Auth
+		// Utilisation de Bearer Auth avec un token
 		return this.http.get(url, parameters, {'Authorization': 'Bearer ' + window.localStorage.getItem('token')})
 			.then(data => JSON.parse(data.data))
-			.catch(error => { console.log(error.error); throw error.error});
-
-		// Version avec paramètres dans l'URL
-		/*return this.http.get(url, Object.assign(parameters, this.auth), {})
-			.then(data => JSON.parse(data.data))
-			.catch(error => { console.log(error.error); throw error.error});*/
+			.catch(error => {
+				console.log(error.error);
+				throw error.error
+			});
 	}
 
 	_post(url, parameters, auth: boolean = true) {
-		// Version avec Bearer Auth
+		// Utilisation de Bearer Auth avec un token
 		let header = auth ? {'Authorization': 'Bearer ' + window.localStorage.getItem('token')} : {};
 		return this.http.post(url, parameters, header)
 			.then(data => JSON.parse(data.data))
-			.catch(error => { console.log(error.error); throw error.error});
-
-		// Version avec paramètres dans l'URL
-		/*let auth_url = `${url}?consumer_key=${this.username}&consumer_secret=${this.password}`;
-		return this.http.post(auth_url, parameters, {})
-			.then(data => JSON.parse(data.data))
-			.catch(error => { console.log(error.error); throw error.error});*/
+			.catch(error => {
+				console.log(error.error);
+				throw error.error
+			});
 	}
 
 	_put(url, parameters) {
-		// Version avec Bearer Auth
+		// Utilisation de Bearer Auth avec un token
 		return this.http.put(url, parameters, {'Authorization': 'Bearer ' + window.localStorage.getItem('token')})
 			.then(data => JSON.parse(data.data))
-			.catch(error => { console.log(error.error); throw error.error});
-
-		// Version avec paramètres dans l'URL
-		/*let auth_url = `${url}?consumer_key=${this.username}&consumer_secret=${this.password}`;
-		return this.http.put(auth_url, parameters, {})
-			.then(data => JSON.parse(data.data))
-			.catch(error => { console.log(error.error); throw error.error});*/
+			.catch(error => {
+				console.log(error.error);
+				throw error.error
+			});
 	}
 
 	_delete(url, parameters) {
-		// Version avec Bearer Auth
+		// Utilisation de Bearer Auth avec un token
 		return this.http.delete(url, parameters, {'Authorization': 'Bearer ' + window.localStorage.getItem('token')})
 			.then(data => JSON.parse(data.data))
-			.catch(error => { console.log(error.error); throw error.error});
-
-		// Version avec paramètres dans l'URL
-		/*return this.http.delete(url, Object.assign(parameters, this.auth), {})
-			.then(data => JSON.parse(data.data))
-			.catch(error => { console.log(error.error); throw error.error});*/
+			.catch(error => {
+				console.log(error.error);
+				throw error.error
+			});
 	}
 
 	testConnection(): Observable<string> {
 		return Observable.fromPromise(this.http.get(this.apiUrl, {}, {})
 			.then(data => data.headers['content-type'])
-			.catch(error => { console.log(error.error); })
+			.catch(error => {
+				console.log(error.error);
+			})
 		);
 	}
 
@@ -102,7 +100,7 @@ export class ApiConnectorService {
 			this._get(`${this.apiUrl}/coupons/${id}`, {}));
 	}
 
-	getCouponsList(params={}): Observable<Coupon[]> {
+	getCouponsList(params = {}): Observable<Coupon[]> {
 		return Observable.fromPromise(
 			this._get(`${this.apiUrl}/coupons`, params));
 	}
@@ -112,12 +110,12 @@ export class ApiConnectorService {
 			this._put(`${this.apiUrl}/coupons/${id}`, couponData));
 	}
 
-	deleteCoupon(id, force=false): Observable<Coupon> {
+	deleteCoupon(id, force = false): Observable<Coupon> {
 		return Observable.fromPromise(
-			this._delete(`${this.apiUrl}/coupons/${id}`,{force: force}));
+			this._delete(`${this.apiUrl}/coupons/${id}`, {force: force}));
 	}
 
-	getStoresList(params={}): Observable<Storekeeper[]> {
+	getStoresList(params = {}): Observable<Storekeeper[]> {
 		return Observable.fromPromise(
 			this._get(`${this.adminUrl}/users`, params));
 	}
@@ -137,7 +135,7 @@ export class ApiConnectorService {
 			this._get(`${this.apiUrl}/customers/${id}`, {}));
 	}
 
-	getUsersList(params={}): Observable<User[]> {
+	getUsersList(params = {}): Observable<User[]> {
 		return Observable.fromPromise(
 			this._get(`${this.apiUrl}/customers`, params));
 	}
@@ -149,12 +147,12 @@ export class ApiConnectorService {
 
 	deleteUser(id): Observable<User> {
 		return Observable.fromPromise(
-			this._delete(`${this.apiUrl}/customers/${id}`,{force: true}));
+			this._delete(`${this.apiUrl}/customers/${id}`, {force: true}));
 	}
 
 	getUserOrders(id): Observable<Order[]> {
 		return Observable.fromPromise(
-			this._get(`${this.apiUrl}/customers/${id}/orders`,{}));
+			this._get(`${this.apiUrl}/customers/${id}/orders`, {}));
 	}
 
 	createOrder(orderData): Observable<Order> {
@@ -164,10 +162,10 @@ export class ApiConnectorService {
 
 	getOrder(id): Observable<Order> {
 		return Observable.fromPromise(
-			this._get(`${this.apiUrl}/orders/${id}`,{}));
+			this._get(`${this.apiUrl}/orders/${id}`, {}));
 	}
 
-	getOrdersList(params={}): Observable<Order[]> {
+	getOrdersList(params = {}): Observable<Order[]> {
 		return Observable.fromPromise(
 			this._get(`${this.apiUrl}/orders`, params));
 	}
@@ -177,9 +175,9 @@ export class ApiConnectorService {
 			this._put(`${this.apiUrl}/orders/${id}`, orderData));
 	}
 
-	deleteOrder(id, force=false): Observable<Order> {
+	deleteOrder(id, force = false): Observable<Order> {
 		return Observable.fromPromise(
-			this._delete(`${this.apiUrl}/orders/${id}`,{force: force}));
+			this._delete(`${this.apiUrl}/orders/${id}`, {force: force}));
 	}
 
 	createNoteForOrder(order_id, noteData): Observable<OrderNote> {
@@ -192,14 +190,14 @@ export class ApiConnectorService {
 			this._get(`${this.apiUrl}/orders/${order_id}/notes/${note_id}`, {}));
 	}
 
-	getNotesListFromOrder(order_id, params={}): Observable<OrderNote[]> {
+	getNotesListFromOrder(order_id, params = {}): Observable<OrderNote[]> {
 		return Observable.fromPromise(
 			this._get(`${this.apiUrl}/orders/${order_id}/notes`, params));
 	}
 
 	deleteOrderNote(order_id, note_id): Observable<OrderNote> {
 		return Observable.fromPromise(
-			this._delete(`${this.apiUrl}/orders/${order_id}/notes/${note_id}`,{force: true}));
+			this._delete(`${this.apiUrl}/orders/${order_id}/notes/${note_id}`, {force: true}));
 	}
 
 	createRefundForOrder(order_id, refundData): Observable<OrderRefund> {
@@ -212,14 +210,14 @@ export class ApiConnectorService {
 			this._get(`${this.apiUrl}/orders/${order_id}/refunds/${refund_id}`, {}));
 	}
 
-	getRefundsListFromOrder(order_id, params={}): Observable<OrderRefund[]> {
+	getRefundsListFromOrder(order_id, params = {}): Observable<OrderRefund[]> {
 		return Observable.fromPromise(
 			this._get(`${this.apiUrl}/orders/${order_id}/refunds`, params));
 	}
 
 	deleteOrderRefund(order_id, refund_id): Observable<OrderRefund> {
 		return Observable.fromPromise(
-			this._delete(`${this.apiUrl}/orders/${order_id}/refunds/${refund_id}`,{force: true}));
+			this._delete(`${this.apiUrl}/orders/${order_id}/refunds/${refund_id}`, {force: true}));
 	}
 
 	createProduct(productData): Observable<Product> {
@@ -232,7 +230,7 @@ export class ApiConnectorService {
 			this._get(`${this.apiUrl}/products/${id}`, {}));
 	}
 
-	getProductsList(params={}): Observable<Product[]> {
+	getProductsList(params = {}): Observable<Product[]> {
 		return Observable.fromPromise(
 			this._get(`${this.apiUrl}/products`, params));
 	}
@@ -242,9 +240,9 @@ export class ApiConnectorService {
 			this._put(`${this.apiUrl}/products/${id}`, productData));
 	}
 
-	deleteProduct(id, force=false): Observable<Product> {
+	deleteProduct(id, force = false): Observable<Product> {
 		return Observable.fromPromise(
-			this._delete(`${this.apiUrl}/products/${id}`,{force: force}));
+			this._delete(`${this.apiUrl}/products/${id}`, {force: force}));
 	}
 
 	createProductAttribute(attData): Observable<ProductAttribute> {
@@ -259,7 +257,7 @@ export class ApiConnectorService {
 
 	getProductAttributesList(): Observable<ProductAttribute[]> {
 		return Observable.fromPromise(
-			this._get(`${this.apiUrl}/products/attributes`,{}));
+			this._get(`${this.apiUrl}/products/attributes`, {}));
 	}
 
 	updateProductAttribute(id, attData): Observable<ProductAttribute> {
@@ -269,7 +267,7 @@ export class ApiConnectorService {
 
 	deleteProductAttribute(id): Observable<ProductAttribute> {
 		return Observable.fromPromise(
-			this._delete(`${this.apiUrl}/products/attributes/${id}`,{force: true}));
+			this._delete(`${this.apiUrl}/products/attributes/${id}`, {force: true}));
 	}
 
 	createProductAttributeTerm(att_id, attTermData): Observable<ProductAttributeTerm> {
@@ -282,7 +280,7 @@ export class ApiConnectorService {
 			this._get(`${this.apiUrl}/products/attributes/${att_id}/terms/${term_id}`, {}));
 	}
 
-	getProductAttributeTermsList(att_id, params={}): Observable<ProductAttributeTerm[]> {
+	getProductAttributeTermsList(att_id, params = {}): Observable<ProductAttributeTerm[]> {
 		return Observable.fromPromise(
 			this._get(`${this.apiUrl}/products/attributes/${att_id}/terms`, params));
 	}
@@ -294,7 +292,7 @@ export class ApiConnectorService {
 
 	deleteProductAttributeTerm(att_id, term_id): Observable<ProductAttributeTerm> {
 		return Observable.fromPromise(
-			this._delete(`${this.apiUrl}/products/attributes/${att_id}/terms/${term_id}`,{force: true}));
+			this._delete(`${this.apiUrl}/products/attributes/${att_id}/terms/${term_id}`, {force: true}));
 	}
 
 	createProductCategory(categoryData): Observable<ProductCategory> {
@@ -307,7 +305,7 @@ export class ApiConnectorService {
 			this._get(`${this.apiUrl}/products/categories/${id}`, {}));
 	}
 
-	getProductCategoriesList(params={}): Observable<ProductCategory[]> {
+	getProductCategoriesList(params = {}): Observable<ProductCategory[]> {
 		return Observable.fromPromise(
 			this._get(`${this.apiUrl}/products/categories`, params));
 	}
@@ -319,7 +317,7 @@ export class ApiConnectorService {
 
 	deleteProductCategory(id): Observable<ProductCategory> {
 		return Observable.fromPromise(
-			this._delete(`${this.apiUrl}/products/categories/${id}`,{force: true}));
+			this._delete(`${this.apiUrl}/products/categories/${id}`, {force: true}));
 	}
 
 	createProductShippingClass(classData): Observable<ProductShippingClass> {
@@ -329,10 +327,10 @@ export class ApiConnectorService {
 
 	getProductShippingClass(id): Observable<ProductShippingClass> {
 		return Observable.fromPromise(
-			this._get(`${this.apiUrl}/products/shipping_classes/${id}`,{}));
+			this._get(`${this.apiUrl}/products/shipping_classes/${id}`, {}));
 	}
 
-	getProductShippingClassesList(params={}): Observable<ProductShippingClass[]> {
+	getProductShippingClassesList(params = {}): Observable<ProductShippingClass[]> {
 		return Observable.fromPromise(
 			this._get(`${this.apiUrl}/products/shipping_classes`, params));
 	}
@@ -344,7 +342,7 @@ export class ApiConnectorService {
 
 	deleteProductShippingClass(id): Observable<ProductShippingClass> {
 		return Observable.fromPromise(
-			this._delete(`${this.apiUrl}/products/tags/${id}`,{force: true}));
+			this._delete(`${this.apiUrl}/products/tags/${id}`, {force: true}));
 	}
 
 	createProductTag(tagData): Observable<ProductTag> {
@@ -357,7 +355,7 @@ export class ApiConnectorService {
 			this._get(`${this.apiUrl}/products/tags/${id}`, {}));
 	}
 
-	getProductTagsList(params={}): Observable<ProductTag[]> {
+	getProductTagsList(params = {}): Observable<ProductTag[]> {
 		return Observable.fromPromise(
 			this._get(`${this.apiUrl}/products/tags`, params));
 	}
@@ -369,6 +367,6 @@ export class ApiConnectorService {
 
 	deleteProductTag(id): Observable<ProductTag> {
 		return Observable.fromPromise(
-			this._delete(`${this.apiUrl}/products/tags/${id}`,{force: true}));
+			this._delete(`${this.apiUrl}/products/tags/${id}`, {force: true}));
 	}
 }

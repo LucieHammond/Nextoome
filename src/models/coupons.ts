@@ -1,4 +1,3 @@
-
 // Coupon model based on the structure returned by woocommerce API for coupons
 export interface Coupon {
 	id: number,
@@ -30,7 +29,7 @@ export interface Coupon {
 	meta_data: MetaData[]
 }
 
-interface MetaData{
+interface MetaData {
 	id: string,
 	key: string,
 	value: string

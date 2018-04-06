@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
-import { User } from '../../models/users';
-import { SessionInfos } from "../../services/session-infos";
-import { PicturePage } from "../picture/picture";
-import { OrdersPage } from '../orders/orders';
-import * as $ from 'jquery';
+import {Component} from "@angular/core";
+import {IonicPage, NavController, NavParams} from "ionic-angular";
+import {User} from "../../models/users";
+import {SessionInfos} from "../../services/session-infos";
+import {PicturePage} from "../picture/picture";
+import {OrdersPage} from "../orders/orders";
+import * as $ from "jquery";
 
 
 @IonicPage()
@@ -44,11 +44,11 @@ export class UserProfilePage {
 		this.edit = !this.edit;
 	}
 
-	displayPicture(url: string){
+	displayPicture(url: string) {
 		this.navCtrl.push(PicturePage, {imgUrl: url, editable: false}, {animation: "md-transition"});
 	}
 
-	seeOrders(){
+	seeOrders() {
 		this.navCtrl.setRoot(OrdersPage, {}, {animate: true, direction: "forward"});
 	}
 }

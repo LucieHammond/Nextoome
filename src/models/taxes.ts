@@ -1,4 +1,3 @@
-
 // Tax model based on the structure returned by woocommerce API for taxes
 export interface Tax {
 	id: number,

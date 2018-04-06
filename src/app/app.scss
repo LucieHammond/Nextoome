@@ -1,45 +1,46 @@
-.menu-toolbar{
+.menu-toolbar {
 	height: 170px;
-	background-image:
-		linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)),
-		url('../assets/imgs/lagny.jpg');
+	background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7)),
+	url('../assets/imgs/lagny.jpg');
 
-	ion-avatar img{
+	ion-avatar img {
 		width: 62px;
 		height: 62px;
 		margin-left: 2px;
 		margin-bottom: 30px;
 	}
 
-.title {font-family: "Arciform";}
+	.title {
+		font-family: "Arciform";
+	}
 
-	.subtitle{
+	.subtitle {
 		position: fixed;
 		left: 16px;
-		top:120px;
+		top: 120px;
 		font-size: 14px;
-		color: color($colors,caillou);
+		color: color($colors, caillou);
 
-		h3{
+		h3 {
 			font-weight: 700;
 		}
 	}
 }
 
-.menu-item{
+.menu-item {
 
-	ion-icon{
+	ion-icon {
 		margin-left: 2px;
 	}
 
-	span{
+	span {
 		position: fixed;
 		left: 72px;
 	}
 }
 
-.separator{
-	height:3px;
-	min-height:3px;
+.separator {
+	height: 3px;
+	min-height: 3px;
 	margin-bottom: 5px;
 }

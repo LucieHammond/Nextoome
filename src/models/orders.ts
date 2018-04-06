@@ -1,4 +1,3 @@
-
 // Order model based on the structure returned by woocommerce API for orders
 export interface Order {
 	id: number,
@@ -65,7 +64,7 @@ export interface Order {
 	set_paid: boolean
 }
 
-interface MetaData{
+interface MetaData {
 	id: string,
 	key: string,
 	value: string
@@ -88,7 +87,7 @@ interface LineItem {
 	price: string
 }
 
-interface TaxLine{
+interface TaxLine {
 	id: number,
 	rate_code: string,
 	rate_id: string,
@@ -99,7 +98,7 @@ interface TaxLine{
 	meta_data: MetaData[]
 }
 
-interface ShippingLine{
+interface ShippingLine {
 	id: number,
 	method_title: string,
 	method_id: string,
@@ -109,7 +108,7 @@ interface ShippingLine{
 	meta_data: MetaData[]
 }
 
-interface FeeLine{
+interface FeeLine {
 	id: number,
 	title: string,
 	tax_class: string,
@@ -120,7 +119,7 @@ interface FeeLine{
 	meta_data: MetaData[]
 }
 
-interface CouponLine{
+interface CouponLine {
 	id: number,
 	code: string,
 	discount: string,
@@ -134,7 +133,7 @@ interface Refund {
 	total: string
 }
 
-interface MetaData{
+interface MetaData {
 	key: string,
 	label: string,
 	value: string
@@ -142,7 +141,7 @@ interface MetaData{
 
 
 // OrderNotes model based on the structure returned by woocommerce API for order notes
-export interface OrderNote{
+export interface OrderNote {
 	id: number,
 	date_created: string,
 	date_created_gmt: string,
@@ -152,7 +151,7 @@ export interface OrderNote{
 
 
 // OrderRefund model based on the structure returned by woocommerce API for order refunds
-export interface OrderRefund{
+export interface OrderRefund {
 	id: number,
 	date_created: string,
 	date_created_gmt: string,

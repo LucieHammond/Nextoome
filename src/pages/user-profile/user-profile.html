@@ -16,7 +16,8 @@
 		</button>
 		<div item-end class="edit-buttons">
 			<button *ngIf="!edit" ion-button round color=prune (click)="editProfile()">Modifier le profil</button>
-			<button *ngIf="edit" ion-button round color=prune (click)="saveProfile()">Sauvegarder</button><br/>
+			<button *ngIf="edit" ion-button round color=prune (click)="saveProfile()">Sauvegarder</button>
+			<br/>
 			<button *ngIf="edit" ion-button round color=tomate (click)="cancelChange()">Annuler</button>
 		</div>
 	</ion-list-header>
@@ -75,7 +76,8 @@
 			<ion-item class="item-address-data">
 				<ion-label fixed><i>Code postal :</i></ion-label>
 				<div *ngIf="!edit" item-content>{{user.shipping.postcode}}</div>
-				<ion-input *ngIf="edit" type="number" placeholder="code postal" [(ngModel)]="user.shipping.postcode"></ion-input>
+				<ion-input *ngIf="edit" type="number" placeholder="code postal"
+						   [(ngModel)]="user.shipping.postcode"></ion-input>
 			</ion-item>
 			<ion-item class="item-address-data">
 				<ion-label fixed><i>Pays :</i></ion-label>
@@ -117,7 +119,8 @@
 			<ion-item class="item-address-data">
 				<ion-label fixed><i>Code postal :</i></ion-label>
 				<div *ngIf="!edit" item-content>{{user.billing.postcode}}</div>
-				<ion-input *ngIf="edit" type="number" placeholder="code postal" [(ngModel)]="user.billing.postcode"></ion-input>
+				<ion-input *ngIf="edit" type="number" placeholder="code postal"
+						   [(ngModel)]="user.billing.postcode"></ion-input>
 			</ion-item>
 			<ion-item class="item-address-data">
 				<ion-label fixed><i>Pays :</i></ion-label>
@@ -135,5 +138,7 @@
 	<ion-item *ngIf="!edit && user!=null" no-lines>
 		<ion-label><b>Commandes passées :</b> {{user.orders_count}}</ion-label>
 	</ion-item>
-	<button *ngIf="!edit && user!=null" ion-button class="orders-button" (click)="seeOrders()">Voir l'historique des commandes</button>
+	<button *ngIf="!edit && user!=null" ion-button class="orders-button" (click)="seeOrders()">Voir l'historique des
+		commandes
+	</button>
 </ion-content>

@@ -1,24 +1,24 @@
 page-customer-service {
-	ion-content{
+	ion-content {
 
-		.intro{
+		.intro {
 			font-size: 18px;
 			text-align: left;
 			font-family: "Montserrat";
 			margin-left: 16px;
-			color: color($colors,caillou);
+			color: color($colors, caillou);
 		}
-		ion-card{
+		ion-card {
 			display: inline-block;
 			text-align: center;
-			.card-title{
-				background-image: linear-gradient(color($colors,myrtille),color($colors,prune));
-				color : white;
+			.card-title {
+				background-image: linear-gradient(color($colors, myrtille), color($colors, prune));
+				color: white;
 				font-family: "Arciform";
 				font-size: 20px;
 				text-align: left;
 			}
-			p{
+			p {
 				padding-top: 10px;
 				padding-bottom: 10px;
 				text-align: justify;
@@ -27,18 +27,18 @@ page-customer-service {
 				text-align: center;
 			}
 			.buttonLink {
-				color: color($colors,tomate) ;
+				color: color($colors, tomate);
 				height: 18px;
 				font-family: "Arciform";
 
 			}
 			a {
-				color: color($colors,myrtille);
+				color: color($colors, myrtille);
 				text-decoration: none;
 				font-family: "Arciform";
 			}
-			.buttonForm{
-				background-color: color($colors,carotte) !important;
+			.buttonForm {
+				background-color: color($colors, carotte) !important;
 			}
 		}
 	}

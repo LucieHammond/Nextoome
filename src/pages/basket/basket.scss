@@ -1,15 +1,15 @@
 page-basket {
-	ion-content{
-		.button{
-		font-family: "Arciform" !important;
+	ion-content {
+		.button {
+			font-family: "Arciform" !important;
 		}
-		.boutonCommande{
+		.boutonCommande {
 			background: color($colors, prune) !important;
 			width: 90%;
 			margin-left: 5%;
 			margin-top: 25px;
 		}
-		ion-item{
+		ion-item {
 			font-size: small !important;
 		}
 		ion-note {

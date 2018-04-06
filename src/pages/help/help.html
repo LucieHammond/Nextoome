@@ -34,7 +34,8 @@
 					du lundi au samedi pour récupérer les achats le soir même*</p>
 				<p class="small justify"><i>* Nous acceptons encore les commandes passées entre
 					{{ ordersTimeEnd | date:'HH' }}h{{ ordersTimeEnd.getMinutes() ? (ordersTimeEnd | date:'mm') : "" }}
-					et {{ lateOrdersTimeEnd | date:'HH' }}h{{ lateOrdersTimeEnd.getMinutes() ? (lateOrdersTimeEnd | date:'mm') : "" }}
+					et {{ lateOrdersTimeEnd | date:'HH' }}h{{ lateOrdersTimeEnd.getMinutes() ? (lateOrdersTimeEnd |
+					date:'mm') : "" }}
 					mais pour une quantité limitée</i></p>
 			</div>
 		</ion-slide>
@@ -66,8 +67,10 @@
 				<h4 class="left"><b>Comment ?</b></h4>
 				<p class="medium justify">- Soit je suis livré directement chez moi</p>
 				<p class="medium justify">- Soit je retire mes produits entre
-					{{ withdrawalTimeStart | date:'HH' }}h{{ withdrawalTimeStart.getMinutes() ? (withdrawalTimeStart | date:'mm') : "" }} et
-					{{ withdrawalTimeEnd | date:'HH' }}h{{ withdrawalTimeEnd.getMinutes() ? (withdrawalTimeEnd | date:'mm') : "" }}
+					{{ withdrawalTimeStart | date:'HH' }}h{{ withdrawalTimeStart.getMinutes() ? (withdrawalTimeStart |
+					date:'mm') : "" }} et
+					{{ withdrawalTimeEnd | date:'HH' }}h{{ withdrawalTimeEnd.getMinutes() ? (withdrawalTimeEnd |
+					date:'mm') : "" }}
 					à la gare SNCF</p>
 			</div>
 		</ion-slide>

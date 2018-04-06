@@ -1,4 +1,3 @@
-
 // Storekeeper model based on the structure returned by API for users (admin)
 export interface Storekeeper {
 	id: number,

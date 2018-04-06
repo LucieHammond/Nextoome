@@ -1,7 +1,6 @@
-import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
-import {EmailComposer} from '@ionic-native/email-composer';
-import { AlertController } from 'ionic-angular';
+import {Component} from "@angular/core";
+import {IonicPage, NavController, NavParams, AlertController} from "ionic-angular";
+import {EmailComposer} from "@ionic-native/email-composer";
 
 
 @IonicPage()
@@ -26,8 +25,8 @@ export class ContactPage {
 			return
 		}
 
-		this.email.isAvailable().then((available: boolean) =>{
-			if(available) {
+		this.email.isAvailable().then((available: boolean) => {
+			if (available) {
 				let email = {
 					to: 'lucie_hammond@hotmail.fr',
 					subject: this.subject,

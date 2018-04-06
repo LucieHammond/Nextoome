@@ -7,14 +7,16 @@
 	</ion-navbar>
 </ion-header>
 
-<ion-content padding >
+<ion-content padding>
 
 	<ion-row>
 		<ion-col col-auto><h2>{{produit_vu.name}}</h2></ion-col>
 		<ion-col text-right *ngIf="!isOnSale">{{produit_vu.price}}€</ion-col>
-		<ion-col text-right *ngIf="isOnSale"><sub ion-text color="carotte"><h4>PROMO : {{produit_vu.price}}€</h4></sub> au lieu de {{produit_vu.regular_price}}€</ion-col>
+		<ion-col text-right *ngIf="isOnSale"><sub ion-text color="carotte"><h4>PROMO : {{produit_vu.price}}€</h4></sub>
+			au lieu de {{produit_vu.regular_price}}€
+		</ion-col>
 	</ion-row>
-	<img [src] ="this.produit_vu.images[0].src"/>
+	<img [src]="this.produit_vu.images[0].src"/>
 	<div [innerHTML]="produit_vu.description"></div>
 
 	<div>

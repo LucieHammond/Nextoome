@@ -1,4 +1,3 @@
-
 // Webhook model based on the structure returned by woocommerce API for webhooks
 export interface Webhook {
 	id: number,
@@ -18,7 +17,7 @@ export interface Webhook {
 
 
 // WebhookDelivery model based on the structure returned by woocommerce API for webhook deliveries
-export interface WebhookDelivery{
+export interface WebhookDelivery {
 	id: number,
 	duration: string,
 	summary: string,

@@ -1,13 +1,13 @@
 <ion-menu [content]="content">
 	<ion-header>
 		<ion-item class="menu-toolbar">
-		<ion-avatar item-left *ngIf="user != null">
-			<img [src]='user.avatar_url'>
-		</ion-avatar>
-		<div class="subtitle" *ngIf="user != null">
-			<h3>{{user.first_name}} {{user.last_name}}</h3>
-			<span>{{user.email}}</span>
-		</div>
+			<ion-avatar item-left *ngIf="user != null">
+				<img [src]='user.avatar_url'>
+			</ion-avatar>
+			<div class="subtitle" *ngIf="user != null">
+				<h3>{{user.first_name}} {{user.last_name}}</h3>
+				<span>{{user.email}}</span>
+			</div>
 		</ion-item>
 	</ion-header>
 

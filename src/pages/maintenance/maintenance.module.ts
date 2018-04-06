@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-import { MaintenancePage } from './maintenance';
+import {NgModule} from "@angular/core";
+import {IonicPageModule} from "ionic-angular";
+import {MaintenancePage} from "./maintenance";
 
 @NgModule({
-  declarations: [
-    MaintenancePage,
-  ],
-  imports: [
-    IonicPageModule.forChild(MaintenancePage),
-  ],
+	declarations: [
+		MaintenancePage,
+	],
+	imports: [
+		IonicPageModule.forChild(MaintenancePage),
+	],
 })
-export class MaintenancePageModule {}
+export class MaintenancePageModule {
+}

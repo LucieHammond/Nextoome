@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
-import {InAppBrowser} from '@ionic-native/in-app-browser';
-import {ContactPage} from '../contact/contact'
+import {Component} from "@angular/core";
+import {IonicPage, NavController, NavParams} from "ionic-angular";
+import {InAppBrowser} from "@ionic-native/in-app-browser";
+import {ContactPage} from "../contact/contact";
 
 
 @IonicPage()
@@ -22,10 +22,10 @@ export class CustomerServicePage {
 		this.iab.create(url, '_blank', 'location=yes');
 	}
 
-	displayForm(){
+	displayForm() {
 		this.navCtrl.push(ContactPage);
 	}
 
-	openEmail(){
+	openEmail() {
 	}
 }

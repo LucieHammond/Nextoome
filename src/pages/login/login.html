@@ -1,43 +1,45 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>CONNEXION</ion-title>
-  </ion-navbar>
+	<ion-navbar>
+		<ion-title>CONNEXION</ion-title>
+	</ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
-      <ion-item [ngClass]="{'error':!authForm.controls.username.valid && authForm.controls.username.touched}">
-          <ion-label floating>Nom d'utilisateur</ion-label>
-          <ion-input formControlName="username" type="text"></ion-input>
-      </ion-item>
+	<form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+		<ion-item [ngClass]="{'error':!authForm.controls.username.valid && authForm.controls.username.touched}">
+			<ion-label floating>Nom d'utilisateur</ion-label>
+			<ion-input formControlName="username" type="text"></ion-input>
+		</ion-item>
 
-      <ion-item *ngIf="authForm.controls.username.hasError('required') && authForm.controls.username.touched">
-          <p>Merci d'entrer votre nom d'utilisateur</p>
-      </ion-item>
-      <ion-item *ngIf="authForm.controls.username.hasError('pattern') && authForm.controls.username.touched">
-          <p>Désolé, seul les lettres sont autorisées</p>
-      </ion-item>
-      <ion-item *ngIf="authForm.controls.username.hasError('minlength') && authForm.controls.username.touched">
-          <p>Nom d'utilisateur trop court</p>
-      </ion-item>
-      <ion-item *ngIf="authForm.controls.username.hasError('maxlength') && authForm.controls.username.touched">
-          <p>Nom d'utilisateur trop long</p>
-      </ion-item>
+		<ion-item *ngIf="authForm.controls.username.hasError('required') && authForm.controls.username.touched">
+			<p>Merci d'entrer votre nom d'utilisateur</p>
+		</ion-item>
+		<ion-item *ngIf="authForm.controls.username.hasError('pattern') && authForm.controls.username.touched">
+			<p>Désolé, seul les lettres sont autorisées</p>
+		</ion-item>
+		<ion-item *ngIf="authForm.controls.username.hasError('minlength') && authForm.controls.username.touched">
+			<p>Nom d'utilisateur trop court</p>
+		</ion-item>
+		<ion-item *ngIf="authForm.controls.username.hasError('maxlength') && authForm.controls.username.touched">
+			<p>Nom d'utilisateur trop long</p>
+		</ion-item>
 
-      <ion-item [ngClass]="{'error':!authForm.controls.password.valid && authForm.controls.password.touched}">
-          <ion-label floating>Mot de passe</ion-label>
-          <ion-input formControlName="password" type="password"></ion-input>
-      </ion-item>
-      <ion-item *ngIf="authForm.controls.password.hasError('required') && authForm.controls.password.touched">
-          <p>Un mot de passe est requis !</p>
-      </ion-item>
-      <ion-item *ngIf="authForm.controls.password.hasError('minlength') && authForm.controls.password.touched">
-          <p>Mot de passe trop court</p>
-      </ion-item>
+		<ion-item [ngClass]="{'error':!authForm.controls.password.valid && authForm.controls.password.touched}">
+			<ion-label floating>Mot de passe</ion-label>
+			<ion-input formControlName="password" type="password"></ion-input>
+		</ion-item>
+		<ion-item *ngIf="authForm.controls.password.hasError('required') && authForm.controls.password.touched">
+			<p>Un mot de passe est requis !</p>
+		</ion-item>
+		<ion-item *ngIf="authForm.controls.password.hasError('minlength') && authForm.controls.password.touched">
+			<p>Mot de passe trop court</p>
+		</ion-item>
 
-      <button ion-button full color="primary" [disabled]="!authForm.valid" style="margin-top: 20px;" type="submit">Connexion</button>
-  </form>
+		<button ion-button full color="primary" [disabled]="!authForm.valid" style="margin-top: 20px;" type="submit">
+			Connexion
+		</button>
+	</form>
 </ion-content>

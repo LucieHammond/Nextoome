@@ -9,30 +9,30 @@
 
 <ion-content>
 	<ion-list padding-top=20>
-			<ion-item >
-				<ion-textarea placeholder="Nom du produit" rows='1' [(ngModel)]="name">
-				</ion-textarea>
-			</ion-item>
+		<ion-item>
+			<ion-textarea placeholder="Nom du produit" rows='1' [(ngModel)]="name">
+			</ion-textarea>
+		</ion-item>
 
-	    <ion-item >
-	      <ion-input type="number" placeholder="Prix" [(ngModel)]="price">
-	      </ion-input>
-	    </ion-item>
+		<ion-item>
+			<ion-input type="number" placeholder="Prix" [(ngModel)]="price">
+			</ion-input>
+		</ion-item>
 
-	    <ion-item >
-	      <ion-textarea placeholder="Description" rows='10' [(ngModel)]="description">
-	      </ion-textarea>
-	    </ion-item>
-		</ion-list>
+		<ion-item>
+			<ion-textarea placeholder="Description" rows='10' [(ngModel)]="description">
+			</ion-textarea>
+		</ion-item>
+	</ion-list>
 
-		<div>
-			<ion-item>
-				<ion-label>Catégorie :</ion-label>
-				<ion-select [(ngModel)]="categorieChoisie" interface="popover">
-					<ion-option *ngFor="let c of toutesCategories" [value]="c">{{c.name}}</ion-option>
-				</ion-select>
-			</ion-item>
-		</div>
+	<div>
+		<ion-item>
+			<ion-label>Catégorie :</ion-label>
+			<ion-select [(ngModel)]="categorieChoisie" interface="popover">
+				<ion-option *ngFor="let c of toutesCategories" [value]="c">{{c.name}}</ion-option>
+			</ion-select>
+		</ion-item>
+	</div>
 
 	<button ion-button block full (click)="createProduct($event)" color="carotte">
 		Créer ce produit

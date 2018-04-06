@@ -1,11 +1,10 @@
-import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams, ToastController, LoadingController} from 'ionic-angular';
+import {Component} from "@angular/core";
+import {IonicPage, NavController, NavParams, ToastController, LoadingController, Events} from "ionic-angular";
 import {ApiConnectorService} from "../../services/api-connector";
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { Cities } from '../../config';
-import * as $ from 'jquery';
-import {HomePage} from '../home/home';
-import { Events } from 'ionic-angular';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Cities} from "../../config";
+import * as $ from "jquery";
+import {HomePage} from "../home/home";
 
 
 @IonicPage()
@@ -15,16 +14,25 @@ import { Events } from 'ionic-angular';
 })
 export class Signup2Page {
 
-	account: {first_name: string, last_name: string, email: string, phone: string, username: string, password: string,
-		city: {name: string, code: string, id: string}} =
-		{first_name: "", last_name:"", email:"", phone:"", username: "", password: "", city: {name: '', code: '', id: ''}};
+	account: {
+		first_name: string, last_name: string, email: string, phone: string, username: string, password: string,
+		city: {name: string, code: string, id: string}
+	} =
+		{
+			first_name: "",
+			last_name: "",
+			email: "",
+			phone: "",
+			username: "",
+			password: "",
+			city: {name: '', code: '', id: ''}
+		};
 	authForm: FormGroup;
 	cities: {name: string, code: string, id: string}[] = Cities;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController,
 				public formBuilder: FormBuilder, private apiConnector: ApiConnectorService, public events: Events,
-				public loadingCtrl: LoadingController)
-	{
+				public loadingCtrl: LoadingController) {
 		this.account = $.extend(this.account, navParams.get('account'));
 		this.authForm = this.formBuilder.group({
 			city: ['', Validators.required],

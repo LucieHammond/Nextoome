@@ -1,8 +1,7 @@
-import {Injectable} from '@angular/core';
-
-import 'rxjs/add/operator/map';
-import {Product} from '../models/products'
-import {ApiConnectorService} from './api-connector'
+import {Injectable} from "@angular/core";
+import "rxjs/add/operator/map";
+import {Product} from "../models/products";
+import {ApiConnectorService} from "./api-connector";
 import {Observable} from "rxjs";
 
 @Injectable()
@@ -24,18 +23,18 @@ export class ProductList {
 		return this.tousProduits;
 	}
 
-	getAvailableProducts(){
-	this.getProducts().subscribe(produits =>{
-		this.produitsDisponibles = produits.filter((produit) => {
-			return produit.in_stock;
+	getAvailableProducts() {
+		this.getProducts().subscribe(produits => {
+			this.produitsDisponibles = produits.filter((produit) => {
+				return produit.in_stock;
+			});
 		});
-	});
-	return this.produitsDisponibles;
-}
+		return this.produitsDisponibles;
+	}
 
 	// Méthode de cache un peu sale.
 	// TODO: implémenter un vrai cache global
-	_data_expired(){
+	_data_expired() {
 		let now = new Date();
 		return this.lastRefresh || now.getTime() - this.lastRefresh.getTime() > this.refreshStep;
 	}

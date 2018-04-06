@@ -1,4 +1,3 @@
-
 // Product model based on the structure returned by woocommerce API for products
 export interface Product {
 	id: number,
@@ -73,19 +72,19 @@ export interface Product {
 	quantite_panier: number;
 }
 
-interface Download{
+interface Download {
 	id: number,
 	name: string,
 	file: string
 }
 
-interface Category{
+interface Category {
 	id: number,
 	name: string,
 	slug: string
 }
 
-interface Image{
+interface Image {
 	id: number,
 	date_created: string,
 	date_created_gmt: string,
@@ -97,7 +96,7 @@ interface Image{
 	position: number
 }
 
-interface Attribute{
+interface Attribute {
 	id: number,
 	name: string,
 	position: number,
@@ -106,7 +105,7 @@ interface Attribute{
 	options: string[]
 }
 
-interface DefaultAttribute{
+interface DefaultAttribute {
 	id: number,
 	name: string,
 	option: string
@@ -120,7 +119,7 @@ interface MetaData {
 
 
 // ProductAttribute model based on the structure returned by woocommerce API for product attributes
-export interface ProductAttribute{
+export interface ProductAttribute {
 	id: number,
 	name: string,
 	slug: string,
@@ -131,7 +130,7 @@ export interface ProductAttribute{
 
 
 // ProductAttributeTerm model based on the structure returned by woocommerce API for product attribute terms
-export interface ProductAttributeTerm{
+export interface ProductAttributeTerm {
 	id: number,
 	name: string,
 	slug: string,
@@ -142,7 +141,7 @@ export interface ProductAttributeTerm{
 
 
 // ProductCategory model based on the structure returned by woocommerce API for product categories
-export interface ProductCategory{
+export interface ProductCategory {
 	id: number,
 	name: string,
 	slug: string,
@@ -165,7 +164,7 @@ export interface ProductCategory{
 
 
 // ProductShippingClass model based on the structure returned by woocommerce API for product shipping classes
-export interface ProductShippingClass{
+export interface ProductShippingClass {
 	id: number,
 	name: string,
 	slug: string,
@@ -175,7 +174,7 @@ export interface ProductShippingClass{
 
 
 // ProductTag model based on the structure returned by woocommerce API for product tags
-export interface ProductTag{
+export interface ProductTag {
 	id: number,
 	name: string,
 	slug: string,
@@ -184,7 +183,7 @@ export interface ProductTag{
 }
 
 // Product recap (what is stored in wishlists for example)
-export interface WishlistItem{
+export interface WishlistItem {
 	id: number,
 	name: string,
 	quantity: number,

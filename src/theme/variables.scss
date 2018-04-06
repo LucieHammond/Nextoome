@@ -5,15 +5,12 @@
 // roboto, and noto sans fonts
 $font-path: "../assets/fonts";
 
-
 // The app direction is used to include
 // rtl styles in your app. For more info, please see:
 // http://ionicframework.com/docs/theming/rtl-support/
 $app-direction: ltr;
 
-
 @import "ionic.globals";
-
 
 // Shared Variables
 // --------------------------------------------------
@@ -21,9 +18,6 @@ $app-direction: ltr;
 // the Sass variables found in Ionic's source scss files.
 // To view all the possible Ionic variables, see:
 // http://ionicframework.com/docs/theming/overriding-ionic-variables/
-
-
-
 
 // Named Color Variables
 // --------------------------------------------------
@@ -34,39 +28,27 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #060644,
-  dark:       #060644,
-
-  carotte:    #f17f57,
-  tomate:     #eb5a7d,
-  prune:      #331077,
-  myrtille:   #060644,
-  citron:     #ffde46,
-  caillou:    #c6c6c6
+	primary: #060644,
+	dark: #060644,
+	carotte: #f17f57,
+	tomate: #eb5a7d,
+	prune: #331077,
+	myrtille: #060644,
+	citron: #ffde46,
+	caillou: #c6c6c6
 );
-
-
 
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
 
-
-
-
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
-
-
-
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here
-
-
-
 
 // App Theme
 // --------------------------------------------------
@@ -77,14 +59,12 @@ $colors: (
 
 @import "ionic.theme.default";
 
-
 // Ionicons
 // --------------------------------------------------
 // The premium icon font for Ionic. For more info, please see:
 // http://ionicframework.com/docs/ionicons/
 
 @import "ionic.ionicons";
-
 
 // Fonts
 // --------------------------------------------------
@@ -93,20 +73,19 @@ $colors: (
 @import "noto-sans";
 
 @font-face {
-font-family: Montserrat;
-src: url("../assets/fonts/Montserrat-Medium.otf");
+	font-family: Montserrat;
+	src: url("../assets/fonts/Montserrat-Medium.otf");
 }
 
 @font-face {
-font-family: MontserratLight;
-src: url("../assets/fonts/Montserrat-Light.otf");
+	font-family: MontserratLight;
+	src: url("../assets/fonts/Montserrat-Light.otf");
 }
 
 @font-face {
-font-family: Arciform ;
-src: url("../assets/fonts/Arciform.otf");
+	font-family: Arciform ;
+	src: url("../assets/fonts/Arciform.otf");
 }
-
 
 $font-family-base: "Montserrat";
 $font-family-ios-base: $font-family-base;

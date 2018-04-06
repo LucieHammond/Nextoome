@@ -1,4 +1,3 @@
-
 // User model based on the structure returned by woocommerce API for customers
 export interface User {
 	id: number,
@@ -42,7 +41,7 @@ export interface User {
 	meta_data: MetaData[]
 }
 
-interface MetaData{
+interface MetaData {
 	id: number,
 	key: string,
 	value: string

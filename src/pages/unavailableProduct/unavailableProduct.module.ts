@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
-import { UnavailableProductPage } from './unavailableProduct';
+import {NgModule} from "@angular/core";
+import {IonicPageModule} from "ionic-angular";
+import {UnavailableProductPage} from "./unavailableProduct";
 
 @NgModule({
-  declarations: [
-    UnavailableProductPage,
-  ],
-  imports: [
-    IonicPageModule.forChild(UnavailableProductPage),
-  ],
+	declarations: [
+		UnavailableProductPage,
+	],
+	imports: [
+		IonicPageModule.forChild(UnavailableProductPage),
+	],
 })
-export class UnavailableProductPageModule {}
+export class UnavailableProductPageModule {
+}

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams, AlertController} from 'ionic-angular';
+import {Component} from "@angular/core";
+import {IonicPage, NavController, NavParams, AlertController} from "ionic-angular";
 import {WishlistItem} from "../../models/products";
 import {SessionInfos} from "../../services/session-infos";
 import {WishDetailsPage} from "../wish-details/wish-details";
@@ -35,12 +35,15 @@ export class WishlistPage {
 			buttons: [
 				{
 					text: 'Annuler',
-					handler: data => {}
+					handler: data => {
+					}
 				},
 				{
 					text: 'Créer',
 					handler: data => {
-						if (data.name === ''){ data.name = 'Mes envies'; }
+						if (data.name === '') {
+							data.name = 'Mes envies';
+						}
 						this.wishLists.push({name: data.name, products: []});
 						window.localStorage.setItem('wishlists', JSON.stringify(this.session.getWishLists()));
 					}

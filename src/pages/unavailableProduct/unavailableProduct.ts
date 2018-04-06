@@ -1,10 +1,7 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { SharedBasket } from '../../services/shared-basket'
-import { Product } from '../../models/products'
-import { PopoverController } from 'ionic-angular';
-import {ApiConnectorService} from '../../services/api-connector'
-import {SessionInfos} from "../../services/session-infos";
+import {Component} from "@angular/core";
+import {IonicPage, NavController, NavParams, AlertController} from "ionic-angular";
+import {Product} from "../../models/products";
+import {ApiConnectorService} from "../../services/api-connector";
 
 
 @IonicPage()
@@ -21,7 +18,7 @@ export class UnavailableProductPage {
 	remettre: boolean = !this.produit_vu.in_stock;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams,
-				private alertCtrl: AlertController, public popoverCtrl: PopoverController, private session: SessionInfos, private apiConnector: ApiConnectorService) {
+				private alertCtrl: AlertController, private apiConnector: ApiConnectorService) {
 	}
 
 	ionViewDidLoad() {
@@ -30,34 +27,40 @@ export class UnavailableProductPage {
 
 
 	RendreIndisponibleProduit(event) {
-	  		this.apiConnector.updateProduct(this.produit_vu.id,{in_stock: false});
-	  		this.ConfirmationIndispo();
+		this.apiConnector.updateProduct(this.produit_vu.id, {in_stock: false});
+		this.ConfirmationIndispo();
 	}
 
 	RendreDisponibleProduit(event) {
-				this.apiConnector.updateProduct(this.produit_vu.id,{in_stock: true});
-				this.ConfirmationDispo();
+		this.apiConnector.updateProduct(this.produit_vu.id, {in_stock: true});
+		this.ConfirmationDispo();
 	}
 
-	ConfirmationIndispo(){
+	ConfirmationIndispo() {
 		let alert = this.alertCtrl.create({
 			title: 'Confirmation',
-			message: this.produit_vu.name+" rendu indisponible !",
+			message: this.produit_vu.name + " rendu indisponible !",
 			buttons: [
-		  		{text:'OK',
-				handler: () => {this.navCtrl.pop();}
-		  	}]
+				{
+					text: 'OK',
+					handler: () => {
+						this.navCtrl.pop();
+					}
+				}]
 		});
 		alert.present();
 	}
 
-	ConfirmationDispo(){
+	ConfirmationDispo() {
 		let alert = this.alertCtrl.create({
 			title: 'Confirmation',
-			message: this.produit_vu.name+" remis en vente !",
+			message: this.produit_vu.name + " remis en vente !",
 			buttons: [
-					{text:'OK',
-				handler: () => {this.navCtrl.pop();}
+				{
+					text: 'OK',
+					handler: () => {
+						this.navCtrl.pop();
+					}
 				}]
 		});
 		alert.present();

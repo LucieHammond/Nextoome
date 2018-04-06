@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {Component} from "@angular/core";
+import {IonicPage, NavController, NavParams} from "ionic-angular";
 
 
 @IonicPage()
@@ -13,14 +13,14 @@ export class PicturePage {
 
 	constructor(public navCtrl: NavController, public navParams: NavParams) {
 		this.imgUrl = navParams.get("imgUrl");
-		this.editable = navParams.get("editable" );
+		this.editable = navParams.get("editable");
 	}
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad PicturePage');
 	}
 
-	close(): void{
+	close(): void {
 		this.navCtrl.pop({animation: "md-transition"});
 	}
 

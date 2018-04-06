@@ -1,8 +1,7 @@
-import {Component} from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
-import {CreateProductPage} from '../createProduct/createProduct';
-import {SelectProductPage} from '../selectProduct/selectProduct';
-
+import {Component} from "@angular/core";
+import {IonicPage, NavController, NavParams} from "ionic-angular";
+import {CreateProductPage} from "../createProduct/createProduct";
+import {SelectProductPage} from "../selectProduct/selectProduct";
 
 
 @IonicPage()
@@ -24,19 +23,19 @@ export class EspaceCommercantPage {
 	}
 
 	modifyProduct(event) {
-		this.navCtrl.push(SelectProductPage,{action:"modify"});
+		this.navCtrl.push(SelectProductPage, {action: "modify"});
 	}
 
 	salesProduct(event) {
-		this.navCtrl.push(SelectProductPage,{action:"sales"});
+		this.navCtrl.push(SelectProductPage, {action: "sales"});
 	}
 
-	unavailableProduct(event){
-		this.navCtrl.push(SelectProductPage,{action:"unavailable"})
+	unavailableProduct(event) {
+		this.navCtrl.push(SelectProductPage, {action: "unavailable"})
 	}
 
 	deleteProduct(event) {
-			this.navCtrl.push(SelectProductPage,{action:"delete"});
-		}
+		this.navCtrl.push(SelectProductPage, {action: "delete"});
+	}
 
 }

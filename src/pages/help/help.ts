@@ -1,7 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Slides } from 'ionic-angular';
-import { ActivityHours } from '../../config';
+import {Component, ViewChild} from "@angular/core";
+import {IonicPage, NavController, NavParams, Slides} from "ionic-angular";
+import {ActivityHours} from "../../config";
 
 @IonicPage()
 @Component({

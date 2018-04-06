@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams, AlertController} from 'ionic-angular';
-import { SharedBasket } from '../../services/shared-basket'
-import { PayPal, PayPalPayment, PayPalConfiguration } from '@ionic-native/paypal';
-import { ApiConnectorService } from "../../services/api-connector";
-import { SessionInfos } from "../../services/session-infos";
-import { User } from "../../models/users";
-import { Product } from '../../models/products'
-import { UserProfilePage } from "../user-profile/user-profile";
+import {Component} from "@angular/core";
+import {IonicPage, NavController, NavParams, AlertController} from "ionic-angular";
+import {SharedBasket} from "../../services/shared-basket";
+import {PayPal, PayPalPayment, PayPalConfiguration} from "@ionic-native/paypal";
+import {ApiConnectorService} from "../../services/api-connector";
+import {SessionInfos} from "../../services/session-infos";
+import {User} from "../../models/users";
+import {Product} from "../../models/products";
+import {UserProfilePage} from "../user-profile/user-profile";
 
 
 @IonicPage()
@@ -16,7 +16,7 @@ import { UserProfilePage } from "../user-profile/user-profile";
 })
 export class LivraisonPage {
 
-	contenuPanier: Product[] ;
+	contenuPanier: Product[];
 	prixDuPanier: string;
 	commentaires: string;
 	deliveryMode: string = null;
@@ -46,10 +46,10 @@ export class LivraisonPage {
 		this.navCtrl.push(UserProfilePage);
 	}
 
-	PasserCommande(event){
+	PasserCommande(event) {
 		if (!this.user.billing.address_1 || !this.user.billing.city || !this.user.billing.postcode
 			|| (this.deliveryMode == 'domicile' &&
-			(!this.user.shipping.address_1 || !this.user.shipping.city || !this.user.shipping.postcode))){
+			(!this.user.shipping.address_1 || !this.user.shipping.city || !this.user.shipping.postcode))) {
 
 			// An address is missing
 			let alert = this.alertCtrl.create({
@@ -58,7 +58,8 @@ export class LivraisonPage {
 				buttons: [{
 					text: "J'ai compris",
 					role: 'cancel',
-					handler: () => {}
+					handler: () => {
+					}
 				}]
 			});
 			alert.present();
@@ -96,7 +97,7 @@ export class LivraisonPage {
 	currentOrder() {
 		let items = [];
 		let basket: Product[] = this.sharedbasket.getBasket();
-		for (let i = 0; i < basket.length; i++){
+		for (let i = 0; i < basket.length; i++) {
 			items.push({
 				name: basket[i].name,
 				product_id: basket[i].id,
@@ -107,11 +108,11 @@ export class LivraisonPage {
 			})
 		}
 		let shipping = this.deliveryMode == 'domicile' ? this.user.shipping : {
-			address_1: '2, rue de la Gare',
-			city: 'Thorigny-sur-Marne',
-			postcode: '77400',
-			country: 'FR'
-		};
+				address_1: '2, rue de la Gare',
+				city: 'Thorigny-sur-Marne',
+				postcode: '77400',
+				country: 'FR'
+			};
 
 		return {
 			payment_method: 'paypal',

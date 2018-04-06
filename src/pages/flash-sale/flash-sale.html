@@ -10,12 +10,12 @@
 <ion-content padding>
 	<h3>Occasions à saisir ! </h3>
 
-  <ion-list>
-    <button ion-item *ngFor="let p of flash_sales" (click)="SelectionProduit($event,p)">
-		<ion-avatar item-start>
-			<img [src] ="this.p.images[0].src">
-		</ion-avatar>
-        {{p.name}}
-    </button>
-</ion-list>
+	<ion-list>
+		<button ion-item *ngFor="let p of flash_sales" (click)="SelectionProduit($event,p)">
+			<ion-avatar item-start>
+				<img [src]="this.p.images[0].src">
+			</ion-avatar>
+			{{p.name}}
+		</button>
+	</ion-list>
 </ion-content>

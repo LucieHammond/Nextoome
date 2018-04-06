@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import {Component} from "@angular/core";
+import {IonicPage, NavController} from "ionic-angular";
 
 /**
  * Generated class for the WelcomePage page.
@@ -18,7 +18,7 @@ export class WelcomePage {
 	constructor(public navCtrl: NavController) {
 	}
 
-	ionViewDidLoad(){
+	ionViewDidLoad() {
 		console.log('ionViewDidLoad WelcomePage');
 	}
 

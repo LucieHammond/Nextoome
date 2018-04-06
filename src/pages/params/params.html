@@ -15,19 +15,23 @@
 		</ion-list-header>
 		<ion-item>
 			<ion-label>Suivis de livraison</ion-label>
-			<ion-toggle [(ngModel)]="notifDelivery" (ionChange)="changeSettings('notif_delivery', notifDelivery)"></ion-toggle>
+			<ion-toggle [(ngModel)]="notifDelivery"
+						(ionChange)="changeSettings('notif_delivery', notifDelivery)"></ion-toggle>
 		</ion-item>
 		<ion-item>
 			<ion-label>Alertes promotions</ion-label>
-			<ion-toggle [(ngModel)]="notifPromotions" (ionChange)="changeSettings('notif_promotions', notifPromotions)"></ion-toggle>
+			<ion-toggle [(ngModel)]="notifPromotions"
+						(ionChange)="changeSettings('notif_promotions', notifPromotions)"></ion-toggle>
 		</ion-item>
 		<ion-item>
 			<ion-label>Nouveaux commerçants</ion-label>
-			<ion-toggle [(ngModel)]="notifNewVendors" (ionChange)="changeSettings('notif_new_vendors', notifNewVendors)"></ion-toggle>
+			<ion-toggle [(ngModel)]="notifNewVendors"
+						(ionChange)="changeSettings('notif_new_vendors', notifNewVendors)"></ion-toggle>
 		</ion-item>
 		<ion-item>
 			<ion-label>Newsletter, actualités</ion-label>
-			<ion-toggle [(ngModel)]="notifNewsletter" (ionChange)="changeSettings('notif_newsletter', notifNewsletter)"></ion-toggle>
+			<ion-toggle [(ngModel)]="notifNewsletter"
+						(ionChange)="changeSettings('notif_newsletter', notifNewsletter)"></ion-toggle>
 		</ion-item>
 	</ion-list>
 	<br/>

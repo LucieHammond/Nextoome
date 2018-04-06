@@ -9,10 +9,11 @@
 
 <ion-content padding>
 	<ion-refresher (ionRefresh)="doRefresh($event)">
-	    <ion-refresher-content></ion-refresher-content>
-	  </ion-refresher>
+		<ion-refresher-content></ion-refresher-content>
+	</ion-refresher>
 
-	<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="RechercheProduits()" class="searchbar" placeholder="Rechercher un produit">
+	<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="RechercheProduits()" class="searchbar"
+				   placeholder="Rechercher un produit">
 		<div *ngIf="searching" class="spinner-container">
 			<ion-spinner></ion-spinner>
 		</div>
@@ -34,7 +35,7 @@
 	<ion-list>
 		<button ion-item *ngFor="let p of produitsAccueil" (click)="SelectionProduit($event,p)">
 			<ion-avatar item-start>
-				<img [src] ="this.p.images[0].src">
+				<img [src]="this.p.images[0].src">
 			</ion-avatar>
 			{{p.name}}
 		</button>

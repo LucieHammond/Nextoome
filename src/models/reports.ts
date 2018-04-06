@@ -1,4 +1,3 @@
-
 // Sale model based on the structure returned by woocommerce API for sales
 export interface Sale {
 	total_sales: string,
@@ -16,7 +15,7 @@ export interface Sale {
 
 
 // Seller model based on the structure returned by woocommerce API for sellers in top sellers response
-export interface Seller{
+export interface Seller {
 	title: string,
 	product_id: number,
 	quantity: number

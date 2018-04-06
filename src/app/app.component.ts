@@ -1,24 +1,22 @@
-import {Component, ViewChild} from '@angular/core';
-import {Nav, Platform} from 'ionic-angular';
-import {StatusBar} from '@ionic-native/status-bar';
-import {SplashScreen} from '@ionic-native/splash-screen';
+import {Component, ViewChild} from "@angular/core";
+import {Nav, Platform, Events} from "ionic-angular";
+import {StatusBar} from "@ionic-native/status-bar";
+import {SplashScreen} from "@ionic-native/splash-screen";
 import {ApiConnectorService} from "../services/api-connector";
-import { Events } from 'ionic-angular';
-
-import {HomePage} from '../pages/home/home';
-import {FlashSalePage} from '../pages/flash-sale/flash-sale';
-import {UserProfilePage} from '../pages/user-profile/user-profile';
-import {CategoriesPage} from '../pages/categories/categories'
-import {WishlistPage} from '../pages/wishlist/wishlist';
-import {BasketPage} from '../pages/basket/basket';
-import {OrdersPage} from '../pages/orders/orders';
-import {NextoosPage} from '../pages/nextoos/nextoos';
-import {CustomerServicePage} from '../pages/customer-service/customer-service';
-import {HelpPage} from '../pages/help/help';
-import {ParamsPage} from '../pages/params/params';
-import {ProductPage} from '../pages/product/product';
-import {WelcomePage} from '../pages/welcome/welcome';
-import {MaintenancePage} from '../pages/maintenance/maintenance';
+import {HomePage} from "../pages/home/home";
+import {FlashSalePage} from "../pages/flash-sale/flash-sale";
+import {UserProfilePage} from "../pages/user-profile/user-profile";
+import {CategoriesPage} from "../pages/categories/categories";
+import {WishlistPage} from "../pages/wishlist/wishlist";
+import {BasketPage} from "../pages/basket/basket";
+import {OrdersPage} from "../pages/orders/orders";
+import {NextoosPage} from "../pages/nextoos/nextoos";
+import {CustomerServicePage} from "../pages/customer-service/customer-service";
+import {HelpPage} from "../pages/help/help";
+import {ParamsPage} from "../pages/params/params";
+import {ProductPage} from "../pages/product/product";
+import {WelcomePage} from "../pages/welcome/welcome";
+import {MaintenancePage} from "../pages/maintenance/maintenance";
 import {SessionInfos} from "../services/session-infos";
 import {User} from "../models/users";
 
@@ -33,27 +31,26 @@ export class MyApp {
 	user: User = null;
 
 	pages: Array<Array<{title: string, component: any, icon: string}>> = [
-			[{title: 'Home', component: HomePage, icon: "home"},
-				{title: 'Vente flash', component: FlashSalePage, icon: "flash"}],
-			[{title: 'Mon compte', component: UserProfilePage, icon: "person"},
-				{title: "Listes de courses", component: WishlistPage, icon: "star"},
-				{title: 'Tous les produits', component: CategoriesPage, icon: "nutrition"},
-				{title: 'Mon panier', component: BasketPage, icon: "cart"},
-				{title: 'Mes commandes', component: OrdersPage, icon: "clipboard"},
-				{title: 'Mes nextoos', component: NextoosPage, icon: "pricetags"}],
-			[{title: 'Service client', component: CustomerServicePage, icon: "mail"},
-				{title: 'Aide', component: HelpPage, icon: "help-circle"},
-				{title: 'Paramètres', component: ParamsPage, icon: "settings"}],
-			[{title: 'Produit', component: ProductPage, icon: "home"}],
-		];
+		[{title: 'Home', component: HomePage, icon: "home"},
+			{title: 'Vente flash', component: FlashSalePage, icon: "flash"}],
+		[{title: 'Mon compte', component: UserProfilePage, icon: "person"},
+			{title: "Listes de courses", component: WishlistPage, icon: "star"},
+			{title: 'Tous les produits', component: CategoriesPage, icon: "nutrition"},
+			{title: 'Mon panier', component: BasketPage, icon: "cart"},
+			{title: 'Mes commandes', component: OrdersPage, icon: "clipboard"},
+			{title: 'Mes nextoos', component: NextoosPage, icon: "pricetags"}],
+		[{title: 'Service client', component: CustomerServicePage, icon: "mail"},
+			{title: 'Aide', component: HelpPage, icon: "help-circle"},
+			{title: 'Paramètres', component: ParamsPage, icon: "settings"}],
+		[{title: 'Produit', component: ProductPage, icon: "home"}],
+	];
 
 	constructor(public platform: Platform,
 				public statusBar: StatusBar,
 				public splashScreen: SplashScreen,
 				public events: Events,
 				private apiConnector: ApiConnectorService,
-				private session: SessionInfos)
-	{
+				private session: SessionInfos) {
 		this.initializeApp();
 	}
 
@@ -65,11 +62,11 @@ export class MyApp {
 			// Vérifier que le site n'est pas en maintenance, puis rediriger vers la bonne page
 			this.apiConnector.testConnection().subscribe(contentType => {
 				// 1. On vérifie que l'API est disponible
-				if (contentType.indexOf('application/json') == -1){
+				if (contentType.indexOf('application/json') == -1) {
 					this.rootPage = MaintenancePage;
 				}
 				// 2. On vérifie qu'on a bien un token
-				else if (token === null || userid === null) {
+				else if (token === null || userid === null || token == 'null' || userid == 'null') {
 					this.rootPage = WelcomePage;
 				}
 				// 3. On vérifie que le token est bien valide
@@ -88,7 +85,9 @@ export class MyApp {
 				this.splashScreen.hide();
 
 				// Update user data when changed
-				this.events.subscribe('user:defined', () => { this.updateUser(); });
+				this.events.subscribe('user:defined', () => {
+					this.updateUser();
+				});
 
 				// Save local data when app is set to background
 				this.platform.pause.subscribe(() => {
@@ -98,7 +97,9 @@ export class MyApp {
 	}
 
 	updateUser() {
-		this.session.getCurrentUser().subscribe(user => { this.user = user; });
+		this.session.getCurrentUser().subscribe(user => {
+			this.user = user;
+		});
 	}
 
 	openPage(page) {

@@ -8,10 +8,10 @@
 </ion-header>
 
 <ion-content padding>
-		<ion-item *ngFor="let p of produitsCategorises" (click)="SelectionProduit($event,p)">
-			<ion-avatar item-start>
-				<img [src] ="this.p.images[0].src">
-			</ion-avatar>
-							{{p.name}}
-		</ion-item>
-	</ion-content>
+	<ion-item *ngFor="let p of produitsCategorises" (click)="SelectionProduit($event,p)">
+		<ion-avatar item-start>
+			<img [src]="this.p.images[0].src">
+		</ion-avatar>
+		{{p.name}}
+	</ion-item>
+</ion-content>

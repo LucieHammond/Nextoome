@@ -4,13 +4,13 @@ page-orders {
 		padding-top: 20px !important;
 		padding-bottom: 5px;
 	}
-	ion-card{
+	ion-card {
 		box-shadow: 1px 2px 6px 3px color($colors, caillou) !important;
-		.nb-products{
+		.nb-products {
 			margin-bottom: 10px;
 			size: 20px !important;
 		}
-		.product{
+		.product {
 			size: 9px !important;
 			color: #b0b0b0 !important;
 			font-family: "Arciform";
@@ -19,24 +19,24 @@ page-orders {
 				color: dimgrey !important;
 			}
 		}
-		.price{
+		.price {
 			font-size: 20px !important;
 			margin-bottom: 10px;
 		}
-		ion-datetime{
+		ion-datetime {
 			display: inline-block;
 			padding: 1px !important;
 			opacity: 1 !important;
 		}
 
 		// Colors
-		.processing, .completed{
+		.processing, .completed {
 			color: color($colors, prune) !important;
 		}
-		.on-hold, .cancelled{
+		.on-hold, .cancelled {
 			color: color($colors, myrtille) !important;
 		}
-		.pending, .refunded{
+		.pending, .refunded {
 			color: color($colors, carotte) !important;
 		}
 		.failed {
