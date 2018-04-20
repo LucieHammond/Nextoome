@@ -9,14 +9,14 @@
 
 <ion-content>
 	<ion-list>
-		<ion-item-sliding #item *ngFor="let p of contenuPanier">
-			<ion-item (click)="SelectionProduit($event,p)">
+		<ion-item-sliding #item *ngFor="let p of basket">
+			<ion-item (click)="selectProduct($event,p)">
 				<ion-avatar item-start>
 					<img [src]="this.p.images[0].src">
 				</ion-avatar>
 				<h2>{{p.name}} :</h2>
 				<h4 text-right>
-					{{p.quantite_panier}} x {{p.price}}€
+					{{p.basket_quantity}} x {{p.price}}€
 				</h4>
 
 			</ion-item>
@@ -28,7 +28,7 @@
 				<button ion-button (click)="decrease($event,p)" color="citron" icon-only>
 					<ion-icon name="remove"></ion-icon>
 				</button>
-				<button ion-button (click)="RetirerPanier($event,p)" color="tomate">Supprimer
+				<button ion-button (click)="removeFromBasket($event,p)" color="tomate">Supprimer
 					<ion-icon name="trash"></ion-icon>
 				</button>
 			</ion-item-options>
@@ -37,11 +37,11 @@
 	</ion-list>
 
 	<ion-row align-items-center justify-content-center>
-		<div><h2> Prix total : {{prixDuPanier}} € </h2></div>
-		<ion-note *ngIf="!emptyBasket && prixDuPanier < 5">Vous ne pouvez pas commander pour moins de 5€</ion-note>
+		<div><h2> Prix total : {{basketPrice}} € </h2></div>
+		<ion-note *ngIf="!emptyBasket && basketPrice < 5">Vous ne pouvez pas commander pour moins de 5€</ion-note>
 	</ion-row>
-	<button ion-button class="boutonCommande" icon-start block full [disabled]="emptyBasket || prixDuPanier < 5"
-			(click)="PasserCommande($event)">
+	<button ion-button class="orderButton" icon-start block full [disabled]="emptyBasket || basketPrice < 5"
+			(click)="order($event)">
 		<ion-icon name="checkmark"></ion-icon>
 		Commander
 	</button>

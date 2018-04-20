@@ -81,14 +81,14 @@
 	<ion-list padding-top=20>
 		<ion-list-header><b>Informations complémentaires</b></ion-list-header>
 		<ion-item>
-			<ion-textarea placeholder="Commentaires pour la livraison" rows='5' [(ngModel)]="commentaires">
+			<ion-textarea placeholder="Commentaires pour la livraison" rows='5' [(ngModel)]="comments">
 			</ion-textarea>
 		</ion-item>
 	</ion-list>
 
-	<button ion-button icon-start block full (click)="PasserCommande($event)" color="myrtille"
+	<button ion-button icon-start block full (click)="payOrder($event)" color="myrtille"
 			[disabled]="!deliveryMode">
-		Continuer et payer {{prixDuPanier}} €
+		Continuer et payer {{basketPrice}} €
 	</button>
 
 

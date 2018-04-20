@@ -1,16 +1,9 @@
-page-home {
+page-productByCategory {
 	ion-content {
-
-	}
-
-	.searchbar {
-		background-color: transparent;
-		border-color: color($colors, prune);
-	}
-
-	.spinner-container {
-		width: 100%;
-		text-align: center;
-		padding: 10px;
+		p {
+			text-align: center;
+			font-size: 22px !important;
+			line-height: 35px !important;
+		}
 	}
 }

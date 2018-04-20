@@ -13,7 +13,7 @@ import {ApiConnectorService} from "@services/api-connector";
 
 export class DeleteProductPage {
 
-	produit_vu: Product = this.navParams.get('name');
+	product: Product = this.navParams.get('name');
 
 	constructor(public navCtrl: NavController, public navParams: NavParams,
 				private alertCtrl: AlertController, private apiConnector: ApiConnectorService) {
@@ -23,10 +23,10 @@ export class DeleteProductPage {
 		console.log('ionViewDidLoad DeleteProductPage');
 	}
 
-	SupprimerProduit(event) {
+	removeProduct(event) {
 		let alert = this.alertCtrl.create({
 			title: 'Confirmation',
-			message: "Voulez-vous vraiment supprimer définitivement " + this.produit_vu.name + " du catalogue !",
+			message: "Voulez-vous vraiment supprimer définitivement " + this.product.name + " du catalogue !",
 			buttons: [
 				{
 					text: "Annuler",
@@ -37,7 +37,7 @@ export class DeleteProductPage {
 				{
 					text: 'Valider',
 					handler: () => {
-						this.apiConnector.deleteProduct(this.produit_vu.id);
+						this.apiConnector.deleteProduct(this.product.id);
 						this.navCtrl.pop();
 					}
 				}]

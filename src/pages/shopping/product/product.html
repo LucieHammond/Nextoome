@@ -10,14 +10,14 @@
 <ion-content padding>
 
 	<ion-row>
-		<ion-col col-auto><h2>{{produit_vu.name}}</h2></ion-col>
-		<ion-col text-right *ngIf="!isOnSale">{{produit_vu.price}}€</ion-col>
-		<ion-col text-right *ngIf="isOnSale"><sub ion-text color="carotte"><h4>PROMO : {{produit_vu.price}}€</h4></sub>
-			au lieu de {{produit_vu.regular_price}}€
+		<ion-col col-auto><h2>{{product.name}}</h2></ion-col>
+		<ion-col text-right *ngIf="!isOnSale">{{product.price}}€</ion-col>
+		<ion-col text-right *ngIf="isOnSale"><sub ion-text color="carotte"><h4>PROMO : {{product.price}}€</h4></sub>
+			au lieu de {{product.regular_price}}€
 		</ion-col>
 	</ion-row>
-	<img [src]="this.produit_vu.images[0].src"/>
-	<div [innerHTML]="produit_vu.description"></div>
+	<img [src]="this.product.images[0].src"/>
+	<div [innerHTML]="product.description"></div>
 
 	<div>
 		<ion-item>
@@ -33,7 +33,7 @@
 		</ion-item>
 	</div>
 
-	<button ion-button icon-start full (click)="AjoutPanier($event)">
+	<button ion-button icon-start full (click)="modifyProduct($event)">
 		<ion-icon name="cart"></ion-icon>
 		Ajouter au panier
 	</button>

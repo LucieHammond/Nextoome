@@ -18,15 +18,15 @@ import {VendorHomePage} from "../../vendor-space/vendorHome/vendorHome";
 })
 export class HomePage {
 
-	produitsAccueil: Product[];
+	availableProducts: Product[];
 	searchTerm: string = '';
 	searchControl: FormControl = new FormControl();
-	resultatsRecherche: any;
+	searchResults: any;
 	searching: boolean = false;
 	user: User;
 	isShop: boolean = false;
 
-	constructor(public navCtrl: NavController, public navParams: NavParams, public rechercheData: ProductList, public listProduits: ProductList, private session: SessionInfos) {
+	constructor(public navCtrl: NavController, public navParams: NavParams, public searchData: ProductList, public productsList: ProductList, private session: SessionInfos) {
 	}
 
 	ionViewDidLoad() {
@@ -34,45 +34,45 @@ export class HomePage {
 
 		this.session.getCurrentUser().subscribe(user => {
 			this.user = $.extend(true, {}, user);
-			this.isShop = !(this.user.role == "vendor"); //enlever la négation !!
+			this.isShop = !(this.user.role == "vendor"); //TODO: enlever la négation !!
 		});
-		this.listProduits.getProducts().subscribe(produits => {
-			this.produitsAccueil = produits.filter((produit) => {
-				return produit.in_stock;
+		this.productsList.getProducts().subscribe(products => {
+			this.availableProducts = products.filter((product) => {
+				return product.in_stock;
 			});
 		});
 	}
 
-	SelectionProduit(event, produit) {
-		this.navCtrl.push(ProductPage, {name: produit});
+	selectProduct(event, product) {
+		this.navCtrl.push(ProductPage, {name: product});
 	}
 
 	onSearchInput() {
 		this.searching = true;
 	}
 
-	AccesCommercant(event) {
+	vendorAccess(event) {
 		this.navCtrl.push(VendorHomePage);
 	}
 
-	RechercheProduits() {
-		this.rechercheData.getProducts().subscribe(produits => {
-			this.resultatsRecherche = produits.filter((produit) => {
-				return produit.name.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1;
+	searchProducts() {
+		this.searchData.getProducts().subscribe(products => {
+			this.searchResults = products.filter((product) => {
+				return this.searchTerm && product.name.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1;
 			});
 			this.searchControl.valueChanges.debounceTime(700).subscribe(search => {
-				this.RechercheProduits();
+				this.searchProducts();
 			});
 		});
 	}
 
 	doRefresh(event) {
-		this.listProduits.getProducts().subscribe(produits => {
-			this.produitsAccueil = produits.filter((produit) => {
-				return produit.in_stock;
+		this.productsList.getProducts(true).subscribe(products => {
+			this.availableProducts = products.filter((product) => {
+				return product.in_stock;
 			});
 			this.searchTerm = '';
-			this.resultatsRecherche = null;
+			this.searchResults = null;
 			event.complete();
 		});
 	}

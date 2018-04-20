@@ -10,11 +10,11 @@
 <ion-content padding>
 
 	<ion-row>
-		<ion-col col-auto><h2>{{produit_vu.name}}</h2></ion-col>
-		<ion-col text-right>{{produit_vu.price}}€</ion-col>
+		<ion-col col-auto><h2>{{product.name}}</h2></ion-col>
+		<ion-col text-right>{{product.price}}€</ion-col>
 	</ion-row>
-	<img [src]="this.produit_vu.images[0].src"/>
-	<div [innerHTML]="produit_vu.description"></div>
+	<img [src]="this.product.images[0].src"/>
+	<div [innerHTML]="product.description"></div>
 
 
 	<ion-item>
@@ -24,16 +24,16 @@
 
 	<ion-item>
 		<ion-label>Date de début</ion-label>
-		<ion-datetime displayFormat="DD/MM/YYYY" min="2017" max="2050-10-31" [(ngModel)]="dateDebut"></ion-datetime>
+		<ion-datetime displayFormat="DD/MM/YYYY" min="2017" max="2050-10-31" [(ngModel)]="startDate"></ion-datetime>
 	</ion-item>
 
 	<ion-item>
 		<ion-label>Date de fin</ion-label>
-		<ion-datetime displayFormat="DD/MM/YYYY" min="2017" max="2050-10-31" [(ngModel)]="dateFin"></ion-datetime>
+		<ion-datetime displayFormat="DD/MM/YYYY" min="2017" max="2050-10-31" [(ngModel)]="endDate"></ion-datetime>
 	</ion-item>
 
 
-	<button ion-button icon-start full (click)="MettreEnPromotion($event)">
+	<button ion-button icon-start full (click)="putOnSale($event)">
 		<ion-icon name="coin"></ion-icon>
 		Mettre en promotion
 	</button>

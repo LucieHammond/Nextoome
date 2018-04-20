@@ -9,7 +9,7 @@
 
 <ion-content padding>
 
-	<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="RechercheProduits()" class="searchbar"
+	<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="searchProducts()" class="searchbar"
 				   placeholder="Rechercher un produit">
 		<div *ngIf="searching" class="spinner-container">
 			<ion-spinner></ion-spinner>
@@ -17,13 +17,13 @@
 	</ion-searchbar>
 
 	<ion-list>
-		<ion-item *ngFor="let item of resultatsRecherche" (click)="SelectionProduit($event,item)">
+		<ion-item *ngFor="let item of searchResults" (click)="selectProduct($event,item)">
 			{{item.name}}
 		</ion-item>
 	</ion-list>
 
 	<div>
-		<ion-item *ngFor="let c of categories" (click)="SelectionCategories($event,c)">
+		<ion-item *ngFor="let c of categories" (click)="selectCategory($event,c)">
 			{{c.name}}
 		</ion-item>
 	</div>

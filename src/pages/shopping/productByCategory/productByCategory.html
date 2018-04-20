@@ -3,12 +3,13 @@
 		<button ion-button menuToggle>
 			<ion-icon name="menu"></ion-icon>
 		</button>
-		<ion-title>{{categorie_vue.name}}</ion-title>
+		<ion-title>{{category.name}}</ion-title>
 	</ion-navbar>
 </ion-header>
 
 <ion-content padding>
-	<ion-item *ngFor="let p of produitsCategorises" (click)="SelectionProduit($event,p)">
+	<p *ngIf="productsInCategory && productsInCategory.length == 0">Il n'y a aucun produit dans cette catégorie</p>
+	<ion-item *ngFor="let p of productsInCategory" (click)="selectProduct($event,p)">
 		<ion-avatar item-start>
 			<img [src]="this.p.images[0].src">
 		</ion-avatar>

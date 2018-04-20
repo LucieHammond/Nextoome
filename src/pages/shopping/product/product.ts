@@ -14,9 +14,9 @@ import {Product} from "@models/products";
 
 export class ProductPage {
 
-	produit_vu: Product = this.navParams.get('name');
+	product: Product = this.navParams.get('name');
 	quantity: string = '0';
-	isOnSale: boolean = this.produit_vu.on_sale;
+	isOnSale: boolean = this.product.on_sale;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public sharedBasket: SharedBasket,
 				private alertCtrl: AlertController, public popoverCtrl: PopoverController, private session: SessionInfos) {
@@ -27,17 +27,17 @@ export class ProductPage {
 	}
 
 
-	AjoutPanier(event) {
+	modifyProduct(event) {
 		if (this.quantity != '0') {
-			this.sharedBasket.addToBasket(this.produit_vu, this.quantity);
-			this.ConfirmationAchat();
+			this.sharedBasket.addToBasket(this.product, this.quantity);
+			this.confirmAddition();
 		}
 	}
 
-	ConfirmationAchat() {
+	confirmAddition() {
 		let alert = this.alertCtrl.create({
 			title: 'Confirmation',
-			message: this.quantity + " ".concat(this.produit_vu.name.concat(' ajouté au panier !')),
+			message: this.quantity + " ".concat(this.product.name.concat(' ajouté au panier !')),
 			buttons: [
 				{
 					text: 'OK',
@@ -77,7 +77,7 @@ export class ProductPage {
 				text: 'Ajouter',
 				handler: data => {
 					if (data != null) {
-						this.session.addProductToList(parseInt(data), this.produit_vu, parseInt(this.quantity));
+						this.session.addProductToList(parseInt(data), this.product, parseInt(this.quantity));
 					}
 				}
 			});

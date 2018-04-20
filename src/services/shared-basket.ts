@@ -5,64 +5,64 @@ import {Product} from "@models/products";
 @Injectable()
 export class SharedBasket {
 
-	produit: Product;
-	contenuPanier: Product[] = [];
-	listeNoms: string[] = [];
+	product: Product;
+	basket: Product[] = [];
+	names: string[] = [];
 	totalPrice: number;
 	i: number;
 
 	constructor() {
 	}
 
-	addToBasket(produitSelectionne, quantite) {
-		this.listeNoms = [];
-		for (let produitDuPanier of this.contenuPanier) {
-			this.listeNoms.push(produitDuPanier.name);
+	addToBasket(selectedProduct, quantite) {
+		this.names = [];
+		for (let produitDuPanier of this.basket) {
+			this.names.push(produitDuPanier.name);
 		}
-		this.i = this.listeNoms.indexOf(produitSelectionne.name);
+		this.i = this.names.indexOf(selectedProduct.name);
 		if (this.i > -1) {
-			this.contenuPanier[this.i].quantite_panier = this.contenuPanier[this.i].quantite_panier * 1 + 1 * Number.parseInt(quantite)
+			this.basket[this.i].basket_quantity = this.basket[this.i].basket_quantity * 1 + 1 * Number.parseInt(quantite)
 		}
 		else {
-			this.contenuPanier.push(produitSelectionne);
-			produitSelectionne.quantite_panier = quantite
+			this.basket.push(selectedProduct);
+			selectedProduct.basket_quantity = quantite
 		}
 	}
 
-	increase(produitSelectionne) {
-		produitSelectionne.quantite_panier = produitSelectionne.quantite_panier * 1 + 1 * 1;
+	increase(selectedProduct) {
+		selectedProduct.basket_quantity = selectedProduct.basket_quantity * 1 + 1 * 1;
 	}
 
-	decrease(produitSelectionne) {
-		if (produitSelectionne.quantite_panier > 1) {
-			produitSelectionne.quantite_panier -= 1;
+	decrease(selectedProduct) {
+		if (selectedProduct.basket_quantity > 1) {
+			selectedProduct.basket_quantity -= 1;
 		}
-		else(this.removeFromBasket(produitSelectionne))
+		else(this.removeFromBasket(selectedProduct))
 	}
 
-	removeFromBasket(produitASupprimer) {
-		let index = this.contenuPanier.indexOf(produitASupprimer);
+	removeFromBasket(product) {
+		let index = this.basket.indexOf(product);
 
 		if (index > -1) {
-			this.contenuPanier.splice(index, 1);
-			produitASupprimer.quantite_panier = 0;
+			this.basket.splice(index, 1);
+			product.basket_quantity = 0;
 		}
 	}
 
 
 	getBasket(): Product[] {
-		return this.contenuPanier;
+		return this.basket;
 	}
 
 	getTotalPrice() {
 		this.totalPrice = 0;
-		for (let produitDuPanier of this.contenuPanier) {
-			this.totalPrice = (+produitDuPanier.price * produitDuPanier.quantite_panier) + this.totalPrice;
+		for (let product of this.basket) {
+			this.totalPrice = (+product.price * product.basket_quantity) + this.totalPrice;
 		}
 		return this.totalPrice;
 	}
 
 	isEmpty(): boolean {
-		return this.contenuPanier.length == 0;
+		return this.basket.length == 0;
 	}
 }

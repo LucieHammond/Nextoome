@@ -14,20 +14,20 @@ export class FlashSalePage {
 
 	flash_sales: Product[];
 
-	constructor(public navCtrl: NavController, public navParams: NavParams, public listProduits: ProductList,) {
+	constructor(public navCtrl: NavController, public navParams: NavParams, public productsList: ProductList,) {
 	}
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad FlashSalePage');
-		this.listProduits.getProducts().subscribe(produits => {
-			this.flash_sales = produits.filter((produit) => {
-				return produit.on_sale;
+		this.productsList.getProducts().subscribe(products => {
+			this.flash_sales = products.filter((product) => {
+				return product.on_sale;
 			});
 		});
 	}
 
-	SelectionProduit(event, produit) {
-		this.navCtrl.push(ProductPage, {name: produit});
+	selectProduct(event, product) {
+		this.navCtrl.push(ProductPage, {name: product});
 	}
 
 

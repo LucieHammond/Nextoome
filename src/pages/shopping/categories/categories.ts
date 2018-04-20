@@ -17,10 +17,10 @@ import {ProductPage} from "../product/product";
 export class CategoriesPage {
 
 	categories: ProductCategory[];
-	tousProduits: Product[];
+	allProducts: Product[];
 	searchTerm: string = '';
 	searchControl: FormControl = new FormControl();
-	resultatsRecherche: any;
+	searchResults: any;
 	searching: boolean = false;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public rechercheData: ProductList, public apiConnector: ApiConnectorService) {
@@ -32,15 +32,15 @@ export class CategoriesPage {
 			this.categories = categories;
 		});
 		this.rechercheData.getProducts().subscribe(products => {
-			this.tousProduits = products;
+			this.allProducts = products;
 		});
 	}
 
-	SelectionProduit(event, produit) {
-		this.navCtrl.push(ProductPage, {name: produit});
+	selectProduct(event, product) {
+		this.navCtrl.push(ProductPage, {name: product});
 	}
 
-	SelectionCategories(event, category) {
+	selectCategory(event, category) {
 		this.navCtrl.push(ProductByCategoryPage, {name: category});
 	}
 
@@ -48,14 +48,14 @@ export class CategoriesPage {
 		this.searching = true;
 	}
 
-	RechercheProduits() {
+	searchProducts() {
 
-		this.rechercheData.getProducts().subscribe(produits => {
-			this.resultatsRecherche = produits.filter((produit) => {
-				return produit.name.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1;
+		this.rechercheData.getProducts().subscribe(products => {
+			this.searchResults = products.filter((product) => {
+				return this.searchTerm && product.name.toLowerCase().indexOf(this.searchTerm.toLowerCase()) > -1;
 			});
 			this.searchControl.valueChanges.debounceTime(700).subscribe(search => {
-				this.RechercheProduits();
+				this.searchProducts();
 			});
 		});
 	}

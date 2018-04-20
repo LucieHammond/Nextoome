@@ -11,7 +11,7 @@
 	<h3>Occasions à saisir ! </h3>
 
 	<ion-list>
-		<button ion-item *ngFor="let p of flash_sales" (click)="SelectionProduit($event,p)">
+		<button ion-item *ngFor="let p of flash_sales" (click)="selectProduct($event,p)">
 			<ion-avatar item-start>
 				<img [src]="this.p.images[0].src">
 			</ion-avatar>

@@ -11,12 +11,12 @@ import {Product} from "@models/products";
 })
 export class ModifyProductPage {
 
-	produitVu: Product = this.navParams.get('name');
+	product: Product = this.navParams.get('name');
 	name: string = this.navParams.get('name').name;
-	description: string = this.produitVu.description;
-	price: string = this.produitVu.price;
-	categorie: string = this.produitVu.categories[0].name;
-	id: number = this.produitVu.id;
+	description: string = this.product.description;
+	price: string = this.product.price;
+	category: string = this.product.categories[0].name;
+	id: number = this.product.id;
 
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public apiConnector: ApiConnectorService, private alertCtrl: AlertController) {
@@ -35,15 +35,15 @@ export class ModifyProductPage {
 			in_stock: true,
 			// TODO : utiliser cette catégorie
 			/*	categories: {
-			 name: this.categorie,
+			 name: this.category,
 			 },*/
 		};
 
 		this.apiConnector.updateProduct(this.id, productData);
-		this.ConfirmationModification();
+		this.confirmModification();
 	}
 
-	ConfirmationModification() {
+	confirmModification() {
 		let alert = this.alertCtrl.create({
 			title: 'Confirmation',
 			message: this.name + " mis à jour !",

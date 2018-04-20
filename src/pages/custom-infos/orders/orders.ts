@@ -50,6 +50,7 @@ export class OrdersPage {
 		console.log('ionViewDidLoad OrdersPage');
 		this.session.getCurrentUser().subscribe(user => {
 			this.user = user;
+			// TODO: connect to real orders
 			/*this.apiConnector.getUserOrders(this.user.id).subscribe(commandes => {
 			 this.toutesCommandes = commandes;
 			 });*/

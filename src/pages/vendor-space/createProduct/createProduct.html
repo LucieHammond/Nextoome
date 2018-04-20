@@ -28,8 +28,8 @@
 	<div>
 		<ion-item>
 			<ion-label>Catégorie :</ion-label>
-			<ion-select [(ngModel)]="categorieChoisie" interface="popover">
-				<ion-option *ngFor="let c of toutesCategories" [value]="c">{{c.name}}</ion-option>
+			<ion-select [(ngModel)]="chosenCategory" interface="popover">
+				<ion-option *ngFor="let c of allCategories" [value]="c">{{c.name}}</ion-option>
 			</ion-select>
 		</ion-item>
 	</div>

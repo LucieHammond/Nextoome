@@ -13,8 +13,8 @@ import {DeliveryPage} from "../delivery/delivery";
 })
 export class BasketPage {
 
-	contenuPanier: Product[];
-	prixDuPanier: string;
+	basket: Product[];
+	basketPrice: string;
 	emptyBasket: boolean = true;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public sharedBasket: SharedBasket, private alertCtrl: AlertController) {
@@ -22,26 +22,26 @@ export class BasketPage {
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad BasketPage');
-		this.contenuPanier = this.sharedBasket.getBasket();
-		this.prixDuPanier = this.sharedBasket.getTotalPrice().toFixed(2);
+		this.basket = this.sharedBasket.getBasket();
+		this.basketPrice = this.sharedBasket.getTotalPrice().toFixed(2);
 		this.emptyBasket = this.sharedBasket.isEmpty();
 	}
 
-	SelectionProduit(event, produit) {
-		this.navCtrl.push(ProductPage, {name: produit});
+	selectProduct(event, product) {
+		this.navCtrl.push(ProductPage, {name: product});
 	}
 
-	increase(event, produit) {
-		this.sharedBasket.increase(produit);
-		this.prixDuPanier = this.sharedBasket.getTotalPrice().toFixed(2);
+	increase(event, product) {
+		this.sharedBasket.increase(product);
+		this.basketPrice = this.sharedBasket.getTotalPrice().toFixed(2);
 	}
 
-	decrease(event, produit) {
-		this.sharedBasket.decrease(produit);
-		this.prixDuPanier = this.sharedBasket.getTotalPrice().toFixed(2);
+	decrease(event, product) {
+		this.sharedBasket.decrease(product);
+		this.basketPrice = this.sharedBasket.getTotalPrice().toFixed(2);
 	}
 
-	RetirerPanier(event, produit) {
+	removeFromBasket(event, product) {
 		let alert = this.alertCtrl.create({
 			title: 'Confirmation',
 			message: 'Voulez-vous retirer ce produit du panier ?',
@@ -54,8 +54,8 @@ export class BasketPage {
 				{
 					text: 'Confirmer',
 					handler: () => {
-						this.sharedBasket.removeFromBasket(produit);
-						this.prixDuPanier = this.sharedBasket.getTotalPrice().toFixed(2);
+						this.sharedBasket.removeFromBasket(product);
+						this.basketPrice = this.sharedBasket.getTotalPrice().toFixed(2);
 						this.emptyBasket = this.sharedBasket.isEmpty();
 					}
 				}]
@@ -63,7 +63,7 @@ export class BasketPage {
 		alert.present();
 	}
 
-	PasserCommande(event) {
+	order(event) {
 		this.navCtrl.push(DeliveryPage);
 	}
 

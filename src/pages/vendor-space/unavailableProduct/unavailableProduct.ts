@@ -13,9 +13,8 @@ import {ApiConnectorService} from "@services/api-connector";
 
 export class UnavailableProductPage {
 
-	produit_vu: Product = this.navParams.get('name');
-	enlever: boolean = this.produit_vu.in_stock;
-	remettre: boolean = !this.produit_vu.in_stock;
+	product: Product = this.navParams.get('name');
+	available: boolean = this.product.in_stock;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams,
 				private alertCtrl: AlertController, private apiConnector: ApiConnectorService) {
@@ -26,20 +25,20 @@ export class UnavailableProductPage {
 	}
 
 
-	RendreIndisponibleProduit(event) {
-		this.apiConnector.updateProduct(this.produit_vu.id, {in_stock: false});
-		this.ConfirmationIndispo();
+	setUnavailable(event) {
+		this.apiConnector.updateProduct(this.product.id, {in_stock: false});
+		this.confirmNotAvailable();
 	}
 
-	RendreDisponibleProduit(event) {
-		this.apiConnector.updateProduct(this.produit_vu.id, {in_stock: true});
-		this.ConfirmationDispo();
+	setAvailable(event) {
+		this.apiConnector.updateProduct(this.product.id, {in_stock: true});
+		this.ConfirmAvailable();
 	}
 
-	ConfirmationIndispo() {
+	confirmNotAvailable() {
 		let alert = this.alertCtrl.create({
 			title: 'Confirmation',
-			message: this.produit_vu.name + " rendu indisponible !",
+			message: this.product.name + " rendu indisponible !",
 			buttons: [
 				{
 					text: 'OK',
@@ -51,10 +50,10 @@ export class UnavailableProductPage {
 		alert.present();
 	}
 
-	ConfirmationDispo() {
+	ConfirmAvailable() {
 		let alert = this.alertCtrl.create({
 			title: 'Confirmation',
-			message: this.produit_vu.name + " remis en vente !",
+			message: this.product.name + " remis en vente !",
 			buttons: [
 				{
 					text: 'OK',

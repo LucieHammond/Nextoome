@@ -13,8 +13,8 @@ import {ProductPage} from "../product/product";
 })
 export class ProductByCategoryPage {
 
-	categorie_vue: ProductCategory = this.navParams.get('name');
-	produitsCategorises: Product[];
+	category: ProductCategory = this.navParams.get('name');
+	productsInCategory: Product[];
 
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, public apiConnector: ApiConnectorService) {
@@ -22,12 +22,12 @@ export class ProductByCategoryPage {
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad ProductByCategoriePage');
-		this.apiConnector.getProductsList({"category": this.categorie_vue.id}).subscribe(products => {
-			this.produitsCategorises = products;
+		this.apiConnector.getProductsList({"category": this.category.id}).subscribe(products => {
+			this.productsInCategory = products;
 		});
 	}
 
-	SelectionProduit(event, produit) {
+	selectProduct(event, produit) {
 		this.navCtrl.push(ProductPage, {name: produit});
 	}
 

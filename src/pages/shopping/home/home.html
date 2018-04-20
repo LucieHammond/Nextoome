@@ -12,7 +12,7 @@
 		<ion-refresher-content></ion-refresher-content>
 	</ion-refresher>
 
-	<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="RechercheProduits()" class="searchbar"
+	<ion-searchbar [(ngModel)]="searchTerm" (ionInput)="searchProducts()" class="searchbar"
 				   placeholder="Rechercher un produit">
 		<div *ngIf="searching" class="spinner-container">
 			<ion-spinner></ion-spinner>
@@ -20,20 +20,20 @@
 	</ion-searchbar>
 
 	<ion-list>
-		<ion-item *ngFor="let item of resultatsRecherche" (click)="SelectionProduit($event,item)">
+		<ion-item *ngFor="let item of searchResults" (click)="selectProduct($event,item)">
 			{{item.name}}
 		</ion-item>
 	</ion-list>
 
 
-	<button ion-button block full (click)="AccesCommercant($event)" color="carotte" *ngIf="isShop">
+	<button ion-button block full (click)="vendorAccess($event)" color="carotte" *ngIf="isShop">
 		Acceder à mon espace commerçant
 	</button>
 
 
 	<h3>Offres du jour</h3>
 	<ion-list>
-		<button ion-item *ngFor="let p of produitsAccueil" (click)="SelectionProduit($event,p)">
+		<button ion-item *ngFor="let p of availableProducts" (click)="selectProduct($event,p)">
 			<ion-avatar item-start>
 				<img [src]="this.p.images[0].src">
 			</ion-avatar>

@@ -8,29 +8,29 @@ import {ApiConnectorService} from "./api-connector";
 @Injectable()
 export class ProductList {
 
-	tousProduits: Observable<Product[]> = null;
-	produitsDisponibles: Product[];
+	allProducts: Observable<Product[]> = null;
+	availableProducts: Product[];
 	lastRefresh: Date = null;
 	refreshStep = 1000 * 60 * 15; // 15 minutes
 
 	constructor(private apiConnector: ApiConnectorService) {
 	}
 
-	getProducts() {
-		if (this.tousProduits === null || this._data_expired()) {
-			this.tousProduits = this.apiConnector.getProductsList();
+	getProducts(refresh = false) {
+		if (this.allProducts === null || this._data_expired() || refresh) {
+			this.allProducts = this.apiConnector.getProductsList();
 			this.lastRefresh = new Date();
 		}
-		return this.tousProduits;
+		return this.allProducts;
 	}
 
 	getAvailableProducts() {
-		this.getProducts().subscribe(produits => {
-			this.produitsDisponibles = produits.filter((produit) => {
+		this.getProducts().subscribe(products => {
+			this.availableProducts = products.filter((produit) => {
 				return produit.in_stock;
 			});
 		});
-		return this.produitsDisponibles;
+		return this.availableProducts;
 	}
 
 	// Méthode de cache qui recharge les produits toutes les 15 minutes

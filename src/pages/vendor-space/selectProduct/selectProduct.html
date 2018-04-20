@@ -14,7 +14,7 @@
 	</ion-refresher>
 
 	<ion-list>
-		<button ion-item *ngFor="let p of TousProduits" (click)="SelectionProduit($event,p)">
+		<button ion-item *ngFor="let p of allProducts" (click)="selectProduct($event,p)">
 			<ion-avatar item-start>
 				<img [src]="this.p.images[0].src">
 			</ion-avatar>

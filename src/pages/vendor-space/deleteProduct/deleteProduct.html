@@ -10,14 +10,14 @@
 <ion-content padding>
 
 	<ion-row>
-		<ion-col col-auto><h2>{{produit_vu.name}}</h2></ion-col>
-		<ion-col text-right>{{produit_vu.price}}€</ion-col>
+		<ion-col col-auto><h2>{{product.name}}</h2></ion-col>
+		<ion-col text-right>{{product.price}}€</ion-col>
 	</ion-row>
-	<img [src]="this.produit_vu.images[0].src"/>
-	<div [innerHTML]="produit_vu.description"></div>
+	<img [src]="this.product.images[0].src"/>
+	<div [innerHTML]="product.description"></div>
 
 
-	<button ion-button icon-start full (click)="SupprimerProduit($event)" color="tomate">
+	<button ion-button icon-start full (click)="removeProduct($event)" color="tomate">
 		<ion-icon name="close"></ion-icon>
 		Supprimer définitivement
 	</button>

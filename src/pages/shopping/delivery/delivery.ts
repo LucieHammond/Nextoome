@@ -16,9 +16,9 @@ import {UserProfilePage} from "../../custom-infos/user-profile/user-profile";
 })
 export class DeliveryPage {
 
-	contenuPanier: Product[];
-	prixDuPanier: string;
-	commentaires: string;
+	basket: Product[];
+	basketPrice: string;
+	comments: string;
 	deliveryMode: string = null;
 	user: User;
 
@@ -29,8 +29,8 @@ export class DeliveryPage {
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad DeliveryPage');
-		this.contenuPanier = this.sharedbasket.getBasket();
-		this.prixDuPanier = this.sharedbasket.getTotalPrice().toFixed(2);
+		this.basket = this.sharedbasket.getBasket();
+		this.basketPrice = this.sharedbasket.getTotalPrice().toFixed(2);
 		this.session.getCurrentUser().subscribe(user => {
 			this.user = user;
 		});
@@ -46,7 +46,7 @@ export class DeliveryPage {
 		this.navCtrl.push(UserProfilePage);
 	}
 
-	PasserCommande(event) {
+	payOrder(event) {
 		if (!this.user.billing.address_1 || !this.user.billing.city || !this.user.billing.postcode
 			|| (this.deliveryMode == 'domicile' &&
 			(!this.user.shipping.address_1 || !this.user.shipping.city || !this.user.shipping.postcode))) {
@@ -76,7 +76,7 @@ export class DeliveryPage {
 			).then(() => {
 
 				let price = this.sharedbasket.getTotalPrice().toString();
-				let payment = new PayPalPayment(price, 'EUR', 'Description', 'sale');
+				let payment = new PayPalPayment(price, 'EUR', 'Commande Nextoome', 'sale');
 				this.payPal.renderSinglePaymentUI(payment).then(() => {
 
 					// Successfully paid
@@ -101,7 +101,7 @@ export class DeliveryPage {
 			items.push({
 				name: basket[i].name,
 				product_id: basket[i].id,
-				quantity: basket[i].quantite_panier,
+				quantity: basket[i].basket_quantity,
 				meta_data: basket[i].meta_data,
 				sku: basket[i].sku,
 				price: basket[i].price
@@ -121,7 +121,7 @@ export class DeliveryPage {
 			customer_id: this.user.id,
 			line_items: items,
 			status: 'processing',
-			customer_note: this.commentaires,
+			customer_note: this.comments,
 			currency: 'EUR',
 			set_paid: true
 		};

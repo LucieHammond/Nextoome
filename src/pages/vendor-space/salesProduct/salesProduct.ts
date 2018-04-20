@@ -13,10 +13,10 @@ import {ApiConnectorService} from "@services/api-connector";
 
 export class SalesProductPage {
 
-	produit_vu: Product = this.navParams.get('name');
+	product: Product = this.navParams.get('name');
 	price: number;
-	dateDebut: string;
-	dateFin: string;
+	startDate: string;
+	endDate: string;
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, private apiConnector: ApiConnectorService) {
 	}
@@ -26,20 +26,20 @@ export class SalesProductPage {
 	}
 
 
-	MettreEnPromotion(event) {
-		this.apiConnector.updateProduct(this.produit_vu.id, {
+	putOnSale(event) {
+		this.apiConnector.updateProduct(this.product.id, {
 			sale_price: this.price,
-			date_on_sale_from: this.dateDebut,
-			date_on_sale_to: this.dateFin
+			date_on_sale_from: this.startDate,
+			date_on_sale_to: this.endDate
 		});
-		this.ConfirmationPromotion();
+		this.confirmPromotion();
 	}
 
 
-	ConfirmationPromotion() {
+	confirmPromotion() {
 		let alert = this.alertCtrl.create({
 			title: 'Confirmation',
-			message: this.produit_vu.name + " en promotion !",
+			message: this.product.name + " en promotion !",
 			buttons: [
 				{
 					text: 'OK',

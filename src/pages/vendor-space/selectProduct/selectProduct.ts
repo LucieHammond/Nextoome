@@ -15,8 +15,8 @@ import {SalesProductPage} from "../salesProduct/salesProduct";
 })
 export class SelectProductPage {
 
-	TousProduits: Product[];
-	actionChoisie: string = this.navParams.get('action');
+	allProducts: Product[];
+	action: string = this.navParams.get('action');
 
 	constructor(public navCtrl: NavController, public navParams: NavParams, private apiConnector: ApiConnectorService) {
 	}
@@ -26,28 +26,28 @@ export class SelectProductPage {
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad SelectProductPage');
 		this.apiConnector.getProductsList().subscribe(products => {
-			this.TousProduits = products;
+			this.allProducts = products;
 		});
 	}
 
-	SelectionProduit(event, produit) {
-		if (this.actionChoisie == "modify") {
+	selectProduct(event, produit) {
+		if (this.action == "modify") {
 			this.navCtrl.push(ModifyProductPage, {name: produit});
 		}
-		if (this.actionChoisie == "unavailable") {
+		if (this.action == "unavailable") {
 			this.navCtrl.push(UnavailableProductPage, {name: produit});
 		}
-		if (this.actionChoisie == "delete") {
+		if (this.action == "delete") {
 			this.navCtrl.push(DeleteProductPage, {name: produit});
 		}
-		if (this.actionChoisie == "sales") {
+		if (this.action == "sales") {
 			this.navCtrl.push(SalesProductPage, {name: produit});
 		}
 	}
 
 	doRefresh(event) {
-		this.apiConnector.getProductsList().subscribe(products => {
-			this.TousProduits = products;
+		this.apiConnector.getProductsList(true).subscribe(products => {
+			this.allProducts = products;
 			event.complete();
 		});
 	}

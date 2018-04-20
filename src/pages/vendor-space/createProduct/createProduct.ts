@@ -13,15 +13,12 @@ import {ProductCategory} from "@models/products";
 export class CreateProductPage {
 
 	authForm: FormGroup;
-	toutesCategories: ProductCategory[];
+	allCategories: ProductCategory[];
 	name: string;
 	description: string;
 	price: string;
 	// TODO : trouver un moyen de choisir la catégorie
-	categorie: {
-		id: number
-	};
-	categorieChoisie: ProductCategory;
+	chosenCategory: ProductCategory;
 
 
 	constructor(public navCtrl: NavController, public apiConnector: ApiConnectorService, private alertCtrl: AlertController) {
@@ -30,7 +27,7 @@ export class CreateProductPage {
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad CreateProductPage');
 		this.apiConnector.getProductCategoriesList().subscribe(categories => {
-			this.toutesCategories = categories;
+			this.allCategories = categories;
 		});
 	}
 
@@ -40,7 +37,7 @@ export class CreateProductPage {
 			description: this.description,
 			regular_price: this.price,
 			in_stock: true,
-			//	categories: [{id: this.categorieChoisie.id }],
+			//	categories: [{id: this.chosenCategory.id }],
 		};
 
 		this.apiConnector.createProduct(productData);
