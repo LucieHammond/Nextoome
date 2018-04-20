@@ -1,8 +1,9 @@
 import {Injectable} from "@angular/core";
 import "rxjs/add/operator/map";
-import {Product} from "../models/products";
-import {ApiConnectorService} from "./api-connector";
 import {Observable} from "rxjs";
+import {Product} from "@models/products";
+import {ApiConnectorService} from "./api-connector";
+
 
 @Injectable()
 export class ProductList {
@@ -32,10 +33,9 @@ export class ProductList {
 		return this.produitsDisponibles;
 	}
 
-	// Méthode de cache un peu sale.
-	// TODO: implémenter un vrai cache global
+	// Méthode de cache qui recharge les produits toutes les 15 minutes
 	_data_expired() {
 		let now = new Date();
-		return this.lastRefresh || now.getTime() - this.lastRefresh.getTime() > this.refreshStep;
+		return !this.lastRefresh || now.getTime() - this.lastRefresh.getTime() > this.refreshStep;
 	}
 }

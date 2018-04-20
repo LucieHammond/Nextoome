@@ -1,9 +1,9 @@
 import {Injectable} from "@angular/core";
-import {User} from "../models/users";
-import {ApiConnectorService} from "./api-connector";
-import {Observable} from "rxjs";
 import {Events} from "ionic-angular";
-import {Product, WishlistItem} from "../models/products";
+import {Observable} from "rxjs";
+import {ApiConnectorService} from "./api-connector";
+import {Product, WishlistItem} from "@models/products";
+import {User} from "@models/users";
 
 
 @Injectable()

@@ -1,8 +1,8 @@
 {
-  "name": "Nextoome",
-  "app_id": "",
-  "type": "ionic-angular",
-  "integrations": {
-    "cordova": {}
-  }
+	"name": "Nextoome",
+	"app_id": "",
+	"type": "ionic-angular",
+	"integrations": {
+		"cordova": {}
+	}
 }

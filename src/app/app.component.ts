@@ -2,23 +2,23 @@ import {Component, ViewChild} from "@angular/core";
 import {Nav, Platform, Events} from "ionic-angular";
 import {StatusBar} from "@ionic-native/status-bar";
 import {SplashScreen} from "@ionic-native/splash-screen";
-import {ApiConnectorService} from "../services/api-connector";
-import {HomePage} from "../pages/home/home";
-import {FlashSalePage} from "../pages/flash-sale/flash-sale";
-import {UserProfilePage} from "../pages/user-profile/user-profile";
-import {CategoriesPage} from "../pages/categories/categories";
-import {WishlistPage} from "../pages/wishlist/wishlist";
-import {BasketPage} from "../pages/basket/basket";
-import {OrdersPage} from "../pages/orders/orders";
-import {NextoosPage} from "../pages/nextoos/nextoos";
-import {CustomerServicePage} from "../pages/customer-service/customer-service";
-import {HelpPage} from "../pages/help/help";
-import {ParamsPage} from "../pages/params/params";
-import {ProductPage} from "../pages/product/product";
-import {WelcomePage} from "../pages/welcome/welcome";
-import {MaintenancePage} from "../pages/maintenance/maintenance";
-import {SessionInfos} from "../services/session-infos";
-import {User} from "../models/users";
+import {ApiConnectorService} from "@services/api-connector";
+import {SessionInfos} from "@services/session-infos";
+import {User} from "@models/users";
+import {HomePage} from "../pages/shopping/home/home";
+import {FlashSalePage} from "../pages/shopping/flash-sale/flash-sale";
+import {UserProfilePage} from "../pages/custom-infos/user-profile/user-profile";
+import {CategoriesPage} from "../pages/shopping/categories/categories";
+import {WishlistPage} from "../pages/shopping/wishlist/wishlist";
+import {BasketPage} from "../pages/shopping/basket/basket";
+import {OrdersPage} from "../pages/custom-infos/orders/orders";
+import {NextoosPage} from "../pages/custom-infos/nextoos/nextoos";
+import {CustomerServicePage} from "../pages/custom-infos/customer-service/customer-service";
+import {HelpPage} from "../pages/custom-infos/help/help";
+import {ParamsPage} from "../pages/custom-infos/params/params";
+import {ProductPage} from "../pages/shopping/product/product";
+import {WelcomePage} from "../pages/start/welcome/welcome";
+import {MaintenancePage} from "../pages/start/maintenance/maintenance";
 
 
 @Component({
@@ -108,7 +108,7 @@ export class MyApp {
 		this.nav.setRoot(page.component);
 	}
 
-	deconnect() {
+	disconnect() {
 		this.session.closeSession();
 		window.localStorage.setItem('user', null);
 		window.localStorage.setItem('token', null);

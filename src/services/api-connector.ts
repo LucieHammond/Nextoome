@@ -1,18 +1,11 @@
 import {Injectable} from "@angular/core";
 import {HTTP} from "@ionic-native/http";
 import {Observable} from "rxjs/Rx";
-import {Coupon} from "../models/coupons";
-import {User} from "../models/users";
-import {Order, OrderNote, OrderRefund} from "../models/orders";
-import {
-	Product,
-	ProductAttribute,
-	ProductAttributeTerm,
-	ProductCategory,
-	ProductShippingClass,
-	ProductTag
-} from "../models/products";
-import {Storekeeper} from "../models/storekeeper";
+import {Coupon} from "@models/coupons";
+import {User} from "@models/users";
+import {Order, OrderNote, OrderRefund} from "@models/orders";
+import {Product, ProductAttribute, ProductAttributeTerm, ProductCategory, ProductShippingClass, ProductTag} from "@models/products";
+import {Storekeeper} from "@models/storekeeper";
 
 
 @Injectable()
