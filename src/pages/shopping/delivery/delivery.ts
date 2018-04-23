@@ -77,15 +77,18 @@ export class DeliveryPage {
 
 				let price = this.sharedbasket.getTotalPrice().toString();
 				let payment = new PayPalPayment(price, 'EUR', 'Commande Nextoome', 'sale');
+
 				this.payPal.renderSinglePaymentUI(payment).then(() => {
 
 					// Successfully paid
+					this.apiConnector.createOrder(this.currentOrder("pending", true));
 					this.navCtrl.push("ConfirmationPage");
-					this.apiConnector.createOrder(this.currentOrder());
 
 				}, () => {
 					// Error or render dialog closed without being successful
+					this.apiConnector.createOrder(this.currentOrder("cancelled", false));
 				});
+
 			}, () => {
 				// Error in configuration
 			});
@@ -94,7 +97,7 @@ export class DeliveryPage {
 		});
 	}
 
-	currentOrder() {
+	currentOrder(status, paid) {
 		let items = [];
 		let basket: Product[] = this.sharedbasket.getBasket();
 		for (let i = 0; i < basket.length; i++) {
@@ -114,16 +117,27 @@ export class DeliveryPage {
 				country: 'FR'
 			};
 
+		// TODO: Actuellement, les commandes crées depuis l'application ne peuvent pas contenir d'items !!
+		/**
+			En effet, l'API demande à ce que chaque item soit donné avec un id qui doit être un entier (sans quoi
+			l'erreur 'woocommerce_rest_required_product_reference' est renvoyée)
+			Or, comme la commande n'a pas encore été créée, aucun id n'a été généré pour relier le produit à la commande
+			Quel que soit l'id donné, on reçoit l'erreur 'woocommerce_rest_invalid_item_id'
+			Cette erreur semble avoir été décrite ici :
+			- https://github.com/woocommerce/woocommerce/issues/11450
+			- https://stackoverflow.com/questions/40668954/javascript-serialization-params-with-arrays
+			La solution donnée qui consiste à envoyer id: null ne fonctionne pas car l'id doit être un entier
+		 */
 		return {
 			payment_method: 'paypal',
 			billing: this.user.billing,
 			shipping: shipping,
 			customer_id: this.user.id,
-			line_items: items,
-			status: 'processing',
+			//line_items: items,
+			status: status,
 			customer_note: this.comments,
 			currency: 'EUR',
-			set_paid: true
+			set_paid: paid
 		};
 	}
 

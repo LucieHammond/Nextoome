@@ -10,6 +10,7 @@
 <ion-content padding>
 	<h4 class="subtitle">Commandes en cours...</h4>
 
+	<p *ngIf="currentOrders && currentOrders.length == 0">Aucune commande en cours</p>
 	<ion-card *ngFor="let order of currentOrders" padding>
 		<ion-row>
 			<ion-col col-7>
@@ -37,6 +38,7 @@
 
 	<h4 class="subtitle">Commandes passées...</h4>
 
+	<p *ngIf="passedOrders && passedOrders.length == 0">Aucune commande passée</p>
 	<ion-card *ngFor="let order of passedOrders" padding>
 		<ion-row>
 			<ion-col col-7>
