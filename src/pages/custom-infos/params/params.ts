@@ -9,7 +9,7 @@ import {SessionInfos} from "@services/session-infos";
 })
 export class ParamsPage {
 
-	settings: {id: number, key: string, value: string}[];
+	userId: number = null;
 	notifDelivery: boolean;
 	notifPromotions: boolean;
 	notifNewVendors: boolean;
@@ -18,51 +18,34 @@ export class ParamsPage {
 	constructor(public navCtrl: NavController, public navParams: NavParams, private session: SessionInfos) {
 	}
 
+	// TODO : Stocker les choix de l'utilisateur sur le serveur plutôt qu'en local
+	/**
+	 * Pour le moment, les choix réalisés sont stockés provisoirement en local (et de façon pas très propre),
+	 * chaque choix restant associé à un utilisateur particulier s'étant connecté à l'app.
+	 * L'API Nextoome ne permet pas à ce jour de stocker ce type de préférences sur les notifications.
+	 * Nous avons essayé de modifier les meta_data d'un customer mais ce genre de changement s'est révélé impossible
+	 * et inadapté.
+	 */
+	// TODO : Implémenter les notifications push
+	/**
+	 * Par la même occasion, il faudra implémenter concretement une façon d'envoyer aux utilisateurs qui le souhaitent
+	 * des notifications push dont le contenu sera créé soit automatiquement soit manuellement.
+	 */
+
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad ParamsPage');
 		this.session.getCurrentUser().subscribe(user => {
-			this.settings = user.meta_data;
-			let delivery = this.settings.find((data) => {
-				return data.key == 'notif_delivery';
-			});
-			let promotions = this.settings.find((data) => {
-				return data.key == 'notif_promotions';
-			});
-			let newVendors = this.settings.find((data) => {
-				return data.key == 'notif_new_vendors';
-			});
-			let newsletter = this.settings.find((data) => {
-				return data.key == 'notif_newsletter';
-			});
-
-			if (delivery) {
-				this.notifDelivery = (delivery.value == 'true');
-			}
-			if (promotions) {
-				this.notifDelivery = (promotions.value == 'true');
-			}
-			if (newVendors) {
-				this.notifDelivery = (newVendors.value == 'true');
-			}
-			if (newsletter) {
-				this.notifDelivery = (newsletter.value == 'true');
-			}
+			this.userId = user.id;
+			this.notifDelivery = (window.localStorage.getItem(user.id + ':notif_delivery') == 'true');
+			this.notifPromotions = (window.localStorage.getItem(user.id + ':notif_promotions') == 'true');
+			this.notifNewVendors = (window.localStorage.getItem(user.id + ':notif_new_vendors') == 'true');
+			this.notifNewsletter = (window.localStorage.getItem(user.id + ':notif_newsletter') == 'true');
 		});
 	}
 
 	changeSettings(key: string, value: boolean) {
 
-		let setting = this.settings.find((data) => {
-			return data.key == key;
-		});
-		if (setting) {
-			setting.value = value.toString();
-		} else {
-			//this.settings.push({id: 1, key: key, value: value.toString()})
-		}
+		window.localStorage.setItem(this.userId + ':' + key, value.toString());
 
-		/*this.session.updateUserSettings(this.settings).subscribe((user) => {
-		 // TODO: Ne marche pas pour le moment (metadata n'est pas modifiable de cette façon)
-		 });*/
 	}
 }

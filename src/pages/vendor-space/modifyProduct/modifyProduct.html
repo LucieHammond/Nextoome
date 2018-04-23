@@ -25,6 +25,15 @@
 		</ion-item>
 	</ion-list>
 
+	<div>
+		<ion-item>
+			<ion-label>Catégorie :</ion-label>
+			<ion-select [(ngModel)]="category" interface="popover">
+				<ion-option *ngFor="let c of allCategories" [value]="c">{{c.name}}</ion-option>
+			</ion-select>
+		</ion-item>
+	</div>
+
 	<button ion-button block full (click)="updateProduct($event)" color="carotte">
 		Mettre à jour ce produit
 	</button>

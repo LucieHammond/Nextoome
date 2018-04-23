@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
 import {IonicPage, NavController, NavParams, AlertController} from "ionic-angular";
 import {ApiConnectorService} from "@services/api-connector";
-import {Product} from "@models/products";
+import {Product, ProductCategory} from "@models/products";
 
 
 @IonicPage()
@@ -15,7 +15,8 @@ export class ModifyProductPage {
 	name: string = this.navParams.get('name').name;
 	description: string = this.product.description;
 	price: string = this.product.price;
-	category: string = this.product.categories[0].name;
+	allCategories: ProductCategory[];
+	category: ProductCategory;
 	id: number = this.product.id;
 
 
@@ -24,6 +25,12 @@ export class ModifyProductPage {
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad ModifyProductPage');
+		this.apiConnector.getProductCategoriesList().subscribe(categories => {
+			this.allCategories = categories;
+			this.category = this.allCategories.find((category) => {
+				return category.id == this.product.categories[0].id;
+			});
+		});
 	}
 
 	updateProduct(event) {
@@ -33,10 +40,9 @@ export class ModifyProductPage {
 			description: this.description,
 			regular_price: this.price,
 			in_stock: true,
-			// TODO : utiliser cette catégorie
-			/*	categories: {
-			 name: this.category,
-			 },*/
+			categories: [{
+				id: this.category.id,
+			}]
 		};
 
 		this.apiConnector.updateProduct(this.id, productData);

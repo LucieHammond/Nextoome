@@ -34,7 +34,7 @@ export class HomePage {
 
 		this.session.getCurrentUser().subscribe(user => {
 			this.user = $.extend(true, {}, user);
-			this.isShop = !(this.user.role == "vendor"); //TODO: enlever la négation !!
+			this.isShop = (this.user.role == "vendor");
 		});
 		this.productsList.getProducts().subscribe(products => {
 			this.availableProducts = products.filter((product) => {

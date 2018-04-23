@@ -33,7 +33,7 @@ export class ProductList {
 		return this.availableProducts;
 	}
 
-	// Méthode de cache qui recharge les produits toutes les 15 minutes
+	// Méthode de cache (artisanale) qui recharge les produits toutes les 15 minutes
 	_data_expired() {
 		let now = new Date();
 		return !this.lastRefresh || now.getTime() - this.lastRefresh.getTime() > this.refreshStep;

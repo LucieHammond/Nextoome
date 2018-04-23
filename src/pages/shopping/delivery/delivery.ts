@@ -117,16 +117,17 @@ export class DeliveryPage {
 				country: 'FR'
 			};
 
-		// TODO: Actuellement, les commandes crées depuis l'application ne peuvent pas contenir d'items !!
+		// TODO : Associer la liste des produits achetés à la nouvelle commande
 		/**
-			En effet, l'API demande à ce que chaque item soit donné avec un id qui doit être un entier (sans quoi
-			l'erreur 'woocommerce_rest_required_product_reference' est renvoyée)
-			Or, comme la commande n'a pas encore été créée, aucun id n'a été généré pour relier le produit à la commande
-			Quel que soit l'id donné, on reçoit l'erreur 'woocommerce_rest_invalid_item_id'
-			Cette erreur semble avoir été décrite ici :
-			- https://github.com/woocommerce/woocommerce/issues/11450
-			- https://stackoverflow.com/questions/40668954/javascript-serialization-params-with-arrays
-			La solution donnée qui consiste à envoyer id: null ne fonctionne pas car l'id doit être un entier
+		 * Actuellement, les commandes crées depuis l'application via l'API ne peuvent pas contenir d'items
+		 * En effet, l'API demande à ce que chaque item soit donné avec un id qui doit être un entier (sans quoi
+		 * l'erreur 'woocommerce_rest_required_product_reference' est renvoyée)
+		 * Or, comme la commande n'a pas encore été créée, aucun id n'a été généré pour relier le produit à la commande
+		 * Quel que soit l'id donné, on reçoit l'erreur 'woocommerce_rest_invalid_item_id'
+		 * Cette erreur semble avoir été décrite ici :
+		 * - https://github.com/woocommerce/woocommerce/issues/11450
+		 * - https://stackoverflow.com/questions/40668954/javascript-serialization-params-with-arrays
+		 * La solution donnée qui consiste à envoyer id: null ne fonctionne pas car l'id doit être un entier.
 		 */
 		return {
 			payment_method: 'paypal',

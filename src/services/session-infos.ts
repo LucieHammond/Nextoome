@@ -37,12 +37,6 @@ export class SessionInfos {
 		return this.currentUser;
 	}
 
-	updateUserSettings(metadata): Observable<User> {
-		let userid = Number.parseInt(window.localStorage.getItem('user'));
-		this.currentUser = this.apiConnector.updateUser(userid, {meta_data: metadata});
-		return this.currentUser;
-	}
-
 	closeSession() {
 		this.currentUser = null;
 	}

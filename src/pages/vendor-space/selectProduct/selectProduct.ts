@@ -21,7 +21,8 @@ export class SelectProductPage {
 	constructor(public navCtrl: NavController, public navParams: NavParams, private apiConnector: ApiConnectorService) {
 	}
 
-	//TODO : modifier pour n'afficher que les produits du commercant loggé
+	// TODO : Modifier pour n'afficher que les produits du commercant loggé
+	// Actuellement le fitrage sur ce critère est impossible car les produits ne sont pas associés à un commerçant
 
 	ionViewDidLoad() {
 		console.log('ionViewDidLoad SelectProductPage');

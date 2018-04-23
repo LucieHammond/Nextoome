@@ -17,7 +17,6 @@ export class CreateProductPage {
 	name: string;
 	description: string;
 	price: string;
-	// TODO : trouver un moyen de choisir la catégorie
 	chosenCategory: ProductCategory;
 
 
@@ -37,7 +36,7 @@ export class CreateProductPage {
 			description: this.description,
 			regular_price: this.price,
 			in_stock: true,
-			//	categories: [{id: this.chosenCategory.id }],
+			categories: [{id: this.chosenCategory.id }],
 		};
 
 		this.apiConnector.createProduct(productData);
